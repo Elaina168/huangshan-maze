@@ -94,5 +94,11 @@
     "source": "user-message-transcription/2026-10-10-left-01",
     "sha256": "4acceaebfad7990d1f9396a733e1a9181d4372f7ec02fc6f538549276178cbc4",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-10-left-02/raw.log",
+    "source": "user-message-transcription/2026-10-10-left-02",
+    "sha256": "f360053a04f29adb8efa4a248e1ff86df5aecb7186ac134c3c25dfe0de33e456",
+    "modified": false
   }
 ]

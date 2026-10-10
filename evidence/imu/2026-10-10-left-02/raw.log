@@ -1,0 +1,48 @@
+[course_starter] rgb -> green
+[imu_probe] begin pose=left id=0x6a count=40 tick_hz=1000 units=raw odr_hz=104
+[imu_probe] sample pose=left n=1 tick=514607 raw=381,8609,-13641
+[imu_probe] sample pose=left n=2 tick=514658 raw=289,8617,-14144
+[imu_probe] sample pose=left n=3 tick=514709 raw=444,8661,-13635
+[imu_probe] sample pose=left n=4 tick=514760 raw=252,8634,-14365
+[imu_probe] sample pose=left n=5 tick=514811 raw=428,8674,-13455
+[imu_probe] sample pose=left n=6 tick=514862 raw=277,8614,-13875
+[imu_probe] sample pose=left n=7 tick=514913 raw=314,8605,-13743
+[imu_probe] sample pose=left n=8 tick=514964 raw=299,8665,-13932
+[course_starter] rgb -> blue
+[imu_probe] sample pose=left n=9 tick=515015 raw=234,8584,-13869
+[imu_probe] sample pose=left n=10 tick=515066 raw=222,8550,-14182
+[imu_probe] sample pose=left n=11 tick=515117 raw=353,8640,-13510
+[imu_probe] sample pose=left n=12 tick=515168 raw=183,8570,-13917
+[imu_probe] sample pose=left n=13 tick=515219 raw=223,8541,-13868
+[imu_probe] sample pose=left n=14 tick=515270 raw=264,8586,-13933
+[imu_probe] sample pose=left n=15 tick=515321 raw=270,8562,-13488
+[imu_probe] sample pose=left n=16 tick=515372 raw=198,8588,-14226
+[imu_probe] sample pose=left n=17 tick=515423 raw=216,8572,-13495
+[imu_probe] sample pose=left n=18 tick=515474 raw=143,8612,-14320
+[imu_probe] sample pose=left n=19 tick=515525 raw=242,8613,-13286
+[imu_probe] sample pose=left n=20 tick=515576 raw=179,8649,-14391
+[imu_probe] sample pose=left n=21 tick=515627 raw=312,8661,-13467
+[imu_probe] sample pose=left n=22 tick=515678 raw=225,8656,-13969
+[imu_probe] sample pose=left n=23 tick=515729 raw=216,8664,-13777
+[imu_probe] sample pose=left n=24 tick=515780 raw=326,8757,-13628
+[imu_probe] sample pose=left n=25 tick=515831 raw=137,8703,-14174
+[imu_probe] sample pose=left n=26 tick=515882 raw=210,8694,-13759
+[imu_probe] sample pose=left n=27 tick=515933 raw=247,8724,-13669
+[imu_probe] sample pose=left n=28 tick=515984 raw=222,8702,-13554
+[imu_probe] sample pose=left n=29 tick=516035 raw=181,8733,-13870
+[imu_probe] sample pose=left n=30 tick=516086 raw=200,8716,-13699
+[imu_probe] sample pose=left n=31 tick=516137 raw=257,8748,-13850
+[imu_probe] sample pose=left n=32 tick=516188 raw=261,8752,-13567
+[imu_probe] sample pose=left n=33 tick=516239 raw=208,8797,-13966
+[course_starter] rgb -> red
+[imu_probe] sample pose=left n=34 tick=516290 raw=162,8762,-13603
+[imu_probe] sample pose=left n=35 tick=516341 raw=218,8790,-13655
+[imu_probe] sample pose=left n=36 tick=516392 raw=129,8789,-13881
+[imu_probe] sample pose=left n=37 tick=516443 raw=260,8841,-13442
+[imu_probe] sample pose=left n=38 tick=516494 raw=148,8834,-14029
+[imu_probe] sample pose=left n=39 tick=516545 raw=228,8856,-13268
+[imu_probe] sample pose=left n=40 tick=516596 raw=140,8875,-13831
+[imu_probe] range pose=left min_raw=129,8541,-14391 max_raw=444,8875,-13268
+[imu_probe] end pose=left result=ok count=40 mean_raw=242,8680,-13798
+msh />msh />[course_starter] rgb -> green
+[course_starter] rgb -> blue
