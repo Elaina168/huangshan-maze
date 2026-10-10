@@ -42,6 +42,15 @@
 4. 由你操作烧录并保留完整输出。不要拿外设示例的配置下载到本次最小工程，也不要猜测单个 bin 的烧录地址。
 5. 观察 RGB 和启动日志，记录实际结果，之后 Codex 将修改、构建证据与开发日志提交推送；上板结果不足时明确写未执行或待补，不宣称 C-06 已通过。
 
+Windows 跨盘注意：实际 SDK 生成的下载脚本只有 `cd %WORK_PATH%`，不会从 D 盘切换到 C 盘。应先在已激活 SDK 的 PowerShell 中进入实际构建目录，再调用脚本。本次构建对应：
+
+```powershell
+Set-Location 'C:\Users\zytx\AppData\Local\Temp\huangshan-maze-fpy3clmm\project\build_sf32lb52-lchspi-ulp_hcpu'
+.\uart_download.bat
+```
+
+上述位置仅属于本次构建；后续必须读取对应 build-state.json 的 stage_path。串口占用已解除后出现路径错误，不应继续按占用问题处理，失败证据见 [第二次下载记录](../../evidence/builds/2026-10-10-rgb-v0.1.1/download-attempt-02.md)。
+
 本次 RGB 工程没有迷宫界面，也不会保留外设测试台界面；验证对象是灯和串口。
 
 ## 4. 验证与记录
