@@ -1,6 +1,8 @@
 # IMU 四向映射：串口取样
 
-状态：neutral、right及left重测真机各40点已完整取得、统计核对一致。用户明确left重测为左边缘压低、右边缘抬高；该组Y相对中立增大9100，right减小7632，左右候选符号相反。首组left继续保留为姿态待确认，不用于映射。up/down及回中立尚未取样，屏幕上边缘与USB口对应关系尚待记录。证据见 [中立记录](../../evidence/imu/2026-10-10-neutral-01/README.md)、[右低记录](../../evidence/imu/2026-10-10-right-01/README.md)、[left待确认记录](../../evidence/imu/2026-10-10-left-01/README.md)、[左低重测](../../evidence/imu/2026-10-10-left-02/README.md)。这仍是方向预研，不代表完整映射、迷宫校准或产品用例通过。
+状态：neutral、right、left重测及up真机各40点已完整取得、统计核对一致。left重测的Y相对中立增大9100，right减小7632，左右候选符号相反；up的X相对中立减小6533，待down验证反向。用户明确up为上边缘压低、下边缘抬高，USB口位于屏幕左侧，后续保持该朝向。先前各组USB位置未单独确认；首组left继续保留为姿态待确认，不用于映射。down及回中立尚未取样。这仍是方向预研，不代表完整映射、迷宫校准或产品用例通过。
+
+证据见 [中立记录](../../evidence/imu/2026-10-10-neutral-01/README.md)、[右低记录](../../evidence/imu/2026-10-10-right-01/README.md)、[left待确认记录](../../evidence/imu/2026-10-10-left-01/README.md)、[左低重测](../../evidence/imu/2026-10-10-left-02/README.md)、[上低及朝向记录](../../evidence/imu/2026-10-10-up-01/README.md)。
 
 ## 1. 这个版本做什么
 
