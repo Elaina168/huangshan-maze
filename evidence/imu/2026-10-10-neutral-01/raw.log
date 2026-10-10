@@ -1,0 +1,409 @@
+imu_probe neutral
+
+17:14:41
+RX
+[imu_probe] begin pose=neutral i
+17:14:41
+RX
+d=0x6a count=40 tick_hz=1000 uni
+17:14:41
+RX
+ts=raw odr_hz=104
+17:14:41
+RX
+[imu_probe] sample pose=neutral 
+17:14:41
+RX
+n=1 tick=26745 raw=1,-437,-16237
+17:14:41
+RX
+
+17:14:41
+RX
+[imu_probe] sample pose=neutral 
+17:14:41
+RX
+n=2 tick=26796 raw=-8,-432,-1621
+17:14:41
+RX
+1
+17:14:41
+RX
+[imu_probe] sample pose=neutral 
+17:14:41
+RX
+n=3 tick=26847 raw=-7,-413,-1620
+17:14:41
+RX
+2
+17:14:41
+RX
+[imu_probe] sample pose=neutral 
+17:14:41
+RX
+n=4 tick=26898 raw=-18,-417,-162
+17:14:41
+RX
+02
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=5 tick=26949 raw=1,-422,-16196
+17:14:42
+RX
+
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=6 tick=27000 raw=-22,-428,-162
+17:14:42
+RX
+06
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=7 tick=27051 raw=-12,-412,-162
+17:14:42
+RX
+10
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=8 tick=27102 raw=-18,-430,-161
+17:14:42
+RX
+91
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=9 tick=27153 raw=-7,-430,-1618
+17:14:42
+RX
+5
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=10 tick=27204 raw=-4,-412,-161
+17:14:42
+RX
+86
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=11 tick=27255 raw=-9,-420,-161
+17:14:42
+RX
+84
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=12 tick=27306 raw=-13,-416,-16
+17:14:42
+RX
+181
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=13 tick=27357 raw=-16,-432,-16
+17:14:42
+RX
+193
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=14 tick=27408 raw=-8,-422,-161
+17:14:42
+RX
+88
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=15 tick=27459 raw=-4,-412,-161
+17:14:42
+RX
+97
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=16 tick=27510 raw=-11,-423,-16
+17:14:42
+RX
+173
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=17 tick=27561 raw=-17,-423,-16
+17:14:42
+RX
+183
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=18 tick=27612 raw=-15,-425,-16
+17:14:42
+RX
+188
+17:14:42
+RX
+[course_starter] rgb -> green
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=19 tick=27663 raw=3,-426,-1617
+17:14:42
+RX
+7
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=20 tick=27714 raw=-14,-417,-16
+17:14:42
+RX
+182
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=21 tick=27765 raw=-18,-407,-16
+17:14:42
+RX
+185
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=22 tick=27816 raw=-11,-413,-16
+17:14:42
+RX
+198
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=23 tick=27867 raw=-14,-423,-16
+17:14:42
+RX
+182
+17:14:42
+RX
+[imu_probe] sample pose=neutral 
+17:14:42
+RX
+n=24 tick=27918 raw=-20,-422,-16
+17:14:42
+RX
+189
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=25 tick=27969 raw=-15,-417,-16
+17:14:43
+RX
+170
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=26 tick=28020 raw=-8,-412,-161
+17:14:43
+RX
+83
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=27 tick=28071 raw=-1,-420,-161
+17:14:43
+RX
+88
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=28 tick=28122 raw=-9,-418,-161
+17:14:43
+RX
+78
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=29 tick=28173 raw=0,-422,-1618
+17:14:43
+RX
+1
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=30 tick=28224 raw=-14,-422,-16
+17:14:43
+RX
+191
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=31 tick=28275 raw=-1,-406,-161
+17:14:43
+RX
+89
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=32 tick=28326 raw=7,-411,-1616
+17:14:43
+RX
+5
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=33 tick=28377 raw=-8,-423,-161
+17:14:43
+RX
+84
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=34 tick=28428 raw=-16,-410,-16
+17:14:43
+RX
+185
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=35 tick=28479 raw=-5,-420,-161
+17:14:43
+RX
+66
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=36 tick=28530 raw=-19,-433,-16
+17:14:43
+RX
+187
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=37 tick=28581 raw=-17,-423,-16
+17:14:43
+RX
+181
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=38 tick=28632 raw=-10,-419,-16
+17:14:43
+RX
+166
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=39 tick=28683 raw=-13,-426,-16
+17:14:43
+RX
+178
+17:14:43
+RX
+[imu_probe] sample pose=neutral 
+17:14:43
+RX
+n=40 tick=28734 raw=-10,-429,-16
+17:14:43
+RX
+173
+17:14:43
+RX
+[imu_probe] range pose=neutral m
+17:14:43
+RX
+in_raw=-22,-437,-16237 max_raw=7
+17:14:43
+RX
+,-406,-16165
+[imu_probe] end po
+17:14:43
+RX
+se=neutral result=ok count=40 me
+17:14:43
+RX
+an_raw=-10,-420,-16187
+msh />ms
+17:14:43
+RX
+h />msh />
+17:14:43
+RX
+[course_starter] rgb -> blue
+17:14:45
+RX
+[course_starter] rgb -> red
+17:14:46
+RX
+[course_starter] rgb -> green
+17:14:47
+RX
+[course_starter] rgb -> blue
+17:14:49
+RX
+[course_starter] rgb -> red
