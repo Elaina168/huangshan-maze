@@ -2,7 +2,7 @@
 
 | 资源 | 来源与版本 | 许可/使用边界 | 本项目使用与修改 |
 |---|---|---|---|
-| course_starter 工程骨架与 main.c | 用户提供的课程资料，SDK v2.5.1 基线 | main.c 明示基于 SiFli SDK Apache-2.0 例程；保留原注释和附带许可。课程包没有独立可核验的版本标签，不编造 | 原样导入 project/ 六个文件、src/ 两个文件，初始未修改；来源与 SHA-256 见 import-manifest.json |
+| course_starter 工程骨架与 main.c | 用户提供的课程资料，SDK v2.5.1 基线 | main.c 明示基于 SiFli SDK Apache-2.0 例程；保留原注释和附带许可。课程包没有独立可核验的版本标签，不编造 | 初始原样导入 project/ 六个文件、src/ 两个文件；2026-10-10 用户修改 main.c 的版本、RGB 亮灭时长和对应注释。清单保留原始来源 SHA-256，并标记 main.c 已修改；当前源码由 Git 与构建快照追溯 |
 | SiFli SDK | https://github.com/OpenSiFli/SiFli-SDK ，v2.5.1 | SDK 主体及内部第三方组件分别遵守其许可；仓库不打包 SDK | 外部构建依赖，本机实际路径由激活环境提供 |
 | RT-Thread、LVGL | 当前由 SDK/后续配置引用，课程基线 LVGL v9 | 具体组件版本和许可证正式集成前从 SDK 核对，不能据基线名称推定全部版本/许可 | 不单独复制，不宣称当前 RGB 基线已使用 LVGL UI |
 | 两份课程 PDF | 用户提供的课程指导手册、课程简介 | 未提供开放许可；仅在私有课程项目中归档作为依据，不赋予 Apache 许可 | 原字节归档，无修改 |

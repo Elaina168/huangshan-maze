@@ -39,7 +39,7 @@
     "path": "src/main.c",
     "source": "course_starter/src/main.c",
     "sha256": "57c7a782ff2fd7ddd107f9b841d63e8d0c820b657adaf395a1af8eaa00ffde5b",
-    "modified": false
+    "modified": true
   },
   {
     "path": "src/SConscript",
