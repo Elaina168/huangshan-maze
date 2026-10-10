@@ -1,0 +1,2 @@
+PASS: 7 IMU probe scenarios (injected I/O, not hardware).
+PASS: 14 control command scenarios and dead-zone/freshness boundaries (injected I/O).

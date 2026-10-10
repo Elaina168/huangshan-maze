@@ -1,0 +1,141 @@
+{
+  "method": "offline_candidate_arithmetic_on_archived_samples",
+  "candidate_values_are_product_baseline": false,
+  "sources": [
+    {
+      "path": "evidence/imu/2026-10-10-neutral-01/analysis.json",
+      "sha256": "925162c309c66d940a633ab8f8304c4eebda99097f03c68f109c87fa972461c8",
+      "raw_sha256": "bf5e8fc62f5a537b5557fc535a02227c2ca9e05b45d6a5b167bdf8f074100cdf"
+    },
+    {
+      "path": "evidence/imu/2026-10-10-neutral-02/analysis.json",
+      "sha256": "34782dfa2249b8ead430568cbcf4c95d4cf0302163973d184abc39f183aeafd3",
+      "raw_sha256": "d4ae77a72feae47f4b9921b856d7ed73d056390eb8e460665c1bdb2f7808a6bb"
+    },
+    {
+      "path": "evidence/imu/2026-10-10-right-01/analysis.json",
+      "sha256": "137846c75e8dffa2c3457afdaaa44bc8545285a8ff783e589f1057f7d749ab33",
+      "raw_sha256": "9c204b1fb2245192b5e2c649699471a32f7a24603bd49e5d470da20ae08cf7f4"
+    },
+    {
+      "path": "evidence/imu/2026-10-10-left-02/analysis.json",
+      "sha256": "a2d0336ada4729fb1b45df027f65dc4ac0479c2db7ccc925c319f860ef541cab",
+      "raw_sha256": "f360053a04f29adb8efa4a248e1ff86df5aecb7186ac134c3c25dfe0de33e456"
+    },
+    {
+      "path": "evidence/imu/2026-10-10-up-01/analysis.json",
+      "sha256": "8870664eef3e4ca165e10e6cc3dfc95ac42d25ff948fa72360fa6b8f94598066",
+      "raw_sha256": "fb2ad6ee3c58a9a8510c1fe0624165b82cb1a554339cf981285a78384cee41a4"
+    },
+    {
+      "path": "evidence/imu/2026-10-10-down-01/analysis.json",
+      "sha256": "82a4db250945a8716a1279047691f9ddc0fd5954c0b1d56ac8e8753b21704418",
+      "raw_sha256": "36da855ba743f47d233db4305f93e811f3ab3ab0ed03e2791ca390c0234468d5"
+    }
+  ],
+  "candidate_values": {
+    "calibration_samples": 20,
+    "minimum_window_span_ms": 950,
+    "maximum_each_axis_range_raw": 300,
+    "maximum_sample_gap_ms": 100,
+    "dead_zone_each_axis_raw": 300,
+    "sample_age_limit_ms": 100
+  },
+  "calibration_windows": [
+    {
+      "group": "neutral-01",
+      "window_count": 21,
+      "acceptable_candidate_windows": 21,
+      "maximum_axis_ranges": [
+        27,
+        27,
+        64
+      ],
+      "min_span_ms": 969,
+      "max_span_ms": 969
+    },
+    {
+      "group": "neutral-02",
+      "window_count": 21,
+      "acceptable_candidate_windows": 21,
+      "maximum_axis_ranges": [
+        32,
+        44,
+        69
+      ],
+      "min_span_ms": 969,
+      "max_span_ms": 969
+    }
+  ],
+  "neutral_dead_zone_results": [
+    {
+      "reference": "neutral-01",
+      "group": "neutral-01",
+      "count": 40,
+      "peak_abs_screen_xy": [
+        17,
+        17
+      ],
+      "nonzero_after_dead_zone": 0
+    },
+    {
+      "reference": "neutral-01",
+      "group": "neutral-02",
+      "count": 40,
+      "peak_abs_screen_xy": [
+        109,
+        106
+      ],
+      "nonzero_after_dead_zone": 0
+    },
+    {
+      "reference": "neutral-02",
+      "group": "neutral-01",
+      "count": 40,
+      "peak_abs_screen_xy": [
+        110,
+        98
+      ],
+      "nonzero_after_dead_zone": 0
+    },
+    {
+      "reference": "neutral-02",
+      "group": "neutral-02",
+      "count": 40,
+      "peak_abs_screen_xy": [
+        28,
+        20
+      ],
+      "nonzero_after_dead_zone": 0
+    }
+  ],
+  "tilt_dead_zone_results": [
+    {
+      "group": "right-01",
+      "dominant_axis": "Y",
+      "minimum_amount_beyond_dead_zone": 7261
+    },
+    {
+      "group": "left-02",
+      "dominant_axis": "Y",
+      "minimum_amount_beyond_dead_zone": 8568
+    },
+    {
+      "group": "up-01",
+      "dominant_axis": "X",
+      "minimum_amount_beyond_dead_zone": 6151
+    },
+    {
+      "group": "down-01",
+      "dominant_axis": "X",
+      "minimum_amount_beyond_dead_zone": 6530
+    }
+  ],
+  "not_evaluated": [
+    "unstable_calibration_on_board",
+    "sample_age_at_real_consumer",
+    "touch_or_visible_motion_latency",
+    "ball_position_drift",
+    "runtime_implementation"
+  ]
+}
