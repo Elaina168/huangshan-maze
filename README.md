@@ -11,6 +11,7 @@
 - [验收测试计划](docs/acceptance-test-plan.md)：需求-用例关联，当前产品用例未执行。
 - [工程建立计划](docs/project-setup-plan.md)、[项目进度](docs/project-plan.md)、[风险记录](docs/risks.md)。
 - [开发规范](AGENTS.md)、[Git 工作流](docs/guides/git-workflow.md)、[第三方清单](THIRD_PARTY.md)。
+- 当前下一步：[本人修改练习](docs/guides/first-personal-change.md)、[平台接口核对](docs/research/platform-interface-audit.md)。
 
 ## 目录
 
