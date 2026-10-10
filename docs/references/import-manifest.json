@@ -106,5 +106,11 @@
     "source": "user-message-transcription/2026-10-10-up-01",
     "sha256": "fb2ad6ee3c58a9a8510c1fe0624165b82cb1a554339cf981285a78384cee41a4",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-10-down-01/raw.log",
+    "source": "user-message-transcription/2026-10-10-down-01",
+    "sha256": "36da855ba743f47d233db4305f93e811f3ab3ab0ed03e2791ca390c0234468d5",
+    "modified": false
   }
 ]
