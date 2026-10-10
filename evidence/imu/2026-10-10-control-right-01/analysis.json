@@ -1,0 +1,1146 @@
+{
+  "source_attachment": "1379afa6-5561-40bf-a2ab-b65eb821119c",
+  "source": "user_attachment_original_bytes",
+  "acquisition_role": "right_in_response_to_previous_instruction",
+  "user_operation_statement": "我只能做到在输入指令后一段时间抬高，日志输出太快看不清",
+  "physical_edge_not_separately_restated": true,
+  "orientation_basis": "previous_screen_up_usb_left_instruction_not_separately_restated",
+  "source_commit": "31a3b3b65db0c849a9d6f8a5c1153722bd9f0feb",
+  "expected_firmware_sha256": "e7fb51afa76ecf204cf0de1515285a1fe7f9dbf732738f50c5a865b7c615823f",
+  "runtime_firmware_checksum_verified": false,
+  "tick_hz": 1000,
+  "summary": {
+    "count": 98,
+    "reference_raw": [
+      50,
+      -346,
+      -16209
+    ],
+    "calibrated_tick": 263340,
+    "all_valid": true,
+    "initial_zero_records": 25,
+    "first_nonzero_record": {
+      "n": 26,
+      "tick": 264621,
+      "valid": 1,
+      "xy": [
+        65,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    "first_nonzero_after_calibrated_ms": 1281,
+    "active_record_count": 73,
+    "active_horizontal_positive_count": 73,
+    "active_vertical_nonzero_count": 71,
+    "active_xy_min": [
+      65,
+      -1567
+    ],
+    "active_xy_max": [
+      11628,
+      842
+    ],
+    "first_to_last_ms": 4947,
+    "calibrated_to_last_ms": 4953,
+    "consumer_interval_ms_min": 51,
+    "consumer_interval_ms_max": 51,
+    "software_age_ms_min": 0,
+    "software_age_ms_max": 5,
+    "first_gap_ms": 1,
+    "later_gap_ms_min": 51,
+    "later_gap_ms_max": 56,
+    "all_ages_and_gaps_within_candidate_limit": true,
+    "result": "ok",
+    "raw_sha256": "8866ede038d60e7362b93f6ffa9ae6df2ef9db52219800a88bb5a0984b949491"
+  },
+  "samples": [
+    {
+      "n": 1,
+      "tick": 263346,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 5,
+      "gap_tick": 1
+    },
+    {
+      "n": 2,
+      "tick": 263397,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 56
+    },
+    {
+      "n": 3,
+      "tick": 263448,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 4,
+      "tick": 263499,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 5,
+      "tick": 263550,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 6,
+      "tick": 263601,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 7,
+      "tick": 263652,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 8,
+      "tick": 263703,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 9,
+      "tick": 263754,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 10,
+      "tick": 263805,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 11,
+      "tick": 263856,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 12,
+      "tick": 263907,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 13,
+      "tick": 263958,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 14,
+      "tick": 264009,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 15,
+      "tick": 264060,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 16,
+      "tick": 264111,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 17,
+      "tick": 264162,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 18,
+      "tick": 264213,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 19,
+      "tick": 264264,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 20,
+      "tick": 264315,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 21,
+      "tick": 264366,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 22,
+      "tick": 264417,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 23,
+      "tick": 264468,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 24,
+      "tick": 264519,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 25,
+      "tick": 264570,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 26,
+      "tick": 264621,
+      "valid": 1,
+      "xy": [
+        65,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 27,
+      "tick": 264672,
+      "valid": 1,
+      "xy": [
+        240,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 28,
+      "tick": 264723,
+      "valid": 1,
+      "xy": [
+        1044,
+        -206
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 29,
+      "tick": 264774,
+      "valid": 1,
+      "xy": [
+        2098,
+        842
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 30,
+      "tick": 264825,
+      "valid": 1,
+      "xy": [
+        4384,
+        -873
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 31,
+      "tick": 264876,
+      "valid": 1,
+      "xy": [
+        6077,
+        -1103
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 32,
+      "tick": 264927,
+      "valid": 1,
+      "xy": [
+        6474,
+        -693
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 33,
+      "tick": 264978,
+      "valid": 1,
+      "xy": [
+        7061,
+        -1567
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 34,
+      "tick": 265029,
+      "valid": 1,
+      "xy": [
+        7267,
+        -793
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 35,
+      "tick": 265080,
+      "valid": 1,
+      "xy": [
+        7608,
+        -849
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 36,
+      "tick": 265131,
+      "valid": 1,
+      "xy": [
+        7593,
+        -1362
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 37,
+      "tick": 265182,
+      "valid": 1,
+      "xy": [
+        8784,
+        -1393
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 38,
+      "tick": 265233,
+      "valid": 1,
+      "xy": [
+        8723,
+        -1060
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 39,
+      "tick": 265284,
+      "valid": 1,
+      "xy": [
+        8623,
+        -1035
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 40,
+      "tick": 265335,
+      "valid": 1,
+      "xy": [
+        8782,
+        -1085
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 41,
+      "tick": 265386,
+      "valid": 1,
+      "xy": [
+        8803,
+        -1079
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 42,
+      "tick": 265437,
+      "valid": 1,
+      "xy": [
+        8828,
+        -1032
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 43,
+      "tick": 265488,
+      "valid": 1,
+      "xy": [
+        8722,
+        -1069
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 44,
+      "tick": 265539,
+      "valid": 1,
+      "xy": [
+        8824,
+        -1141
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 45,
+      "tick": 265590,
+      "valid": 1,
+      "xy": [
+        8776,
+        -1081
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 46,
+      "tick": 265641,
+      "valid": 1,
+      "xy": [
+        8754,
+        -1086
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 47,
+      "tick": 265692,
+      "valid": 1,
+      "xy": [
+        8739,
+        -1077
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 48,
+      "tick": 265743,
+      "valid": 1,
+      "xy": [
+        8669,
+        -1058
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 49,
+      "tick": 265794,
+      "valid": 1,
+      "xy": [
+        8631,
+        -1058
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 50,
+      "tick": 265845,
+      "valid": 1,
+      "xy": [
+        8697,
+        -1071
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 51,
+      "tick": 265896,
+      "valid": 1,
+      "xy": [
+        8815,
+        -1086
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 52,
+      "tick": 265947,
+      "valid": 1,
+      "xy": [
+        8701,
+        -1078
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 53,
+      "tick": 265998,
+      "valid": 1,
+      "xy": [
+        8764,
+        -1065
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 54,
+      "tick": 266049,
+      "valid": 1,
+      "xy": [
+        8710,
+        -1061
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 55,
+      "tick": 266100,
+      "valid": 1,
+      "xy": [
+        8892,
+        -1122
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 56,
+      "tick": 266151,
+      "valid": 1,
+      "xy": [
+        8871,
+        -1093
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 57,
+      "tick": 266202,
+      "valid": 1,
+      "xy": [
+        8790,
+        -1078
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 58,
+      "tick": 266253,
+      "valid": 1,
+      "xy": [
+        8846,
+        -1085
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 59,
+      "tick": 266304,
+      "valid": 1,
+      "xy": [
+        8954,
+        -1096
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 60,
+      "tick": 266355,
+      "valid": 1,
+      "xy": [
+        9123,
+        -1132
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 61,
+      "tick": 266406,
+      "valid": 1,
+      "xy": [
+        9016,
+        -1112
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 62,
+      "tick": 266457,
+      "valid": 1,
+      "xy": [
+        9205,
+        -1149
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 63,
+      "tick": 266508,
+      "valid": 1,
+      "xy": [
+        9146,
+        -1139
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 64,
+      "tick": 266559,
+      "valid": 1,
+      "xy": [
+        9114,
+        -1136
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 65,
+      "tick": 266610,
+      "valid": 1,
+      "xy": [
+        9396,
+        -1189
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 66,
+      "tick": 266661,
+      "valid": 1,
+      "xy": [
+        9406,
+        -1179
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 67,
+      "tick": 266712,
+      "valid": 1,
+      "xy": [
+        9309,
+        -1167
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 68,
+      "tick": 266763,
+      "valid": 1,
+      "xy": [
+        9480,
+        -1190
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 69,
+      "tick": 266814,
+      "valid": 1,
+      "xy": [
+        9512,
+        -1198
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 70,
+      "tick": 266865,
+      "valid": 1,
+      "xy": [
+        9690,
+        -1212
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 71,
+      "tick": 266916,
+      "valid": 1,
+      "xy": [
+        9945,
+        -1249
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 72,
+      "tick": 266967,
+      "valid": 1,
+      "xy": [
+        10005,
+        -1283
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 73,
+      "tick": 267018,
+      "valid": 1,
+      "xy": [
+        10146,
+        -1341
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 74,
+      "tick": 267069,
+      "valid": 1,
+      "xy": [
+        10114,
+        -1280
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 75,
+      "tick": 267120,
+      "valid": 1,
+      "xy": [
+        10143,
+        -1295
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 76,
+      "tick": 267171,
+      "valid": 1,
+      "xy": [
+        10202,
+        -1112
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 77,
+      "tick": 267222,
+      "valid": 1,
+      "xy": [
+        10256,
+        -1490
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 78,
+      "tick": 267273,
+      "valid": 1,
+      "xy": [
+        10143,
+        -1311
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 79,
+      "tick": 267324,
+      "valid": 1,
+      "xy": [
+        10233,
+        -1268
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 80,
+      "tick": 267375,
+      "valid": 1,
+      "xy": [
+        10190,
+        -1263
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 81,
+      "tick": 267426,
+      "valid": 1,
+      "xy": [
+        10692,
+        -1060
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 82,
+      "tick": 267477,
+      "valid": 1,
+      "xy": [
+        10515,
+        -1246
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 83,
+      "tick": 267528,
+      "valid": 1,
+      "xy": [
+        10483,
+        -1296
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 84,
+      "tick": 267579,
+      "valid": 1,
+      "xy": [
+        10609,
+        -1254
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 85,
+      "tick": 267630,
+      "valid": 1,
+      "xy": [
+        10813,
+        -1192
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 86,
+      "tick": 267681,
+      "valid": 1,
+      "xy": [
+        10720,
+        -1275
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 87,
+      "tick": 267732,
+      "valid": 1,
+      "xy": [
+        10888,
+        -1180
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 88,
+      "tick": 267783,
+      "valid": 1,
+      "xy": [
+        10846,
+        -1223
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 89,
+      "tick": 267834,
+      "valid": 1,
+      "xy": [
+        10843,
+        -1269
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 90,
+      "tick": 267885,
+      "valid": 1,
+      "xy": [
+        11004,
+        -1211
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 91,
+      "tick": 267936,
+      "valid": 1,
+      "xy": [
+        11171,
+        -1166
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 92,
+      "tick": 267987,
+      "valid": 1,
+      "xy": [
+        11263,
+        -1173
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 93,
+      "tick": 268038,
+      "valid": 1,
+      "xy": [
+        11266,
+        -1183
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 94,
+      "tick": 268089,
+      "valid": 1,
+      "xy": [
+        11359,
+        -1127
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 95,
+      "tick": 268140,
+      "valid": 1,
+      "xy": [
+        11419,
+        -1140
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 96,
+      "tick": 268191,
+      "valid": 1,
+      "xy": [
+        11628,
+        -886
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 97,
+      "tick": 268242,
+      "valid": 1,
+      "xy": [
+        11398,
+        -1131
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 98,
+      "tick": 268293,
+      "valid": 1,
+      "xy": [
+        11337,
+        -1147
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    }
+  ],
+  "limitations": [
+    "no_explicit_edge_description_in_this_reply",
+    "no_physical_tilt_start_timestamp",
+    "not_an_isolated_horizontal_tilt",
+    "no_fixed_tilt_angle_or_speed_calibration",
+    "no_device_internal_timestamp",
+    "product_acceptance_not_executed"
+  ]
+}
