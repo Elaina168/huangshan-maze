@@ -13,4 +13,6 @@
 | R-09 | 普通终端缺 CodeKit uv 与工具根环境；SDK 状态写入被 OS 拒绝 | 核对当前 SDK HEAD、已有环境与兼容性后使用 CodeKit 已生成脚本；最小工程构建退出码 0；未重装或修改 SDK |
 | R-10 | 构建快照无 Git 元数据，SDK 版本查询输出 not a git repository；有 RWX、syscall stub、ftab entry 警告 | 原日志保留，源码/固件以 SHA-256 追溯；不宣称警告已修复，冻结版本时完善版本对应与交付证据 |
 
-已知限制：本次 RGB 基线不代表迷宫实现；尚未烧录该基线，没有个人最低修改验收证据，也没有教师立项审批记录。
+| R-11 | 用户下载 v0.1.1 时打开 COM6 返回 NoDevice/“拒绝访问”，sftool panic；当前 PnP 显示 CH340 COM6 状态 OK | 先排查串口监视占用；具体占用者尚未确认，重试与上板待用户操作，失败记录见 evidence/builds/2026-10-10-rgb-v0.1.1/download-attempt-01.md |
+
+已知限制：本次 RGB 基线不代表迷宫实现；v0.1.1 首次下载失败，没有个人最低修改验收的完整证据，也没有教师立项审批记录。
