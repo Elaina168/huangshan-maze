@@ -25,3 +25,5 @@ Set-Location 'C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wt7d5cvq\project\b
 ```
 
 当前识别仍是COM6时输入6。先切换到实际构建目录，避免跨盘调用脚本时相对固件路径错误。本证据目录未复制二进制，不能在此运行下载；完整烧录配置见[sftool_param.json](sftool_param.json)。下载结束后重连1000000波特率、8N1、无硬件流控，按[真机指导](../../../docs/guides/imu-control-probe.md)先执行稳定中立组。
+
+后续运行证据：用户提供[首次中立附件](../../imu/2026-10-10-control-neutral-01/README.md)，校准成功反馈及99条有效零输入已核对。build-state.json保留构建时未烧录的历史状态；附件没有下载或设备固件校验值，不改写其hardware_verified，也不把单组预研视为全部诊断或产品验收完成。

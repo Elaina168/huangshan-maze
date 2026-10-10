@@ -1,0 +1,111 @@
+[course_starter] rgb -> blue
+[imu_control] begin tick_hz=1000 units=raw odr_hz=104
+[imu_control] calibration count=20 span_ms=950 range_raw=300 budget_ms=3000
+[imu_control] input dead_zone_raw=300 max_gap_ms=100 max_age_ms=100 run_ms=5000
+[course_starter] rgb -> red
+[imu_control] calibrated tick=11437 ref_raw=88,-356,-16198
+[imu_control] sample n=1 tick=11438 valid=1 xy=0,0 age_tick=0 gap_tick=1
+[imu_control] sample n=2 tick=11489 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=3 tick=11540 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=4 tick=11591 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=5 tick=11642 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=6 tick=11693 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=7 tick=11744 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=8 tick=11795 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=9 tick=11846 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=10 tick=11897 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=11 tick=11948 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=12 tick=11999 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=13 tick=12050 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=14 tick=12101 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=15 tick=12152 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=16 tick=12203 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=17 tick=12254 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=18 tick=12305 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=19 tick=12356 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=20 tick=12407 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=21 tick=12458 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=22 tick=12509 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=23 tick=12560 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[course_starter] rgb -> green
+[imu_control] sample n=24 tick=12611 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=25 tick=12662 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=26 tick=12713 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=27 tick=12764 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=28 tick=12815 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=29 tick=12866 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=30 tick=12917 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=31 tick=12968 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=32 tick=13019 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=33 tick=13070 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=34 tick=13121 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=35 tick=13172 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=36 tick=13223 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=37 tick=13274 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=38 tick=13325 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=39 tick=13376 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=40 tick=13427 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=41 tick=13478 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=42 tick=13529 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=43 tick=13580 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=44 tick=13631 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=45 tick=13682 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=46 tick=13733 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=47 tick=13784 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=48 tick=13835 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[course_starter] rgb -> blue
+[imu_control] sample n=49 tick=13886 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=50 tick=13937 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=51 tick=13988 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=52 tick=14039 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=53 tick=14090 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=54 tick=14141 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=55 tick=14192 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=56 tick=14243 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=57 tick=14294 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=58 tick=14345 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=59 tick=14396 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=60 tick=14447 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=61 tick=14498 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=62 tick=14549 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=63 tick=14600 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=64 tick=14651 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=65 tick=14702 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=66 tick=14753 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=67 tick=14804 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=68 tick=14855 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=69 tick=14906 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=70 tick=14957 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=71 tick=15008 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=72 tick=15059 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[course_starter] rgb -> red
+[imu_control] sample n=73 tick=15110 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=74 tick=15161 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=75 tick=15212 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=76 tick=15263 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=77 tick=15314 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=78 tick=15365 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=79 tick=15416 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=80 tick=15467 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=81 tick=15518 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=82 tick=15569 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=83 tick=15620 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=84 tick=15671 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=85 tick=15722 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=86 tick=15773 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=87 tick=15824 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=88 tick=15875 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=89 tick=15926 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=90 tick=15977 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=91 tick=16028 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=92 tick=16079 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=93 tick=16130 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=94 tick=16181 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=95 tick=16232 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=96 tick=16283 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=97 tick=16334 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[course_starter] rgb -> green
+[imu_control] sample n=98 tick=16385 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] sample n=99 tick=16436 valid=1 xy=0,0 age_tick=0 gap_tick=51
+[imu_control] end result=ok count=99
+msh />msh />msh />[course_starter] rgb -> blue

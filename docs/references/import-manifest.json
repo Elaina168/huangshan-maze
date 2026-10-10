@@ -118,5 +118,11 @@
     "source": "user-message-transcription/2026-10-10-neutral-02",
     "sha256": "d4ae77a72feae47f4b9921b856d7ed73d056390eb8e460665c1bdb2f7808a6bb",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-10-control-neutral-01/raw.log",
+    "source": "user-attachment/5934f144-5996-4c5f-a0f9-4374c17b079c/已粘贴的文本.txt",
+    "sha256": "5e01913d8bd8f09a8246c65493174f741d3c1dbfe719f35b5d642764c1d79949",
+    "modified": false
   }
 ]
