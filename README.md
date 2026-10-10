@@ -12,6 +12,7 @@
 - [工程建立计划](docs/project-setup-plan.md)、[项目进度](docs/project-plan.md)、[风险记录](docs/risks.md)。
 - [开发规范](AGENTS.md)、[Git 工作流](docs/guides/git-workflow.md)、[第三方清单](THIRD_PARTY.md)。
 - 当前下一步：[本人修改练习](docs/guides/first-personal-change.md)、[平台接口核对](docs/research/platform-interface-audit.md)。
+- IMU预研已加入串口诊断命令并构建通过，尚未上板取样：[操作指导](docs/guides/imu-mapping-probe.md)、[诊断构建记录](evidence/builds/2026-10-10-imu-probe-01/README.md)。main.c仍显示v0.1.1，诊断固件以命令与哈希区分。
 
 ## 目录
 

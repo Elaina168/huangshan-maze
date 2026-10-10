@@ -18,7 +18,7 @@
 | SDK `middleware/lvgl/littlevgl2rtt.h`、`littlevgl2rtt.c` | `rt_err_t littlevgl2rtt_init(const char *name)` | 初始化 API 已核对；本工程还没有显示配置和界面 |
 | 外设工程 `project/proj.conf` | `CONFIG_BSP_USING_I2C3=y`、`CONFIG_PKG_USING_LITTLEVGL2RTT=y`、`CONFIG_LVGL_V9=y` | 启用配置的候选来源；依赖仍需按 SDK 核对，不能只复制三个键就声称完整 |
 
-当前仓库 `project/proj.conf` 只有四条 RGB 配置。主程序仅串口和 RGB；未加入 IMU、LVGL、蓝牙、音频或网络。迷宫预研按需要增加依赖，避免直接携带整套验证台配置。
+初始仓库 `project/proj.conf` 只有四条 RGB 配置。本轮增加I2C3和串口IMU诊断命令，main.c仍为RGB例程；未加入LVGL界面或迷宫功能。实际取样按 [操作指导](../guides/imu-mapping-probe.md) 执行，不把主机注入或构建当作真实IMU通过。
 
 ## 2. 待测问题与最小取证
 

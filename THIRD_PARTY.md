@@ -10,4 +10,6 @@
 
 原样导入清单：[import-manifest.json](docs/references/import-manifest.json)。素材、字体、声音与后续参考代码在采用前追加来源、版本、许可和修改记录。
 
+IMU预研补充：src/imu_probe.c由Codex编写，参考用户提供的peripheral_lab中lab_bus.c/test_imu.c的I2C3引脚、器件探测和寄存器访问方法，未复制整套验证台。寄存器定义另核对SDK v2.5.1的LSM6DSL头文件。SDK依赖遵守其原许可；课程参考包不被本项目擅自赋予统一许可。project/proj.conf已增加I2C3配置，清单标记已修改并保留原始来源哈希。main.c的本人RGB修改本轮不改动。
+
 AI 协作记录保存在开发日志。需求、检查脚本和说明由 Codex 协助编写，用户选择玩法并审阅范围；不将复制代码计为个人新增功能。

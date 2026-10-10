@@ -27,7 +27,7 @@
     "path": "project/proj.conf",
     "source": "course_starter/project/proj.conf",
     "sha256": "114073c6fbf3cb7156f4701bb31402539817588c89f2f8b2adef6b15aa16429d",
-    "modified": false
+    "modified": true
   },
   {
     "path": "project/rtconfig.py",

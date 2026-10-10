@@ -16,3 +16,5 @@ jobs:
         run: python scripts/check_project.py --history
       - name: Check build snapshot invalidation
         run: python scripts/test_build_snapshot.py
+      - name: Check IMU probe error handling with injected I/O
+        run: python scripts/test_imu_probe.py
