@@ -1,0 +1,191 @@
+Queued: scons --board=sf32lb52-lchspi-ulp -j8
+Working directory: d:\sifli\peripheral_lab\project
+Command: scons --board=sf32lb52-lchspi-ulp -j8
+正在准备 SiFli SDK 环境：d:\sifli\SiFli-SDK\v2.5.1\export.ps1
+* Loaded runtime config ... OK
+* Loaded profile lock 'default' ... OK
++-----------------------------+
+| Activating SiFli-SDK v2.5.1 |
+| profile=default             |
++-----------------------------+
+* Resolved tool plan ... OK
+* Checking environment compatibility ... OK
+[ OK ] Updated state file D:\sifli\tools\sifli-sdk-env.json
+* Identified shell ... powershell
+* Generating shell export script ... OK
+* Export script ... C:\Users\zytx\AppData\Local\Temp\sifli-sdk-export\sdk-env-2xt_ho3q.ps1
+scons: Reading SConscript files ...
+Board: sf32lb52-lchspi-ulp_hcpu
+-----
+Adding ftab subproject for chip: SF32LB52X (ptab v1/v2)
+========
+Multi-Project Info
+--------
+full_name       main.bootloader
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\boot_loader\project\butterflmicro\ram_v2
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/bootloader
+link_script     D:\sifli\SiFli-SDK\v2.5.1\example/boot_loader/project/butterflmicro/ram_v2\link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       False
+--------
+full_name       main.lcpu
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\ble\lcpu_general\project\common
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/lcpu
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/lcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       True
+--------
+full_name       main
+parent          
+bsp_root        D:\sifli\peripheral_lab\project
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/hcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+--------
+full_name       main.ftab
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\flash_table\sf32lb52x_common_v2
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/ftab
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/hcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       False
+========
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: building associated VariantDir targets: build_sf32lb52-lchspi-ulp_hcpu
+Generating build_sf32lb52-lchspi-ulp_hcpu\bootloader\link_copy.lds ...
+Generating build_sf32lb52-lchspi-ulp_hcpu\lcpu\link_copy.lds ...
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\bootloader\compile_commands.json
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\compile_commands.json
+Queued: scons --board=sf32lb52-lchspi-ulp --target=json
+Generating build_sf32lb52-lchspi-ulp_hcpu\link_copy.lds ...
+Generating build_sf32lb52-lchspi-ulp_hcpu\ftab\link_copy.lds ...
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\ftab\compile_commands.json
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\lcpu\compile_commands.json
+scons: done building targets.
+                                              main                             
++------------------------------------------------------------------------------
+| Region / Section         |            Total |             Used |             
+|--------------------------+------------------+------------------+-------------
+| ROM                      |      8,388,608 B |      1,667,766 B |      6,720,8
+|   .text                  |        972,620 B |                  |             
+|   .rodata                |        663,942 B |                  |             
+|   other                  |            568 B |                  |             
+| RAM                      |        523,264 B |        306,432 B |        216,8
+|   other                  |        197,128 B |                  |             
+|   .bss                   |        104,420 B |                  |             
+|   .data                  |          4,884 B |                  |             
++------------------------------------------------------------------------------
+  Binary size: 1,539,276 B
+                                              lcpu                             
++------------------------------------------------------------------------------
+| Region / Section         |            Total |             Used |             
+|--------------------------+------------------+------------------+-------------
+| ROM                      |         12,288 B |          6,639 B |          5,6
+|   .text                  |          4,784 B |                  |             
+|   .rodata                |            759 B |                  |             
+|   other                  |              8 B |                  |             
+| RAM                      |         23,552 B |          1,872 B |         21,6
+|   other                  |          1,028 B |                  |             
+|   .bss                   |            784 B |                  |             
+|   .data                  |             60 B |                  |             
++------------------------------------------------------------------------------
+  Binary size: 6,392 B
+================================================================================
+Memory Usage Analysis
+================================================================================
+================================================================================
+SiFli: Build 已完成，退出码 0。
+Working directory: d:\sifli\peripheral_lab\project
+Command: scons --board=sf32lb52-lchspi-ulp --target=json
+正在使用缓存的 SiFli SDK 环境。
+scons: Reading SConscript files ...
+Board: sf32lb52-lchspi-ulp_hcpu
+-----
+Adding ftab subproject for chip: SF32LB52X (ptab v1/v2)
+========
+Multi-Project Info
+--------
+full_name       main.bootloader
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\boot_loader\project\butterflmicro\ram_v2
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/bootloader
+link_script     D:\sifli\SiFli-SDK\v2.5.1\example/boot_loader/project/butterflmicro/ram_v2\link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       False
+--------
+full_name       main.lcpu
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\ble\lcpu_general\project\common
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/lcpu
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/lcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       True
+--------
+full_name       main
+parent          
+bsp_root        D:\sifli\peripheral_lab\project
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/hcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+--------
+full_name       main.ftab
+parent          main
+bsp_root        D:\sifli\SiFli-SDK\v2.5.1\example\flash_table\sf32lb52x_common_v2
+build_dir       build_sf32lb52-lchspi-ulp_hcpu/ftab
+link_script     D:\sifli\SiFli-SDK\v2.5.1\drivers/cmsis/sf32lb52x/Templates/gcc/hcpu/link
+ptab            D:\sifli\SiFli-SDK\v2.5.1\customer\boards\sf32lb52-lchspi-ulp\ptab.json
+embedded:       False
+========
+scons: done reading SConscript files.
+scons: Building targets ...
+scons: building associated VariantDir targets: build_sf32lb52-lchspi-ulp_hcpu
+Generating build_sf32lb52-lchspi-ulp_hcpu\bootloader\link_copy.lds ...
+LINK build_sf32lb52-lchspi-ulp_hcpu\bootloader\bootloader.elf
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\bootloader\compile_commands.json
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\compile_commands.json
+Generating build_sf32lb52-lchspi-ulp_hcpu\lcpu\link_copy.lds ...
+LINK build_sf32lb52-lchspi-ulp_hcpu\lcpu\lcpu.elf
+Generating build_sf32lb52-lchspi-ulp_hcpu\link_copy.lds ...
+LINK build_sf32lb52-lchspi-ulp_hcpu\main.elf
+Generating build_sf32lb52-lchspi-ulp_hcpu\ftab\link_copy.lds ...
+LINK build_sf32lb52-lchspi-ulp_hcpu\ftab\ftab.elf
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\ftab\compile_commands.json
+Building compilation database build_sf32lb52-lchspi-ulp_hcpu\lcpu\compile_commands.json
+scons: done building targets.
+                                              main                             
++------------------------------------------------------------------------------
+| Region / Section         |            Total |             Used |             
+|--------------------------+------------------+------------------+-------------
+| ROM                      |      8,388,608 B |      1,667,766 B |      6,720,8
+|   .text                  |        972,620 B |                  |             
+|   .rodata                |        663,942 B |                  |             
+|   other                  |            568 B |                  |             
+| RAM                      |        523,264 B |        306,432 B |        216,8
+|   other                  |        197,128 B |                  |             
+|   .bss                   |        104,420 B |                  |             
+|   .data                  |          4,884 B |                  |             
++------------------------------------------------------------------------------
+  Binary size: 1,539,276 B
+                                              lcpu                             
++------------------------------------------------------------------------------
+| Region / Section         |            Total |             Used |             
+|--------------------------+------------------+------------------+-------------
+| ROM                      |         12,288 B |          6,639 B |          5,6
+|   .text                  |          4,784 B |                  |             
+|   .rodata                |            759 B |                  |             
+|   other                  |              8 B |                  |             
+| RAM                      |         23,552 B |          1,872 B |         21,6
+|   other                  |          1,028 B |                  |             
+|   .bss                   |            784 B |                  |             
+|   .data                  |             60 B |                  |             
++------------------------------------------------------------------------------
+  Binary size: 6,392 B
+================================================================================
+Memory Usage Analysis
+================================================================================
+================================================================================
+Project file index written to D:/sifli/peripheral_lab/project/build_sf32lb52-lchspi-ulp_hcpu\codebase_index.json
+SiFli: Generate Codebase Index 已完成，退出码 0。

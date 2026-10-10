@@ -1,0 +1,80 @@
+[
+  {
+    "path": "project/SConstruct",
+    "source": "course_starter/project/SConstruct",
+    "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf",
+    "modified": false
+  },
+  {
+    "path": "project/SConscript",
+    "source": "course_starter/project/SConscript",
+    "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4",
+    "modified": false
+  },
+  {
+    "path": "project/Kconfig",
+    "source": "course_starter/project/Kconfig",
+    "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc",
+    "modified": false
+  },
+  {
+    "path": "project/Kconfig.proj",
+    "source": "course_starter/project/Kconfig.proj",
+    "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7",
+    "modified": false
+  },
+  {
+    "path": "project/proj.conf",
+    "source": "course_starter/project/proj.conf",
+    "sha256": "114073c6fbf3cb7156f4701bb31402539817588c89f2f8b2adef6b15aa16429d",
+    "modified": false
+  },
+  {
+    "path": "project/rtconfig.py",
+    "source": "course_starter/project/rtconfig.py",
+    "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614",
+    "modified": false
+  },
+  {
+    "path": "src/main.c",
+    "source": "course_starter/src/main.c",
+    "sha256": "57c7a782ff2fd7ddd107f9b841d63e8d0c820b657adaf395a1af8eaa00ffde5b",
+    "modified": false
+  },
+  {
+    "path": "src/SConscript",
+    "source": "course_starter/src/SConscript",
+    "sha256": "ffffc291d3787aa0aaaae292049aabe028092886cae28e06489a88f00fd9e8ba",
+    "modified": false
+  },
+  {
+    "path": "LICENSE-SiFli-SDK-Apache-2.0.txt",
+    "source": "course_starter/LICENSE-SiFli-SDK-Apache-2.0.txt",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "modified": false
+  },
+  {
+    "path": "docs/references/软件产品综合研发实践（阶段二）-课程指导手册.pdf",
+    "source": "软件产品综合研发实践（阶段二）-课程指导手册.pdf",
+    "sha256": "46d45c8974e39784b28cdafb8828c7ce4b9e3d25f301d5664cef121ed9693568",
+    "modified": false
+  },
+  {
+    "path": "docs/references/软件产品综合研发实践（阶段二）-课程简介.pdf",
+    "source": "软件产品综合研发实践（阶段二）-课程简介.pdf",
+    "sha256": "d30bd8bf8ce615940f6768f5c947a61c69344e233998519e7fa49f63d5ba73e3",
+    "modified": false
+  },
+  {
+    "path": "evidence/bootstrap/peripheral-build.log",
+    "source": "user-pasted-log/465a2061-0379-472f-928a-e7cfcd5145f4",
+    "sha256": "a739bdafefaca4ba382b217ab106ef4b616ed554b7b9aa4e1420e6de88b52fb0",
+    "modified": false
+  },
+  {
+    "path": "evidence/bootstrap/peripheral-build-download.log",
+    "source": "user-pasted-log/aa8aecd2-482a-4350-ba78-35fe40d93280",
+    "sha256": "b847ce608ec2a55e2e8b9ce510b6711908c6fed192399f944bcb947a3bae3ad1",
+    "modified": false
+  }
+]

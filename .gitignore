@@ -1,0 +1,27 @@
+# 生成文件和本机环境
+build/
+project/build_*/
+project/sifli_sdk/
+project/src/
+project/.sconsign.dblite
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+.idea/
+.superpowers/
+Thumbs.db
+.DS_Store
+
+# 凭据与个人配置
+.env
+.env.*
+*.key
+secrets.*
+
+# 固件平时不入源码历史，最终交付另按课程要求归档
+*.o
+*.elf
+*.bin
+*.hex
+*.map

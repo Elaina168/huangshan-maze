@@ -1,0 +1,15 @@
+#!/bin/sh
+# 优先使用本地 Git 配置指定的 Python，配置值不提交到仓库。
+PYTHON_EXEC=$(git config --get course.python || true)
+if [ -n "$PYTHON_EXEC" ]; then
+    "$PYTHON_EXEC" scripts/check_project.py --commit-message "$1"
+    exit $?
+fi
+for PYTHON_EXEC in python3 python py; do
+    if command -v "$PYTHON_EXEC" >/dev/null 2>&1 && "$PYTHON_EXEC" -c "import sys" >/dev/null 2>&1; then
+        "$PYTHON_EXEC" scripts/check_project.py --commit-message "$1"
+        exit $?
+    fi
+done
+echo "未找到 Python，提交检查未执行。"
+exit 1

@@ -1,0 +1,14 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.c text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+.githooks/* text eol=lf
+*.pdf binary
+*.log -text
+# 原样导入文件保留实际字节及换行，避免跨平台归档破坏来源校验。
+project/* -text
+src/main.c -text
+src/SConscript -text
+LICENSE-SiFli-SDK-Apache-2.0.txt -text
