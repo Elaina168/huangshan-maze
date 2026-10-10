@@ -1,6 +1,6 @@
 # IMU 四向映射：串口取样
 
-状态：neutral和right真机各40点已完整取得、统计核对一致；left/up/down及回中立尚未取样。证据见 [中立记录](../../evidence/imu/2026-10-10-neutral-01/README.md)、[右低记录](../../evidence/imu/2026-10-10-right-01/README.md)。右低主要使Y相对中立减小，映射仍待反向验证，不代表迷宫校准或产品用例通过。
+状态：neutral和right真机各40点已完整取得、统计核对一致。首组left也取得40点，但Y未反向变化，用户报告可能搞反姿态；该组保留为姿态待确认，不用于映射，等待重测。up/down及回中立尚未取样。证据见 [中立记录](../../evidence/imu/2026-10-10-neutral-01/README.md)、[右低记录](../../evidence/imu/2026-10-10-right-01/README.md)、[left待确认记录](../../evidence/imu/2026-10-10-left-01/README.md)。right标签下Y相对中立减小，映射仍待固定朝向与反向验证，不代表迷宫校准或产品用例通过。
 
 ## 1. 这个版本做什么
 
