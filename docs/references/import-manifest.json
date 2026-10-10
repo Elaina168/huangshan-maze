@@ -82,5 +82,11 @@
     "source": "user-pasted-log/0f5a8dd6-253b-498e-96fa-0ea54553bb0a",
     "sha256": "bf5e8fc62f5a537b5557fc535a02227c2ca9e05b45d6a5b167bdf8f074100cdf",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-10-right-01/raw.log",
+    "source": "user-message-transcription/2026-10-10-right-01",
+    "sha256": "9c204b1fb2245192b5e2c649699471a32f7a24603bd49e5d470da20ae08cf7f4",
+    "modified": false
   }
 ]
