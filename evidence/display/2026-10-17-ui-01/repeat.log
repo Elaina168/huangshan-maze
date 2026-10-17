@@ -1,0 +1,40 @@
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    36%   0x00000002 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000006 000
+tshell    20  ready   0x20021958 0x20021a88 0x00001000    12%   0x00000005 000
+tidle     31  ready   0x2001ce58 0x2001ceac 0x00000200    21%   0x0000001a 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x2001f718 0x2001f81c 0x00002000    42%   0x00000010 000
+msh />msh />[display_probe] press target=CENTER x=142 y=243
+[display_probe] click target=CENTER count=8
+[display_probe] press target=CENTER x=148 y=240
+[display_probe] click target=CENTER count=9
+[display_probe] press target=CENTER x=150 y=214
+[display_probe] click target=CENTER count=10
+[display_probe] press target=CENTER x=148 y=212
+[display_probe] click target=CENTER count=11
+[display_probe] press target=CENTER x=149 y=220
+[display_probe] click target=CENTER count=12
+[display_probe] press target=CENTER x=149 y=220
+[display_probe] click target=CENTER count=13
+[display_probe] press target=CENTER x=147 y=228
+[display_probe] click target=CENTER count=14
+[display_probe] press target=CENTER x=145 y=220
+[display_probe] click target=CENTER count=15
+[display_probe] press target=CENTER x=141 y=237
+[display_probe] click target=CENTER count=16
+[display_probe] press target=CENTER x=142 y=238
+[display_probe] click target=CENTER count=17
+total memory: 402912 used memory : 29700 maximum allocated memory: 36648
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    36%   0x0000000a 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000007 000
+tshell    20  ready   0x20021990 0x20021a88 0x00001000    12%   0x00000006 000
+tidle     31  ready   0x2001ce58 0x2001ceac 0x00000200    21%   0x00000004 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x2001f718 0x2001f81c 0x00002000    42%   0x00000003 000
+msh />msh />
+
+用户说明：灯已熄灭

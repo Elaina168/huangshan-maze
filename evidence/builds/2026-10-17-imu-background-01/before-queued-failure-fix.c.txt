@@ -1,0 +1,171 @@
+/* 唯一后台IMU访问者；共享锁只保护请求和快照副本。 */
+#include "maze_imu.h"
+#include "rtthread.h"
+#include "drivers/i2c.h"
+#include "bf0_hal.h"
+
+static struct rt_mutex state_lock;
+static struct rt_semaphore request_wake;
+static struct rt_thread worker;
+static rt_uint32_t worker_stack[512];
+static bool owned;
+static struct request { uint32_t generation; bool enabled; } requested;
+static maze_imu_sample_t latest;
+static bool has_sample;
+static uint32_t sequence;
+
+static struct request request_copy(void)
+{
+    rt_mutex_take(&state_lock, RT_WAITING_FOREVER);
+    struct request copy = requested;
+    rt_mutex_release(&state_lock);
+    return copy;
+}
+
+static void publish(maze_imu_sample_t *sample)
+{
+    rt_mutex_take(&state_lock, RT_WAITING_FOREVER);
+    sample->sequence = ++sequence;
+    latest = *sample;
+    has_sample = true;
+    rt_mutex_release(&state_lock);
+}
+
+static int read_reg(struct rt_i2c_bus_device *bus, uint8_t reg, void *data, uint16_t size)
+{
+    return rt_i2c_mem_read(bus, 0x6a, reg, 8, data, size) == size ? RT_EOK : -RT_EIO;
+}
+
+static int write_reg(struct rt_i2c_bus_device *bus, uint8_t reg, uint8_t value)
+{
+    uint8_t bytes[2] = {reg, value};
+    struct rt_i2c_msg msg = {.addr=0x6a, .flags=RT_I2C_WR, .len=2, .buf=bytes};
+    return rt_i2c_transfer(bus, &msg, 1) == 1 ? RT_EOK : -RT_EIO;
+}
+
+/* 截止时间约束轮询，不能中断驱动内部的阻塞调用。 */
+static int read_axes(struct rt_i2c_bus_device *bus, maze_imu_sample_t *sample)
+{
+    rt_tick_t start = rt_tick_get();
+    uint8_t status = 0;
+    for (;;)
+    {
+        int error = read_reg(bus, 0x1e, &status, 1);
+        if (error != RT_EOK) return error;
+        if (status & 1) break;
+        struct request now = request_copy();
+        if (!now.enabled || now.generation != sample->generation) return -RT_EBUSY;
+        if ((rt_tick_t)(rt_tick_get() - start) >= rt_tick_from_millisecond(200))
+            return -RT_ETIMEOUT;
+        rt_thread_mdelay(5);
+    }
+    struct request current = request_copy();
+    if (!current.enabled || current.generation != sample->generation) return -RT_EBUSY;
+    uint8_t bytes[6];
+    int error = read_reg(bus, 0x28, bytes, sizeof(bytes));
+    if (error != RT_EOK) return error;
+    for (unsigned axis = 0; axis < 3; axis++)
+    {
+        uint32_t raw = bytes[2*axis] | ((uint32_t)bytes[2*axis+1] << 8);
+        sample->raw[axis] = raw >= 32768 ? (int32_t)raw - 65536 : (int32_t)raw;
+    }
+    return RT_EOK;
+}
+
+static void worker_entry(void *parameter)
+{
+    (void)parameter;
+    HAL_PIN_Set(PAD_PA40, I2C3_SCL, PIN_PULLUP, 1);
+    HAL_PIN_Set(PAD_PA39, I2C3_SDA, PIN_PULLUP, 1);
+    for (;;)
+    {
+        rt_sem_take(&request_wake, RT_WAITING_FOREVER);
+        struct request session = request_copy();
+        if (!session.enabled) continue;
+
+        maze_imu_sample_t sample = {.generation=session.generation};
+        struct rt_i2c_bus_device *bus = rt_i2c_bus_device_find("i2c3");
+        uint8_t id=0, ctrl1=0, ctrl3=0;
+        bool saved = false;
+        sample.error = bus ? read_reg(bus, 0x0f, &id, 1) : -RT_ERROR;
+        if (sample.error == RT_EOK && id != 0x6a) sample.error = -RT_ERROR;
+        if (sample.error == RT_EOK) sample.error = read_reg(bus, 0x10, &ctrl1, 1);
+        if (sample.error == RT_EOK) sample.error = read_reg(bus, 0x12, &ctrl3, 1);
+        if (sample.error == RT_EOK)
+        {
+            saved = true;
+            sample.error = write_reg(bus, 0x12, (ctrl3 & ~0x02) | 0x44);
+            if (sample.error == RT_EOK) sample.error = write_reg(bus, 0x10, 0x40);
+            if (sample.error == RT_EOK) rt_thread_mdelay(20);
+        }
+        if (sample.error != RT_EOK)
+        {
+            sample.read_start_tick = rt_tick_get();
+            publish(&sample);
+            rt_kprintf("[maze_imu] init generation=%u error=%d\n", sample.generation, sample.error);
+        }
+        while (sample.error == RT_EOK)
+        {
+            struct request now = request_copy();
+            if (!now.enabled || now.generation != session.generation) break;
+            sample.read_start_tick = rt_tick_get();
+            sample.error = read_axes(bus, &sample);
+            publish(&sample);
+            if (sample.error != RT_EOK)
+            {
+                rt_kprintf("[maze_imu] read generation=%u error=%d\n", sample.generation, sample.error);
+                break;
+            }
+            rt_thread_mdelay(50);
+        }
+        if (saved)
+        {
+            int first = write_reg(bus, 0x10, ctrl1);
+            int second = write_reg(bus, 0x12, ctrl3);
+            int restore_error = first != RT_EOK ? first : second;
+            if (restore_error != RT_EOK)
+            {
+                rt_kprintf("[maze_imu] generation=%u sample_error=%d restore_error=%d\n",
+                           session.generation, sample.error, restore_error);
+                maze_imu_sample_t failure = {.generation=session.generation,
+                    .read_start_tick=rt_tick_get(), .error=restore_error};
+                publish(&failure);
+            }
+        }
+    }
+}
+
+int maze_imu_init(void)
+{
+    rt_err_t error = rt_mutex_init(&state_lock, "imu_lock", RT_IPC_FLAG_PRIO);
+    RT_ASSERT(error == RT_EOK);
+    error = rt_sem_init(&request_wake, "imu_wake", 0, RT_IPC_FLAG_PRIO);
+    RT_ASSERT(error == RT_EOK);
+    error = rt_thread_init(&worker, "maze_imu", worker_entry, RT_NULL,
+                           worker_stack, sizeof(worker_stack), 11, 10);
+    if (error == RT_EOK) error = rt_thread_startup(&worker);
+    owned = error == RT_EOK;
+    return error;
+}
+
+void maze_imu_request(uint32_t generation, bool enabled)
+{
+    rt_mutex_take(&state_lock, RT_WAITING_FOREVER);
+    bool changed = requested.generation != generation || requested.enabled != enabled;
+    requested.generation = generation;
+    requested.enabled = enabled;
+    if (changed) has_sample = false;
+    rt_mutex_release(&state_lock);
+    if (changed) rt_sem_release(&request_wake);
+}
+
+bool maze_imu_latest(maze_imu_sample_t *out)
+{
+    rt_mutex_take(&state_lock, RT_WAITING_FOREVER);
+    bool valid = has_sample;
+    if (valid) *out = latest;
+    rt_mutex_release(&state_lock);
+    return valid;
+}
+
+bool maze_imu_owned(void) { return owned; }

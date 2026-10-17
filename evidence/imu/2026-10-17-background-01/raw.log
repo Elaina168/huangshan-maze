@@ -1,0 +1,159 @@
+[maze_imu] gen=3 seq=263 tick=20041 raw=-7860,-597,-14225 error=0
+[maze_imu] gen=3 seq=273 tick=20541 raw=-7788,-349,-14418 error=0
+[maze_imu] gen=3 seq=283 tick=21041 raw=-8565,-680,-13896 error=0
+[maze_imu] gen=3 seq=293 tick=21541 raw=-9459,-834,-13272 error=0
+[maze_imu] gen=3 seq=303 tick=22041 raw=-10287,-672,-12380 error=0
+[maze_imu] gen=3 seq=314 tick=22591 raw=-9467,-1109,-13742 error=0
+[maze_imu] gen=3 seq=324 tick=23091 raw=-7894,-1667,-14099 error=0
+[maze_imu] gen=3 seq=334 tick=23591 raw=-8890,-2028,-13407 error=0
+[display_probe] press target=TL x=74 y=79
+[display_probe] click target=TL count=15
+[display_probe] press target=BR x=309 y=388
+[display_probe] click target=BR count=16
+[display_probe] press target=TL x=69 y=69
+[maze_imu] gen=3 seq=344 tick=24099 raw=-6983,-3025,-12962 error=0
+[display_probe] click target=TL count=17
+[display_probe] press target=BR x=317 y=382
+[display_probe] click target=BR count=18
+[display_probe] press target=TL x=67 y=66
+[display_probe] click target=TL count=19
+[display_probe] press target=BR x=318 y=377
+[display_probe] click target=BR count=20
+[display_probe] press target=TR x=307 y=82
+[display_probe] click target=TR count=21
+[display_probe] press target=TR x=307 y=82
+[maze_imu] gen=3 seq=355 tick=24653 raw=-8168,-1469,-13616 error=0
+[display_probe] click target=TR count=22
+[display_probe] press target=BL x=43 y=375
+[display_probe] click target=BL count=23
+[display_probe] press target=TR x=301 y=68
+[display_probe] click target=TR count=24
+[display_probe] press target=BL x=70 y=380
+[display_probe] click target=BL count=25
+[display_probe] press target=TR x=299 y=70
+[display_probe] click target=TR count=26
+[maze_imu] gen=3 seq=365 tick=25154 raw=-8953,-1956,-10755 error=0
+[display_probe] press target=TR x=307 y=84
+[display_probe] click target=TR count=27
+[display_probe] press target=TR x=315 y=82
+[display_probe] click target=TR count=28
+[display_probe] press target=TL x=65 y=84
+[display_probe] click target=TL count=29
+[display_probe] press target=BR x=309 y=363
+[display_probe] click target=BR count=30
+[maze_imu] gen=3 seq=375 tick=25654 raw=-8349,-2390,-12778 error=0
+[display_probe] press target=BL x=83 y=375
+[display_probe] click target=BL count=31
+[display_probe] press target=BL x=83 y=375
+[display_probe] click target=BL count=32
+[maze_imu] gen=3 seq=385 tick=26155 raw=-10758,-87,-11226 error=0
+[display_probe] press target=BL x=72 y=384
+[display_probe] click target=BL count=33
+[display_probe] press target=TR x=320 y=76
+[display_probe] click target=TR count=34
+[display_probe] press target=BL x=73 y=380
+[display_probe] click target=BL count=35
+[maze_imu] gen=3 seq=395 tick=26656 raw=-9530,-1680,-12131 error=0
+[display_probe] press target=TR x=319 y=72
+[display_probe] click target=TR count=36
+[display_probe] press target=TL x=66 y=83
+[display_probe] click target=TL count=37
+[display_probe] press target=TR x=316 y=80
+[display_probe] click target=TR count=38
+[display_probe] press target=TL x=64 y=73
+[display_probe] click target=TL count=39
+[maze_imu] gen=3 seq=406 tick=27206 raw=-9370,-1717,-14925 error=0
+[display_probe] press target=TR x=318 y=78
+[display_probe] click target=TR count=40
+[display_probe] press target=TL x=65 y=70
+[display_probe] click target=TL count=41
+[display_probe] press target=TR x=321 y=75
+[display_probe] click target=TR count=42
+[display_probe] press target=TL x=69 y=68
+[display_probe] click target=TL count=43
+[display_probe] press target=TR x=319 y=76
+[display_probe] click target=TR count=44
+[maze_imu] gen=3 seq=416 tick=27706 raw=-8515,-895,-13610 error=0
+[display_probe] press target=BL x=83 y=378
+[display_probe] click target=BL count=45
+[display_probe] press target=BL x=69 y=383
+[display_probe] click target=BL count=46
+[maze_imu] gen=3 seq=426 tick=28206 raw=-6989,-2896,-12529 error=0
+[display_probe] press target=BR x=310 y=385
+[display_probe] click target=BR count=47
+[display_probe] press target=BL x=72 y=382
+[display_probe] click target=BL count=48
+[display_probe] press target=BR x=308 y=387
+[display_probe] click target=BR count=49
+[display_probe] press target=BR x=306 y=386
+[display_probe] click target=BR count=50
+[maze_imu] gen=3 seq=436 tick=28707 raw=-8751,-993,-16351 error=0
+[display_probe] press target=TL x=63 y=72
+[display_probe] click target=TL count=51
+[display_probe] press target=BR x=308 y=388
+[display_probe] click target=BR count=52
+[maze_imu] gen=3 seq=446 tick=29207 raw=-10269,-1315,-13149 error=0
+[maze_imu] gen=3 seq=456 tick=29707 raw=-9170,-1511,-12867 error=0
+[display_probe] press target=BR x=300 y=409
+[display_probe] click target=BR count=53
+[display_probe] press target=TL x=68 y=82
+[display_probe] click target=TL count=54
+[maze_imu] gen=3 seq=466 tick=30217 raw=-8270,-3252,-12667 error=0
+[display_probe] press target=BL x=75 y=370
+[display_probe] click target=BL count=55
+[maze_imu] gen=3 seq=477 tick=30770 raw=-11378,-289,-15291 error=0
+[display_probe] press target=BL x=69 y=379
+[display_probe] click target=BL count=56
+[display_probe] press target=TL x=70 y=73
+[display_probe] click target=TL count=57
+[display_probe] press target=BL x=69 y=383
+[display_probe] click target=BL count=58
+[display_probe] press target=BL x=65 y=374
+[display_probe] click target=BL count=59
+[display_probe] press target=BL x=77 y=368
+[display_probe] click target=BL count=60
+[maze_imu] gen=3 seq=487 tick=31270 raw=-10197,-1664,-12988 error=0
+[display_probe] press target=TR x=311 y=75
+[display_probe] click target=TR count=61
+[display_probe] press target=BR x=299 y=377
+[display_probe] click target=BR count=62
+[maze_imu] gen=3 seq=497 tick=31771 raw=-9792,-2516,-12019 error=0
+[display_probe] press target=BR x=297 y=377
+[display_probe] click target=BR count=63
+[display_probe] press target=TL x=66 y=77
+[display_probe] click target=TL count=64
+[display_probe] press target=TR x=309 y=81
+[display_probe] click target=TR count=65
+[maze_imu] gen=3 seq=507 tick=32273 raw=-8992,-2402,-13326 error=0
+[display_probe] press target=TL x=69 y=74
+[display_probe] click target=TL count=66
+[display_probe] press target=TR x=317 y=72
+[display_probe] click target=TR count=67
+[display_probe] press target=BL x=65 y=388
+[display_probe] click target=BL count=68
+[display_probe] press target=BR x=312 y=389
+[display_probe] click target=BR count=69
+[maze_imu] gen=3 seq=518 tick=32824 raw=-7720,-111,-16114 error=0
+[display_probe] press target=BL x=62 y=384
+[display_probe] click target=BL count=70
+[display_probe] press target=BR x=303 y=387
+[display_probe] click target=BR count=71
+[maze_imu] gen=3 seq=528 tick=33324 raw=-5986,-188,-14034 error=0
+[maze_imu] gen=3 seq=538 tick=33824 raw=-8792,2952,-12365 error=0
+[maze_imu] gen=3 seq=548 tick=34324 raw=-12151,1081,-9308 error=0
+[maze_imu] gen=3 seq=558 tick=34824 raw=-11759,36,-11579 error=0
+[maze_imu] gen=3 seq=569 tick=35374 raw=-10536,-1146,-12373 error=0
+[display_probe] press target=CENTER x=151 y=244
+[display_probe] click target=CENTER count=72
+[maze_imu] request generation=4 sampling=off
+total memory: 400612 used memory : 29984 maximum allocated memory: 36936
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+maze_imu  11  suspend 0x2001d3c8 0x2001d4b8 0x00000800    23%   0x00000006 000
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    36%   0x00000006 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000003 000
+tshell    20  ready   0x200221a8 0x200222d8 0x00001000    13%   0x00000003 000
+tidle     31  ready   0x2001d750 0x2001d7a8 0x00000200    22%   0x00000003 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x2001ffd0 0x20020118 0x00002000    44%   0x00000011 000
+msh />msh />

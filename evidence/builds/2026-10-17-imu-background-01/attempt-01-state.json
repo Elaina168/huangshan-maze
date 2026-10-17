@@ -1,0 +1,79 @@
+{
+  "board": "sf32lb52-lchspi-ulp",
+  "sdk_path": "D:\\sifli\\SiFli-SDK\\v2.5.1",
+  "stage_path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-shq8lj14",
+  "sources": [
+    {
+      "path": "project/Kconfig",
+      "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc"
+    },
+    {
+      "path": "project/Kconfig.proj",
+      "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7"
+    },
+    {
+      "path": "project/proj.conf",
+      "sha256": "1d68e2d84601f36a5cb88c2185994772aedab6e867ccc2b652142c8eef14e52d"
+    },
+    {
+      "path": "project/rtconfig.py",
+      "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614"
+    },
+    {
+      "path": "project/SConscript",
+      "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4"
+    },
+    {
+      "path": "project/SConstruct",
+      "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf"
+    },
+    {
+      "path": "src/imu_probe.c",
+      "sha256": "4e07bc6e913cdb60ebdbf85287fe1e397f6dee02afb31c055db9bff51f963971"
+    },
+    {
+      "path": "src/main.c",
+      "sha256": "ee1fd0af76ce59ffb546b14cae4473260fcd29e392b9edb4b9a4b8a88d5ae920"
+    },
+    {
+      "path": "src/maze_imu.c",
+      "sha256": "db3a69182c7794efacb2080a2e934e0c3a7b15a9192c094621db0d8d40398e33"
+    },
+    {
+      "path": "src/maze_imu.h",
+      "sha256": "5ea8f9804e81475c7e1837f0ad6e386bb48722674af8b160aeb79e18605bcfd3"
+    },
+    {
+      "path": "src/maze_ui.c",
+      "sha256": "d203f07e9a5e595592364a0dc5580ef70af19eb05cb19002e376723b0fb779cb"
+    },
+    {
+      "path": "src/maze_ui.h",
+      "sha256": "79a4c5d634e1233b0d632fe426e742239ddc3c7c0de11f5233ef6eb66042fe57"
+    },
+    {
+      "path": "src/SConscript",
+      "sha256": "ffffc291d3787aa0aaaae292049aabe028092886cae28e06489a88f00fd9e8ba"
+    }
+  ],
+  "returncode": 0,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-shq8lj14\\project\\build_sf32lb52-lchspi-ulp_hcpu\\main.bin",
+      "sha256": "9b4c965e4d3230450433148eb7891349a126ff607637b52e800f0e818c111ff1",
+      "bytes": 561824
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-shq8lj14\\project\\build_sf32lb52-lchspi-ulp_hcpu\\bootloader\\bootloader.bin",
+      "sha256": "e59d70db44367d524fbb46a8a014ce0092462e86959d101a8e2e00ad27bb5e21",
+      "bytes": 58496
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-shq8lj14\\project\\build_sf32lb52-lchspi-ulp_hcpu\\ftab\\ftab.bin",
+      "sha256": "7d67bfb9251fb683531f6655d7e4ea85f7955305fa8f8ea259a9daadf78d6d32",
+      "bytes": 11288
+    }
+  ],
+  "hardware_verified": false,
+  "source_unchanged": true
+}

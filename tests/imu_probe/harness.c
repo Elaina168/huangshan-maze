@@ -1,5 +1,6 @@
 /* 用受控总线执行实际诊断源码，不证明真实硬件或调度。 */
 #include <assert.h>
+#include <stdbool.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,6 +12,8 @@ static unsigned writes, reads, samples, mode;
 static rt_tick_t ticks;
 static char output[24000];
 static size_t used;
+static bool product_owns_sensor;
+bool maze_imu_owned(void) { return product_owns_sensor; }
 
 rt_tick_t rt_tick_get(void) { return ticks; }
 rt_tick_t rt_tick_from_millisecond(int ms) { return (rt_tick_t)ms; }
@@ -89,6 +92,13 @@ static void reset(unsigned scenario)
 int main(void)
 {
     char *args[] = {"imu_probe", "neutral"};
+    char *owned_control_args[] = {"imu_control_probe"};
+    reset(0); product_owns_sensor = true;
+    assert(imu_probe(2, args) == -RT_EBUSY);
+    assert(imu_control_probe(1, owned_control_args) == -RT_EBUSY);
+    assert(reads == 0 && writes == 0);
+    puts("PASS: both diagnostic commands reject product IMU ownership without I/O.");
+    product_owns_sensor = false;
     reset(0); assert(imu_probe(2, args) == 0); assert(samples == 40);
     assert(regs[0x10] == 0x17 && regs[0x12] == 0x22);
     assert(strstr(output, "mean_raw=-32768,32767,0"));

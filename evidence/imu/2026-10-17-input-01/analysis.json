@@ -1,0 +1,36 @@
+{
+  "source_kind": "user_message_transcription",
+  "raw_sha256": "ad5d0ad817a723e6e935ae01b1b947776dd08d156fce76240bfe2f6dbbe58a06",
+  "reference": [
+    -226,
+    -308,
+    -16233
+  ],
+  "ready_records": 54,
+  "zero_records": 36,
+  "x_range": [
+    -8894,
+    10878
+  ],
+  "y_range": [
+    -8226,
+    13614
+  ],
+  "states": [
+    1,
+    2,
+    0
+  ],
+  "heap": {
+    "total": 400312,
+    "used": 30288,
+    "maximum": 37244,
+    "calculated_free": 370024
+  },
+  "thread_count": 7,
+  "imu_stack_reported_max_percent": 21,
+  "main_stack_reported_max_percent": 42,
+  "physical_directions_labelled": false,
+  "runtime_firmware_checksum_verified": false,
+  "formal_product_tests_executed": false
+}

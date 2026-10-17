@@ -1,0 +1,26 @@
+[display_probe] press target=TL x=65 y=73
+[display_probe] click target=TL count=1
+[display_probe] press target=TR x=309 y=84
+[display_probe] click target=TR count=2
+[display_probe] press target=BL x=71 y=383
+[display_probe] click target=BL count=3
+[display_probe] press target=BR x=297 y=383
+[display_probe] click target=BR count=4
+[display_probe] press target=CENTER x=145 y=247
+[display_probe] click target=CENTER count=5
+[display_probe] press target=CENTER x=147 y=245
+[display_probe] click target=CENTER count=6
+[display_probe] press target=CENTER x=147 y=247
+[display_probe] click target=CENTER count=7
+total memory: 402912 used memory : 29700 maximum allocated memory: 36648
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    36%   0x00000002 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000006 000
+tshell    20  ready   0x20021958 0x20021a88 0x00001000    12%   0x00000005 000
+tidle     31  ready   0x2001ce58 0x2001ceac 0x00000200    21%   0x0000001a 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x2001f718 0x2001f81c 0x00002000    42%   0x00000010 000
+msh />msh />
+
+用户描述：有个问题，屏幕正常显示的时候USB口在右边，所以可能会改一些东西？

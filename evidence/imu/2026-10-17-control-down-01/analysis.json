@@ -1,0 +1,1170 @@
+{
+  "archive_date": "2026-10-17",
+  "source_attachment": "05bc1fc1-2f0e-4957-8cbd-eb093329e2ec",
+  "source": "user_attachment_original_bytes",
+  "user_pose_statement": "下边缘压低、上边缘抬高",
+  "pose_status": "user_explicitly_confirmed_edge_direction",
+  "orientation_basis": "previous_screen_up_usb_left_instruction_not_separately_restated",
+  "source_commit": "31a3b3b65db0c849a9d6f8a5c1153722bd9f0feb",
+  "runtime_firmware_checksum_verified": false,
+  "tick_hz_recorded": null,
+  "tick_hz_used_for_conversion": 1000,
+  "tick_hz_basis": "same_diagnostic_build_and_paired_up_log_not_recorded_in_this_attachment",
+  "missing_begin_header": true,
+  "missing_calibration_parameter_line": true,
+  "summary": {
+    "count": 99,
+    "reference_raw": [
+      78,
+      -255,
+      -16194
+    ],
+    "calibrated_tick": 451587,
+    "initial_zero_records": 15,
+    "first_nonzero_record": {
+      "n": 16,
+      "tick": 452353,
+      "valid": 1,
+      "xy": [
+        0,
+        -61
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    "first_nonzero_after_calibrated_ms": 766,
+    "first_expected_vertical_sign_record": {
+      "n": 20,
+      "tick": 452557,
+      "valid": 1,
+      "xy": [
+        0,
+        240
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    "first_expected_sign_after_calibrated_ms": 970,
+    "vertical_negative_count": 1,
+    "vertical_positive_count": 80,
+    "zero_xy_count": 18,
+    "horizontal_nonzero_count": 6,
+    "xy_min": [
+      -830,
+      -61
+    ],
+    "xy_max": [
+      340,
+      12944
+    ],
+    "expected_sign_tail_count": 80,
+    "expected_sign_tail_all_matches": true,
+    "first_to_last_ms": 4998,
+    "calibrated_to_last_ms": 4999,
+    "consumer_interval_ms_min": 51,
+    "consumer_interval_ms_max": 51,
+    "software_age_ms_max": 0,
+    "read_start_gap_ms_max": 51,
+    "all_valid": true,
+    "all_ages_and_gaps_within_candidate_limit": true,
+    "result": "ok",
+    "raw_sha256": "a804a83c5acf4953d0cfe2c5fffe6d4b8f6c40987bf6e387a27a49678b2cf1fd"
+  },
+  "samples": [
+    {
+      "n": 1,
+      "tick": 451588,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 1
+    },
+    {
+      "n": 2,
+      "tick": 451639,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 3,
+      "tick": 451690,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 4,
+      "tick": 451741,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 5,
+      "tick": 451792,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 6,
+      "tick": 451843,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 7,
+      "tick": 451894,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 8,
+      "tick": 451945,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 9,
+      "tick": 451996,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 10,
+      "tick": 452047,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 11,
+      "tick": 452098,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 12,
+      "tick": 452149,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 13,
+      "tick": 452200,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 14,
+      "tick": 452251,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 15,
+      "tick": 452302,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 16,
+      "tick": 452353,
+      "valid": 1,
+      "xy": [
+        0,
+        -61
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 17,
+      "tick": 452404,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 18,
+      "tick": 452455,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 19,
+      "tick": 452506,
+      "valid": 1,
+      "xy": [
+        0,
+        0
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 20,
+      "tick": 452557,
+      "valid": 1,
+      "xy": [
+        0,
+        240
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 21,
+      "tick": 452608,
+      "valid": 1,
+      "xy": [
+        0,
+        700
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 22,
+      "tick": 452659,
+      "valid": 1,
+      "xy": [
+        0,
+        1050
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 23,
+      "tick": 452710,
+      "valid": 1,
+      "xy": [
+        0,
+        1641
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 24,
+      "tick": 452761,
+      "valid": 1,
+      "xy": [
+        0,
+        2070
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 25,
+      "tick": 452812,
+      "valid": 1,
+      "xy": [
+        0,
+        3150
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 26,
+      "tick": 452863,
+      "valid": 1,
+      "xy": [
+        205,
+        5419
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 27,
+      "tick": 452914,
+      "valid": 1,
+      "xy": [
+        0,
+        4353
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 28,
+      "tick": 452965,
+      "valid": 1,
+      "xy": [
+        0,
+        5187
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 29,
+      "tick": 453016,
+      "valid": 1,
+      "xy": [
+        0,
+        5952
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 30,
+      "tick": 453067,
+      "valid": 1,
+      "xy": [
+        0,
+        6599
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 31,
+      "tick": 453118,
+      "valid": 1,
+      "xy": [
+        0,
+        6786
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 32,
+      "tick": 453169,
+      "valid": 1,
+      "xy": [
+        0,
+        7606
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 33,
+      "tick": 453220,
+      "valid": 1,
+      "xy": [
+        0,
+        8282
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 34,
+      "tick": 453271,
+      "valid": 1,
+      "xy": [
+        0,
+        8532
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 35,
+      "tick": 453322,
+      "valid": 1,
+      "xy": [
+        0,
+        8799
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 36,
+      "tick": 453373,
+      "valid": 1,
+      "xy": [
+        0,
+        9153
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 37,
+      "tick": 453424,
+      "valid": 1,
+      "xy": [
+        0,
+        9207
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 38,
+      "tick": 453475,
+      "valid": 1,
+      "xy": [
+        -290,
+        9746
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 39,
+      "tick": 453526,
+      "valid": 1,
+      "xy": [
+        -830,
+        9397
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 40,
+      "tick": 453577,
+      "valid": 1,
+      "xy": [
+        -203,
+        9716
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 41,
+      "tick": 453628,
+      "valid": 1,
+      "xy": [
+        0,
+        10649
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 42,
+      "tick": 453679,
+      "valid": 1,
+      "xy": [
+        0,
+        10357
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 43,
+      "tick": 453730,
+      "valid": 1,
+      "xy": [
+        0,
+        9945
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 44,
+      "tick": 453781,
+      "valid": 1,
+      "xy": [
+        0,
+        10154
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 45,
+      "tick": 453832,
+      "valid": 1,
+      "xy": [
+        0,
+        10408
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 46,
+      "tick": 453883,
+      "valid": 1,
+      "xy": [
+        0,
+        10580
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 47,
+      "tick": 453934,
+      "valid": 1,
+      "xy": [
+        0,
+        10690
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 48,
+      "tick": 453985,
+      "valid": 1,
+      "xy": [
+        0,
+        10897
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 49,
+      "tick": 454036,
+      "valid": 1,
+      "xy": [
+        0,
+        11010
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 50,
+      "tick": 454087,
+      "valid": 1,
+      "xy": [
+        340,
+        10752
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 51,
+      "tick": 454138,
+      "valid": 1,
+      "xy": [
+        0,
+        11472
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 52,
+      "tick": 454189,
+      "valid": 1,
+      "xy": [
+        0,
+        11302
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 53,
+      "tick": 454240,
+      "valid": 1,
+      "xy": [
+        0,
+        11474
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 54,
+      "tick": 454291,
+      "valid": 1,
+      "xy": [
+        0,
+        11483
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 55,
+      "tick": 454342,
+      "valid": 1,
+      "xy": [
+        0,
+        11525
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 56,
+      "tick": 454393,
+      "valid": 1,
+      "xy": [
+        0,
+        11851
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 57,
+      "tick": 454444,
+      "valid": 1,
+      "xy": [
+        -93,
+        11928
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 58,
+      "tick": 454495,
+      "valid": 1,
+      "xy": [
+        0,
+        11831
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 59,
+      "tick": 454546,
+      "valid": 1,
+      "xy": [
+        0,
+        12100
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 60,
+      "tick": 454597,
+      "valid": 1,
+      "xy": [
+        0,
+        12140
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 61,
+      "tick": 454648,
+      "valid": 1,
+      "xy": [
+        0,
+        12277
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 62,
+      "tick": 454699,
+      "valid": 1,
+      "xy": [
+        0,
+        12506
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 63,
+      "tick": 454750,
+      "valid": 1,
+      "xy": [
+        0,
+        12532
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 64,
+      "tick": 454801,
+      "valid": 1,
+      "xy": [
+        0,
+        12548
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 65,
+      "tick": 454852,
+      "valid": 1,
+      "xy": [
+        0,
+        12545
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 66,
+      "tick": 454903,
+      "valid": 1,
+      "xy": [
+        0,
+        12679
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 67,
+      "tick": 454954,
+      "valid": 1,
+      "xy": [
+        0,
+        12613
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 68,
+      "tick": 455005,
+      "valid": 1,
+      "xy": [
+        0,
+        12591
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 69,
+      "tick": 455056,
+      "valid": 1,
+      "xy": [
+        0,
+        12590
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 70,
+      "tick": 455107,
+      "valid": 1,
+      "xy": [
+        0,
+        12551
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 71,
+      "tick": 455158,
+      "valid": 1,
+      "xy": [
+        0,
+        12497
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 72,
+      "tick": 455209,
+      "valid": 1,
+      "xy": [
+        0,
+        12623
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 73,
+      "tick": 455260,
+      "valid": 1,
+      "xy": [
+        0,
+        12621
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 74,
+      "tick": 455311,
+      "valid": 1,
+      "xy": [
+        0,
+        12737
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 75,
+      "tick": 455362,
+      "valid": 1,
+      "xy": [
+        0,
+        12699
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 76,
+      "tick": 455413,
+      "valid": 1,
+      "xy": [
+        0,
+        12729
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 77,
+      "tick": 455464,
+      "valid": 1,
+      "xy": [
+        0,
+        12701
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 78,
+      "tick": 455515,
+      "valid": 1,
+      "xy": [
+        0,
+        12763
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 79,
+      "tick": 455566,
+      "valid": 1,
+      "xy": [
+        0,
+        12745
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 80,
+      "tick": 455617,
+      "valid": 1,
+      "xy": [
+        0,
+        12812
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 81,
+      "tick": 455668,
+      "valid": 1,
+      "xy": [
+        0,
+        12869
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 82,
+      "tick": 455719,
+      "valid": 1,
+      "xy": [
+        0,
+        12944
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 83,
+      "tick": 455770,
+      "valid": 1,
+      "xy": [
+        0,
+        12753
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 84,
+      "tick": 455821,
+      "valid": 1,
+      "xy": [
+        0,
+        12840
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 85,
+      "tick": 455872,
+      "valid": 1,
+      "xy": [
+        0,
+        12776
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 86,
+      "tick": 455923,
+      "valid": 1,
+      "xy": [
+        0,
+        12776
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 87,
+      "tick": 455974,
+      "valid": 1,
+      "xy": [
+        0,
+        12840
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 88,
+      "tick": 456025,
+      "valid": 1,
+      "xy": [
+        0,
+        12853
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 89,
+      "tick": 456076,
+      "valid": 1,
+      "xy": [
+        0,
+        12730
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 90,
+      "tick": 456127,
+      "valid": 1,
+      "xy": [
+        0,
+        12923
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 91,
+      "tick": 456178,
+      "valid": 1,
+      "xy": [
+        0,
+        12757
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 92,
+      "tick": 456229,
+      "valid": 1,
+      "xy": [
+        0,
+        12911
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 93,
+      "tick": 456280,
+      "valid": 1,
+      "xy": [
+        0,
+        12817
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 94,
+      "tick": 456331,
+      "valid": 1,
+      "xy": [
+        0,
+        12792
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 95,
+      "tick": 456382,
+      "valid": 1,
+      "xy": [
+        0,
+        12884
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 96,
+      "tick": 456433,
+      "valid": 1,
+      "xy": [
+        0,
+        12890
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 97,
+      "tick": 456484,
+      "valid": 1,
+      "xy": [
+        0,
+        12863
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 98,
+      "tick": 456535,
+      "valid": 1,
+      "xy": [
+        0,
+        12876
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    },
+    {
+      "n": 99,
+      "tick": 456586,
+      "valid": 1,
+      "xy": [
+        0,
+        12844
+      ],
+      "age_tick": 0,
+      "gap_tick": 51
+    }
+  ],
+  "limitations": [
+    "no_physical_action_start_timestamp",
+    "no_independent_tilt_angle",
+    "no_device_firmware_checksum",
+    "product_acceptance_not_executed"
+  ]
+}

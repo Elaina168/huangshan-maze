@@ -1,0 +1,75 @@
+[display_probe] press target=CENTER x=185 y=248
+[display_probe] click target=CENTER count=1
+[maze_input] gen=1 state=1 error=0 count=0
+[maze_input] gen=1 state=1 count=0 xy=0,0
+[maze_input] gen=1 state=1 count=10 xy=0,0
+[maze_input] gen=1 state=2 error=0 count=20
+[maze_input] calibrated ref=-226,-308,-16233
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=-4881,-624
+[maze_input] gen=1 state=2 count=20 xy=-8894,-1292
+[maze_input] gen=1 state=2 count=20 xy=-3702,0
+[maze_input] gen=1 state=2 count=20 xy=0,-175
+[maze_input] gen=1 state=2 count=20 xy=6524,2280
+[maze_input] gen=1 state=2 count=20 xy=10878,738
+[maze_input] gen=1 state=2 count=20 xy=6347,3368
+[maze_input] gen=1 state=2 count=20 xy=-1308,75
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=-11,-187
+[maze_input] gen=1 state=2 count=20 xy=0,-8226
+[maze_input] gen=1 state=2 count=20 xy=-574,-6280
+[maze_input] gen=1 state=2 count=20 xy=573,120
+[maze_input] gen=1 state=2 count=20 xy=241,6378
+[maze_input] gen=1 state=2 count=20 xy=2134,13483
+[maze_input] gen=1 state=2 count=20 xy=104,13614
+[maze_input] gen=1 state=2 count=20 xy=0,7859
+[maze_input] gen=1 state=2 count=20 xy=-748,-97
+[maze_input] gen=1 state=2 count=20 xy=0,-74
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[maze_input] gen=1 state=2 count=20 xy=0,0
+[display_probe] press target=CENTER x=180 y=240
+[display_probe] click target=CENTER count=2
+[maze_input] gen=2 state=0 error=0 count=0
+total memory: 400312 used memory : 30288 maximum allocated memory: 37244
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+maze_imu  11  suspend 0x2001d4f0 0x2001d5e0 0x00000800    21%   0x00000005 000
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    33%   0x00000006 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000003 000
+tshell    20  ready   0x20022310 0x20022404 0x00001000    12%   0x00000004 000
+tidle     31  ready   0x2001d880 0x2001d8d4 0x00000200    21%   0x00000019 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x20020108 0x20020244 0x00002000    42%   0x0000000d 000
+msh />msh />msh />

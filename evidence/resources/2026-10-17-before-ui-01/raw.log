@@ -1,0 +1,19 @@
+[course_starter] rgb -> red
+[course_starter] rgb -> green
+total memory: 466100 used memory : 8980 maximum allocated memory: 74252
+msh />msh />[course_starter] rgb -> blue
+[course_starter] rgb -> red
+[course_starter] rgb -> green
+[course_starter] rgb -> blue
+[course_starter] rgb -> red
+[course_starter] rgb -> green
+[course_starter] rgb -> blue
+thread pri  status      sp      top     stack size max used left tick  error
+------ ---  ------- ---------- ---------- ----------  ------  ---------- ---
+tshell  20  ready   0x20010070 0x20010168 0x00001000    22%   0x00000004 000
+tidle   31  ready   0x2000d788 0x2000d7e0 0x00000200    17%   0x0000000f 000
+timer    4  suspend 0x20009d48 0x20009d9c 0x00000400    08%   0x00000009 000
+main    10  suspend 0x2000e838 0x2000e948 0x00000800    33%   0x00000012 000
+msh />msh />[course_starter] rgb -> red
+[course_starter] rgb -> green
+[course_starter] rgb -> blue

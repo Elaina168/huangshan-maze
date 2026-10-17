@@ -1,0 +1,20 @@
+{
+  "source_kind": "user_message_transcription",
+  "raw_sha256": "4848a87ef8b2082366cd1d33be292d08461ec54231f1ba2be5f67eff85d089f7",
+  "click_counts": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "heap_matches_first": true,
+  "rgb_off_user_confirmed": true,
+  "independently_timed": false,
+  "runtime_firmware_checksum_verified": false
+}

@@ -3,6 +3,7 @@
 #include "drivers/i2c.h"
 #include "bf0_hal.h"
 #include "finsh.h"
+#include "maze_imu.h"
 #include <stdint.h>
 #include <string.h>
 
@@ -46,6 +47,11 @@ static rt_err_t probe_ready(struct rt_i2c_bus_device *bus)
 
 static int imu_probe(int argc, char **argv)
 {
+    if (maze_imu_owned())
+    {
+        rt_kprintf("[imu_probe] rejected: product sampler owns IMU\n");
+        return -RT_EBUSY;
+    }
     const char *poses[] = {"neutral", "right", "left", "up", "down"};
     unsigned pose;
     if (argc != 2)
@@ -192,6 +198,11 @@ static int control_calibrate(struct control_window *window, const int32_t raw[3]
 
 static int imu_control_probe(int argc, char **argv)
 {
+    if (maze_imu_owned())
+    {
+        rt_kprintf("[imu_control] rejected: product sampler owns IMU\n");
+        return -RT_EBUSY;
+    }
     (void)argv;
     if (argc != 1)
     {

@@ -1,0 +1,61 @@
+{
+  "board": "sf32lb52-lchspi-ulp",
+  "sdk_path": "D:\\sifli\\SiFli-SDK\\v2.5.1",
+  "stage_path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-fyojdc4a",
+  "sources": [
+    {
+      "path": "project/Kconfig",
+      "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc"
+    },
+    {
+      "path": "project/Kconfig.proj",
+      "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7"
+    },
+    {
+      "path": "project/proj.conf",
+      "sha256": "f580307176917de0f4bcbb5c5f9b866b7d78f5b03291111f38f780d5da99bb16"
+    },
+    {
+      "path": "project/rtconfig.py",
+      "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614"
+    },
+    {
+      "path": "project/SConscript",
+      "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4"
+    },
+    {
+      "path": "project/SConstruct",
+      "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf"
+    },
+    {
+      "path": "src/imu_probe.c",
+      "sha256": "35dfde76427180aca1c140ae0ea507702dc1b8915eaf90515a54e2fd857d86dd"
+    },
+    {
+      "path": "src/main.c",
+      "sha256": "e40e875aa2f0e775d68c3e6e14cb98fbe527f33683bb0776d2a452d0c3660e04"
+    },
+    {
+      "path": "src/maze_ui.c",
+      "sha256": "ec98360a7e852b661f5de7bf1885d082ebe7b1150061a2de964e8ba87c542307"
+    },
+    {
+      "path": "src/maze_ui.h",
+      "sha256": "9c736c77a22a75fb2b487ae9df125a48b3002e8ef8db531e28c8f9469a33bd1b"
+    },
+    {
+      "path": "src/SConscript",
+      "sha256": "ffffc291d3787aa0aaaae292049aabe028092886cae28e06489a88f00fd9e8ba"
+    }
+  ],
+  "returncode": 2,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-fyojdc4a\\project\\build_sf32lb52-lchspi-ulp_hcpu\\bootloader\\bootloader.bin",
+      "sha256": "e59d70db44367d524fbb46a8a014ce0092462e86959d101a8e2e00ad27bb5e21",
+      "bytes": 58496
+    }
+  ],
+  "hardware_verified": false,
+  "source_unchanged": true
+}

@@ -1,0 +1,75 @@
+{
+  "archive_date": "2026-10-17",
+  "source": "user-message-transcription",
+  "source_bytes_are_original_attachment": false,
+  "stage": "rgb_and_imu_diagnostic_before_lvgl_ui",
+  "source_commit": "31a3b3b65db0c849a9d6f8a5c1153722bd9f0feb",
+  "runtime_firmware_checksum_verified": false,
+  "raw_sha256": "1fa311c0ca7fe2101200f4f954f63f46c001a0a836ab02251a8184add8deba4d",
+  "heap": {
+    "total_bytes": 466100,
+    "used_bytes": 8980,
+    "maximum_allocated_bytes": 74252,
+    "free_now_bytes_calculated": 457120,
+    "remaining_at_peak_bytes_calculated": 391848
+  },
+  "threads": [
+    {
+      "name": "tshell",
+      "priority": 20,
+      "status": "ready",
+      "sp": "0x20010070",
+      "top": "0x20010168",
+      "stack_size_hex": "0x00001000",
+      "stack_size_bytes": 4096,
+      "stack_max_used_percent_reported": 22,
+      "left_tick_hex": "0x00000004",
+      "error_reported": "000"
+    },
+    {
+      "name": "tidle",
+      "priority": 31,
+      "status": "ready",
+      "sp": "0x2000d788",
+      "top": "0x2000d7e0",
+      "stack_size_hex": "0x00000200",
+      "stack_size_bytes": 512,
+      "stack_max_used_percent_reported": 17,
+      "left_tick_hex": "0x0000000f",
+      "error_reported": "000"
+    },
+    {
+      "name": "timer",
+      "priority": 4,
+      "status": "suspend",
+      "sp": "0x20009d48",
+      "top": "0x20009d9c",
+      "stack_size_hex": "0x00000400",
+      "stack_size_bytes": 1024,
+      "stack_max_used_percent_reported": 8,
+      "left_tick_hex": "0x00000009",
+      "error_reported": "000"
+    },
+    {
+      "name": "main",
+      "priority": 10,
+      "status": "suspend",
+      "sp": "0x2000e838",
+      "top": "0x2000e948",
+      "stack_size_hex": "0x00000800",
+      "stack_size_bytes": 2048,
+      "stack_max_used_percent_reported": 33,
+      "left_tick_hex": "0x00000012",
+      "error_reported": "000"
+    }
+  ],
+  "heap_and_thread_snapshot_atomic": false,
+  "limitations": [
+    "no_wall_clock_or_uptime_recorded",
+    "allocation_peak_cause_not_identified",
+    "single_snapshot_not_memory_leak_test",
+    "stack_percent_rounded_not_exact_byte_count",
+    "does_not_measure_lvgl_buffers_or_future_ui_stack",
+    "formal_TC_017_TC_018_not_executed"
+  ]
+}

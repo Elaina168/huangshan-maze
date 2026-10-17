@@ -1,0 +1,16 @@
+[course_starter] rgb -> red
+[course_starter] rgb -> green
+[imu_control] begin tick_hz=1000 units=raw odr_hz=104
+[imu_control] calibration count=20 span_ms=950 range_raw=300 budget_ms=3000
+[imu_control] input dead_zone_raw=300 max_gap_ms=100 max_age_ms=100 run_ms=5000
+[course_starter] rgb -> blue
+[course_starter] rgb -> red
+[imu_control] end result=fail event=calibration_timeout count=0
+[imu_control] sample_error=-2 restore_error=0
+msh />msh />[course_starter] rgb -> green
+[course_starter] rgb -> blue
+[course_starter] rgb -> red
+[course_starter] rgb -> green
+[course_starter] rgb -> blue
+[course_starter] rgb -> red
+[course_starter] rgb -> green

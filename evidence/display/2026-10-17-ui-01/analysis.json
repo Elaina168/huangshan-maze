@@ -1,0 +1,81 @@
+{
+  "raw_sha256": "7c9cad10fdec26bc247142aa79b021f356a226e007e900ed9aee2c0058a39717",
+  "source_kind": "user_message_transcription",
+  "reported_orientation": "usb_right",
+  "presses": [
+    {
+      "target": "TL",
+      "x": 65,
+      "y": 73
+    },
+    {
+      "target": "TR",
+      "x": 309,
+      "y": 84
+    },
+    {
+      "target": "BL",
+      "x": 71,
+      "y": 383
+    },
+    {
+      "target": "BR",
+      "x": 297,
+      "y": 383
+    },
+    {
+      "target": "CENTER",
+      "x": 145,
+      "y": 247
+    },
+    {
+      "target": "CENTER",
+      "x": 147,
+      "y": 245
+    },
+    {
+      "target": "CENTER",
+      "x": 147,
+      "y": 247
+    }
+  ],
+  "clicks": [
+    {
+      "target": "TL",
+      "count": 1
+    },
+    {
+      "target": "TR",
+      "count": 2
+    },
+    {
+      "target": "BL",
+      "count": 3
+    },
+    {
+      "target": "BR",
+      "count": 4
+    },
+    {
+      "target": "CENTER",
+      "count": 5
+    },
+    {
+      "target": "CENTER",
+      "count": 6
+    },
+    {
+      "target": "CENTER",
+      "count": 7
+    }
+  ],
+  "heap": {
+    "total": 402912,
+    "used": 29700,
+    "maximum": 36648,
+    "calculated_free": 373212,
+    "calculated_peak_remaining": 366264
+  },
+  "runtime_firmware_checksum_verified": false,
+  "formal_product_tests_executed": false
+}

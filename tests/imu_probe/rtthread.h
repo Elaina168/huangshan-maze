@@ -8,6 +8,7 @@ typedef uint32_t rt_tick_t;
 #define RT_ERROR 1
 #define RT_EIO 8
 #define RT_ETIMEOUT 2
+#define RT_EBUSY 7
 #define RT_TICK_PER_SECOND 1000
 rt_tick_t rt_tick_get(void);
 rt_tick_t rt_tick_from_millisecond(int ms);

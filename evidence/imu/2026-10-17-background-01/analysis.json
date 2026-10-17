@@ -1,0 +1,42 @@
+{
+  "source_kind": "user_attachment_original_bytes",
+  "sha256": "f220b887a4533fc75f06ee33cf0e98d9c06040f8d981838038c0617f454b804d",
+  "sample_lines": 31,
+  "generation": 3,
+  "first_tick": 20041,
+  "last_tick": 35374,
+  "tick_span": 15333,
+  "printed_tick_gaps": [
+    500,
+    501,
+    502,
+    508,
+    510,
+    550,
+    551,
+    553,
+    554
+  ],
+  "sample_errors": 0,
+  "click_count": 58,
+  "click_counts": [
+    15,
+    72
+  ],
+  "stop_generation": 4,
+  "samples_after_stop_in_excerpt": 0,
+  "heap": {
+    "total": 400612,
+    "used": 29984,
+    "maximum": 36936,
+    "calculated_free": 370628
+  },
+  "thread_count": 7,
+  "imu_stack_bytes": 2048,
+  "imu_stack_reported_max_percent": 23,
+  "main_stack_bytes": 8192,
+  "main_stack_reported_max_percent": 44,
+  "start_request_present": false,
+  "runtime_firmware_checksum_verified": false,
+  "formal_product_tests_executed": false
+}

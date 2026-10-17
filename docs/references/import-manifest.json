@@ -136,5 +136,59 @@
     "source": "user-attachment/0d44a8bc-7ac6-4392-9ce9-1fcf50316a90/已粘贴的文本.txt",
     "sha256": "4ced3ed5dbade63d9f01f795ffb6903a200ede00afffd56f1939704da29541b3",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-control-up-01/raw.log",
+    "source": "user-attachment/63fcc31d-5678-41b6-95c6-a9b038bc949e/已粘贴的文本.txt",
+    "sha256": "b1a6b568b74d8a097bd0d2df645b7a97ba422b88ae792014fc039f00f069aa45",
+    "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-control-down-01/raw.log",
+    "source": "user-attachment/05bc1fc1-2f0e-4957-8cbd-eb093329e2ec/已粘贴的文本.txt",
+    "sha256": "a804a83c5acf4953d0cfe2c5fffe6d4b8f6c40987bf6e387a27a49678b2cf1fd",
+    "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-control-unstable-01/raw.log",
+    "source": "user-message-transcription/2026-10-17-control-unstable-01",
+    "sha256": "f6b4f408c9bd8e69cc4829134530f44831f78fcb8ee9633f9822804927c3b21b",
+    "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-control-recovery-01/raw.log",
+    "source": "user-attachment/4a96fb89-f364-4d16-bc14-819fe21f1371/已粘贴的文本.txt",
+    "sha256": "5641027fde95b9f43aa3f2957049511b674dea482677303957b7ef75b9657f0e",
+    "modified": false
+  },
+  {
+    "path": "evidence/resources/2026-10-17-before-ui-01/raw.log",
+    "source": "user-message-transcription/2026-10-17-before-ui-01",
+    "sha256": "1fa311c0ca7fe2101200f4f954f63f46c001a0a836ab02251a8184add8deba4d",
+    "modified": false
+  },
+  {
+    "path": "evidence/display/2026-10-17-ui-01/raw.log",
+    "source": "user-message-transcription/2026-10-17-display-ui-01",
+    "sha256": "7c9cad10fdec26bc247142aa79b021f356a226e007e900ed9aee2c0058a39717",
+    "modified": false
+  },
+  {
+    "path": "evidence/display/2026-10-17-ui-01/repeat.log",
+    "source": "user-message-question-reply/2026-10-17-display-repeat",
+    "sha256": "4848a87ef8b2082366cd1d33be292d08461ec54231f1ba2be5f67eff85d089f7",
+    "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-background-01/raw.log",
+    "source": "user-attachment/32a3f67e-6964-4506-911f-bfb97bccee37/已粘贴的文本.txt",
+    "sha256": "f220b887a4533fc75f06ee33cf0e98d9c06040f8d981838038c0617f454b804d",
+    "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-input-01/raw.log",
+    "source": "user-message-transcription/2026-10-17-imu-input-01",
+    "sha256": "ad5d0ad817a723e6e935ae01b1b947776dd08d156fce76240bfe2f6dbbe58a06",
+    "modified": false
   }
 ]

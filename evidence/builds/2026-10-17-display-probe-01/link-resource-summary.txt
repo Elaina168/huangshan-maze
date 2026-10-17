@@ -1,0 +1,24 @@
+#define RT_MAIN_THREAD_STACK_SIZE 8192
+#define RT_USING_MEMHEAP 1
+#define RT_USING_SMALL_MEM 1
+#define LVGL_V9 1
+#define LV_COLOR_DEPTH 16
+#define LV_USE_RTTHREAD_MALLOC 1
+#define LCD_FB_USING_NONE 1
+#define LV_FB_TWO_NOT_SCREEN_SIZE 1
+#define LV_FB_LINE_NUM 40
+#define LCD_HOR_RES_MAX 390
+#define LCD_VER_RES_MAX 450
+
+ .bss.l1_non_ret_bss_frambuf
+                0x20008da0     0xf3c0 build_sf32lb52-lchspi-ulp_hcpu\sifli_sdk\middleware\lvgl\lv_drivers_v9\lv_lcd.o
+ .bss.l1_non_ret_bss_drv_lcd_stack
+
+GNU arm-none-eabi-size main.elf:
+text=555644 data=4208 bss=91184
+GNU arm-none-eabi-nm -S main.elf:
+20010780 000079e0 b buf1_1
+20008da0 000079e0 b buf1_2
+
+Each draw buffer: 31200 bytes; total: 62400 bytes.
+These are static ELF sections, not runtime heap or stack measurements.

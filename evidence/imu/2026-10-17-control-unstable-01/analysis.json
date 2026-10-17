@@ -1,0 +1,28 @@
+{
+  "archive_date": "2026-10-17",
+  "source": "user-message-transcription",
+  "source_bytes_are_original_attachment": false,
+  "acquisition_role": "continuous_tilt_in_response_to_unstable_calibration_instruction",
+  "physical_motion_not_independently_measured": true,
+  "source_commit": "31a3b3b65db0c849a9d6f8a5c1153722bd9f0feb",
+  "runtime_firmware_checksum_verified": false,
+  "raw_sha256": "f6b4f408c9bd8e69cc4829134530f44831f78fcb8ee9633f9822804927c3b21b",
+  "tick_hz_recorded": 1000,
+  "calibration_budget_ms_recorded": 3000,
+  "result": "fail",
+  "event": "calibration_timeout",
+  "control_output_count": 0,
+  "calibrated_feedback_present": false,
+  "valid_control_records_present": false,
+  "sample_error": -2,
+  "restore_error": 0,
+  "research_expectation_met": true,
+  "recovery_after_failure_verified": false,
+  "limitations": [
+    "no_raw_calibration_window_samples",
+    "no_begin_end_ticks_for_wall_clock_duration",
+    "no_independent_register_readback",
+    "no_physical_motion_recording",
+    "product_TC_003_not_executed"
+  ]
+}

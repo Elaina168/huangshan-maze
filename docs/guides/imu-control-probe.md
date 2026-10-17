@@ -2,7 +2,7 @@
 
 本轮在RGB工程增加`imu_control_probe`。参数经过已有数据的离线回算，但仍是预研候选，不是迷宫产品验收基线。构建、实际下载目录及固件哈希见[本轮构建证据](../../evidence/builds/2026-10-10-imu-control-01/README.md)，原`imu_probe`仍可使用。
 
-当前进度：[中立](../../evidence/imu/2026-10-10-control-neutral-01/README.md)99条有效零输入、[右向](../../evidence/imu/2026-10-10-control-right-01/README.md)73条活跃横向正输入、[左向](../../evidence/imu/2026-10-17-control-left-01/README.md)87条活跃横向负输入已核对；左右各98条记录全有效，符号相反。下一步up，之后down及晃动失败/重试。记录太快时可按下述操作节奏测试，参数仍候选，产品用例尚未执行。
+当前进度：已有[中立](../../evidence/imu/2026-10-10-control-neutral-01/README.md)、[右向](../../evidence/imu/2026-10-10-control-right-01/README.md)、[左向](../../evidence/imu/2026-10-17-control-left-01/README.md)、[上向](../../evidence/imu/2026-10-17-control-up-01/README.md)及[下向](../../evidence/imu/2026-10-17-control-down-01/README.md)记录。主要方向为右正/左负、下正/上负；下向过渡有一条-61反向值，保留分析。[持续晃动](../../evidence/imu/2026-10-17-control-unstable-01/README.md)得到校准超时、零控制输出，[放稳重试](../../evidence/imu/2026-10-17-control-recovery-01/README.md)重新校准成功，99条有效零输入后正常结束。本轮串口预研所列场景已有记录，正式产品TC仍未执行，参数仍候选。用户决定保留闪灯固件，未实施关灯；新增记录先本地保存，收工再提交推送。
 
 ## 1. 先验证中立
 
@@ -38,6 +38,8 @@ xy是减参考并扣除300 raw死区后的控制输入，不是速度、角度�
 ## 3. 校准失败与重试
 
 四向成功后再做晃动组：从命令开始持续改变姿态，使20点窗口任一轴范围超过300 raw，直到出现`event=calibration_timeout`。预期不出现`calibrated`或有效控制输入；随后放稳并重新执行，应能独立取得新的参考。轻微晃动可能仍在阈值内，以实际日志为准，不编造失败结果。
+
+操作时在发送`imu_control_probe`前就开始轻缓、持续改变倾角，发送后继续到命令返回。先保存这组完整输出；若仍出现calibrated也保留原日志，不把它改写成失败。失败组核对后，再执行放稳重试并保存恢复日志。
 
 若`valid=0 xy=0,0 event=stale_input`，命令将结束，不继续输出旧倾斜；保留日志中的`age_tick`和`gap_tick`。出现读取/身份/保存/恢复错误，保存完整输出，先核对问题。主机注入已覆盖过期输入，真实消费时效还待本轮数据验证，不需要人为制造硬件断线。
 
