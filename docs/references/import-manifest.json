@@ -130,5 +130,11 @@
     "source": "user-attachment/1379afa6-5561-40bf-a2ab-b65eb821119c/已粘贴的文本.txt",
     "sha256": "8866ede038d60e7362b93f6ffa9ae6df2ef9db52219800a88bb5a0984b949491",
     "modified": false
+  },
+  {
+    "path": "evidence/imu/2026-10-17-control-left-01/raw.log",
+    "source": "user-attachment/0d44a8bc-7ac6-4392-9ce9-1fcf50316a90/已粘贴的文本.txt",
+    "sha256": "4ced3ed5dbade63d9f01f795ffb6903a200ede00afffd56f1939704da29541b3",
+    "modified": false
   }
 ]

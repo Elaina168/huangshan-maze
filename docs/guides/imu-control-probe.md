@@ -2,7 +2,7 @@
 
 本轮在RGB工程增加`imu_control_probe`。参数经过已有数据的离线回算，但仍是预研候选，不是迷宫产品验收基线。构建、实际下载目录及固件哈希见[本轮构建证据](../../evidence/builds/2026-10-10-imu-control-01/README.md)，原`imu_probe`仍可使用。
 
-当前进度：[首次中立日志](../../evidence/imu/2026-10-10-control-neutral-01/README.md)99条有效零输入已核对；[右向输入记录](../../evidence/imu/2026-10-10-control-right-01/README.md)先25条零输入，之后73条横向为正，首次非零距校准1281ms，98条全有效。下一步left，之后up/down及晃动失败/重试。记录太快时可按下述操作节奏测试，参数仍候选，产品用例尚未执行。
+当前进度：[中立](../../evidence/imu/2026-10-10-control-neutral-01/README.md)99条有效零输入、[右向](../../evidence/imu/2026-10-10-control-right-01/README.md)73条活跃横向正输入、[左向](../../evidence/imu/2026-10-17-control-left-01/README.md)87条活跃横向负输入已核对；左右各98条记录全有效，符号相反。下一步up，之后down及晃动失败/重试。记录太快时可按下述操作节奏测试，参数仍候选，产品用例尚未执行。
 
 ## 1. 先验证中立
 
