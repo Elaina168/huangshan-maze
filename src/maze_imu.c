@@ -110,11 +110,18 @@ static void worker_entry(void *parameter)
             publish(&sample);
             rt_kprintf("[maze_imu] init generation=%u error=%d\n", sample.generation, sample.error);
         }
+        bool has_read_start = false;
+        rt_tick_t previous_read_start = 0;
         while (sample.error == RT_EOK)
         {
             struct request now = request_copy();
             if (!now.enabled || now.generation != session.generation) break;
             sample.read_start_tick = rt_tick_get();
+            sample.read_gap_tick = has_read_start ? sample.read_start_tick-previous_read_start : 0;
+            if ((uint64_t)sample.read_gap_tick*1000 > (uint64_t)MAZE_IMU_MAX_GAP_MS*RT_TICK_PER_SECOND)
+                sample.read_gap_count++;
+            previous_read_start = sample.read_start_tick;
+            has_read_start = true;
             sample.error = read_axes(bus, &sample);
             publish(&sample);
             if (sample.error != RT_EOK)

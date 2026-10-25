@@ -1,0 +1,3 @@
+PASS: callback does not mutate app, first queued event wins and consumes once
+PASS: stale page state and stale generation events are discarded
+PASS: current page event remains usable after stale-event rejection (no rendering)

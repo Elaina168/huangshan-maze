@@ -20,10 +20,23 @@ with tempfile.TemporaryDirectory(prefix='maze-test-') as folder:
                     '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/imu_harness.c'),
                     '-o', str(exe)], check=True)
     for scenario in sys.argv[1:] or ['normal', 'late_read', 'stop_during_read', 'stop_during_status', 'read_failed',
-                                    'configure_failed', 'restore_failed', 'save_failed', 'bus_missing', 'not_ready', 'queued_failure']:
+                                    'configure_failed', 'restore_failed', 'save_failed', 'bus_missing', 'not_ready', 'queued_failure', 'cadence', 'gap_latch']:
         subprocess.run([str(exe), scenario], check=True)
     app_exe = Path(folder) / 'app-test'
     subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
                     '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/harness.c'),
-                    str(ROOT / 'src/maze_app.c'), '-o', str(app_exe)], check=True)
+                    str(ROOT / 'src/maze_app.c'), str(ROOT / 'src/maze_model.c'),
+                    str(ROOT / 'src/maze_level.c'), '-lm', '-o', str(app_exe)], check=True)
     subprocess.run([str(app_exe)], check=True)
+    model_exe = Path(folder) / 'model-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/model_harness.c'),
+                    str(ROOT / 'src/maze_model.c'), str(ROOT / 'src/maze_level.c'),
+                    '-lm', '-o', str(model_exe)], check=True)
+    subprocess.run([str(model_exe)], check=True)
+    state_exe = Path(folder) / 'state-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/state_harness.c'),
+                    str(ROOT / 'src/maze_app.c'), str(ROOT / 'src/maze_model.c'),
+                    str(ROOT / 'src/maze_level.c'), '-lm', '-o', str(state_exe)], check=True)
+    subprocess.run([str(state_exe)], check=True)

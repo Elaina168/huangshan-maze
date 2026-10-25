@@ -1,0 +1,5 @@
+{
+  "src/maze_ui.c": "4f5e16d26f7469eadbdef04c1e0b53de007999ffab6d212363c1c57ba9e4b472",
+  "src/main.c": "d54bad0959003f2c5e2928cac010fe68bc8c4dc6de5869ec87788b4a07763d10",
+  "tests/maze/ui_refresh_harness.c": "c616df58398b056595b95222887959597b4f5bbaf613613451db5be7ac1bae25"
+}

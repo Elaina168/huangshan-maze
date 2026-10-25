@@ -1,0 +1,12 @@
+[huangshan_maze] v0.4.0-maze-ui boot ok
+[maze_ui] ready width=390 height=450 USB_RIGHT tick_hz=1000
+[maze] event=0 state=0 gen=0 tick=4667
+[maze] gen=1 state=1 error=0 count=0
+[maze] gen=1 state=1 tick=4667 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=1 tick=5167 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=1 tick=5667 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 error=0 count=20
+[maze] calibrated ref=-177,-387,-16293
+[maze] gen=1 state=2 tick=5817 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=4 error=-1002 count=20
+[maze] gen=1 state=4 tick=6017 ms=0 pos=24,24 input=0,0 error=-1002

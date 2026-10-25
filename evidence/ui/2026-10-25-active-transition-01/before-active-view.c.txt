@@ -1,0 +1,194 @@
+/* 游戏页面及触摸事件，只由主线程调用LVGL。 */
+#include "maze_ui.h"
+#include "rtthread.h"
+#include "lvgl.h"
+#include "littlevgl2rtt.h"
+
+static lv_obj_t *ball, *time_label, *info_label;
+static lv_obj_t *heading_label, *info_panel, *controls;
+static bool has_page, event_pending;
+static maze_app_state_t page_state, event_state;
+static uint32_t page_generation, event_generation;
+static maze_event_t pending_event;
+static int shown_error;
+
+static int32_t pixel(float value) { return (int32_t)(value+0.5f); }
+
+static lv_obj_t *box(lv_obj_t *parent, int32_t x, int32_t y,
+                     int32_t width, int32_t height, uint32_t color)
+{
+    lv_obj_t *obj=lv_obj_create(parent);
+    /* 去除主题边框、内距与阴影，模型坐标就是父容器局部坐标。 */
+    lv_obj_remove_style_all(obj);
+    lv_obj_set_pos(obj,x,y);
+    lv_obj_set_size(obj,width,height);
+    lv_obj_set_style_bg_color(obj,lv_color_hex(color),0);
+    lv_obj_set_style_bg_opa(obj,LV_OPA_COVER,0);
+    lv_obj_remove_flag(obj,LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);
+    return obj;
+}
+
+static lv_obj_t *label(lv_obj_t *parent, const char *text, int32_t x, int32_t y, int32_t width)
+{
+    lv_obj_t *obj=lv_label_create(parent);
+    lv_obj_set_width(obj,width);
+    lv_obj_set_pos(obj,x,y);
+    lv_obj_set_style_text_align(obj,LV_TEXT_ALIGN_CENTER,0);
+    lv_label_set_text(obj,text);
+    return obj;
+}
+
+static lv_obj_t *circle(lv_obj_t *parent, maze_circle_t c, uint32_t color)
+{
+    lv_obj_t *obj=box(parent,pixel(c.x-c.radius),pixel(c.y-c.radius),
+                      pixel(2*c.radius),pixel(2*c.radius),color);
+    lv_obj_set_style_radius(obj,pixel(c.radius),0);
+    return obj;
+}
+
+static void button_clicked(lv_event_t *event)
+{
+    if (event_pending) return;
+    pending_event=(maze_event_t)(uintptr_t)lv_event_get_user_data(event);
+    event_state=page_state;
+    event_generation=page_generation;
+    event_pending=true;
+}
+
+static void button(lv_obj_t *screen, const char *text, maze_event_t event, int32_t x, int32_t width)
+{
+    lv_obj_t *obj=lv_button_create(screen);
+    lv_obj_set_pos(obj,x-20,4);
+    lv_obj_set_size(obj,width,38);
+    lv_obj_set_style_pad_all(obj,4,0);
+    lv_obj_add_event_cb(obj,button_clicked,LV_EVENT_CLICKED,(void *)(uintptr_t)event);
+    lv_obj_t *caption=lv_label_create(obj);
+    lv_label_set_text(caption,text);
+    lv_obj_center(caption);
+}
+
+static void make_scene(const maze_app_t *app)
+{
+    lv_obj_t *screen=lv_screen_active();
+    label(screen,"TILT MAZE",20,10,350);
+    heading_label=label(screen,"",20,35,350);
+    time_label=label(screen,"Time: 0.00 s",20,58,350);
+    const maze_level_t *level=app->level;
+    box(screen,19,79,pixel(level->width)+2,pixel(level->height)+2,0x526b80);
+    lv_obj_t *map=box(screen,20,80,pixel(level->width),pixel(level->height),0x182b38);
+    for (unsigned i=0;i<level->wall_count;i++)
+    {
+        maze_rect_t w=level->walls[i];
+        box(map,pixel(w.x),pixel(w.y),pixel(w.width),pixel(w.height),0x708596);
+    }
+    for (unsigned i=0;i<level->trap_count;i++) circle(map,level->traps[i],0xef4b53);
+    circle(map,level->goal,0x40c98d);
+    ball=circle(map,(maze_circle_t){app->model.x,app->model.y,level->ball_radius},0x7dd3fc);
+    info_panel=box(map,20,90,310,120,0x243e50);
+    info_label=label(info_panel,"",12,12,286);
+    controls=box(screen,20,391,350,45,0x101c27);
+}
+
+static void make_page(const maze_app_t *app)
+{
+    if (!has_page) make_scene(app);
+    /* 保留地图和球，只使提示区域及按钮区域失效，避免切页整屏刷新。 */
+    lv_obj_clean(controls);
+    if (app->state==MAZE_APP_PLAYING) lv_obj_add_flag(info_panel,LV_OBJ_FLAG_HIDDEN);
+    else lv_obj_remove_flag(info_panel,LV_OBJ_FLAG_HIDDEN);
+    const char *heading="";
+    switch (app->state)
+    {
+    case MAZE_APP_READY:
+        heading="READY | USB RIGHT";
+        lv_label_set_text(info_label,"Blue ball: tilt to move\nGreen goal: reach to win\nRed holes: avoid them\nWalls block; touching is OK");
+        button(controls,"Start",MAZE_EVENT_START,130,130); break;
+    case MAZE_APP_CALIBRATING:
+        heading="CALIBRATING";
+        button(controls,"Cancel",MAZE_EVENT_EXIT,130,130); break;
+    case MAZE_APP_PLAYING:
+        heading="PLAYING | RED = HOLE";
+        button(controls,"Pause",MAZE_EVENT_PAUSE,130,130); break;
+    case MAZE_APP_PAUSED:
+        heading="PAUSED";
+        lv_label_set_text(info_label,"Round paused\nPosition and time are held.");
+        button(controls,"Resume",MAZE_EVENT_RESUME,24,80);
+        button(controls,"Calibrate",MAZE_EVENT_RECALIBRATE,111,80);
+        button(controls,"Replay",MAZE_EVENT_REPLAY,198,80);
+        button(controls,"Exit",MAZE_EVENT_EXIT,285,80); break;
+    case MAZE_APP_WON:
+    case MAZE_APP_LOST:
+        heading=app->state==MAZE_APP_WON?"GOAL REACHED":"FELL INTO A HOLE";
+        lv_label_set_text(info_label,app->state==MAZE_APP_WON?
+            "You reached the goal!\nReplay to start a new round.":
+            "The ball fell into a hole.\nReplay to try again.");
+        button(controls,"Replay",MAZE_EVENT_REPLAY,70,110);
+        button(controls,"Exit",MAZE_EVENT_EXIT,210,110); break;
+    case MAZE_APP_CALIBRATION_FAILED:
+    case MAZE_APP_DEVICE_ERROR:
+        heading=app->state==MAZE_APP_CALIBRATION_FAILED?"CALIBRATION FAILED":"DEVICE ERROR";
+        button(controls,"Retry",MAZE_EVENT_RETRY,70,110);
+        button(controls,app->state==MAZE_APP_CALIBRATION_FAILED?"Back":"Exit",MAZE_EVENT_EXIT,210,110); break;
+    }
+    lv_label_set_text(heading_label,heading);
+}
+
+int maze_ui_init(void)
+{
+    int error=littlevgl2rtt_init("lcd");
+    if (error!=RT_EOK) return error;
+    lv_obj_t *screen=lv_screen_active();
+    lv_obj_remove_flag(screen,LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_color(screen,lv_color_hex(0x101c27),0);
+    lv_obj_set_style_text_color(screen,lv_color_white(),0);
+    lv_display_t *display=lv_display_get_default();
+    rt_kprintf("[maze_ui] ready width=%ld height=%ld USB_RIGHT tick_hz=%d\n",
+        (long)lv_display_get_horizontal_resolution(display),
+        (long)lv_display_get_vertical_resolution(display),RT_TICK_PER_SECOND);
+    return RT_EOK;
+}
+
+void maze_ui_process(void)
+{
+    uint32_t delay=lv_timer_handler();
+    if (delay<2) delay=2;
+    if (delay>20) delay=20;
+    rt_thread_mdelay(delay);
+}
+
+bool maze_ui_take_event(const maze_app_t *app, maze_event_t *event)
+{
+    bool valid=event_pending && event_state==app->state && event_generation==app->generation;
+    event_pending=false;
+    if (valid) *event=pending_event;
+    return valid;
+}
+
+void maze_ui_render(const maze_app_t *app)
+{
+    bool changed=!has_page || page_state!=app->state;
+    if (changed || page_generation!=app->generation) event_pending=false;
+    if (changed) make_page(app);
+    has_page=true;
+    page_state=app->state;
+    page_generation=app->generation;
+    lv_obj_set_pos(ball,pixel(app->model.x-app->level->ball_radius),
+                        pixel(app->model.y-app->level->ball_radius));
+    uint32_t cs=(uint32_t)(app->elapsed_ms/10);
+    lv_label_set_text_fmt(time_label,"Time: %lu.%02lu s",(unsigned long)(cs/100),(unsigned long)(cs%100));
+    if (app->state==MAZE_APP_CALIBRATING)
+        lv_label_set_text_fmt(info_label,"Hold the board still\nSteady samples: %u/%u\nWaiting does not count as play.",
+                              app->window_count,MAZE_CALIBRATION_COUNT);
+    if (changed || shown_error!=app->error)
+    {
+        if (app->state==MAZE_APP_PAUSED && app->error)
+            lv_label_set_text_fmt(info_label,"Calibration or sensor issue (%d)\nPrevious pose is kept.\nCalibrate again or Resume.",app->error);
+        else if (app->state==MAZE_APP_CALIBRATION_FAILED || app->state==MAZE_APP_DEVICE_ERROR)
+            lv_label_set_text_fmt(info_label,app->state==MAZE_APP_CALIBRATION_FAILED?
+                "Calibration did not complete (%d)\nHold still, then Retry.":
+                "Sensor or timing error (%d)\nHold still, then Retry.\nRecovery returns to Pause.",app->error);
+        else if (app->state==MAZE_APP_PAUSED)
+            lv_label_set_text(info_label,"Round paused\nPosition and time are held.");
+    }
+    shown_error=app->error;
+}

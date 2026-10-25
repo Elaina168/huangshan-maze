@@ -1,147 +1,204 @@
-/* 显示与触摸预研页，不包含迷宫玩法。 */
+/* 游戏页面及触摸事件，只由主线程调用LVGL。 */
 #include "maze_ui.h"
 #include "rtthread.h"
 #include "lvgl.h"
 #include "littlevgl2rtt.h"
 
-static lv_obj_t *position_label;
-static lv_obj_t *count_label;
-static lv_obj_t *sampling_label;
-static lv_obj_t *input_label;
-static bool sample_toggle;
-static unsigned total_clicks;
+static lv_obj_t *ball, *time_label, *info_label;
+static lv_obj_t *heading_label, *info_panel, *controls;
+static bool has_page, event_pending;
+static maze_app_state_t page_state, event_state;
+static uint32_t page_generation, event_generation;
+static maze_event_t pending_event;
+static int shown_error;
+/* 暂停重校准的结果与持续更新的传感器错误分开保存，避免健康采样抹掉提示。 */
+static int paused_calibration_error;
 
-static struct
-{
-    const char *name;
-    lv_align_t align;
-    int32_t x;
-    int32_t y;
-    uint32_t color;
-} const targets[] =
-{
-    {"TL", LV_ALIGN_TOP_LEFT, 40, 40, 0xa83240},
-    {"TR", LV_ALIGN_TOP_RIGHT, -40, 40, 0x237547},
-    {"BL", LV_ALIGN_BOTTOM_LEFT, 40, -40, 0x285ba8},
-    {"BR", LV_ALIGN_BOTTOM_RIGHT, -40, -40, 0x956018},
-    {"CENTER", LV_ALIGN_CENTER, 0, 0, 0x6840a0},
-};
+static int32_t pixel(float value) { return (int32_t)(value+0.5f); }
 
-static void touch_event(lv_event_t *event)
+static lv_obj_t *box(lv_obj_t *parent, int32_t x, int32_t y,
+                     int32_t width, int32_t height, uint32_t color)
 {
-    const char *name = lv_event_get_user_data(event);
-    lv_event_code_t code = lv_event_get_code(event);
+    lv_obj_t *obj=lv_obj_create(parent);
+    /* 去除主题边框、内距与阴影，模型坐标就是父容器局部坐标。 */
+    lv_obj_remove_style_all(obj);
+    lv_obj_set_pos(obj,x,y);
+    lv_obj_set_size(obj,width,height);
+    lv_obj_set_style_bg_color(obj,lv_color_hex(color),0);
+    lv_obj_set_style_bg_opa(obj,LV_OPA_COVER,0);
+    lv_obj_remove_flag(obj,LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);
+    return obj;
+}
 
-    if (code == LV_EVENT_PRESSED)
+static lv_obj_t *label(lv_obj_t *parent, const char *text, int32_t x, int32_t y, int32_t width)
+{
+    lv_obj_t *obj=lv_label_create(parent);
+    lv_obj_set_width(obj,width);
+    lv_obj_set_pos(obj,x,y);
+    lv_obj_set_style_text_align(obj,LV_TEXT_ALIGN_CENTER,0);
+    lv_label_set_text(obj,text);
+    return obj;
+}
+
+static lv_obj_t *circle(lv_obj_t *parent, maze_circle_t c, uint32_t color)
+{
+    lv_obj_t *obj=box(parent,pixel(c.x-c.radius),pixel(c.y-c.radius),
+                      pixel(2*c.radius),pixel(2*c.radius),color);
+    lv_obj_set_style_radius(obj,pixel(c.radius),0);
+    return obj;
+}
+
+static void button_clicked(lv_event_t *event)
+{
+    if (event_pending) return;
+    pending_event=(maze_event_t)(uintptr_t)lv_event_get_user_data(event);
+    event_state=page_state;
+    event_generation=page_generation;
+    event_pending=true;
+}
+
+static void button(lv_obj_t *screen, const char *text, maze_event_t event, int32_t x, int32_t width)
+{
+    lv_obj_t *obj=lv_button_create(screen);
+    lv_obj_set_pos(obj,x-20,4);
+    lv_obj_set_size(obj,width,38);
+    lv_obj_set_style_pad_all(obj,4,0);
+    lv_obj_add_event_cb(obj,button_clicked,LV_EVENT_CLICKED,(void *)(uintptr_t)event);
+    lv_obj_t *caption=lv_label_create(obj);
+    lv_label_set_text(caption,text);
+    lv_obj_center(caption);
+}
+
+static void make_scene(const maze_app_t *app)
+{
+    lv_obj_t *screen=lv_screen_active();
+    label(screen,"TILT MAZE",20,10,350);
+    heading_label=label(screen,"",20,35,350);
+    time_label=label(screen,"Time: 0.00 s",20,58,350);
+    const maze_level_t *level=app->level;
+    box(screen,19,79,pixel(level->width)+2,pixel(level->height)+2,0x526b80);
+    lv_obj_t *map=box(screen,20,80,pixel(level->width),pixel(level->height),0x182b38);
+    for (unsigned i=0;i<level->wall_count;i++)
     {
-        lv_point_t point;
-        lv_indev_get_point(lv_event_get_indev(event), &point);
-        lv_label_set_text_fmt(position_label, "%s: x=%ld y=%ld", name,
-                              (long)point.x, (long)point.y);
-        rt_kprintf("[display_probe] press target=%s x=%ld y=%ld\n",
-                   name, (long)point.x, (long)point.y);
+        maze_rect_t w=level->walls[i];
+        box(map,pixel(w.x),pixel(w.y),pixel(w.width),pixel(w.height),0x708596);
     }
-    else if (code == LV_EVENT_CLICKED)
+    for (unsigned i=0;i<level->trap_count;i++) circle(map,level->traps[i],0xef4b53);
+    circle(map,level->goal,0x40c98d);
+    ball=circle(map,(maze_circle_t){app->model.x,app->model.y,level->ball_radius},0x7dd3fc);
+    info_panel=box(map,20,90,310,120,0x243e50);
+    info_label=label(info_panel,"",12,12,286);
+    controls=box(screen,20,391,350,45,0x101c27);
+}
+
+static void make_page(const maze_app_t *app)
+{
+    if (!has_page) make_scene(app);
+    /* 保留地图和球，只使提示区域及按钮区域失效，避免切页整屏刷新。 */
+    lv_obj_clean(controls);
+    /* 活动态都不遮盖地图；校准期间就完成大面板的隐藏，继续时无需擦图。 */
+    if (app->state==MAZE_APP_CALIBRATING || app->state==MAZE_APP_PLAYING || app->state==MAZE_APP_PAUSED)
+        lv_obj_add_flag(info_panel,LV_OBJ_FLAG_HIDDEN);
+    else lv_obj_remove_flag(info_panel,LV_OBJ_FLAG_HIDDEN);
+    const char *heading="";
+    switch (app->state)
     {
-        total_clicks++;
-        if (name == targets[4].name) sample_toggle = !sample_toggle;
-        lv_label_set_text_fmt(count_label, "Clicks: %u", total_clicks);
-        rt_kprintf("[display_probe] click target=%s count=%u\n", name, total_clicks);
+    case MAZE_APP_READY:
+        heading="READY | USB RIGHT";
+        lv_label_set_text(info_label,"Blue ball: tilt to move\nGreen goal: reach to win\nRed holes: avoid them\nWalls block; touching is OK");
+        button(controls,"Start",MAZE_EVENT_START,130,130); break;
+    case MAZE_APP_CALIBRATING:
+        heading="CALIBRATING";
+        button(controls,"Cancel",MAZE_EVENT_EXIT,130,130); break;
+    case MAZE_APP_PLAYING:
+        heading="PLAYING | RED = HOLE";
+        button(controls,"Pause",MAZE_EVENT_PAUSE,130,130); break;
+    case MAZE_APP_PAUSED:
+        heading="PAUSED";
+        button(controls,"Resume",MAZE_EVENT_RESUME,24,80);
+        button(controls,"Calibrate",MAZE_EVENT_RECALIBRATE,111,80);
+        button(controls,"Replay",MAZE_EVENT_REPLAY,198,80);
+        button(controls,"Exit",MAZE_EVENT_EXIT,285,80); break;
+    case MAZE_APP_WON:
+    case MAZE_APP_LOST:
+        heading=app->state==MAZE_APP_WON?"GOAL REACHED":"FELL INTO A HOLE";
+        lv_label_set_text(info_label,app->state==MAZE_APP_WON?
+            "You reached the goal!\nReplay to start a new round.":
+            "The ball fell into a hole.\nReplay to try again.");
+        button(controls,"Replay",MAZE_EVENT_REPLAY,70,110);
+        button(controls,"Exit",MAZE_EVENT_EXIT,210,110); break;
+    case MAZE_APP_CALIBRATION_FAILED:
+    case MAZE_APP_DEVICE_ERROR:
+        heading=app->state==MAZE_APP_CALIBRATION_FAILED?"CALIBRATION FAILED":"DEVICE ERROR";
+        button(controls,"Retry",MAZE_EVENT_RETRY,70,110);
+        button(controls,app->state==MAZE_APP_CALIBRATION_FAILED?"Back":"Exit",MAZE_EVENT_EXIT,210,110); break;
     }
+    lv_label_set_text(heading_label,heading);
 }
 
 int maze_ui_init(void)
 {
-    int error = littlevgl2rtt_init("lcd");
-    if (error != RT_EOK)
-        return error;
-
-    lv_display_t *display = lv_display_get_default();
-    int32_t width = lv_display_get_horizontal_resolution(display);
-    int32_t height = lv_display_get_vertical_resolution(display);
-    lv_obj_t *screen = lv_screen_active();
-    lv_obj_remove_flag(screen, LV_OBJ_FLAG_SCROLLABLE);
-    lv_obj_set_style_bg_color(screen, lv_color_hex(0x101820), 0);
-    lv_obj_set_style_text_color(screen, lv_color_white(), 0);
-
-    /* 边框与四角目标内缩，便于观察圆角屏上的可见边界。 */
-    lv_obj_t *border = lv_obj_create(screen);
-    lv_obj_set_size(border, width - 20, height - 20);
-    lv_obj_center(border);
-    lv_obj_set_style_bg_opa(border, LV_OPA_TRANSP, 0);
-    lv_obj_set_style_border_color(border, lv_color_hex(0x607080), 0);
-    lv_obj_set_style_border_width(border, 1, 0);
-    lv_obj_set_style_radius(border, 20, 0);
-    lv_obj_remove_flag(border, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);
-
-    lv_obj_t *title = lv_label_create(screen);
-    lv_label_set_text(title, "IMU INPUT PROBE");
-    lv_obj_align(title, LV_ALIGN_CENTER, 0, -104);
-
-    lv_obj_t *resolution = lv_label_create(screen);
-    lv_label_set_text_fmt(resolution, "%ld x %ld | USB RIGHT", (long)width, (long)height);
-    lv_obj_align(resolution, LV_ALIGN_CENTER, 0, -76);
-
-    position_label = lv_label_create(screen);
-    lv_label_set_text(position_label, "Touch a target");
-    lv_obj_align(position_label, LV_ALIGN_CENTER, 0, 60);
-    count_label = lv_label_create(screen);
-    lv_label_set_text(count_label, "Clicks: 0");
-    lv_obj_align(count_label, LV_ALIGN_CENTER, 0, 88);
-    sampling_label = lv_label_create(screen);
-    lv_label_set_text(sampling_label, "Center: calibrate");
-    lv_obj_align(sampling_label, LV_ALIGN_CENTER, 0, 116);
-    input_label = lv_label_create(screen);
-    lv_label_set_text(input_label, "x=0 y=0");
-    lv_obj_align(input_label, LV_ALIGN_CENTER, 0, -48);
-
-    /* 五个目标共用事件处理，按下记录坐标，完整点击增加一次计数。 */
-    for (unsigned i = 0; i < sizeof(targets) / sizeof(targets[0]); i++)
-    {
-        lv_obj_t *button = lv_button_create(screen);
-        lv_obj_set_size(button, i == 4 ? 130 : 72, i == 4 ? 58 : 48);
-        lv_obj_align(button, targets[i].align, targets[i].x, targets[i].y);
-        lv_obj_set_style_bg_color(button, lv_color_hex(targets[i].color), 0);
-        lv_obj_add_event_cb(button, touch_event, LV_EVENT_PRESSED, (void *)targets[i].name);
-        lv_obj_add_event_cb(button, touch_event, LV_EVENT_CLICKED, (void *)targets[i].name);
-        lv_obj_t *label = lv_label_create(button);
-        lv_label_set_text(label, targets[i].name);
-        lv_obj_center(label);
-    }
-
-    rt_kprintf("[display_probe] ready width=%ld height=%ld tick_hz=%d\n",
-               (long)width, (long)height, RT_TICK_PER_SECOND);
+    int error=littlevgl2rtt_init("lcd");
+    if (error!=RT_EOK) return error;
+    lv_obj_t *screen=lv_screen_active();
+    lv_obj_remove_flag(screen,LV_OBJ_FLAG_SCROLLABLE);
+    lv_obj_set_style_bg_color(screen,lv_color_hex(0x101c27),0);
+    lv_obj_set_style_text_color(screen,lv_color_white(),0);
+    lv_display_t *display=lv_display_get_default();
+    rt_kprintf("[maze_ui] ready width=%ld height=%ld USB_RIGHT tick_hz=%d\n",
+        (long)lv_display_get_horizontal_resolution(display),
+        (long)lv_display_get_vertical_resolution(display),RT_TICK_PER_SECOND);
     return RT_EOK;
 }
 
 void maze_ui_process(void)
 {
-    uint32_t delay = lv_timer_handler();
-    if (delay < 2) delay = 2;
-    if (delay > 20) delay = 20;
+    uint32_t delay=lv_timer_handler();
+    if (delay<2) delay=2;
+    if (delay>20) delay=20;
     rt_thread_mdelay(delay);
 }
 
-bool maze_ui_take_sample_toggle(void)
+bool maze_ui_take_event(const maze_app_t *app, maze_event_t *event)
 {
-    bool pending = sample_toggle;
-    sample_toggle = false;
-    return pending;
+    bool valid=event_pending && event_state==app->state && event_generation==app->generation;
+    event_pending=false;
+    if (valid) *event=pending_event;
+    return valid;
 }
 
-void maze_ui_show_input(const maze_app_t *app)
+void maze_ui_render(const maze_app_t *app)
 {
-    lv_label_set_text_fmt(input_label,"x=%ld y=%ld",(long)app->input.x,(long)app->input.y);
-    switch (app->state)
+    bool changed=!has_page || page_state!=app->state;
+    if (changed || page_generation!=app->generation) event_pending=false;
+    if (changed)
     {
-    case MAZE_APP_READY:
-        lv_label_set_text(sampling_label,"Center: calibrate"); break;
-    case MAZE_APP_CALIBRATING:
-        lv_label_set_text_fmt(sampling_label,"Calibrating: %u/20",app->window_count); break;
-    case MAZE_APP_INPUT_READY:
-        lv_label_set_text(sampling_label,"Input ready | center: stop"); break;
-    case MAZE_APP_CALIBRATION_FAILED:
-    case MAZE_APP_INPUT_ERROR:
-        lv_label_set_text_fmt(sampling_label,"Error %d | center: retry",app->error); break;
+        paused_calibration_error=app->state==MAZE_APP_PAUSED && page_state==MAZE_APP_CALIBRATING?
+            app->error:0;
+        make_page(app);
     }
+    has_page=true;
+    page_state=app->state;
+    page_generation=app->generation;
+    lv_obj_set_pos(ball,pixel(app->model.x-app->level->ball_radius),
+                        pixel(app->model.y-app->level->ball_radius));
+    uint32_t cs=(uint32_t)(app->elapsed_ms/10);
+    lv_label_set_text_fmt(time_label,"Time: %lu.%02lu s",(unsigned long)(cs/100),(unsigned long)(cs%100));
+    if (app->state==MAZE_APP_CALIBRATING)
+        lv_label_set_text_fmt(heading_label,"Hold still: %u/%u",
+                              app->window_count,MAZE_CALIBRATION_COUNT);
+    int feedback_error=app->error;
+    if (app->state==MAZE_APP_PAUSED && !feedback_error) feedback_error=paused_calibration_error;
+    if (changed || shown_error!=feedback_error)
+    {
+        if (app->state==MAZE_APP_PAUSED && feedback_error)
+            lv_label_set_text_fmt(heading_label,"PAUSED | POSE KEPT (%d)",feedback_error);
+        else if (app->state==MAZE_APP_CALIBRATION_FAILED || app->state==MAZE_APP_DEVICE_ERROR)
+            lv_label_set_text_fmt(info_label,app->state==MAZE_APP_CALIBRATION_FAILED?
+                "Calibration did not complete (%d)\nHold still, then Retry.":
+                "Sensor or timing error (%d)\nHold still, then Retry.\nRecovery returns to Pause.",app->error);
+        else if (app->state==MAZE_APP_PAUSED)
+            lv_label_set_text(heading_label,"PAUSED");
+    }
+    shown_error=feedback_error;
 }

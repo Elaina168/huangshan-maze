@@ -86,6 +86,18 @@ void rt_thread_mdelay(int ms)
     assert(maze_imu_latest(&sample));
     assert(sample.error==0 && sample.sequence==raw_reads);
     assert(sample.raw[0]==-32768 && sample.raw[1]==32767 && sample.raw[2]==-1);
+    if (strcmp(scenario,"gap_latch")==0)
+    {
+        assert(sample.read_gap_tick==(raw_reads==1?0u:raw_reads==2?110u:50u));
+        assert(sample.read_gap_count==(raw_reads==1?0u:1u));
+        if (raw_reads==1) { ticks+=60; return; }
+        if (raw_reads==2) return;
+    }
+    if (strcmp(scenario,"cadence")==0)
+    {
+        assert(sample.read_gap_tick==(raw_reads==1?0u:50u));
+        if (raw_reads==1) return;
+    }
     if (strcmp(scenario,"late_read")==0 && raw_reads==1)
     { assert(sample.generation==7); return; }
     assert(sample.generation==(strcmp(scenario,"late_read")==0 ? 8u : 7u));
@@ -124,6 +136,8 @@ int main(int argc, char **argv)
     }
     else assert(registers[0x10]==0x17 && registers[0x12]==0x22);
     if (strcmp(scenario,"late_read")==0) assert(raw_reads==2);
+    if (strcmp(scenario,"cadence")==0) assert(raw_reads==2);
+    if (strcmp(scenario,"gap_latch")==0) assert(raw_reads==3);
     if (strcmp(scenario,"stop_during_read")==0) assert(raw_reads==1);
     if (strcmp(scenario,"stop_during_status")==0) assert(raw_reads==0);
     if (strcmp(scenario,"queued_failure")==0) assert(raw_reads==1);

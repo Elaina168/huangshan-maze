@@ -1,0 +1,15 @@
+[maze] event=5 state=4 gen=7 tick=423010
+[maze] gen=8 state=1 error=0 count=0
+[maze] gen=8 state=1 tick=423010 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=1 tick=423514 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=1 tick=424014 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=5 error=0 count=20
+[maze] calibrated ref=-175,-384,-16266
+[maze] gen=8 state=5 tick=424164 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=5 tick=424682 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=5 tick=425190 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=2 state=5 gen=8 tick=425644
+[maze] gen=8 state=2 error=0 count=20
+[maze] gen=8 state=2 tick=425644 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=8 state=4 error=-1002 count=20
+[maze] gen=8 state=4 tick=425847 ms=0 pos=24,24 input=0,0 error=-1002

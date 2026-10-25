@@ -1,0 +1,50 @@
+[
+  {
+    "path": "src/main.c",
+    "sha256": "4dc7e0856038203685d9490ad8e3aca9a46a6fb06f25739f43f411cdf574cb06"
+  },
+  {
+    "path": "src/maze_ui.c",
+    "sha256": "44d7a9a4264fdd801a2987bfcf475823b029c04a3255c3160b378fb49c4b6a3d"
+  },
+  {
+    "path": "src/maze_ui.h",
+    "sha256": "75adf560a71af0ed62976c61714e8f0b515bf0efb42480fca6023d2808859a80"
+  },
+  {
+    "path": "src/maze_app.c",
+    "sha256": "882ee0d8b5975a9cd442b376f6f148368583e1d5c3dd00adeff66e588c5690c5"
+  },
+  {
+    "path": "src/maze_app.h",
+    "sha256": "d9af63b1122d9f12d77e3116e2747c82ead46bf806cab71942b9b1688cc87f74"
+  },
+  {
+    "path": "src/maze_model.c",
+    "sha256": "523c6d1fd86e070f60c0351c1c25bdae06d43e1f2a4c114e492e9c4e7b06c17c"
+  },
+  {
+    "path": "src/maze_model.h",
+    "sha256": "31b916d9af37dddd15d04a5924e7a69fa5ce468f7760fd5a88693cb7633e20f6"
+  },
+  {
+    "path": "src/maze_level.c",
+    "sha256": "700316d288ad242c4e57c84481fd5a326eeebb26fe2339ab886ed93a46fcc8c3"
+  },
+  {
+    "path": "src/maze_level.h",
+    "sha256": "fe376f32b4abc1524137c3ba004ff97f2480c8f6aa9403e5f21c17420dc2b363"
+  },
+  {
+    "path": "tests/maze/ui_event_harness.c",
+    "sha256": "fb7df55e493d856672d0763828e89974a0703dea46b60927fc8f2d57b81d8adb"
+  },
+  {
+    "path": "tests/maze/rtthread.h",
+    "sha256": "f9496a4099e9299890633670d3295443332a1009d10df822bd86c4bd95b533d9"
+  },
+  {
+    "path": "scripts/test_maze.py",
+    "sha256": "d964377c70e0052db1772b857d1effd1f8c0bbe85fe36f64d7eb23b2bd18db6f"
+  }
+]

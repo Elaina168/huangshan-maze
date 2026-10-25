@@ -1,0 +1,465 @@
+[maze] event=0 state=0 gen=11 tick=1448450
+[maze] gen=12 state=1 error=0 count=0
+[maze] gen=12 state=1 tick=1448450 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=6 state=1 gen=12 tick=1448907
+[maze] gen=13 state=0 error=0 count=0
+[maze] gen=13 state=0 tick=1448907 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=0 state=0 gen=13 tick=1454288
+[maze] gen=14 state=1 error=0 count=0
+[maze] gen=14 state=1 tick=1454288 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=1454794 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=1455295 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=1455796 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=1456296 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=1456797 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=3 error=-1003 count=20
+[maze] gen=14 state=3 tick=1457297 ms=0 pos=24,24 input=0,0 error=-1003
+[maze] event=5 state=3 gen=14 tick=1461935
+[maze] gen=15 state=1 error=0 count=0
+[maze] gen=15 state=1 tick=1461935 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=1 tick=1462437 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=1 tick=1462938 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 error=0 count=20
+[maze] calibrated ref=-219,-405,-16230
+[maze] gen=15 state=2 tick=1462972 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1463488 ms=516 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1463996 ms=1024 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1464511 ms=1539 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1465019 ms=2047 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1465535 ms=2563 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1466043 ms=3071 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1466558 ms=3586 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1467066 ms=4094 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=1467582 ms=4610 pos=24,22 input=437,-3424 error=0
+[maze] gen=15 state=2 tick=1468082 ms=5110 pos=24,54 input=-905,3589 error=0
+[maze] gen=15 state=2 tick=1468583 ms=5611 pos=13,55 input=0,752 error=0
+[maze] gen=15 state=2 tick=1469083 ms=6111 pos=11,74 input=116,7454 error=0
+[maze] gen=15 state=2 tick=1469585 ms=6613 pos=12,123 input=0,7644 error=0
+[maze] gen=15 state=2 tick=1470086 ms=7114 pos=19,175 input=2085,5705 error=0
+[maze] gen=15 state=2 tick=1470586 ms=7614 pos=28,214 input=393,3205 error=0
+[maze] gen=15 state=2 tick=1471087 ms=8115 pos=32,223 input=-589,-797 error=0
+[maze] gen=15 state=2 tick=1471596 ms=8624 pos=34,224 input=0,0 error=0
+[maze] event=1 state=2 gen=15 tick=1472100
+[maze] gen=15 state=5 error=0 count=20
+[maze] gen=15 state=5 tick=1472100 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1472602 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1473110 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1473625 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1474133 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1474648 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1475156 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1475671 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1476179 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=15 state=5 tick=1476694 ms=9128 pos=34,224 input=0,0 error=0
+[maze] event=3 state=5 gen=15 tick=1476971
+[maze] gen=16 state=1 error=0 count=0
+[maze] gen=16 state=1 tick=1476971 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=1 tick=1477480 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=1 tick=1477981 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=1 tick=1478481 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=1 tick=1478982 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=1 tick=1479482 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=5 error=-1003 count=20
+[maze] gen=16 state=5 tick=1479983 ms=9128 pos=34,224 input=0,0 error=-1003
+[maze] gen=16 state=5 tick=1480496 ms=9128 pos=34,224 input=1669,9628 error=0
+[maze] gen=16 state=5 tick=1481004 ms=9128 pos=34,224 input=1499,9639 error=0
+[maze] gen=16 state=5 tick=1481519 ms=9128 pos=34,224 input=1740,9477 error=0
+[maze] gen=16 state=5 tick=1482027 ms=9128 pos=34,224 input=1508,9195 error=0
+[maze] gen=16 state=5 tick=1482542 ms=9128 pos=34,224 input=1173,7606 error=0
+[maze] gen=16 state=5 tick=1483050 ms=9128 pos=34,224 input=78,1690 error=0
+[maze] gen=16 state=5 tick=1483565 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=5 tick=1484073 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=16 state=5 tick=1484588 ms=9128 pos=34,224 input=0,0 error=0
+[maze] event=3 state=5 gen=16 tick=1484964
+[maze] gen=17 state=1 error=0 count=0
+[maze] gen=17 state=1 tick=1484964 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=1 tick=1485472 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=1 tick=1485973 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=1 tick=1486473 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=1 tick=1486974 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=1 tick=1487475 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 error=-1003 count=20
+[maze] gen=17 state=5 tick=1487976 ms=9128 pos=34,224 input=0,0 error=-1003
+[maze] gen=17 state=5 tick=1488489 ms=9128 pos=34,224 input=0,10038 error=0
+[maze] gen=17 state=5 tick=1488997 ms=9128 pos=34,224 input=197,11111 error=0
+[maze] gen=17 state=5 tick=1489512 ms=9128 pos=34,224 input=902,2718 error=0
+[maze] gen=17 state=5 tick=1490020 ms=9128 pos=34,224 input=-434,0 error=0
+[maze] gen=17 state=5 tick=1490535 ms=9128 pos=34,224 input=-169,-393 error=0
+[maze] gen=17 state=5 tick=1491043 ms=9128 pos=34,224 input=-18,0 error=0
+[maze] gen=17 state=5 tick=1491558 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1492066 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1492581 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1493089 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1493604 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1494112 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=17 state=5 tick=1494627 ms=9128 pos=34,224 input=1149,1470 error=0
+[maze] gen=17 state=5 tick=1495135 ms=9128 pos=34,224 input=524,9303 error=0
+[maze] gen=17 state=5 tick=1495650 ms=9128 pos=34,224 input=6994,9234 error=0
+[maze] gen=17 state=5 tick=1496158 ms=9128 pos=34,224 input=5769,-7618 error=0
+[maze] gen=17 state=5 tick=1496673 ms=9128 pos=34,224 input=-2856,3357 error=0
+[maze] gen=17 state=5 tick=1497181 ms=9128 pos=34,224 input=0,5417 error=0
+[maze] gen=17 state=5 tick=1497687 ms=9128 pos=34,224 input=0,7789 error=0
+[maze] event=3 state=5 gen=17 tick=1497696
+[maze] gen=18 state=1 error=0 count=0
+[maze] gen=18 state=1 tick=1497696 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=1 tick=1498208 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=1 tick=1498708 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=1 tick=1499208 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=1 tick=1499709 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=1 tick=1500209 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=5 error=-1003 count=20
+[maze] gen=18 state=5 tick=1500710 ms=9128 pos=34,224 input=0,0 error=-1003
+[maze] gen=18 state=5 tick=1501223 ms=9128 pos=34,224 input=141,7898 error=0
+[maze] gen=18 state=5 tick=1501731 ms=9128 pos=34,224 input=753,6567 error=0
+[maze] gen=18 state=5 tick=1502246 ms=9128 pos=34,224 input=450,3301 error=0
+[maze] gen=18 state=5 tick=1502754 ms=9128 pos=34,224 input=-1509,5439 error=0
+[maze] gen=18 state=5 tick=1503269 ms=9128 pos=34,224 input=149,3505 error=0
+[maze] gen=18 state=5 tick=1503777 ms=9128 pos=34,224 input=-1392,0 error=0
+[maze] gen=18 state=5 tick=1504292 ms=9128 pos=34,224 input=-1299,0 error=0
+[maze] gen=18 state=5 tick=1504800 ms=9128 pos=34,224 input=-1171,0 error=0
+[maze] gen=18 state=5 tick=1505315 ms=9128 pos=34,224 input=-1066,0 error=0
+[maze] gen=18 state=5 tick=1505823 ms=9128 pos=34,224 input=-1009,0 error=0
+[maze] gen=18 state=5 tick=1506338 ms=9128 pos=34,224 input=-922,0 error=0
+[maze] gen=18 state=5 tick=1506846 ms=9128 pos=34,224 input=2200,-313 error=0
+[maze] gen=18 state=5 tick=1507361 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=5 tick=1507869 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=5 tick=1508384 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=5 tick=1508892 ms=9128 pos=34,224 input=0,0 error=0
+[maze] gen=18 state=5 tick=1509407 ms=9128 pos=34,224 input=931,629 error=0
+[maze] gen=18 state=5 tick=1509915 ms=9128 pos=34,224 input=2776,9889 error=0
+[maze] gen=18 state=5 tick=1510430 ms=9128 pos=34,224 input=372,6293 error=0
+[maze] gen=18 state=5 tick=1510938 ms=9128 pos=34,224 input=0,4983 error=0
+[maze] gen=18 state=5 tick=1511453 ms=9128 pos=34,224 input=0,5340 error=0
+[maze] gen=18 state=5 tick=1511961 ms=9128 pos=34,224 input=0,5584 error=0
+[maze] event=2 state=5 gen=18 tick=1512356
+[maze] gen=18 state=2 error=0 count=20
+[maze] gen=18 state=2 tick=1512356 ms=9128 pos=34,224 input=205,6476 error=0
+[maze] gen=18 state=2 tick=1512867 ms=9639 pos=33,271 input=0,6120 error=0
+[maze] gen=18 state=2 tick=1513383 ms=10155 pos=33,293 input=0,6751 error=0
+[maze] gen=18 state=2 tick=1513891 ms=10663 pos=33,293 input=0,3270 error=0
+[maze] gen=18 state=2 tick=1514407 ms=11179 pos=34,293 input=0,855 error=0
+[maze] gen=18 state=2 tick=1514908 ms=11680 pos=37,268 input=0,-6287 error=0
+[maze] gen=18 state=2 tick=1515409 ms=12181 pos=38,254 input=0,-708 error=0
+[maze] gen=18 state=2 tick=1515909 ms=12681 pos=38,252 input=0,0 error=0
+[maze] gen=18 state=2 tick=1516417 ms=13189 pos=38,251 input=0,232 error=0
+[maze] gen=18 state=2 tick=1516933 ms=13705 pos=40,253 input=1263,831 error=0
+[maze] gen=18 state=2 tick=1517442 ms=14214 pos=54,260 input=2586,1044 error=0
+[maze] gen=18 state=2 tick=1517943 ms=14715 pos=76,262 input=783,-2982 error=0
+[maze] gen=18 state=2 tick=1518444 ms=15216 pos=90,234 input=2559,922 error=0
+[maze] gen=18 state=2 tick=1518945 ms=15717 pos=105,242 input=1165,0 error=0
+[maze] gen=18 state=2 tick=1519445 ms=16217 pos=106,238 input=0,0 error=0
+[maze] gen=18 state=2 tick=1519960 ms=16732 pos=106,238 input=-274,-306 error=0
+[maze] gen=18 state=2 tick=1520466 ms=17238 pos=116,255 input=3490,0 error=0
+[maze] gen=18 state=2 tick=1520967 ms=17739 pos=149,227 input=4617,-9151 error=0
+[maze] gen=18 state=2 tick=1521467 ms=18239 pos=170,171 input=2543,-9012 error=0
+[maze] gen=18 state=2 tick=1521967 ms=18739 pos=177,112 input=-992,-13338 error=0
+[maze] gen=18 state=2 tick=1522468 ms=19240 pos=175,56 input=0,-4134 error=0
+[maze] gen=18 state=2 tick=1522969 ms=19741 pos=185,84 input=1633,8452 error=0
+[maze] gen=18 state=2 tick=1523469 ms=20241 pos=196,142 input=450,8706 error=0
+[maze] gen=18 state=2 tick=1523970 ms=20742 pos=177,196 input=-5792,7183 error=0
+[maze] gen=18 state=2 tick=1524488 ms=21260 pos=133,240 input=-6577,4756 error=0
+[maze] gen=18 state=2 tick=1524993 ms=21765 pos=87,250 input=-6050,0 error=0
+[maze] gen=18 state=2 tick=1525521 ms=22293 pos=51,257 input=-539,3606 error=0
+[maze] gen=18 state=2 tick=1526023 ms=22795 pos=49,293 input=-604,777 error=0
+[maze] gen=18 state=2 tick=1526540 ms=23312 pos=60,273 input=3130,-863 error=0
+[maze] gen=18 state=2 tick=1527041 ms=23813 pos=85,255 input=3904,-4262 error=0
+[maze] gen=18 state=2 tick=1527542 ms=24314 pos=119,210 input=4355,-7092 error=0
+[maze] gen=18 state=2 tick=1528042 ms=24814 pos=135,153 input=1507,-12477 error=0
+[maze] gen=18 state=2 tick=1528543 ms=25315 pos=146,94 input=1892,-11133 error=0
+[maze] gen=18 state=2 tick=1529043 ms=25815 pos=156,36 input=2914,-5467 error=0
+[maze] gen=18 state=2 tick=1529543 ms=26315 pos=172,42 input=1932,2934 error=0
+[maze] gen=18 state=2 tick=1530044 ms=26816 pos=187,89 input=2768,11296 error=0
+[maze] gen=18 state=2 tick=1530545 ms=27317 pos=200,148 input=2402,11603 error=0
+[maze] gen=18 state=2 tick=1531046 ms=27818 pos=212,208 input=2171,11315 error=0
+[maze] gen=18 state=2 tick=1531559 ms=28331 pos=213,217 input=1718,-4746 error=0
+[maze] gen=18 state=2 tick=1532059 ms=28831 pos=213,200 input=0,150 error=0
+[maze] gen=18 state=2 tick=1532560 ms=29332 pos=191,197 input=-6187,-2055 error=0
+[maze] gen=18 state=2 tick=1533060 ms=29832 pos=161,195 input=-2025,-1241 error=0
+[maze] gen=18 state=2 tick=1533560 ms=30332 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1534076 ms=30848 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1534584 ms=31356 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1535099 ms=31871 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1535607 ms=32379 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1536123 ms=32895 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1536631 ms=33403 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1537146 ms=33918 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1537654 ms=34426 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1538170 ms=34942 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1538678 ms=35450 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1539193 ms=35965 pos=159,197 input=0,0 error=0
+[maze] gen=18 state=2 tick=1539702 ms=36474 pos=159,210 input=0,4004 error=0
+[maze] gen=18 state=2 tick=1540202 ms=36974 pos=161,266 input=1738,11015 error=0
+[maze] gen=18 state=2 tick=1540702 ms=37474 pos=179,293 input=3438,4562 error=0
+[maze] gen=18 state=2 tick=1541202 ms=37974 pos=191,293 input=-39,0 error=0
+[maze] gen=18 state=7 error=0 count=20
+[maze] gen=18 state=7 tick=1541656 ms=38414 pos=180,287 input=0,0 error=0
+[maze] event=4 state=7 gen=18 tick=1554446
+[maze] gen=19 state=1 error=0 count=0
+[maze] gen=19 state=1 tick=1554446 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=1 tick=1554949 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=1 tick=1555450 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=1 tick=1555950 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=1 tick=1556451 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=1 tick=1556951 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=19 state=3 error=-1003 count=20
+[maze] gen=19 state=3 tick=1557452 ms=0 pos=24,24 input=0,0 error=-1003
+[maze] event=5 state=3 gen=19 tick=1558738
+[maze] gen=20 state=1 error=0 count=0
+[maze] gen=20 state=1 tick=1558738 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=1 tick=1559257 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=1 tick=1559758 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=2 error=0 count=20
+[maze] calibrated ref=-274,-859,-16235
+[maze] gen=20 state=2 tick=1559771 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=2 tick=1560287 ms=516 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=2 tick=1560795 ms=1024 pos=24,24 input=0,0 error=0
+[maze] gen=20 state=2 tick=1561310 ms=1539 pos=25,30 input=0,3747 error=0
+[maze] gen=20 state=2 tick=1561810 ms=2039 pos=26,49 input=1103,2897 error=0
+[maze] gen=20 state=2 tick=1562311 ms=2540 pos=18,84 input=-710,7238 error=0
+[maze] gen=20 state=2 tick=1562811 ms=3040 pos=13,136 input=56,7446 error=0
+[maze] gen=20 state=2 tick=1563312 ms=3541 pos=24,190 input=2079,7279 error=0
+[maze] gen=20 state=2 tick=1563812 ms=4041 pos=34,230 input=1732,4849 error=0
+[maze] gen=20 state=2 tick=1564313 ms=4542 pos=40,257 input=821,4053 error=0
+[maze] gen=20 state=2 tick=1564813 ms=5042 pos=50,276 input=2682,1876 error=0
+[maze] gen=20 state=2 tick=1565314 ms=5543 pos=78,257 input=4309,-4985 error=0
+[maze] gen=20 state=2 tick=1565814 ms=6043 pos=113,241 input=4628,-1525 error=0
+[maze] gen=20 state=2 tick=1566315 ms=6544 pos=144,217 input=4085,-3197 error=0
+[maze] gen=20 state=2 tick=1566815 ms=7044 pos=173,204 input=3737,-1735 error=0
+[maze] gen=20 state=2 tick=1567316 ms=7545 pos=197,180 input=3056,-2742 error=0
+[maze] gen=20 state=2 tick=1567827 ms=8056 pos=211,167 input=1790,-24 error=0
+[maze] gen=20 state=2 tick=1568327 ms=8556 pos=213,179 input=2075,4198 error=0
+[maze] gen=20 state=2 tick=1568828 ms=9057 pos=213,210 input=2382,3198 error=0
+[maze] gen=20 state=2 tick=1569345 ms=9574 pos=213,215 input=0,0 error=0
+[maze] gen=20 state=2 tick=1569848 ms=10077 pos=213,216 input=1838,0 error=0
+[maze] event=1 state=2 gen=20 tick=1569861
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1569861 ms=10090 pos=213,216 input=1838,0 error=0
+[maze] gen=20 state=5 tick=1570364 ms=10090 pos=213,216 input=118,0 error=0
+[maze] gen=20 state=5 tick=1570872 ms=10090 pos=213,216 input=111,0 error=0
+[maze] event=2 state=5 gen=20 tick=1571033
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1571033 ms=10090 pos=213,216 input=108,0 error=0
+[maze] gen=20 state=2 tick=1571544 ms=10601 pos=213,216 input=121,0 error=0
+[maze] event=1 state=2 gen=20 tick=1572030
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1572030 ms=11087 pos=213,216 input=124,0 error=0
+[maze] gen=20 state=5 tick=1572555 ms=11087 pos=213,216 input=0,-535 error=0
+[maze] event=2 state=5 gen=20 tick=1572614
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1572614 ms=11087 pos=213,216 input=0,-659 error=0
+[maze] gen=20 state=2 tick=1573115 ms=11588 pos=212,215 input=-172,-964 error=0
+[maze] event=1 state=2 gen=20 tick=1573214
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1573214 ms=11687 pos=212,214 input=0,0 error=0
+[maze] gen=20 state=5 tick=1573733 ms=11687 pos=212,214 input=147,0 error=0
+[maze] gen=20 state=5 tick=1574236 ms=11687 pos=212,214 input=148,0 error=0
+[maze] event=2 state=5 gen=20 tick=1574249
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1574249 ms=11687 pos=212,214 input=13,-257 error=0
+[maze] event=1 state=2 gen=20 tick=1574671
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1574671 ms=12109 pos=211,213 input=-2234,-1810 error=0
+[maze] gen=20 state=5 tick=1575180 ms=12109 pos=211,213 input=0,515 error=0
+[maze] event=2 state=5 gen=20 tick=1575248
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1575248 ms=12109 pos=211,213 input=160,0 error=0
+[maze] event=1 state=2 gen=20 tick=1575684
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1575684 ms=12545 pos=212,214 input=709,1399 error=0
+[maze] gen=20 state=5 tick=1576185 ms=12545 pos=212,214 input=110,0 error=0
+[maze] event=2 state=5 gen=20 tick=1576396
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1576396 ms=12545 pos=212,214 input=120,0 error=0
+[maze] event=1 state=2 gen=20 tick=1576835
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1576835 ms=12984 pos=213,214 input=141,7 error=0
+[maze] gen=20 state=5 tick=1577338 ms=12984 pos=213,214 input=113,0 error=0
+[maze] gen=20 state=5 tick=1577846 ms=12984 pos=213,214 input=140,0 error=0
+[maze] gen=20 state=5 tick=1578361 ms=12984 pos=213,214 input=117,0 error=0
+[maze] gen=20 state=5 tick=1578869 ms=12984 pos=213,214 input=119,0 error=0
+[maze] event=2 state=5 gen=20 tick=1579133
+[maze] gen=20 state=2 error=0 count=20
+[maze] gen=20 state=2 tick=1579133 ms=12984 pos=213,214 input=105,0 error=0
+[maze] event=1 state=2 gen=20 tick=1579639
+[maze] gen=20 state=5 error=0 count=20
+[maze] gen=20 state=5 tick=1579639 ms=13490 pos=212,213 input=-84,-58 error=0
+[maze] gen=20 state=5 tick=1580158 ms=13490 pos=212,213 input=116,0 error=0
+[maze] gen=20 state=5 tick=1580666 ms=13490 pos=212,213 input=111,0 error=0
+[maze] gen=20 state=5 tick=1581181 ms=13490 pos=212,213 input=123,0 error=0
+[maze] gen=20 state=5 tick=1581689 ms=13490 pos=212,213 input=110,0 error=0
+[maze] gen=20 state=5 tick=1582204 ms=13490 pos=212,213 input=129,0 error=0
+[maze] gen=20 state=5 tick=1582712 ms=13490 pos=212,213 input=110,0 error=0
+[maze] gen=20 state=5 tick=1583227 ms=13490 pos=212,213 input=127,0 error=0
+[maze] gen=20 state=5 tick=1583735 ms=13490 pos=212,213 input=98,0 error=0
+[maze] gen=20 state=5 tick=1584250 ms=13490 pos=212,213 input=850,954 error=0
+[maze] event=4 state=5 gen=20 tick=1584284
+[maze] gen=21 state=1 error=0 count=0
+[maze] gen=21 state=1 tick=1584284 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=21 state=1 tick=1584786 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=21 state=2 error=0 count=20
+[maze] calibrated ref=-216,-444,-16235
+[maze] gen=21 state=2 tick=1585286 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=21 state=2 tick=1585795 ms=509 pos=24,24 input=0,0 error=0
+[maze] gen=21 state=2 tick=1586310 ms=1024 pos=24,23 input=295,-796 error=0
+[maze] gen=21 state=2 tick=1586818 ms=1532 pos=24,47 input=0,5191 error=0
+[maze] gen=21 state=2 tick=1587319 ms=2033 pos=23,78 input=0,2537 error=0
+[maze] gen=21 state=2 tick=1587835 ms=2549 pos=23,80 input=0,0 error=0
+[maze] event=1 state=2 gen=21 tick=1588198
+[maze] gen=21 state=5 error=0 count=20
+[maze] gen=21 state=5 tick=1588198 ms=2912 pos=23,80 input=0,0 error=0
+[maze] gen=21 state=5 tick=1588704 ms=2912 pos=23,80 input=0,0 error=0
+[maze] gen=21 state=5 tick=1589212 ms=2912 pos=23,80 input=0,0 error=0
+[maze] gen=21 state=5 tick=1589727 ms=2912 pos=23,80 input=0,-54 error=0
+[maze] event=6 state=5 gen=21 tick=1589820
+[maze] gen=22 state=0 error=0 count=0
+[maze] gen=22 state=0 tick=1589820 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=0 state=0 gen=22 tick=1590487
+[maze] gen=23 state=1 error=0 count=0
+[maze] gen=23 state=1 tick=1590487 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=6 state=1 gen=23 tick=1590710
+[maze] gen=24 state=0 error=0 count=0
+[maze] gen=24 state=0 tick=1590710 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=0 state=0 gen=24 tick=1591703
+[maze] gen=25 state=1 error=0 count=0
+[maze] gen=25 state=1 tick=1591703 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=1 tick=1592209 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=1 tick=1592709 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 error=0 count=20
+[maze] calibrated ref=-231,-447,-16232
+[maze] gen=25 state=2 tick=1592743 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1593259 ms=516 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1593767 ms=1024 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1594282 ms=1539 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1594790 ms=2047 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1595306 ms=2563 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1595814 ms=3071 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1596329 ms=3586 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1596837 ms=4094 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1597353 ms=4610 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1597861 ms=5118 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1598376 ms=5633 pos=24,24 input=0,0 error=0
+[maze] gen=25 state=2 tick=1598884 ms=6141 pos=24,23 input=0,0 error=0
+[maze] gen=25 state=2 tick=1599400 ms=6657 pos=24,22 input=0,0 error=0
+[maze] gen=25 state=2 tick=1599908 ms=7165 pos=24,22 input=0,0 error=0
+[maze] gen=25 state=2 tick=1600423 ms=7680 pos=24,22 input=364,-2203 error=0
+[maze] gen=25 state=2 tick=1600931 ms=8188 pos=24,22 input=0,0 error=0
+[maze] gen=25 state=2 tick=1601447 ms=8704 pos=24,22 input=0,0 error=0
+[maze] gen=25 state=2 tick=1601955 ms=9212 pos=24,24 input=307,2217 error=0
+[maze] gen=25 state=2 tick=1602473 ms=9730 pos=24,51 input=0,643 error=0
+[maze] gen=25 state=2 tick=1602984 ms=10241 pos=23,50 input=-581,0 error=0
+[maze] gen=25 state=2 tick=1603484 ms=10741 pos=24,49 input=664,-431 error=0
+[maze] event=1 state=2 gen=25 tick=1603520
+[maze] gen=25 state=5 error=0 count=20
+[maze] gen=25 state=5 tick=1603520 ms=10777 pos=24,49 input=0,422 error=0
+[maze] gen=25 state=5 tick=1604039 ms=10777 pos=24,49 input=0,0 error=0
+[maze] gen=25 state=5 tick=1604547 ms=10777 pos=24,49 input=0,0 error=0
+[maze] gen=25 state=5 tick=1605062 ms=10777 pos=24,49 input=0,0 error=0
+[maze] gen=25 state=5 tick=1605570 ms=10777 pos=24,49 input=-1307,-1901 error=0
+[maze] gen=25 state=5 tick=1606085 ms=10777 pos=24,49 input=-622,-377 error=0
+[maze] gen=25 state=5 tick=1606593 ms=10777 pos=24,49 input=568,0 error=0
+[maze] gen=25 state=5 tick=1607108 ms=10777 pos=24,49 input=2459,5120 error=0
+[maze] gen=25 state=5 tick=1607616 ms=10777 pos=24,49 input=862,8087 error=0
+[maze] gen=25 state=5 tick=1608131 ms=10777 pos=24,49 input=2309,8378 error=0
+[maze] gen=25 state=5 tick=1608639 ms=10777 pos=24,49 input=3537,5418 error=0
+[maze] gen=25 state=5 tick=1609154 ms=10777 pos=24,49 input=3910,3151 error=0
+[maze] gen=25 state=5 tick=1609662 ms=10777 pos=24,49 input=3964,4947 error=0
+[maze] gen=25 state=5 tick=1610177 ms=10777 pos=24,49 input=5293,6404 error=0
+[maze] gen=25 state=5 tick=1610685 ms=10777 pos=24,49 input=4210,5266 error=0
+[maze] gen=25 state=5 tick=1611200 ms=10777 pos=24,49 input=4829,4354 error=0
+[maze] gen=25 state=5 tick=1611708 ms=10777 pos=24,49 input=3690,3619 error=0
+[maze] gen=25 state=5 tick=1612223 ms=10777 pos=24,49 input=2364,626 error=0
+[maze] gen=25 state=5 tick=1612731 ms=10777 pos=24,49 input=3841,1186 error=0
+[maze] gen=25 state=5 tick=1613246 ms=10777 pos=24,49 input=3972,3421 error=0
+[maze] gen=25 state=5 tick=1613754 ms=10777 pos=24,49 input=5612,5163 error=0
+[maze] gen=25 state=5 tick=1614269 ms=10777 pos=24,49 input=7324,5396 error=0
+[maze] gen=25 state=5 tick=1614777 ms=10777 pos=24,49 input=11580,4907 error=0
+[maze] gen=25 state=5 tick=1615292 ms=10777 pos=24,49 input=11952,5868 error=0
+[maze] gen=25 state=5 tick=1615800 ms=10777 pos=24,49 input=8902,8530 error=0
+[maze] gen=25 state=5 tick=1616315 ms=10777 pos=24,49 input=4004,6613 error=0
+[maze] gen=25 state=5 tick=1616823 ms=10777 pos=24,49 input=1474,6948 error=0
+[maze] gen=25 state=5 tick=1617338 ms=10777 pos=24,49 input=1140,7570 error=0
+[maze] gen=25 state=5 tick=1617846 ms=10777 pos=24,49 input=1093,8226 error=0
+[maze] gen=25 state=5 tick=1618361 ms=10777 pos=24,49 input=2751,6140 error=0
+[maze] gen=25 state=5 tick=1618869 ms=10777 pos=24,49 input=5898,8284 error=0
+[maze] gen=25 state=5 tick=1619384 ms=10777 pos=24,49 input=4194,8324 error=0
+[maze] gen=25 state=5 tick=1619892 ms=10777 pos=24,49 input=6890,8442 error=0
+[maze] gen=25 state=5 tick=1620407 ms=10777 pos=24,49 input=4994,7438 error=0
+[maze] gen=25 state=5 tick=1620915 ms=10777 pos=24,49 input=1719,6965 error=0
+[maze] gen=25 state=5 tick=1621430 ms=10777 pos=24,49 input=6106,9473 error=0
+[maze] gen=25 state=5 tick=1621938 ms=10777 pos=24,49 input=6091,11671 error=0
+[maze] gen=25 state=5 tick=1622453 ms=10777 pos=24,49 input=5122,9417 error=0
+[maze] gen=25 state=5 tick=1622961 ms=10777 pos=24,49 input=5235,9806 error=0
+[maze] gen=25 state=5 tick=1623476 ms=10777 pos=24,49 input=4160,10578 error=0
+[maze] gen=25 state=5 tick=1623984 ms=10777 pos=24,49 input=3229,9372 error=0
+[maze] gen=25 state=5 tick=1624499 ms=10777 pos=24,49 input=4562,9702 error=0
+[maze] gen=25 state=5 tick=1625007 ms=10777 pos=24,49 input=3848,9811 error=0
+[maze] gen=25 state=5 tick=1625522 ms=10777 pos=24,49 input=3737,9643 error=0
+[maze] gen=25 state=5 tick=1626030 ms=10777 pos=24,49 input=3712,9287 error=0
+[maze] gen=25 state=5 tick=1626545 ms=10777 pos=24,49 input=3469,9568 error=0
+[maze] gen=25 state=5 tick=1627053 ms=10777 pos=24,49 input=4033,9518 error=0
+[maze] gen=25 state=5 tick=1627568 ms=10777 pos=24,49 input=3356,9566 error=0
+SFBL
+Serial:c2,Chip:4,Package:3,Rev:3  Reason:00000040
+
+ \ | /
+- SiFli Corporation
+ / | \     build on Oct 25 2026, 2.5.1 build 00000000
+ 2020 - 2022 Copyright by SiFli team
+aw32001_init ok,  time consum: 0.00 ms.
+mount /dev sucess
+[I/drv.rtc] PSCLR=0x80000100 DivAI=128 DivAF=0 B=256
+[I/drv.rtc] RTC use LXT RTC_CR=00000001
+
+[I/drv.rtc] Init RTC, wake = 1
+
+[I/drv.audprc] init 00 ADC_PATH_CFG0 0x606
+
+[I/drv.audprc] HAL_AUDPRC_Init res 0
+
+[I/drv.audcodec] HAL_AUDCODEC_Init res 0
+
+[I/drv.rgb] rgbled register success, supporting 1 LEDs
+[I/TOUCH] Regist touch screen driver, probe=1202740d 
+[I/FAL] Flash Abstraction Layer (V0.5.99) initialize success.
+[I/FAL] The FAL MTD NOR device (dfu) created successfully
+[I/FAL] The FAL MTD NOR device (ble) created successfully
+LV_MEM_RT: using rt_malloc path (psram private heap build condition not met)
+[I/DBG] drv_gpu opened.
+call par CFG1(3313)
+fc 9, xtal 2000, pll 2151
+call par CFG1(3313)
+fc 7, xtal 2000, pll 1723
+
+[huangshan_maze] v0.4.2-active-view boot ok
+[maze_rgb] pin_func=643 expected=477 mode=1
+[maze_rgb] restored PA32 PWM mapping
+msh />[maze_rgb] black request result=0 tick=24
+[maze_rgb] pwm_read=0 period_ns=1583 pulse_ns=41
+[I/DBG] [NONE] -> [OPENING]
+[I/DBG] open
+[I/DBG] HW open
+[I/DBG] Try registered LCD driver...
+
+CO5300_ReadID 0x331100 
+[I/co5300] LCD module use CO5300 IC 
+
+
+CO5300_ReadID 0x331100 
+[I/co5300] LCD module use CO5300 IC 
+
+[I/DBG] Found lcd co5300 id:331100h
+[I/DBG] HW open done.
+[I/DBG] [OPENING] -> [INITIALIZED]
+[I/DBG] open done.
+[I/TOUCH] Open
+[I/TOUCH] Opened.
+[maze_ui] ready width=390 height=450 USB_RIGHT tick_hz=1000
+[I/TOUCH] Find touch screen driver...
+[I/TOUCH] Probe 1202740d
+[I/TOUCH] touch screen found driver  2001a668, ft6146
+[E/drv.ft6146] ft6146 id_H=64
+[E/drv.ft6146] ft6146 id_L=56
+[I/DBG] Auto turn on display.
+[I/DBG] set brightness 50
+[I/DBG] display on
+[I/DBG] [INITIALIZED] -> [ON]

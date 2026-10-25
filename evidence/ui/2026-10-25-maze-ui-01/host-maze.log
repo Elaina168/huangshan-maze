@@ -1,0 +1,33 @@
+PASS: normal (injected I/O and scheduler, not hardware)
+PASS: late_read (injected I/O and scheduler, not hardware)
+PASS: stop_during_read (injected I/O and scheduler, not hardware)
+PASS: stop_during_status (injected I/O and scheduler, not hardware)
+PASS: read_failed (injected I/O and scheduler, not hardware)
+PASS: configure_failed (injected I/O and scheduler, not hardware)
+PASS: restore_failed (injected I/O and scheduler, not hardware)
+PASS: save_failed (injected I/O and scheduler, not hardware)
+PASS: bus_missing (injected I/O and scheduler, not hardware)
+PASS: not_ready (injected I/O and scheduler, not hardware)
+PASS: queued_failure (injected I/O and scheduler, not hardware)
+PASS: 19/20 samples, duplicate sequence, 950ms and range300 boundary
+PASS: range301 rejected and 3000ms timeout without reference commit
+PASS: USB-right signs, dead zone300 and age100/101 boundary
+PASS: read gap100/101 and late sample rejection
+PASS: missing sequence/gap/stale reset window, old generation ignored
+PASS: tick wrap and 100Hz tick conversion
+PASS: timeout preserves reference, I/O failure and cancel invalidation
+PASS: short span not accepted, sliding window succeeds, late result cannot beat deadline
+PASS: proportional speed, saturation, diagonal limit and neutral
+PASS: thin wall, large sweep, contact sliding, inside corner and all borders
+PASS: rounded expansion, exact tangent and oblique corner sliding
+PASS: earliest region, inclusive boundary, tangent, wall occlusion and terminal freeze
+PASS: one-level geometry, disjoint regions and ball-radius-safe route witness
+PASS: 64 approach directions with 150 repeated contact steps each
+PASS: 10s elapsed-time motion at 20/40 caller Hz (not display acceptance)
+PASS: calibration starts time, 10s pause, no catch-up and invalid events
+PASS: replay/exit clear partial steps, new generations and late result isolation
+PASS: paused recalibration success/failure preserve round and stale resume fails
+PASS: I/O freezes round, recovery retries pause, paused read error checked on resume
+PASS: 100/101ms scheduler boundary, partial step, tick wrap and 1280Hz fraction
+PASS: fractional-step win/loss time, single settlement, terminal freeze and replay
+PASS: same 50ms samples, 20/40Hz app update, fixed 10ms motion (host only)

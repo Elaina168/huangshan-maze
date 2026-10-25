@@ -6,7 +6,7 @@
  *   example/rt_device/rgb_led             —— RGB 灯驱动用法（SK6812MINI-HS，PA32，PWMT2 通道1）
  * 板型：sf32lb52-lchspi-ulp（立创·黄山派）。
  *
- * 原RGB个人修改及实测证据保留在Git与evidence；当前改为显示/触摸预研，启动后关灯。
+ * 原RGB个人修改及实测证据保留在Git与evidence；当前运行体感迷宫，启动后关灯。
  *
  * 新增 .c 文件直接放进 src/ 即可，src/SConscript 会自动收集。
  */
@@ -16,9 +16,10 @@
 #include "drivers/rt_drv_pwm.h"
 #include "maze_ui.h"
 #include "maze_imu.h"
+#include "finsh.h"
 
 #define APP_NAME        "huangshan_maze"
-#define APP_VERSION     "0.2.2-imu-input-probe"
+#define APP_VERSION     "0.4.3-pause-feedback"
 
 #define RGBLED_NAME     "rgbled"
 
@@ -39,18 +40,41 @@ static void rgb_led_init(void)
     }
 }
 
-static int rgb_led_off(void)
+static int maze_rgb_off(void)
 {
-    struct rt_rgbled_configuration configuration;
-    configuration.color_rgb = 0;
-    return rt_device_control(rgbled_device, PWM_CMD_SET_COLOR, &configuration);
+#ifdef SF32LB52X
+    pin_function function;
+    PIN_ModeTypeDef mode;
+    int pin_result = HAL_PIN_Get(PAD_PA32, &function, &mode, 1);
+    if (pin_result < 0)
+    {
+        rt_kprintf("[maze_rgb] pin read failed result=%d\n",pin_result);
+        return -RT_ERROR;
+    }
+    rt_kprintf("[maze_rgb] pin_func=%d expected=%d mode=%d\n",function,GPTIM2_CH1,mode);
+    if (function != GPTIM2_CH1)
+    {
+        HAL_PIN_Set(PAD_PA32, GPTIM2_CH1, PIN_NOPULL, 1);
+        rt_kprintf("[maze_rgb] restored PA32 PWM mapping\n");
+    }
+#endif
+    struct rt_rgbled_configuration configuration = {0};
+    int error = rt_device_control(rgbled_device, PWM_CMD_SET_COLOR, &configuration);
+    rt_kprintf("[maze_rgb] black request result=%d tick=%u\n",error,rt_tick_get());
+    if (error != RT_EOK) return error;
+    struct rt_pwm_configuration pwm = {.channel=BSP_USING_RGBLED_CH};
+    struct rt_device *pwm_device = rt_device_find(RGB_USING_SK6812MINI_HS_PWM_DEV_NAME);
+    error = rt_device_control(pwm_device, PWM_CMD_GET, &pwm);
+    rt_kprintf("[maze_rgb] pwm_read=%d period_ns=%u pulse_ns=%u\n",error,pwm.period,pwm.pulse);
+    return error;
 }
+MSH_CMD_EXPORT(maze_rgb_off, Send a black frame and report the RGB driver result);
 
 int main(void)
 {
     rt_kprintf("\n[%s] v%s boot ok\n", APP_NAME, APP_VERSION);
     rgb_led_init();
-    int error = rgb_led_off();
+    int error = maze_rgb_off();
     if (error == RT_EOK)
         error = maze_ui_init();
     if (error == RT_EOK)
@@ -62,47 +86,73 @@ int main(void)
     }
 
     static maze_app_t app;
-    maze_app_init(&app, RT_NULL, RT_TICK_PER_SECOND);
+    maze_app_init(&app, &maze_level_one, RT_TICK_PER_SECOND);
     maze_app_state_t last_state = app.state;
+    uint32_t last_generation = app.generation;
     rt_tick_t last_log = rt_tick_get();
     rt_tick_t last_ui = last_log;
+    rt_tick_t previous_loop = last_log;
+    rt_tick_t last_render_cost = 0;
+    maze_ui_render(&app);
     while (1)
     {
+        rt_tick_t service_start = rt_tick_get();
         maze_ui_process();
         rt_tick_t now = rt_tick_get();
-        if (maze_ui_take_sample_toggle())
+        rt_tick_t service_cost = now - service_start;
+        rt_tick_t loop_gap = now - previous_loop;
+        previous_loop = now;
+        uint32_t previous_sequence = app.last_sequence;
+        uint32_t previous_read = app.last_read_tick;
+        maze_event_t event;
+        if (maze_ui_take_event(&app, &event))
         {
-            if (app.state == MAZE_APP_CALIBRATING || app.state == MAZE_APP_INPUT_READY)
-                maze_app_cancel(&app);
-            else
-                maze_app_begin(&app, now);
+            rt_kprintf("[maze] event=%d state=%d gen=%u tick=%u\n",event,app.state,app.generation,now);
+            maze_app_event(&app, event, now);
         }
         maze_imu_sample_t sample;
-        if (maze_imu_latest(&sample)) maze_app_sample(&app, &sample, now);
+        bool have_sample = maze_imu_latest(&sample);
+        if (have_sample) maze_app_sample(&app, &sample, now);
         maze_app_update(&app, now);
-        bool enabled = app.state == MAZE_APP_CALIBRATING || app.state == MAZE_APP_INPUT_READY;
-        maze_imu_request(app.generation, enabled);
-        bool changed = app.state != last_state;
+        bool enabled;
+        uint32_t request_generation;
+        maze_app_request(&app, &request_generation, &enabled);
+        maze_imu_request(request_generation, enabled);
+        bool changed = app.state != last_state || app.generation != last_generation;
         if (changed)
         {
-            rt_kprintf("[maze_input] gen=%u state=%d error=%d count=%u\n",
+            if (app.state == MAZE_APP_DEVICE_ERROR)
+            {
+                rt_kprintf("[maze_timing] loop_tick=%u service_tick=%u render_tick=%u previous_seq=%u previous_read=%u\n",
+                           loop_gap,service_cost,last_render_cost,previous_sequence,previous_read);
+                if (have_sample)
+                    rt_kprintf("[maze_timing] sample_seq=%u read_tick=%u age_tick=%u consumed_gap_tick=%u producer_gap_tick=%u producer_gap_count=%u\n",
+                               sample.sequence,sample.read_start_tick,now-sample.read_start_tick,
+                               sample.read_start_tick-previous_read,sample.read_gap_tick,sample.read_gap_count);
+            }
+            rt_kprintf("[maze] gen=%u state=%d error=%d count=%u\n",
                        app.generation, app.state, app.error, app.window_count);
-            if (app.state == MAZE_APP_INPUT_READY)
-                rt_kprintf("[maze_input] calibrated ref=%d,%d,%d\n",
+            if (last_state == MAZE_APP_CALIBRATING && app.state != MAZE_APP_CALIBRATING &&
+                app.has_reference && app.error == 0)
+                rt_kprintf("[maze] calibrated ref=%d,%d,%d\n",
                            app.reference[0], app.reference[1], app.reference[2]);
             last_state = app.state;
+            last_generation = app.generation;
         }
         if (changed || (rt_tick_t)(now-last_log) >= rt_tick_from_millisecond(500))
         {
-            if (enabled)
-                rt_kprintf("[maze_input] gen=%u state=%d count=%u xy=%ld,%ld\n",
-                           app.generation, app.state, app.window_count,
-                           (long)app.input.x, (long)app.input.y);
+            if (enabled || changed)
+                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d\n",
+                           app.generation, app.state, now, (unsigned long)app.elapsed_ms,
+                           (long)app.model.x, (long)app.model.y,
+                           (long)app.input.x, (long)app.input.y, app.error);
             last_log = now;
         }
         if (changed || (rt_tick_t)(now-last_ui) >= rt_tick_from_millisecond(50))
         {
-            maze_ui_show_input(&app);
+            rt_tick_t render_start = rt_tick_get();
+            maze_ui_render(&app);
+            last_render_cost = rt_tick_get() - render_start;
             last_ui = now;
         }
     }

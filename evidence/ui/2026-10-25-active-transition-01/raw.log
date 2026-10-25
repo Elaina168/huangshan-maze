@@ -1,0 +1,159 @@
+[maze] gen=11 state=5 tick=77502 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=5 tick=78017 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=5 tick=78525 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=5 tick=79040 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=5 tick=79548 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=2 state=5 gen=11 tick=79888
+[maze] gen=11 state=2 error=0 count=20
+[maze] gen=11 state=2 tick=79888 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=80392 ms=504 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=80900 ms=1012 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=81415 ms=1527 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=81923 ms=2035 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=82440 ms=2552 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=82946 ms=3058 pos=24,24 input=0,0 error=0
+[maze] gen=11 state=2 tick=83463 ms=3575 pos=23,32 input=-246,2218 error=0
+[maze] gen=11 state=2 tick=83964 ms=4076 pos=20,55 input=-1254,1219 error=0
+[maze] gen=11 state=2 tick=84473 ms=4585 pos=16,74 input=216,3766 error=0
+[maze] gen=11 state=2 tick=84973 ms=5085 pos=21,110 input=1248,5414 error=0
+[maze] gen=11 state=2 tick=85492 ms=5604 pos=36,150 input=3012,4195 error=0
+[maze] gen=11 state=2 tick=85992 ms=6104 pos=59,153 input=2491,-809 error=0
+[maze] gen=11 state=2 tick=86504 ms=6616 pos=65,154 input=341,630 error=0
+[maze] gen=11 state=2 tick=87004 ms=7116 pos=65,146 input=0,-1514 error=0
+[maze] gen=11 state=7 error=0 count=20
+[maze] gen=11 state=7 tick=87157 ms=7246 pos=64,142 input=0,0 error=0
+[maze] event=4 state=7 gen=11 tick=89567
+[maze] gen=12 state=1 error=0 count=0
+[maze] gen=12 state=1 tick=89567 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=12 state=1 tick=90086 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=12 state=1 tick=90586 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=12 state=2 error=0 count=20
+[maze] calibrated ref=-185,-502,-16277
+[maze] gen=12 state=2 tick=90636 ms=0 pos=24,24 input=0,0 error=0
+[maze_timing] loop_tick=116 service_tick=112 render_tick=3 previous_seq=1180 previous_read=90592
+[maze_timing] sample_seq=1183 read_tick=90745 age_tick=7 consumed_gap_tick=153 producer_gap_tick=50 producer_gap_count=0
+[maze] gen=12 state=4 error=-1004 count=20
+[maze] gen=12 state=4 tick=90752 ms=0 pos=24,24 input=0,0 error=-1004
+[maze] event=5 state=4 gen=12 tick=91981
+[maze] gen=13 state=1 error=0 count=0
+[maze] gen=13 state=1 tick=91981 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=1 tick=92484 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=1 tick=93003 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=5 error=0 count=20
+[maze] calibrated ref=-169,-396,-16282
+[maze] gen=13 state=5 tick=93033 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=5 tick=93549 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=5 tick=94057 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=2 state=5 gen=13 tick=94430
+[maze] gen=13 state=2 error=0 count=20
+[maze] gen=13 state=2 tick=94430 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=2 tick=94935 ms=505 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=2 tick=95443 ms=1013 pos=24,24 input=0,0 error=0
+[maze] gen=13 state=2 tick=95948 ms=1518 pos=22,25 input=-1407,169 error=0
+[maze] gen=13 state=2 tick=96449 ms=2019 pos=14,71 input=-1092,8789 error=0
+[maze] gen=13 state=2 tick=96968 ms=2538 pos=7,132 input=-880,10507 error=0
+[maze] gen=13 state=2 tick=97468 ms=3038 pos=10,191 input=882,9823 error=0
+[maze] gen=13 state=2 tick=97968 ms=3538 pos=20,249 input=2350,6089 error=0
+[maze] gen=13 state=2 tick=98468 ms=4038 pos=36,264 input=1643,0 error=0
+[maze] gen=13 state=2 tick=98981 ms=4551 pos=53,265 input=2935,282 error=0
+[maze] gen=13 state=2 tick=99500 ms=5070 pos=80,247 input=3995,-3709 error=0
+[maze] gen=13 state=2 tick=100013 ms=5583 pos=115,232 input=5117,-1552 error=0
+[maze] gen=13 state=2 tick=100513 ms=6083 pos=142,194 input=2870,-7375 error=0
+[maze] gen=13 state=2 tick=101032 ms=6602 pos=157,134 input=2232,-7617 error=0
+[maze] gen=13 state=2 tick=101532 ms=7102 pos=185,116 input=5456,716 error=0
+[maze] gen=13 state=2 tick=102032 ms=7602 pos=212,84 input=1959,-9355 error=0
+[maze] gen=13 state=2 tick=102533 ms=8103 pos=233,59 input=3138,3893 error=0
+[maze] gen=13 state=2 tick=103033 ms=8603 pos=251,113 input=1822,11167 error=0
+[maze] gen=13 state=2 tick=103533 ms=9103 pos=258,173 input=1568,13498 error=0
+[maze] gen=13 state=2 tick=104033 ms=9603 pos=261,233 input=1199,11474 error=0
+[maze] gen=13 state=2 tick=104533 ms=10103 pos=274,291 input=4053,8734 error=0
+[maze] gen=13 state=2 tick=105033 ms=10603 pos=310,293 input=5559,3132 error=0
+[maze] gen=13 state=2 tick=105533 ms=11103 pos=337,290 input=2743,0 error=0
+[maze] gen=13 state=2 tick=106044 ms=11614 pos=343,287 input=31,-1305 error=0
+[maze] gen=13 state=2 tick=106544 ms=12114 pos=342,278 input=0,-1343 error=0
+[maze] gen=13 state=6 error=0 count=20
+[maze] gen=13 state=6 tick=106897 ms=12451 pos=338,282 input=0,0 error=0
+[maze] event=4 state=6 gen=13 tick=110847
+[maze] gen=14 state=1 error=0 count=0
+[maze] gen=14 state=1 tick=110847 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=111378 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=1 tick=111897 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=14 state=2 error=0 count=20
+[maze] calibrated ref=-228,-381,-16284
+[maze] gen=14 state=2 tick=111927 ms=0 pos=24,24 input=0,0 error=0
+[maze_timing] loop_tick=117 service_tick=113 render_tick=3 previous_seq=1503 previous_read=111922
+[maze_timing] sample_seq=1505 read_tick=112022 age_tick=22 consumed_gap_tick=100 producer_gap_tick=50 producer_gap_count=0
+[maze] gen=14 state=4 error=-1004 count=20
+[maze] gen=14 state=4 tick=112044 ms=0 pos=24,24 input=0,0 error=-1004
+[maze] event=5 state=4 gen=14 tick=115877
+[maze] gen=15 state=1 error=0 count=0
+[maze] gen=15 state=1 tick=115877 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=1 tick=116424 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=5 error=0 count=20
+[maze] calibrated ref=-205,-391,-16283
+[maze] gen=15 state=5 tick=116924 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=5 tick=117440 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=5 tick=117948 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=5 tick=118463 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=2 state=5 gen=15 tick=118958
+[maze] gen=15 state=2 error=0 count=20
+[maze] gen=15 state=2 tick=118958 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=119473 ms=515 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=119981 ms=1023 pos=24,24 input=0,0 error=0
+[maze] gen=15 state=2 tick=120497 ms=1539 pos=23,23 input=-82,994 error=0
+[maze] gen=15 state=2 tick=121006 ms=2048 pos=24,69 input=0,9102 error=0
+[maze] gen=15 state=2 tick=121506 ms=2548 pos=23,128 input=146,8625 error=0
+[maze] gen=15 state=2 tick=122025 ms=3067 pos=32,190 input=1309,8202 error=0
+[maze] gen=15 state=2 tick=122525 ms=3567 pos=44,248 input=2860,8690 error=0
+[maze] gen=15 state=2 tick=123025 ms=4067 pos=69,283 input=3475,-951 error=0
+[maze] gen=15 state=2 tick=123525 ms=4567 pos=97,260 input=4059,-3956 error=0
+[maze] gen=15 state=2 tick=124025 ms=5067 pos=131,227 input=4378,-5570 error=0
+[maze] gen=15 state=2 tick=124526 ms=5568 pos=171,193 input=5655,-4213 error=0
+[maze] gen=15 state=2 tick=125037 ms=6079 pos=190,146 input=0,-8924 error=0
+[maze] gen=15 state=2 tick=125537 ms=6579 pos=187,126 input=0,7132 error=0
+[maze] gen=15 state=2 tick=126037 ms=7079 pos=186,186 input=9,10625 error=0
+[maze] gen=15 state=2 tick=126537 ms=7579 pos=179,245 input=0,10903 error=0
+[maze] gen=15 state=7 error=0 count=20
+[maze] gen=15 state=7 tick=126737 ms=7760 pos=178,268 input=0,0 error=0
+[maze] event=4 state=7 gen=15 tick=129605
+[maze] gen=16 state=1 error=0 count=0
+[maze] gen=16 state=1 tick=129605 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=16 state=1 tick=130137 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=16 state=1 tick=130637 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=16 state=2 error=0 count=20
+[maze] calibrated ref=-200,-411,-16263
+[maze] gen=16 state=2 tick=130687 ms=0 pos=24,24 input=0,0 error=0
+[maze_timing] loop_tick=116 service_tick=112 render_tick=3 previous_seq=1743 previous_read=130641
+[maze_timing] sample_seq=1746 read_tick=130796 age_tick=7 consumed_gap_tick=155 producer_gap_tick=50 producer_gap_count=0
+[maze] gen=16 state=4 error=-1004 count=20
+[maze] gen=16 state=4 tick=130803 ms=0 pos=24,24 input=0,0 error=-1004
+[maze] event=5 state=4 gen=16 tick=133934
+[maze] gen=17 state=1 error=0 count=0
+[maze] gen=17 state=1 tick=133934 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=17 state=1 tick=134437 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=17 state=1 tick=134937 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=17 state=5 error=0 count=20
+[maze] calibrated ref=-194,-412,-16264
+[maze] gen=17 state=5 tick=134987 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=17 state=5 tick=135503 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=17 state=5 tick=136011 ms=0 pos=24,24 input=0,0 error=0
+[maze] event=2 state=5 gen=17 tick=136196
+[maze] gen=17 state=2 error=0 count=20
+[maze] gen=17 state=2 tick=136196 ms=0 pos=24,24 input=-52,67 error=0
+[maze_timing] loop_tick=108 service_tick=104 render_tick=3 previous_seq=1791 previous_read=136168
+[maze_timing] sample_seq=1793 read_tick=136269 age_tick=35 consumed_gap_tick=101 producer_gap_tick=50 producer_gap_count=0
+[maze] gen=17 state=4 error=-1004 count=20
+[maze] gen=17 state=4 tick=136304 ms=0 pos=24,24 input=0,0 error=-1004
+[maze_rgb] black request result=0 tick=151911
+msh />msh />[maze] event=5 state=4 gen=17 tick=162346
+[maze] gen=18 state=1 error=0 count=0
+[maze] gen=18 state=1 tick=162346 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=18 state=1 tick=162887 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=18 state=1 tick=163387 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=18 state=1 tick=163887 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=18 state=1 tick=164387 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=18 state=1 tick=164888 ms=0 pos=24,24 input=0,0 error=0
+[maze_timing] loop_tick=50 service_tick=50 render_tick=0 previous_seq=1853 previous_read=165326
+[maze_timing] sample_seq=1854 read_tick=165376 age_tick=12 consumed_gap_tick=50 producer_gap_tick=50 producer_gap_count=0
+[maze] gen=18 state=4 error=-1003 count=20
+[maze] gen=18 state=4 tick=165388 ms=0 pos=24,24 input=0,0 error=-1003

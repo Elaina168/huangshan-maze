@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+ 562348	   4208	  93844	 660400	  a13b0	C:\Users\zytx\AppData\Local\Temp\huangshan-maze-lnxoev91\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf

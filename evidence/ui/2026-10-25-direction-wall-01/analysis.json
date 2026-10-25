@@ -1,0 +1,71 @@
+{
+  "source_bytes": 16189,
+  "source_sha256": "7bcb99492ed0fb2a73b56f70c278f27c4d70ac932ca07e5ad659852856279b07",
+  "new_segment_start_tick": 835011,
+  "playing_samples": 74,
+  "playing_sample_x_range": [
+    13,
+    93
+  ],
+  "right_wall_center_limit": 93,
+  "right_wall_sample_count": 22,
+  "wall_slide_samples": [
+    {
+      "tick": 864942,
+      "ms": 28891,
+      "x": 93,
+      "y": 40,
+      "input_x": 9403,
+      "input_y": 3012,
+      "error": 0
+    },
+    {
+      "tick": 865443,
+      "ms": 29392,
+      "x": 93,
+      "y": 68,
+      "input_x": 10094,
+      "input_y": 6143,
+      "error": 0
+    },
+    {
+      "tick": 865943,
+      "ms": 29892,
+      "x": 93,
+      "y": 102,
+      "input_x": 10128,
+      "input_y": 7359,
+      "error": 0
+    },
+    {
+      "tick": 866445,
+      "ms": 30394,
+      "x": 93,
+      "y": 139,
+      "input_x": 11225,
+      "input_y": 8827,
+      "error": 0
+    },
+    {
+      "tick": 866945,
+      "ms": 30894,
+      "x": 93,
+      "y": 174,
+      "input_x": 8815,
+      "input_y": 3843,
+      "error": 0
+    },
+    {
+      "tick": 867447,
+      "ms": 31396,
+      "x": 93,
+      "y": 191,
+      "input_x": 2168,
+      "input_y": -468,
+      "error": 0
+    }
+  ],
+  "nonzero_errors": [],
+  "duplicated_prior_resource_block": true,
+  "user_feedback": "正常"
+}

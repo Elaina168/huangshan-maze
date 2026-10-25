@@ -1,0 +1,257 @@
+{
+  "source_bytes": 29724,
+  "source_sha256": "1f424c2744112e800cb18c9ccf20ca0dfc34f753ae0082d226edeb2592767e8c",
+  "state_transitions": [
+    {
+      "generation": 12,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 13,
+      "state": 0,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 14,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 14,
+      "state": 3,
+      "error": -1003,
+      "count": 20
+    },
+    {
+      "generation": 15,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 15,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 15,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 16,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 16,
+      "state": 5,
+      "error": -1003,
+      "count": 20
+    },
+    {
+      "generation": 17,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 17,
+      "state": 5,
+      "error": -1003,
+      "count": 20
+    },
+    {
+      "generation": 18,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 18,
+      "state": 5,
+      "error": -1003,
+      "count": 20
+    },
+    {
+      "generation": 18,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 18,
+      "state": 7,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 19,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 19,
+      "state": 3,
+      "error": -1003,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 20,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 21,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 21,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 21,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 22,
+      "state": 0,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 23,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 24,
+      "state": 0,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 25,
+      "state": 1,
+      "error": 0,
+      "count": 0
+    },
+    {
+      "generation": 25,
+      "state": 2,
+      "error": 0,
+      "count": 20
+    },
+    {
+      "generation": 25,
+      "state": 5,
+      "error": 0,
+      "count": 20
+    }
+  ],
+  "boot_markers": 1,
+  "firmware_versions": [
+    "0.4.2-active-view"
+  ],
+  "user_feedback": "暂停校准倾斜后未看到报错，其余A正常；B/C不再执行"
+}

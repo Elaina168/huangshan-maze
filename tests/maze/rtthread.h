@@ -7,6 +7,7 @@ typedef int rt_err_t;
 typedef uint32_t rt_tick_t;
 typedef uint32_t rt_uint32_t;
 typedef int32_t rt_int32_t;
+typedef int16_t rt_int16_t;
 typedef uint8_t rt_uint8_t;
 typedef size_t rt_size_t;
 struct rt_mutex { int locked; };

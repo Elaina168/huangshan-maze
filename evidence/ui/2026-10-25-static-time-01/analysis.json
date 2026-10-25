@@ -1,0 +1,17 @@
+{
+  "source_bytes": 7843,
+  "source_sha256": "d38d963b132d0ac8cad8321b9ca3b4abc207d766ce813e143d8a49463ab05969",
+  "static_observation_span_ms": 5118,
+  "static_logged_positions": [
+    [
+      24,
+      24
+    ]
+  ],
+  "pause_duration_ms": 4264,
+  "won_game_ms": 42987,
+  "nonzero_errors": [],
+  "independent_stopwatch_values": null,
+  "continuous_60_second_trial_in_attachment": false,
+  "user_feedback": "都正常"
+}

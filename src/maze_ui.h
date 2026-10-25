@@ -6,7 +6,7 @@
 /* 仅由主线程初始化与服务LVGL。 */
 int maze_ui_init(void);
 void maze_ui_process(void);
-bool maze_ui_take_sample_toggle(void);
-void maze_ui_show_input(const maze_app_t *app);
+bool maze_ui_take_event(const maze_app_t *app, maze_event_t *event);
+void maze_ui_render(const maze_app_t *app);
 
 #endif

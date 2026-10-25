@@ -1,0 +1,101 @@
+{
+  "source_attachment": "C:\\Users\\zytx\\.codex\\attachments\\06736a78-f8db-4d56-a95a-fa1cded9adaa\\已粘贴的文本.txt",
+  "source_bytes": 9691,
+  "source_sha256": "4787c3e9e2098767f3772890ba972512a15ca240816a3e07ab3439d46baeb6e5",
+  "tick_hz_context": 1000,
+  "first_pause_duration_ms": 18644,
+  "recalibration_duration_ms": 996,
+  "memory": [
+    {
+      "total_bytes": 400216,
+      "used_bytes": 28636,
+      "peak_bytes": 33984
+    },
+    {
+      "total_bytes": 400216,
+      "used_bytes": 28636,
+      "peak_bytes": 34396
+    }
+  ],
+  "used_delta_bytes": 0,
+  "peak_delta_bytes": 412,
+  "nonzero_maze_errors": [],
+  "thread_snapshots": [
+    [
+      {
+        "name": "maze_imu",
+        "stack_bytes": 2048,
+        "max_used_percent": 12
+      },
+      {
+        "name": "tpread",
+        "stack_bytes": 1024,
+        "max_used_percent": 40
+      },
+      {
+        "name": "lcd_task",
+        "stack_bytes": 2048,
+        "max_used_percent": 25
+      },
+      {
+        "name": "tshell",
+        "stack_bytes": 4096,
+        "max_used_percent": 12
+      },
+      {
+        "name": "tidle",
+        "stack_bytes": 512,
+        "max_used_percent": 31
+      },
+      {
+        "name": "timer",
+        "stack_bytes": 1024,
+        "max_used_percent": 12
+      },
+      {
+        "name": "main",
+        "stack_bytes": 8192,
+        "max_used_percent": 50
+      }
+    ],
+    [
+      {
+        "name": "maze_imu",
+        "stack_bytes": 2048,
+        "max_used_percent": 24
+      },
+      {
+        "name": "tpread",
+        "stack_bytes": 1024,
+        "max_used_percent": 40
+      },
+      {
+        "name": "lcd_task",
+        "stack_bytes": 2048,
+        "max_used_percent": 25
+      },
+      {
+        "name": "tshell",
+        "stack_bytes": 4096,
+        "max_used_percent": 12
+      },
+      {
+        "name": "tidle",
+        "stack_bytes": 512,
+        "max_used_percent": 31
+      },
+      {
+        "name": "timer",
+        "stack_bytes": 1024,
+        "max_used_percent": 12
+      },
+      {
+        "name": "main",
+        "stack_bytes": 8192,
+        "max_used_percent": 50
+      }
+    ]
+  ],
+  "user_visible_feedback": "符合预期",
+  "firmware_binding": "0.4.2-active-view from session context; device hash not read"
+}

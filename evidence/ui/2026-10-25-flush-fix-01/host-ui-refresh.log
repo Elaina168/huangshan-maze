@@ -1,0 +1,4 @@
+calibration->playing flushed pixels=70492 (full screen=175500)
+paused->playing flushed pixels=70492
+playing one-pixel move flushed pixels=9518
+PASS: real LVGL partial invalidation; target flush time still needs hardware

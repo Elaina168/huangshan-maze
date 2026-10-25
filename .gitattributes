@@ -7,6 +7,9 @@
 .githooks/* text eol=lf
 *.pdf binary
 *.log -text
+# 原始证据保留换行、行尾空格及末尾空行；源码和文档仍按默认规则检查。
+evidence/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
+evidence/**/serial-log.txt -text whitespace=-blank-at-eol,-blank-at-eof
 # 原样导入文件保留实际字节及换行，避免跨平台归档破坏来源校验。
 project/* -text
 src/main.c -text

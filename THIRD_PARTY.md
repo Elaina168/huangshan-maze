@@ -18,4 +18,6 @@ AI 协作记录保存在开发日志。需求、检查脚本和说明由 Codex �
 
 校准输入补充（2026-10-17）：maze_app.c/.h、tests/maze/harness.c由Codex按已批准候选参数实现，复用既有预研规则而非导入外部算法库；USB右轴关系依据用户确认的180°朝向变换。UI与主循环接入校准、取消/重试及限频反馈，没有新增外部依赖、素材或字体。
 
+迷宫集成补充（2026-10-25）：maze_level/model与app状态、计时、碰撞测试由Codex依据已批准设计实现；maze_ui使用SDK现有LVGL几何对象和内置Montserrat 16绘制地图、小球及按钮，不导入游戏模板、图片、音效或新字体。UI事件只在主线程消费，用户本轮未逐行修改代码；构建、主机测试和后续真机操作分别记入开发日志，不将AI实现伪称本人独立手写。
+
 显示预研补充（2026-10-17）：src/maze_ui.c/.h由Codex编写，沿用SDK内LVGL v9 API，参考peripheral_lab/src/main.c的主线程初始化与2–20ms等待方式，没有复制外设验证台。main.c保留原SDK例程来源说明，原RGB循环替换为关灯与显示服务；project/proj.conf启用LVGL、局部缓冲和首次试验栈配置。仅使用SDK内置字体，无外部图片、音频或字体下载。SDK的external/lvgl_v9/src/font/lv_font_montserrat_16.c文件头列出Montserrat与FontAwesome5来源；许可分别见external/lvgl_v9/scripts/built_in_font/font_license/Montserrat/OFL.txt（SIL OFL 1.1）、FontAwesome5/LICENSE.txt（Font Awesome Free分项许可），正式交付保留依赖声明与相关许可。

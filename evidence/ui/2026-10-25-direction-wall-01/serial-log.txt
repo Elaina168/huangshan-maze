@@ -1,0 +1,231 @@
+total memory: 400216 used memory : 28636 maximum allocated memory: 33984
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+maze_imu  11  suspend 0x2001d528 0x2001d62c 0x00000800    12%   0x0000000a 000
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    40%   0x00000007 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000009 000
+tshell    20  ready   0x20022370 0x20022464 0x00001000    12%   0x00000004 000
+tidle     31  ready   0x2001d8e0 0x2001d934 0x00000200    31%   0x00000015 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x20020138 0x200202a4 0x00002000    50%   0x00000007 000
+msh />msh />[maze] event=0 state=0 gen=0 tick=616515
+[maze] gen=1 state=1 error=0 count=0
+[maze] gen=1 state=1 tick=616515 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=1 tick=617015 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=1 tick=617515 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 error=0 count=20
+[maze] calibrated ref=-199,-328,-16216
+[maze] gen=1 state=2 tick=617549 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 tick=618065 ms=516 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 tick=618573 ms=1024 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 tick=619088 ms=1539 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 tick=619596 ms=2047 pos=24,24 input=0,0 error=0
+[maze] gen=1 state=2 tick=620113 ms=2564 pos=23,24 input=-84,535 error=0
+[maze] gen=1 state=2 tick=620621 ms=3072 pos=25,48 input=1989,6259 error=0
+[maze] gen=1 state=2 tick=621122 ms=3573 pos=27,77 input=1062,2706 error=0
+[maze] gen=1 state=2 tick=621623 ms=4074 pos=31,109 input=-277,5496 error=0
+[maze] gen=1 state=2 tick=622124 ms=4575 pos=29,147 input=359,3306 error=0
+[maze] gen=1 state=2 tick=622625 ms=5076 pos=33,162 input=-672,-518 error=0
+[maze] gen=1 state=2 tick=623144 ms=5595 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=623652 ms=6103 pos=34,162 input=0,0 error=0
+[maze] event=1 state=2 gen=1 tick=624102
+[maze] gen=1 state=5 error=0 count=20
+[maze] gen=1 state=5 tick=624102 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=624609 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=625124 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=625632 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=626147 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=626655 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=627170 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=627678 ms=6553 pos=34,162 input=0,904 error=0
+[maze] gen=1 state=5 tick=628193 ms=6553 pos=34,162 input=1446,-2172 error=0
+[maze] gen=1 state=5 tick=628701 ms=6553 pos=34,162 input=-262,-13605 error=0
+[maze] gen=1 state=5 tick=629216 ms=6553 pos=34,162 input=0,-16349 error=0
+[maze] gen=1 state=5 tick=629724 ms=6553 pos=34,162 input=-4063,-16415 error=0
+[maze] gen=1 state=5 tick=630239 ms=6553 pos=34,162 input=-7321,-14484 error=0
+[maze] gen=1 state=5 tick=630747 ms=6553 pos=34,162 input=-8418,-13965 error=0
+[maze] gen=1 state=5 tick=631262 ms=6553 pos=34,162 input=-4137,-4717 error=0
+[maze] gen=1 state=5 tick=631770 ms=6553 pos=34,162 input=-1935,1017 error=0
+[maze] gen=1 state=5 tick=632285 ms=6553 pos=34,162 input=875,10356 error=0
+[maze] gen=1 state=5 tick=632793 ms=6553 pos=34,162 input=1074,10336 error=0
+[maze] gen=1 state=5 tick=633308 ms=6553 pos=34,162 input=1457,11873 error=0
+[maze] gen=1 state=5 tick=633816 ms=6553 pos=34,162 input=0,11043 error=0
+[maze] gen=1 state=5 tick=634331 ms=6553 pos=34,162 input=-912,8272 error=0
+[maze] gen=1 state=5 tick=634839 ms=6553 pos=34,162 input=4192,-11278 error=0
+[maze] gen=1 state=5 tick=635354 ms=6553 pos=34,162 input=2127,3139 error=0
+[maze] gen=1 state=5 tick=635862 ms=6553 pos=34,162 input=2719,12034 error=0
+[maze] gen=1 state=5 tick=636377 ms=6553 pos=34,162 input=0,-1109 error=0
+[maze] gen=1 state=5 tick=636885 ms=6553 pos=34,162 input=-1781,5206 error=0
+[maze] gen=1 state=5 tick=637400 ms=6553 pos=34,162 input=-3614,-9375 error=0
+[maze] gen=1 state=5 tick=637908 ms=6553 pos=34,162 input=-2970,-12505 error=0
+[maze] gen=1 state=5 tick=638423 ms=6553 pos=34,162 input=-2251,-1254 error=0
+[maze] gen=1 state=5 tick=638931 ms=6553 pos=34,162 input=-10932,-4429 error=0
+[maze] gen=1 state=5 tick=639446 ms=6553 pos=34,162 input=0,9026 error=0
+[maze] gen=1 state=5 tick=639954 ms=6553 pos=34,162 input=-1028,0 error=0
+[maze] gen=1 state=5 tick=640469 ms=6553 pos=34,162 input=0,466 error=0
+[maze] gen=1 state=5 tick=640977 ms=6553 pos=34,162 input=717,0 error=0
+[maze] gen=1 state=5 tick=641492 ms=6553 pos=34,162 input=0,-620 error=0
+[maze] gen=1 state=5 tick=642000 ms=6553 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=642515 ms=6553 pos=34,162 input=0,0 error=0
+[maze] event=2 state=5 gen=1 tick=642746
+[maze] gen=1 state=2 error=0 count=20
+[maze] gen=1 state=2 tick=642746 ms=6553 pos=34,162 input=0,2008 error=0
+[maze] gen=1 state=2 tick=643251 ms=7058 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=643759 ms=7566 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=644275 ms=8082 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=644783 ms=8590 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=645299 ms=9106 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=645807 ms=9614 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=646322 ms=10129 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=646830 ms=10637 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=647347 ms=11154 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=647853 ms=11660 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=648370 ms=12177 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=2 tick=648876 ms=12683 pos=34,162 input=0,0 error=0
+[maze] event=1 state=2 gen=1 tick=649196
+[maze] gen=1 state=5 error=0 count=20
+[maze] gen=1 state=5 tick=649196 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=649697 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=650212 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=650720 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=651235 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=651743 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=652258 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=1 state=5 tick=652766 ms=13003 pos=34,162 input=0,0 error=0
+[maze] event=3 state=5 gen=1 tick=652984
+[maze] gen=2 state=1 error=0 count=0
+[maze] gen=2 state=1 tick=652984 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=1 tick=653498 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 error=0 count=20
+[maze] calibrated ref=-227,-391,-16220
+[maze] gen=2 state=5 tick=653980 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=654492 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=655007 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=655515 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=656030 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=656538 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=657053 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=5 tick=657561 ms=13003 pos=34,162 input=0,0 error=0
+[maze] event=2 state=5 gen=2 tick=657845
+[maze] gen=2 state=2 error=0 count=20
+[maze] gen=2 state=2 tick=657845 ms=13003 pos=34,162 input=0,0 error=0
+[maze] gen=2 state=2 tick=658350 ms=13508 pos=35,162 input=0,0 error=0
+[maze] gen=2 state=2 tick=658854 ms=14012 pos=35,179 input=0,6850 error=0
+[maze] gen=2 state=2 tick=659355 ms=14513 pos=36,210 input=0,0 error=0
+[maze] gen=2 state=2 tick=659863 ms=15021 pos=36,210 input=0,0 error=0
+[maze] event=1 state=2 gen=2 tick=660359
+[maze] gen=2 state=5 error=0 count=20
+[maze] gen=2 state=5 tick=660359 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=660871 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=661379 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=661894 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=662402 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=662917 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=663425 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=663940 ms=15517 pos=36,209 input=0,0 error=0
+[maze] gen=2 state=5 tick=664448 ms=15517 pos=36,209 input=0,0 error=0
+[maze] event=6 state=5 gen=2 tick=664877
+[maze] gen=3 state=0 error=0 count=0
+[maze] gen=3 state=0 tick=664877 ms=0 pos=24,24 input=0,0 error=0
+total memory: 400216 used memory : 28636 maximum allocated memory: 34396
+msh />msh />thread   pri  status      sp      top     stack size max used left tick  error
+-------- ---  ------- ---------- ---------- ----------  ------  ---------- ---
+maze_imu  11  suspend 0x2001d528 0x2001d62c 0x00000800    24%   0x00000001 000
+tpread    10  suspend 0x20018cd8 0x20018d5c 0x00000400    40%   0x00000007 000
+lcd_task  12  suspend 0x20018890 0x2001895c 0x00000800    25%   0x00000001 000
+tshell    20  ready   0x20022338 0x20022464 0x00001000    12%   0x00000003 000
+tidle     31  ready   0x2001d8e0 0x2001d934 0x00000200    31%   0x00000007 000
+timer      4  suspend 0x200190e0 0x2001915c 0x00000400    12%   0x00000009 000
+main      10  suspend 0x20020138 0x200202a4 0x00002000    50%   0x00000014 000
+msh />msh />[maze] event=0 state=0 gen=3 tick=835011
+[maze] gen=4 state=1 error=0 count=0
+[maze] gen=4 state=1 tick=835011 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=1 tick=835517 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=1 tick=836018 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 error=0 count=20
+[maze] calibrated ref=-231,-410,-16214
+[maze] gen=4 state=2 tick=836051 ms=0 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=836560 ms=509 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=837075 ms=1024 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=837583 ms=1532 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=838099 ms=2048 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=838607 ms=2556 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=839122 ms=3071 pos=24,24 input=0,0 error=0
+[maze] gen=4 state=2 tick=839634 ms=3583 pos=23,27 input=16,2012 error=0
+[maze] gen=4 state=2 tick=840135 ms=4084 pos=23,49 input=0,3087 error=0
+[maze] gen=4 state=2 tick=840653 ms=4602 pos=23,57 input=0,-161 error=0
+[maze] gen=4 state=2 tick=841154 ms=5103 pos=25,47 input=561,-4459 error=0
+[maze] gen=4 state=2 tick=841655 ms=5604 pos=28,21 input=231,0 error=0
+[maze] gen=4 state=2 tick=842157 ms=6106 pos=30,25 input=1514,3099 error=0
+[maze] gen=4 state=2 tick=842673 ms=6622 pos=35,32 input=198,168 error=0
+[maze] gen=4 state=2 tick=843181 ms=7130 pos=34,33 input=0,0 error=0
+[maze] gen=4 state=2 tick=843696 ms=7645 pos=35,33 input=0,0 error=0
+[maze] gen=4 state=2 tick=844207 ms=8156 pos=35,30 input=66,-753 error=0
+[maze] gen=4 state=2 tick=844707 ms=8656 pos=46,41 input=2415,2006 error=0
+[maze] gen=4 state=2 tick=845208 ms=9157 pos=74,48 input=4205,669 error=0
+[maze] gen=4 state=2 tick=845727 ms=9676 pos=93,52 input=2215,0 error=0
+[maze] gen=4 state=2 tick=846236 ms=10185 pos=93,52 input=0,0 error=0
+[maze] gen=4 state=2 tick=846742 ms=10691 pos=85,58 input=-3862,186 error=0
+[maze] gen=4 state=2 tick=847243 ms=11192 pos=43,59 input=-6580,0 error=0
+[maze] gen=4 state=2 tick=847743 ms=11692 pos=15,62 input=-1408,1278 error=0
+[maze] gen=4 state=2 tick=848261 ms=12210 pos=14,63 input=0,0 error=0
+[maze] gen=4 state=2 tick=848769 ms=12718 pos=14,63 input=0,0 error=0
+[maze] gen=4 state=2 tick=849285 ms=13234 pos=14,63 input=0,0 error=0
+[maze] gen=4 state=2 tick=849793 ms=13742 pos=14,63 input=0,0 error=0
+[maze] gen=4 state=2 tick=850296 ms=14245 pos=14,67 input=0,0 error=0
+[maze] gen=4 state=2 tick=850797 ms=14746 pos=14,65 input=0,-1232 error=0
+[maze] gen=4 state=2 tick=851297 ms=15246 pos=13,61 input=-516,0 error=0
+[maze] gen=4 state=2 tick=851799 ms=15748 pos=20,59 input=2046,-398 error=0
+[maze] gen=4 state=2 tick=852318 ms=16267 pos=43,52 input=4146,-320 error=0
+[maze] gen=4 state=2 tick=852818 ms=16767 pos=84,60 input=6601,1817 error=0
+[maze] gen=4 state=2 tick=853319 ms=17268 pos=93,60 input=6808,-925 error=0
+[maze] gen=4 state=2 tick=853829 ms=17778 pos=93,57 input=6715,0 error=0
+[maze] gen=4 state=2 tick=854333 ms=18282 pos=93,56 input=8602,-1101 error=0
+[maze] gen=4 state=2 tick=854849 ms=18798 pos=93,55 input=8868,0 error=0
+[maze] gen=4 state=2 tick=855352 ms=19301 pos=93,59 input=7633,1169 error=0
+[maze] gen=4 state=2 tick=855853 ms=19802 pos=93,70 input=921,-957 error=0
+[maze] gen=4 state=2 tick=856354 ms=20303 pos=87,50 input=-1323,-3677 error=0
+[maze] gen=4 state=2 tick=856854 ms=20803 pos=75,42 input=-655,626 error=0
+[maze] gen=4 state=2 tick=857354 ms=21303 pos=74,47 input=-447,-1639 error=0
+[maze] gen=4 state=2 tick=857854 ms=21803 pos=77,50 input=0,0 error=0
+[maze] gen=4 state=2 tick=858362 ms=22311 pos=77,50 input=0,0 error=0
+[maze] gen=4 state=2 tick=858878 ms=22827 pos=77,50 input=0,0 error=0
+[maze] gen=4 state=2 tick=859386 ms=23335 pos=77,50 input=0,0 error=0
+[maze] gen=4 state=2 tick=859901 ms=23850 pos=77,50 input=0,0 error=0
+[maze] gen=4 state=2 tick=860409 ms=24358 pos=78,51 input=456,0 error=0
+[maze] gen=4 state=2 tick=860925 ms=24874 pos=93,61 input=6880,-893 error=0
+[maze] gen=4 state=2 tick=861425 ms=25374 pos=93,72 input=10393,1792 error=0
+[maze] gen=4 state=2 tick=861926 ms=25875 pos=93,91 input=9481,3702 error=0
+[maze] gen=4 state=2 tick=862426 ms=26375 pos=93,72 input=6463,-7061 error=0
+[maze] gen=4 state=2 tick=862927 ms=26876 pos=93,51 input=9529,-1791 error=0
+[maze] gen=4 state=2 tick=863427 ms=27376 pos=93,43 input=8845,-1578 error=0
+[maze] gen=4 state=2 tick=863927 ms=27876 pos=93,37 input=10069,-255 error=0
+[maze] gen=4 state=2 tick=864439 ms=28388 pos=93,35 input=9704,-331 error=0
+[maze] gen=4 state=2 tick=864942 ms=28891 pos=93,40 input=9403,3012 error=0
+[maze] gen=4 state=2 tick=865443 ms=29392 pos=93,68 input=10094,6143 error=0
+[maze] gen=4 state=2 tick=865943 ms=29892 pos=93,102 input=10128,7359 error=0
+[maze] gen=4 state=2 tick=866445 ms=30394 pos=93,139 input=11225,8827 error=0
+[maze] gen=4 state=2 tick=866945 ms=30894 pos=93,174 input=8815,3843 error=0
+[maze] gen=4 state=2 tick=867447 ms=31396 pos=93,191 input=2168,-468 error=0
+[maze] gen=4 state=2 tick=867965 ms=31914 pos=91,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=868473 ms=32422 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=868988 ms=32937 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=869496 ms=33445 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=870012 ms=33961 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=870520 ms=34469 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=871035 ms=34984 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=871535 ms=35484 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=872043 ms=35992 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=872559 ms=36508 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=2 tick=873067 ms=37016 pos=92,191 input=0,0 error=0
+[maze] event=1 state=2 gen=4 tick=873356
+[maze] gen=4 state=5 error=0 count=20
+[maze] gen=4 state=5 tick=873356 ms=37305 pos=92,191 input=0,19 error=0
+[maze] gen=4 state=5 tick=873873 ms=37305 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=5 tick=874381 ms=37305 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=5 tick=874896 ms=37305 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=5 tick=875404 ms=37305 pos=92,191 input=0,0 error=0
+[maze] gen=4 state=5 tick=875919 ms=37305 pos=92,191 input=0,0 error=0
+[maze] event=6 state=5 gen=4 tick=876381
+[maze] gen=5 state=0 error=0 count=0
+[maze] gen=5 state=0 tick=876381 ms=0 pos=24,24 input=0,0 error=0
