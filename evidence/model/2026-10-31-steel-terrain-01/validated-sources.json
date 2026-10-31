@@ -1,0 +1,12 @@
+{
+  "src/maze_model.c": "f0b47f0e2b32748af94b17fd408c0d78dca6ffe671e6b5cc6954eef7bb067c45",
+  "src/maze_model.h": "2d73ebc93eb303fbdd95b5a0a7dac77180d05a8f80021f03e4b64fb990c89caf",
+  "src/maze_level.c": "9b7b76cb4679ba05a4a4a1e291e8d15678113f37d52bc20752e2724840c1102b",
+  "src/maze_level.h": "709a52ffcd92fd4d3287b7221a186e4189201f97ba33d762d754cc87a6a8325f",
+  "src/maze_ui.c": "3f81a6fad549c4695041fd8f66bf3241465cbcffe38edfd24d4f4c015af7e206",
+  "src/main.c": "f56fcd2361033588980d227117c25e551e48a62fb23754e53d5639bc152ba88d",
+  "tests/maze/inertia_harness.c": "23e601b1f21ef27aa6cb121fb6206c3236148b535e6ab1bb51a111af6e7ba522",
+  "tests/maze/model_harness.c": "5575ffc5a1e016ebf6c5b668b0b9a728930cf43008feacadcb33a1ddd745edde",
+  "tests/maze/state_harness.c": "68b17c946dd8012ce36cb32ce247d14effa2981ec131cadceb11256047f1353b",
+  "tests/maze/ui_refresh_harness.c": "dc492f7f76fc4e9a0bd60cf0326133ee5d378d80e498f0d824d27baef4c3ea44"
+}

@@ -1,0 +1,12 @@
+[ 98%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+[ 99%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[100%] Linking C executable ui-refresh
+[100%] Built target ui-refresh
+PASS: actual LVGL maze title, object count, walls and ice geometry
+calibration->playing flushed pixels=33292 (full screen=175500)
+paused->playing flushed pixels=33292
+playing one-pixel move flushed pixels=9518
+PASS: paused calibration failure remains visible after healthy samples; Resume and successful recalibration clear it
+PASS: maze NORMAL/ICE heading follows the shared ball-center query
+PASS: real LVGL partial invalidation; target flush time still needs hardware

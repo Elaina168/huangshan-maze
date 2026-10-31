@@ -46,7 +46,7 @@ static void move(maze_app_t *a, uint32_t tick)
 static void pause_resume(void)
 {
     maze_app_t a; uint32_t now=start_game(&a,0,1000);
-    move(&a,now+50); near(a.elapsed_ms,50); near(a.model.x,16);
+    move(&a,now+50); near(a.elapsed_ms,50); assert(a.model.x>10 && a.model.x<16);
     maze_app_event(&a,MAZE_EVENT_PAUSE,now+55);
     assert(a.state==MAZE_APP_PAUSED); near(a.elapsed_ms,55); near(a.model.vx,0);
     float x=a.model.x;
@@ -56,7 +56,7 @@ static void pause_resume(void)
     maze_app_event(&a,MAZE_EVENT_RESUME,now+10105);
     assert(a.state==MAZE_APP_PLAYING);
     move(&a,now+10110); near(a.model.x,x); near(a.elapsed_ms,60);
-    move(&a,now+10115); near(a.model.x,x+1.2); near(a.elapsed_ms,65);
+    move(&a,now+10115); near(a.model.x,x+0.0582524); near(a.elapsed_ms,65);
     uint32_t gen=a.generation;
     maze_app_event(&a,MAZE_EVENT_START,now+10115);
     maze_app_event(&a,MAZE_EVENT_RESUME,now+10115);
@@ -76,7 +76,7 @@ static void replay_cancel(void)
     near(a.model.x,10); near(a.elapsed_ms,0);
     uint32_t ready=finish_calibration(&a,now+5,0,0);
     move(&a,ready+5); near(a.model.x,10);
-    move(&a,ready+10); near(a.model.x,11.2);
+    move(&a,ready+10); near(a.model.x,10.0582524);
     maze_app_event(&a,MAZE_EVENT_PAUSE,ready+10);
     uint32_t prior=a.generation;
     maze_app_event(&a,MAZE_EVENT_EXIT,ready+10);
@@ -140,18 +140,19 @@ static void recovery(void)
 static void timing(void)
 {
     maze_app_t a; uint32_t now=start_game(&a,0,1000);
-    move(&a,now+100); near(a.model.x,22); near(a.elapsed_ms,100);
+    move(&a,now+100); assert(a.model.x>10 && a.model.x<22); near(a.elapsed_ms,100);
+    float before_error=a.model.x;
     near(a.model.step_elapsed_ms,10); assert(a.motion_units==0);
     sample(&a,now+150,0,8492,0);
     move(&a,now+201);
     assert(a.state==MAZE_APP_DEVICE_ERROR && a.error==MAZE_ERROR_TIMING_GAP);
-    near(a.model.x,22); near(a.elapsed_ms,100);
+    near(a.model.x,before_error); near(a.elapsed_ms,100);
     now=start_game(&a,UINT32_MAX-500,1000);
     move(&a,now+5); near(a.model.x,10); near(a.elapsed_ms,5);
-    move(&a,now+10); near(a.model.x,11.2); near(a.elapsed_ms,10);
+    move(&a,now+10); near(a.model.x,10.0582524); near(a.elapsed_ms,10);
     now=start_game(&a,0,1280);
     for(unsigned i=1;i<=16;i++) move(&a,now+i);
-    near(a.elapsed_ms,12.5); near(a.model.x,11.2);
+    near(a.elapsed_ms,12.5); near(a.model.x,10.0582524);
     puts("PASS: 100/101ms scheduler boundary, partial step, tick wrap and 1280Hz fraction");
 }
 
@@ -159,7 +160,7 @@ static void terminal(void)
 {
     for(unsigned lost=0;lost<2;lost++)
     {
-        maze_circle_t trap={11.5f,50,1};
+        maze_circle_t trap={11.03f,50,1};
         maze_level_t l=open_level;
         if(lost) { l.traps=&trap; l.trap_count=1; }
         else l.goal=trap;
@@ -168,7 +169,7 @@ static void terminal(void)
         move(&a,955); near(a.elapsed_ms,5);
         move(&a,960);
         assert(a.state==(lost?MAZE_APP_LOST:MAZE_APP_WON));
-        near(a.elapsed_ms,1000.0/240); near(a.model.x,10.5);
+        near(a.elapsed_ms,5.15); near(a.model.x,10.03);
         double elapsed=a.elapsed_ms; float x=a.model.x;
         sample(&a,1000,0,8492,-8); maze_app_update(&a,100000);
         near(a.elapsed_ms,elapsed); near(a.model.x,x);
@@ -196,7 +197,7 @@ static void scheduler_independence(void)
     }
     near(a[0].elapsed_ms,10000); near(a[1].elapsed_ms,10000);
     near(a[0].model.x,a[1].model.x);
-    assert(fabsf(a[0].model.x-1210)<0.05f);
+    assert(a[0].model.x>10+MAZE_SPEED_MAX*9 && a[0].model.x<10+MAZE_SPEED_MAX*10);
     puts("PASS: same 50ms samples, 20/40Hz app update, fixed 10ms motion (host only)");
 }
 

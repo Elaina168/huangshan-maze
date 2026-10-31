@@ -24,15 +24,15 @@ static void movement(void)
     maze_model_reset(&m,&l);
     near(m.vx,0); near(m.vy,0);
     maze_model_step(&m,8192,0,1000);
-    near(m.x,130); near(m.y,50); near(m.step_elapsed_ms,1000);
+    near(m.x,160); near(m.y,50); near(m.step_elapsed_ms,1000);
     maze_model_reset(&m,&l);
-    maze_model_step(&m,4096,0,1000); near(m.x,70);
+    maze_model_step(&m,4096,0,1000); near(m.x,85);
     maze_model_reset(&m,&l);
-    maze_model_step(&m,65535,0,1000); near(m.x,130);
+    maze_model_step(&m,65535,0,1000); near(m.x,160);
     maze_model_reset(&m,&l);
     maze_model_step(&m,8192,8192,1000);
-    near(hypotf(m.vx,m.vy),120);
-    near(hypotf(m.x-10,m.y-50),120);
+    near(hypotf(m.vx,m.vy),150);
+    near(hypotf(m.x-10,m.y-50),150);
     maze_model_reset(&m,&l);
     maze_model_step(&m,0,0,1000); near(m.x,10); near(m.y,50);
     puts("PASS: proportional speed, saturation, diagonal limit and neutral");
@@ -48,10 +48,10 @@ static void walls(void)
     near(m.x,45); near(m.vx,0); assert(m.result==MAZE_MODEL_RUNNING);
     maze_model_step(&m,8192,4096,500);
     near(m.x,45); assert(m.y>70 && m.vy>0);
-    maze_model_step(&m,-8192,0,100); near(m.x,33);
+    maze_model_step(&m,-8192,0,100); assert(m.x<45 && m.vx<0);
     maze_model_reset(&m,&l);
     maze_model_step(&m,8192,8192,1000);
-    near(m.x,45); near(m.y,50+120/sqrtf(2));
+    near(m.x,45); near(m.y,50+150/sqrtf(2));
     /* 两个法线方向均被阻挡，不沿内角穿出。 */
     maze_rect_t corner[]={{50,0,1,100},{0,70,100,1}};
     l.walls=corner; l.wall_count=2;
@@ -73,15 +73,20 @@ static void rounded_corner(void)
     maze_level_t l=empty(); l.walls=&wall; l.wall_count=1; l.start=(maze_point_t){40,46};
     maze_model_t m;
     maze_model_reset(&m,&l);
-    maze_model_step(&m,8192,0,55);
+    m.vx=120; /* 已有速度用于隔离圆角扫掠，不假设从静止立即到速。 */
+    /* 维持120px/s的阻力平衡输入，几何断言不依赖当前最高速度。 */
+    float balance=120*MAZE_DRAG_NORMAL/MAZE_ACCEL_MAX*MAZE_INPUT_FULL_RAW;
+    maze_model_step(&m,balance,0,55);
     /* (46.6,46)在方形膨胀内、圆角外，必须可达。 */
     near(m.x,46.6f); near(m.y,46);
     l.start=(maze_point_t){40,45};
     maze_model_reset(&m,&l);
-    maze_model_step(&m,8192,0,250); near(m.x,70); near(m.y,45);
+    m.vx=120;
+    maze_model_step(&m,balance,0,250); near(m.x,70); near(m.y,45);
     l.start=(maze_point_t){40,46};
     maze_model_reset(&m,&l);
-    maze_model_step(&m,8192,0,100);
+    m.vx=120;
+    maze_model_step(&m,balance,0,100);
     assert(m.y<46 && m.x>47);
     assert(hypotf(m.x-50,m.y-50)>=5-0.001f);
     puts("PASS: rounded expansion, exact tangent and oblique corner sliding");
@@ -95,7 +100,7 @@ static void regions(void)
     maze_model_reset(&m,&l);
     maze_model_step(&m,8192,0,1000);
     assert(m.result==MAZE_MODEL_LOST); near(m.x,27);
-    near(m.step_elapsed_ms,1000.0f*17/120); near(m.vx,0);
+    near(m.step_elapsed_ms,1000.0f*17/150); near(m.vx,0);
     maze_model_step(&m,-8192,8192,1000);
     near(m.x,27); near(m.y,50); near(m.step_elapsed_ms,0);
     l.goal=(maze_circle_t){20,50,3};
@@ -160,14 +165,17 @@ static void map_path(void)
     maze_model_t m; maze_model_reset(&m,l);
     for (unsigned i=1;i<sizeof(path)/sizeof(path[0]);i++)
     {
-        float dx=path[i].x-path[i-1].x, dy=path[i].y-path[i-1].y;
-        unsigned steps=(unsigned)lroundf(hypotf(dx,dy)*10);
-        for (unsigned n=0;n<steps && m.result==MAZE_MODEL_RUNNING;n++)
+        unsigned n;
+        for (n=0;n<5000 && m.result==MAZE_MODEL_RUNNING;n++)
         {
-            maze_model_step(&m,dx==0?0:(dx>0?1:-1)*8192.0f*5/6,
-                            dy==0?0:(dy>0?1:-1)*8192.0f*5/6,1);
+            float dx=path[i].x-m.x,dy=path[i].y-m.y;
+            if (hypotf(dx,dy)<0.3f && hypotf(m.vx,m.vy)<1) break;
+            /* 测试控制器先减速再转弯，验证真实惯性下原关卡仍有可达路线。 */
+            maze_model_step(&m,(20*dx-8*m.vx)*8192/600,
+                            (20*dy-8*m.vy)*8192/600,10);
             clear_point(l,m.x,m.y);
         }
+        assert(n<5000);
         if (i<6) assert(m.result==MAZE_MODEL_RUNNING);
     }
     assert(m.result==MAZE_MODEL_WON);
@@ -193,22 +201,23 @@ static void repeated_contacts(void)
     puts("PASS: 64 approach directions with 150 repeated contact steps each");
 }
 
-static void render_independence(void)
+static void long_running(void)
 {
-    maze_level_t l=empty(); maze_model_t a,b;
-    maze_model_reset(&a,&l); maze_model_reset(&b,&l);
-    /* 验证模型依据dt而非调用次数；固定步及真正显示对照留到app/UI接入。 */
-    for (unsigned ms=0;ms<10000;ms+=50) maze_model_step(&a,8192,4096,50);
-    for (unsigned ms=0;ms<10000;ms+=25) maze_model_step(&b,8192,4096,25);
-    assert(fabsf(a.x-b.x)<0.1f && fabsf(a.y-b.y)<0.1f);
-    assert(fabsf(a.x-(10+1200*2/sqrtf(5)))<0.1f);
-    assert(fabsf(a.y-(50+1200/sqrtf(5)))<0.1f);
-    puts("PASS: 10s elapsed-time motion at 20/40 caller Hz (not display acceptance)");
+    maze_level_t l=empty(); maze_model_t m;
+    maze_model_reset(&m,&l);
+    for (unsigned ms=0;ms<10000;ms+=10)
+    {
+        maze_model_step(&m,8192,4096,10);
+        assert(hypotf(m.vx,m.vy)<=MAZE_SPEED_MAX+0.001f);
+    }
+    float distance=hypotf(m.x-10,m.y-50);
+    assert(distance>MAZE_SPEED_MAX*9 && distance<MAZE_SPEED_MAX*10);
+    puts("PASS: 10s fixed-step acceleration remains bounded; display cadence is tested at app level");
 }
 
 int main(void)
 {
     setbuf(stdout,NULL);
-    movement(); walls(); rounded_corner(); regions(); map_path(); repeated_contacts(); render_independence();
+    movement(); walls(); rounded_corner(); regions(); map_path(); repeated_contacts(); long_running();
     return 0;
 }

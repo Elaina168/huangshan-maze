@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-31",
+  "method": "Official PDF visual inspection plus local SDK v2.5.1/config/source inspection; no board writes or hardware testing",
+  "official_pdf": {
+    "url": "https://atta.szlcsc.com/upload/public/pdf/source/20250625/985D8CCBD0ADB346557E5965E9EAEEC0.pdf",
+    "sha256": "8ad5c218782114b65f2714eda10451ef39900c0be15b9a17a5bdd5f99caf8975",
+    "pages_reviewed": [
+      1,
+      2,
+      3
+    ]
+  },
+  "board": "sf32lb52-lchspi-ulp",
+  "firmware": "0.6.1-chinese-ui",
+  "selected_config": {
+    "RT_USING_WDT": "# CONFIG_RT_USING_WDT is not set",
+    "BSP_USING_WDT": "# CONFIG_BSP_USING_WDT is not set",
+    "AUDIO": "# CONFIG_AUDIO is not set",
+    "PKG_USING_FLASHDB": "# CONFIG_PKG_USING_FLASHDB is not set",
+    "BSP_USING_MOTOR": "# CONFIG_BSP_USING_MOTOR is not set",
+    "MOTOR_ENABLED": "# CONFIG_MOTOR_ENABLED is not set",
+    "BSP_USING_PSRAM1": "CONFIG_BSP_USING_PSRAM1=y",
+    "LV_RTTHREAD_USE_PSRAM_PRIVATE_HEAP": "# CONFIG_LV_RTTHREAD_USE_PSRAM_PRIVATE_HEAP is not set"
+  },
+  "config_sha256": "4d59847cc3beb9432afb0012241a854b7dafc278e6f0737d1df6ea3f67acda33",
+  "resource_report": {
+    "main_bin_bytes": 585956,
+    "link_report_rom_used_bytes": 617651,
+    "link_report_rom_region_bytes": 8388608,
+    "link_report_ram_used_bytes": 123020,
+    "link_report_ram_region_bytes": 523264,
+    "note": "Remaining linker region is not runtime heap or integrated feature performance proof"
+  },
+  "accessory": {
+    "user_marking": "XHXDZ-30B01",
+    "user_description": "圆柱体，好像有按钮能按",
+    "identity": "unknown; no exact web search results, no photo provided"
+  }
+}

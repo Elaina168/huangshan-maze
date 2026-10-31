@@ -2,6 +2,7 @@
 #include "maze_ui.h"
 #include "rtthread.h"
 #include "lvgl.h"
+#include "maze_font_zh_16.h"
 #include "littlevgl2rtt.h"
 
 static lv_obj_t *ball, *time_label, *info_label;
@@ -13,6 +14,7 @@ static maze_event_t pending_event;
 static int shown_error;
 /* 暂停重校准的结果与持续更新的传感器错误分开保存，避免健康采样抹掉提示。 */
 static int paused_calibration_error;
+static maze_surface_t shown_surface;
 
 static int32_t pixel(float value) { return (int32_t)(value+0.5f); }
 
@@ -65,6 +67,7 @@ static void button(lv_obj_t *screen, const char *text, maze_event_t event, int32
     lv_obj_set_style_pad_all(obj,4,0);
     lv_obj_add_event_cb(obj,button_clicked,LV_EVENT_CLICKED,(void *)(uintptr_t)event);
     lv_obj_t *caption=lv_label_create(obj);
+    lv_obj_set_style_text_font(caption,&maze_font_zh_16,0);
     lv_label_set_text(caption,text);
     lv_obj_center(caption);
 }
@@ -72,12 +75,24 @@ static void button(lv_obj_t *screen, const char *text, maze_event_t event, int32
 static void make_scene(const maze_app_t *app)
 {
     lv_obj_t *screen=lv_screen_active();
-    label(screen,"TILT MAZE",20,10,350);
+    label(screen,app->level==&maze_level_frost_fork?"冰岔迷宫":
+        app->level==&maze_level_surface_lab?"钢珠地面对比":"体感迷宫",20,10,350);
     heading_label=label(screen,"",20,35,350);
-    time_label=label(screen,"Time: 0.00 s",20,58,350);
+    time_label=label(screen,"用时: 0.00 秒",95,58,200);
     const maze_level_t *level=app->level;
     box(screen,19,79,pixel(level->width)+2,pixel(level->height)+2,0x526b80);
     lv_obj_t *map=box(screen,20,80,pixel(level->width),pixel(level->height),0x182b38);
+    for (unsigned i=0;i<level->surface_count;i++)
+    {
+        maze_surface_area_t s=level->surfaces[i];
+        box(map,pixel(s.area.x),pixel(s.area.y),pixel(s.area.width),pixel(s.area.height),
+            s.surface==MAZE_SURFACE_ICE?0x294f68:0x182b38);
+    }
+    if (level==&maze_level_surface_lab)
+    {
+        label(map,"普通",10,10,140);
+        label(map,"冰面",185,10,140);
+    }
     for (unsigned i=0;i<level->wall_count;i++)
     {
         maze_rect_t w=level->walls[i];
@@ -104,34 +119,38 @@ static void make_page(const maze_app_t *app)
     switch (app->state)
     {
     case MAZE_APP_READY:
-        heading="READY | USB RIGHT";
-        lv_label_set_text(info_label,"Blue ball: tilt to move\nGreen goal: reach to win\nRed holes: avoid them\nWalls block; touching is OK");
-        button(controls,"Start",MAZE_EVENT_START,130,130); break;
+        heading="准备就绪 | USB在右侧";
+        lv_label_set_text(info_label,app->level==&maze_level_frost_fork?
+            "轻倾加速，反向制动\n红色陷阱请绕行\n蓝色冰面更滑\n到达绿色终点获胜":
+            app->level==&maze_level_surface_lab?
+            "倾斜加速，放平减速\n左侧普通 / 右侧冰面\n冰面滑行更远\n到达绿色终点结束":
+            "倾斜板子移动小球\n到达绿色终点获胜\n红色陷阱请绕行\n撞墙只阻挡，不失败");
+        button(controls,"开始",MAZE_EVENT_START,130,130); break;
     case MAZE_APP_CALIBRATING:
-        heading="CALIBRATING";
-        button(controls,"Cancel",MAZE_EVENT_EXIT,130,130); break;
+        heading="校准中";
+        button(controls,"取消",MAZE_EVENT_EXIT,130,130); break;
     case MAZE_APP_PLAYING:
-        heading="PLAYING | RED = HOLE";
-        button(controls,"Pause",MAZE_EVENT_PAUSE,130,130); break;
+        heading="游玩中 | 普通地面";
+        button(controls,"暂停",MAZE_EVENT_PAUSE,130,130); break;
     case MAZE_APP_PAUSED:
-        heading="PAUSED";
-        button(controls,"Resume",MAZE_EVENT_RESUME,24,80);
-        button(controls,"Calibrate",MAZE_EVENT_RECALIBRATE,111,80);
-        button(controls,"Replay",MAZE_EVENT_REPLAY,198,80);
-        button(controls,"Exit",MAZE_EVENT_EXIT,285,80); break;
+        heading="已暂停";
+        button(controls,"继续",MAZE_EVENT_RESUME,24,80);
+        button(controls,"校准",MAZE_EVENT_RECALIBRATE,111,80);
+        button(controls,"重玩",MAZE_EVENT_REPLAY,198,80);
+        button(controls,"退出",MAZE_EVENT_EXIT,285,80); break;
     case MAZE_APP_WON:
     case MAZE_APP_LOST:
-        heading=app->state==MAZE_APP_WON?"GOAL REACHED":"FELL INTO A HOLE";
+        heading=app->state==MAZE_APP_WON?"成功到达终点":"小球落入陷阱";
         lv_label_set_text(info_label,app->state==MAZE_APP_WON?
-            "You reached the goal!\nReplay to start a new round.":
-            "The ball fell into a hole.\nReplay to try again.");
-        button(controls,"Replay",MAZE_EVENT_REPLAY,70,110);
-        button(controls,"Exit",MAZE_EVENT_EXIT,210,110); break;
+            "成功到达终点！\n点击重玩开始新一轮。":
+            "小球落入陷阱。\n点击重玩再试一次。");
+        button(controls,"重玩",MAZE_EVENT_REPLAY,70,110);
+        button(controls,"退出",MAZE_EVENT_EXIT,210,110); break;
     case MAZE_APP_CALIBRATION_FAILED:
     case MAZE_APP_DEVICE_ERROR:
-        heading=app->state==MAZE_APP_CALIBRATION_FAILED?"CALIBRATION FAILED":"DEVICE ERROR";
-        button(controls,"Retry",MAZE_EVENT_RETRY,70,110);
-        button(controls,app->state==MAZE_APP_CALIBRATION_FAILED?"Back":"Exit",MAZE_EVENT_EXIT,210,110); break;
+        heading=app->state==MAZE_APP_CALIBRATION_FAILED?"校准失败":"设备异常";
+        button(controls,"重试",MAZE_EVENT_RETRY,70,110);
+        button(controls,app->state==MAZE_APP_CALIBRATION_FAILED?"返回":"退出",MAZE_EVENT_EXIT,210,110); break;
     }
     lv_label_set_text(heading_label,heading);
 }
@@ -144,6 +163,7 @@ int maze_ui_init(void)
     lv_obj_remove_flag(screen,LV_OBJ_FLAG_SCROLLABLE);
     lv_obj_set_style_bg_color(screen,lv_color_hex(0x101c27),0);
     lv_obj_set_style_text_color(screen,lv_color_white(),0);
+    lv_obj_set_style_text_font(screen,&maze_font_zh_16,0);
     lv_display_t *display=lv_display_get_default();
     rt_kprintf("[maze_ui] ready width=%ld height=%ld USB_RIGHT tick_hz=%d\n",
         (long)lv_display_get_horizontal_resolution(display),
@@ -183,22 +203,29 @@ void maze_ui_render(const maze_app_t *app)
     lv_obj_set_pos(ball,pixel(app->model.x-app->level->ball_radius),
                         pixel(app->model.y-app->level->ball_radius));
     uint32_t cs=(uint32_t)(app->elapsed_ms/10);
-    lv_label_set_text_fmt(time_label,"Time: %lu.%02lu s",(unsigned long)(cs/100),(unsigned long)(cs%100));
+    lv_label_set_text_fmt(time_label,"用时: %lu.%02lu 秒",(unsigned long)(cs/100),(unsigned long)(cs%100));
     if (app->state==MAZE_APP_CALIBRATING)
-        lv_label_set_text_fmt(heading_label,"Hold still: %u/%u",
+        lv_label_set_text_fmt(heading_label,"请放稳: %u/%u",
                               app->window_count,MAZE_CALIBRATION_COUNT);
+    if (app->state==MAZE_APP_PLAYING)
+    {
+        maze_surface_t surface=maze_level_surface_at(app->level,app->model.x,app->model.y);
+        if (changed || shown_surface!=surface)
+            lv_label_set_text(heading_label,surface==MAZE_SURFACE_ICE?"游玩中 | 冰面":"游玩中 | 普通地面");
+        shown_surface=surface;
+    }
     int feedback_error=app->error;
     if (app->state==MAZE_APP_PAUSED && !feedback_error) feedback_error=paused_calibration_error;
     if (changed || shown_error!=feedback_error)
     {
         if (app->state==MAZE_APP_PAUSED && feedback_error)
-            lv_label_set_text_fmt(heading_label,"PAUSED | POSE KEPT (%d)",feedback_error);
+            lv_label_set_text_fmt(heading_label,"已暂停 | 保留本轮 (%d)",feedback_error);
         else if (app->state==MAZE_APP_CALIBRATION_FAILED || app->state==MAZE_APP_DEVICE_ERROR)
             lv_label_set_text_fmt(info_label,app->state==MAZE_APP_CALIBRATION_FAILED?
-                "Calibration did not complete (%d)\nHold still, then Retry.":
-                "Sensor or timing error (%d)\nHold still, then Retry.\nRecovery returns to Pause.",app->error);
+                "校准未完成 (%d)\n请放稳后重试。":
+                "传感器或时序异常 (%d)\n请放稳后重试。\n恢复后返回暂停。",app->error);
         else if (app->state==MAZE_APP_PAUSED)
-            lv_label_set_text(heading_label,"PAUSED");
+            lv_label_set_text(heading_label,"已暂停");
     }
     shown_error=feedback_error;
 }

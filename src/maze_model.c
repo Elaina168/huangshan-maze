@@ -104,9 +104,20 @@ void maze_model_step(maze_model_t *m, float input_x, float input_y, uint32_t dt_
     m->step_elapsed_ms=0;
     if (m->result!=MAZE_MODEL_RUNNING) return;
     float magnitude=hypotf(input_x,input_y);
-    float scale=MAZE_SPEED_MAX/fmaxf(MAZE_INPUT_FULL_RAW,magnitude);
-    m->vx=input_x*scale;
-    m->vy=input_y*scale;
+    float scale=MAZE_ACCEL_MAX/fmaxf(MAZE_INPUT_FULL_RAW,magnitude);
+    float dt=(float)dt_ms/1000;
+    maze_surface_t surface=maze_level_surface_at(m->level,m->x,m->y);
+    float drag=surface==MAZE_SURFACE_ICE?MAZE_DRAG_ICE:MAZE_DRAG_NORMAL;
+    /* 输入施加加速度，隐式阻尼保留惯性；切换地面不直接重设速度。 */
+    m->vx=(m->vx+input_x*scale*dt)/(1+drag*dt);
+    m->vy=(m->vy+input_y*scale*dt)/(1+drag*dt);
+    float speed=hypotf(m->vx,m->vy);
+    if (speed>MAZE_SPEED_MAX)
+    {
+        m->vx*=MAZE_SPEED_MAX/speed;
+        m->vy*=MAZE_SPEED_MAX/speed;
+    }
+    else if (magnitude==0 && speed<MAZE_STOP_SPEED) m->vx=m->vy=0;
     float remaining=(float)dt_ms;
     for (unsigned n=0;n<4;n++)
     {

@@ -19,7 +19,7 @@
 #include "finsh.h"
 
 #define APP_NAME        "huangshan_maze"
-#define APP_VERSION     "0.4.3-pause-feedback"
+#define APP_VERSION     "0.6.1-chinese-ui"
 
 #define RGBLED_NAME     "rgbled"
 
@@ -86,7 +86,7 @@ int main(void)
     }
 
     static maze_app_t app;
-    maze_app_init(&app, &maze_level_one, RT_TICK_PER_SECOND);
+    maze_app_init(&app, &maze_level_frost_fork, RT_TICK_PER_SECOND);
     maze_app_state_t last_state = app.state;
     uint32_t last_generation = app.generation;
     rt_tick_t last_log = rt_tick_get();
@@ -142,10 +142,12 @@ int main(void)
         if (changed || (rt_tick_t)(now-last_log) >= rt_tick_from_millisecond(500))
         {
             if (enabled || changed)
-                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d\n",
+                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d vel_centi=%ld,%ld surface=%d\n",
                            app.generation, app.state, now, (unsigned long)app.elapsed_ms,
                            (long)app.model.x, (long)app.model.y,
-                           (long)app.input.x, (long)app.input.y, app.error);
+                           (long)app.input.x, (long)app.input.y, app.error,
+                           (long)(app.model.vx*100), (long)(app.model.vy*100),
+                           maze_level_surface_at(app.level,app.model.x,app.model.y));
             last_log = now;
         }
         if (changed || (rt_tick_t)(now-last_ui) >= rt_tick_from_millisecond(50))

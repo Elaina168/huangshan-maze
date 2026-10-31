@@ -15,3 +15,7 @@ project/* -text
 src/main.c -text
 src/SConscript -text
 LICENSE-SiFli-SDK-Apache-2.0.txt -text
+
+# LVGL原始PPM像素与第三方许可保留原字节，不按源码检查行尾。
+*.ppm binary
+licenses/NotoSansSC-OFL.txt -text whitespace=-blank-at-eol,-blank-at-eof

@@ -1,0 +1,10 @@
+[ 98%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+[ 98%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o
+[ 99%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 99%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_app.c.o
+[ 99%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_model.c.o
+[ 99%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_level.c.o
+[100%] Linking C executable ui-refresh
+[100%] Built target ui-refresh
+ui-refresh: /mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:40: main: Assertion `!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),0)),"FROST FORK")' failed.

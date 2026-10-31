@@ -1,0 +1,18 @@
+{
+  "reachable_cells": 42,
+  "passages": 42,
+  "cycles": 1,
+  "junctions": 7,
+  "dead_ends_excluding_start_goal": 5,
+  "trap_count": 3,
+  "wall_rectangles": 29,
+  "normal_route_length_px": 1550,
+  "ice_route_length_px": 1350,
+  "ice_route_turns": 15,
+  "minimum_centerline_wall_distance_px": 21.0,
+  "ball_radius_px": 7,
+  "nominal_corridor_width_px": 42,
+  "center_lateral_margin_px": 14,
+  "goal_is_terminal": true,
+  "scope": "static topology and 1px centerline clearance, not inertial route or board acceptance"
+}
