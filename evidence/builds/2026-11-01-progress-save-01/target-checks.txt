@@ -1,0 +1,13 @@
+120b33e0 00000008 t __maze_store_flash_allow_veneer
+12038304 00000140 T fdb_kvdb_init
+2000648c 00000040 T maze_save_flash
+20006480 0000000c T maze_store_flash_allow
+2001ddb8 00000d58 b nav.2
+2001cdc8 00000ff0 b store.1
+2001f410 000023f4 b work
+2001f348 00000084 b worker
+12077670 00000340 t worker_entry
+2001eb48 00000800 b worker_stack
+20019e91 00000100 D working_directory
+DOWNLOAD ['bootloader\\bootloader.bin@0x12010000', 'main.bin@0x12020000', 'ftab\\ftab.bin@0x12000000']
+PASS: 8KiB configuration, A/B addresses and sizes, unchanged main address, no linker C declarations, exactly 3 default download files

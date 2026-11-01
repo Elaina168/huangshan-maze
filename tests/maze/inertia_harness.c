@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "maze_model.h"
+#include "legacy_levels.h"
 
 static const maze_level_t open_level={.width=4000,.height=4000,.ball_radius=7,
     .start={1000,1000},.goal={3900,3900,10}};

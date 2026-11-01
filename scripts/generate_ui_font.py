@@ -21,7 +21,8 @@ def main():
     parser.add_argument('--check', action='store_true', help='仅比较当前生成物，不写入')
     args = parser.parse_args()
     assert hashlib.sha256(args.font.read_bytes()).hexdigest() == SOURCE_SHA256, '源字体SHA不符'
-    source = (ROOT / 'src/maze_ui.c').read_text(encoding='utf-8')
+    source = '\n'.join((ROOT / path).read_text(encoding='utf-8')
+                       for path in ['src/maze_ui.c', 'src/maze_catalog.c'])
     strings = [ast.literal_eval(s) for s in re.findall(r'"(?:[^"\\]|\\.)*"', source)]
     chars = sorted({c for s in strings for c in s if ord(c) > 127}, key=ord)
     assert chars, '界面没有中文，拒绝生成空字体'

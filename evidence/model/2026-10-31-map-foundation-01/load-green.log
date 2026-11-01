@@ -1,0 +1,4 @@
+PASS: exact JSON geometry/ID/internal pointers after 3 loads; map=2576 workspace=9204 bytes
+PASS: bounded dimensions, row count/length, position characters and closed boundary
+PASS: missing/duplicate/unknown/over-capacity objects and nonfinite/radius/bounds/overlap/wall rejection
+PASS: disconnected corridor, blocking pit, safe bypass, and between-node pit crossings

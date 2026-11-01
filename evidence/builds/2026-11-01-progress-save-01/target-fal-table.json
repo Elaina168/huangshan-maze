@@ -1,0 +1,30 @@
+{
+  "source": "actual ARM ELF partition_table_def",
+  "entries": [
+    [
+      "dfu",
+      "flash2",
+      14286848,
+      16384
+    ],
+    [
+      "ble",
+      "flash2",
+      14303232,
+      16384
+    ],
+    [
+      "maze_a",
+      "maze_flash",
+      0,
+      32768
+    ],
+    [
+      "maze_b",
+      "maze_flash",
+      32768,
+      32768
+    ]
+  ],
+  "pass": true
+}

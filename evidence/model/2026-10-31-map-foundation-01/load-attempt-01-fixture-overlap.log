@@ -1,0 +1,5 @@
+PASS: exact JSON geometry/ID/internal pointers after 3 loads; map=2576 workspace=9204 bytes
+PASS: bounded dimensions, row count/length, position characters and closed boundary
+PASS: missing/duplicate/unknown/over-capacity objects and nonfinite/radius/bounds/overlap/wall rejection
+expected -2004, got -2003
+map-load-green: /mnt/d/codex/黄山派/tests/maze/map_load_harness.c:14: bad: Assertion `result==expected' failed.

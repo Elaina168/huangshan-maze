@@ -1,0 +1,9 @@
+PASS: actual LVGL maze title, object count, walls and ice geometry
+calibration->playing flushed pixels=32850 (full screen=175500)
+paused->playing flushed pixels=32850
+playing one-pixel move flushed pixels=6510
+PASS: paused calibration failure remains visible after healthy samples; Resume and successful recalibration clear it
+PASS: maze NORMAL/ICE heading follows the shared ball-center query
+PASS: all states Chinese glyph coverage, ASCII fallback, font baseline, label/button bounds, progress and timer
+PASS: actual navigation UI, two titles, mode, next/final, stale generation/page clicks and cleared pause-error cache
+PASS: real LVGL partial invalidation; target flush time still needs hardware

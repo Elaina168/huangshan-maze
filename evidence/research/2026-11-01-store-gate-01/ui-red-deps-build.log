@@ -1,0 +1,11 @@
+Consolidate compiler generated dependencies of target lvgl_host
+[ 97%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_model.c.o
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_map.c.o
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_map_frost_fork.c.o
+[ 97%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+[ 98%] Linking C executable ui-refresh
+[100%] Built target ui-refresh

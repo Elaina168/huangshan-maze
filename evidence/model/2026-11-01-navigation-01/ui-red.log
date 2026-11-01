@@ -1,0 +1,24 @@
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o
+/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c: In function ‘render’:
+/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:92:20: error: passing argument 1 of ‘maze_ui_render’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   92 |     maze_ui_render(&navigation);
+      |                    ^~~~~~~~~~~
+      |                    |
+      |                    maze_navigation_t *
+In file included from /mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:6:
+/mnt/d/codex/黄山派/src/maze_ui.h:12:39: note: expected ‘const maze_app_t *’ but argument is of type ‘maze_navigation_t *’
+   12 | void maze_ui_render(const maze_app_t *app);
+      |                     ~~~~~~~~~~~~~~~~~~^~~
+/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c: In function ‘main’:
+/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:116:28: error: passing argument 1 of ‘maze_ui_render’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  116 |             maze_ui_render(&navigation);
+      |                            ^~~~~~~~~~~
+      |                            |
+      |                            maze_navigation_t *
+In file included from /mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:6:
+/mnt/d/codex/黄山派/src/maze_ui.h:12:39: note: expected ‘const maze_app_t *’ but argument is of type ‘maze_navigation_t *’
+   12 | void maze_ui_render(const maze_app_t *app);
+      |                     ~~~~~~~~~~~~~~~~~~^~~
+cc1: all warnings being treated as errors
+gmake[1]: *** [CMakeFiles/ui-refresh.dir/build.make:76: CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o] Error 1
+gmake: *** [Makefile:142: ui-refresh/fast] Error 2

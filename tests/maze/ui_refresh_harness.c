@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "maze_ui.h"
+#include "maze_map.h"
+#include "maze_navigation.h"
 #include "lvgl.h"
 #include "maze_font_zh_16.h"
 #include "src/misc/lv_text_private.h"
@@ -80,16 +82,118 @@ static void flush(lv_display_t *display, const lv_area_t *area, uint8_t *data)
     pixels+=(unsigned)(area->x2-area->x1+1)*(unsigned)(area->y2-area->y1+1);
     lv_display_flush_ready(display);
 }
+static maze_navigation_t navigation;
+static lv_obj_t *caption(lv_obj_t *root,const char *text)
+{
+    if(lv_obj_check_type(root,&lv_label_class) && !strcmp(lv_label_get_text(root),text)) return root;
+    for(unsigned i=0;i<lv_obj_get_child_count(root);i++)
+    {
+        lv_obj_t *found=caption(lv_obj_get_child(root,i),text);
+        if(found) return found;
+    }
+    return NULL;
+}
+static void click(const char *text)
+{
+    lv_obj_t *label=caption(lv_screen_active(),text); assert(label);
+    lv_obj_t *button=lv_obj_get_parent(label);
+    assert(lv_obj_check_type(button,&lv_button_class));
+    lv_obj_send_event(button,LV_EVENT_CLICKED,NULL);
+}
+static void navigation_ui(lv_display_t *display)
+{
+    maze_ui_command_t command;
+    maze_ui_clear(); maze_navigation_init(&navigation,1000);
+    navigation.progress.archive.levels[1].unlocked=true;
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"冰岔迷宫") && caption(lv_screen_active(),"冰弯迷宫"));
+    screenshot("selection.ppm");
+    click("冰岔迷宫");
+    assert(maze_ui_take_command(&navigation,&command) && command.kind==MAZE_UI_SELECT && command.index==0);
+    click("冰岔迷宫");
+    maze_navigation_toggle_direction(&navigation);
+    assert(!maze_ui_take_command(&navigation,&command));
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"控制方向：反转"));
+    maze_ui_clear(); assert(maze_navigation_select(&navigation,0)==0);
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"冰岔迷宫 | 反转"));
+    click("开始");
+    navigation.app.generation++;
+    assert(!maze_ui_take_command(&navigation,&command));
+    navigation.app.state=MAZE_APP_WON;
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    click("下一关");
+    assert(maze_ui_take_command(&navigation,&command) && command.kind==MAZE_UI_NEXT);
+    maze_ui_clear(); assert(maze_navigation_next(&navigation)==0);
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(navigation.app.state==MAZE_APP_READY && navigation.app.reversed);
+    assert(caption(lv_screen_active(),"冰弯迷宫 | 反转"));
+    screenshot("second-ready.ppm");
+    navigation.app.state=MAZE_APP_WON;
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"全部完成") && !caption(lv_screen_active(),"下一关"));
+    screenshot("all-complete.ppm");
+    navigation.app.state=MAZE_APP_CALIBRATING;
+    maze_ui_render(&navigation);
+    navigation.app.state=MAZE_APP_PAUSED; navigation.app.error=-1003;
+    maze_ui_render(&navigation);
+    maze_ui_clear(); maze_navigation_back(&navigation);
+    assert(maze_navigation_select(&navigation,0)==0);
+    navigation.app.state=MAZE_APP_PAUSED;
+    maze_ui_render(&navigation); lv_refr_now(display);
+    assert(caption(lv_screen_active(),"已暂停 | 失误:0"));
+    navigation.page=MAZE_NAV_MAP_ERROR; navigation.page_version++; navigation.error=MAZE_MAP_NO_ROUTE;
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    click("选关"); assert(maze_ui_take_command(&navigation,&command) && command.kind==MAZE_UI_BACK);
+    maze_ui_clear(); maze_navigation_back(&navigation);
+    maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    click("冰岔迷宫"); maze_navigation_toggle_direction(&navigation); maze_navigation_toggle_direction(&navigation);
+    assert(!maze_ui_take_command(&navigation,&command));
+    puts("PASS: actual navigation UI, two titles, mode, next/final, stale generation/page clicks and cleared pause-error cache");
+}
+static void progress_ui(lv_display_t *display)
+{
+    maze_ui_command_t command;
+    maze_ui_clear();maze_navigation_init(&navigation,1000);
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"冰弯迷宫 [未解锁]"));
+    screenshot("locked-selection.ppm");
+    assert(maze_navigation_select(&navigation,1)==MAZE_NAV_LOCKED);
+    click("成绩");assert(maze_ui_take_command(&navigation,&command) && command.kind==MAZE_UI_SCORES);
+    navigation.page=MAZE_NAV_SCORES;navigation.page_version++;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"暂无通关记录"));
+    screenshot("scores-empty.ppm");
+    navigation.progress.archive.levels[0].modes[0].count=5;
+    navigation.progress.archive.levels[0].completed=1;
+    navigation.progress.archive.levels[0].modes[0].losses=20;
+    for(unsigned i=0;i<5;i++) navigation.progress.archive.levels[0].modes[0].scores[i]=(maze_score_t){123456+i,2+i};
+    navigation.page_version++;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());screenshot("scores-full.ppm");
+    navigation.page=MAZE_NAV_SELECT;navigation.page_version++;navigation.store_error=-3102;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    click("保存");assert(maze_ui_take_command(&navigation,&command) && command.kind==MAZE_UI_SAVE);
+    navigation.page=MAZE_NAV_STORAGE_ERROR;navigation.page_version++;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"存档不可用"));screenshot("storage-error.ppm");
+    puts("PASS: locked level, score list empty/top5, unsaved retry and startup storage error UI");
+}
 static unsigned render(lv_display_t *display, maze_app_t *app, maze_app_state_t state)
 {
     app->state=state;
     pixels=0;
-    maze_ui_render(app);
+    navigation.page=MAZE_NAV_GAME;
+    navigation.app=*app;
+    navigation.progress.active=true;
+    navigation.progress.accounted=false;
+    navigation.progress.accrued_ms=0;
+    maze_ui_render(&navigation);
     lv_refr_now(display);
     check_labels(lv_screen_active());
     return pixels;
 }
-int main(void)
+int main(int argc, char **argv)
 {
     setbuf(stdout,NULL);
     lv_init();
@@ -98,10 +202,36 @@ int main(void)
     lv_display_set_buffers(display,buffer,NULL,sizeof(buffer),LV_DISPLAY_RENDER_MODE_PARTIAL);
     lv_display_set_flush_cb(display,flush);
     assert(maze_ui_init()==0);
+    maze_navigation_init(&navigation,1000);
+    if (argc>1)
+    {
+        assert(!strcmp(argv[1],"--map-error"));
+        const int codes[]={MAZE_MAP_FORMAT,MAZE_MAP_OBJECT,MAZE_MAP_GEOMETRY,MAZE_MAP_NO_ROUTE};
+        for (unsigned i=0;i<4;i++)
+        {
+            navigation.page=MAZE_NAV_MAP_ERROR;
+            navigation.page_version++;
+            navigation.error=codes[i];
+            maze_ui_render(&navigation);
+            lv_refr_now(display);check_labels(lv_screen_active());
+            assert(lv_obj_get_child_count(lv_screen_active())==5);
+            assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),0)),"地图载入失败"));
+            char code[20];snprintf(code,sizeof(code),"%d",codes[i]);
+            assert(strstr(lv_label_get_text(lv_obj_get_child(lv_screen_active(),2)),code));
+            maze_ui_process();
+        }
+        screenshot("map-error.ppm");export_font();
+        puts("PASS: all map-load error pages show reason/code and return button, fit and service UI");
+        return 0;
+    }
+    static maze_map_t map_data;
+    assert(maze_map_load(&maze_map_frost_fork,&map_data)==MAZE_MAP_OK);
+    /* 独立几何视图有相同ID但不同地址，验证UI不再靠实例指针识别。 */
+    maze_level_t alias=map_data.level;
     maze_app_t app;
-    maze_app_init(&app,&maze_level_frost_fork,1000);
+    maze_app_init(&app,&alias,1000);
     render(display,&app,MAZE_APP_READY);
-    assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),0)),"冰岔迷宫"));
+    assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),0)),"冰岔迷宫 | 正常"));
     screenshot("ready.ppm");
     lv_obj_t *map=lv_obj_get_child(lv_screen_active(),4);
     assert(lv_obj_get_child_count(map)==37);
@@ -130,7 +260,7 @@ int main(void)
     assert(play_pixels<10000);
     /* 复现板端：暂停校准超时后正常采样会清实时错误，但失败提示应保留。 */
     /* 上面刷新统计直接设置状态，反馈测试从新的真实校准会话开始。 */
-    maze_app_init(&app,&maze_level_frost_fork,1000);
+    maze_app_init(&app,&map_data.level,1000);
     maze_app_event(&app,MAZE_EVENT_START,1000);
     for (unsigned i=0;i<20;i++)
     {
@@ -172,7 +302,7 @@ int main(void)
     }
     assert(app.state==MAZE_APP_PAUSED);
     render(display,&app,app.state);
-    assert(!strcmp(lv_label_get_text(heading),"已暂停"));
+    assert(strstr(lv_label_get_text(heading),"已暂停") && strstr(lv_label_get_text(heading),"失误"));
     puts("PASS: paused calibration failure remains visible after healthy samples; Resume and successful recalibration clear it");
     render(display,&app,MAZE_APP_PLAYING);
     assert(strstr(lv_label_get_text(heading),"普通地面"));
@@ -192,10 +322,12 @@ int main(void)
         if (state==MAZE_APP_WON) screenshot("won.ppm");
     }
     app.window_count=20;render(display,&app,MAZE_APP_CALIBRATING);
-    assert(!strcmp(lv_label_get_text(heading),"请放稳: 20/20"));
+    assert(strstr(lv_label_get_text(heading),"请放稳: 20/20"));
     app.elapsed_ms=1234567;render(display,&app,MAZE_APP_PLAYING);
-    assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),2)),"用时: 1234.56 秒"));
+    assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),2)),"挑战: 1234.56 秒"));
     puts("PASS: all states Chinese glyph coverage, ASCII fallback, font baseline, label/button bounds, progress and timer");
+    navigation_ui(display);
+    progress_ui(display);
     export_font();
     puts("PASS: real LVGL partial invalidation; target flush time still needs hardware");
     return 0;

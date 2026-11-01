@@ -1,0 +1,6 @@
+120a2778 00000010 T maze_catalog
+120a2774 00000004 T maze_catalog_count
+120a6a6c 0000001c T maze_map_second
+2001cc90 00000b70 b nav.1
+2001e100 000023f4 b work
+PASS: legacy maze symbols absent from target ELF

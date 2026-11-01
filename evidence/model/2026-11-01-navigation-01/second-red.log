@@ -1,0 +1,5 @@
+/usr/bin/ld: /tmp/cc56Sj2a.o: warning: relocation against `maze_map_second' in read-only section `.text'
+/usr/bin/ld: /tmp/cc56Sj2a.o: in function `main':
+second_map_harness.c:(.text+0x351): undefined reference to `maze_map_second'
+/usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+collect2: error: ld returned 1 exit status

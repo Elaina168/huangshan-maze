@@ -1,0 +1,4 @@
+PASS: cumulative full-ms timing, loss exactly once, victory rank and shared unlock
+PASS: pause replay accumulates, device recovery does not duplicate time/loss, mode isolation
+PASS: top-5 truncation, unfinished exit excluded, calibration-cancel cannot discard prior challenge
+PASS: progress archive fits actual persistent format

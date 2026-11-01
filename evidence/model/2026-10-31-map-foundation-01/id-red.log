@@ -1,0 +1,3 @@
+PASS: exact JSON geometry/ID/internal pointers after 3 loads; map=2576 workspace=9204 bytes
+expected -2001, got 0
+map-load-test: /mnt/d/codex/黄山派/tests/maze/map_load_harness.c:17: bad: Assertion `result==expected' failed.

@@ -1,0 +1,1 @@
+PASS: actual board proxy physical address, read-only/single-bank bounds, 8KiB erase and error propagation

@@ -1,0 +1,4 @@
+/mnt/d/codex/黄山派/tests/maze/archive_harness.c:5:10: fatal error: maze_archive.h: No such file or directory
+    5 | #include "maze_archive.h"
+      |          ^~~~~~~~~~~~~~~~
+compilation terminated.

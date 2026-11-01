@@ -1,0 +1,7 @@
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_map_second.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_catalog.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+Linking C executable ui-refresh

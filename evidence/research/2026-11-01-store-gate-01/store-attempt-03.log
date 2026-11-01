@@ -1,0 +1,36 @@
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘read_kv’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:444:128: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  444 |     if (kvdb_log) FDB_INFO("read_kv: addr %x kv_len %x max %d %d\n", kv->addr.start, kv->len, db_max_size(db), db_sec_size(db));
+      |                                                                                                                                ^
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:448:88: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  448 |         if (kvdb_log) FDB_INFO("read_kv: kv_len %d max %d\n", kv->len, db_max_size(db));
+      |                                                                                        ^
+In file included from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/flashdb.h:23,
+                 from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:16:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘fdb_kv_print’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:15: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |               ^~~~~~~~~                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                              |
+      |                                                                              long unsigned int
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/fdb_def.h:71:47: note: in definition of macro ‘FDB_PRINT’
+   71 | #define FDB_PRINT(...)                 printf(__VA_ARGS__)
+      |                                               ^~~~~~~~~~~
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:23: note: format string is defined here
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |                      ~^
+      |                       |
+      |                       unsigned int
+      |                      %lu
+PASS: actual FlashDB initialization, reboot, alternating commit and failed-write retry
+PASS: unknown nonempty NOR preserved without formatting
+PASS: valid future-version and revision-conflict preserved; read/partial-write failures explicit
+PASS: ordinary 7 write/erase operations x 5 cut positions -> complete old/new archive
+PASS: gc 14 write/erase operations x 5 cut positions -> complete old/new archive
+PASS: final readback failure then same-revision retry preserves one logical snapshot
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_store.py", line 133, in <module>
+    main()
+  File "/mnt/d/codex/黄山派/scripts/test_maze_store.py", line 122, in main
+    assert not differences, (operation,prefix,result.stdout,differences[:30],
+AssertionError: (33, 1, 'ERROR -3101\n', [16], 'ffffffffffffffffffffffffffffffff', '07ffffffffffffffffffffffffffffff')

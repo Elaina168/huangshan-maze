@@ -1,0 +1,4 @@
+#ifndef STORE_HOST_FAL_CFG_H
+#define STORE_HOST_FAL_CFG_H
+#define FDB_USING_NATIVE_ASSERT
+#endif

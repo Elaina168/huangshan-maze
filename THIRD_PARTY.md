@@ -27,3 +27,9 @@ AI 协作记录保存在开发日志。需求、检查脚本和说明由 Codex �
 原字体来自SiFli SDK v2.5.1的`external/lvgl_v9/tests/src/test_files/fonts/noto/NotoSansSC-Regular.ttf`，Copyright 2014-2021 Adobe、SIL OFL 1.1；原始SHA256 `ae82f4e2a55e1316a55bcc1d05e9555ce08d8bda07e893b486896b626fd852ff`。[原版权与完整许可](licenses/NotoSansSC-OFL.txt)随衍生字形保留。项目不重新分发原10MB TTF，构建固件不依赖运行时字体引擎。
 
 Codex使用现有Pillow 12.3.0（仅离线工具）按实际UI字符串栅格化16px/4bpp字形，衍生字体名`maze_font_zh_16`，不使用原字体保留名称命名。脚本为`scripts/generate_ui_font.py`，源哈希、字符表和体积见[清单](docs/design/chinese-ui-font.json)。ASCII复用SDK Montserrat 16 fallback，授权沿用上方声明。字体的字形设计是第三方成果；本项目仅实现离线转换与接入，不算学生独立设计字体。
+
+## FlashDB与FAL（2026-11-01）
+
+存档复用SiFli SDK v2.5.1自带external/FlashDB，头文件标记FlashDB 2.1.1，包含SiFli适配修改，不能当成未经修改的上游同名版本。FlashDB版权Armink、Apache-2.0；FAL版权RT-Thread Development Team、Apache-2.0。原库在SDK内原样编译链接，没有复制进本仓库或改写恢复算法；实际使用文件SHA见[evidence](evidence/research/2026-11-01-store-gate-01/README.md)。
+
+project/custom_mem_map.h依据SDK同板hcpu/custom_mem_map.h保留原DFU/BLE映射（原文件Copyright 2019-2022 SiFli Technologies(Nanjing) Co., Ltd，Apache-2.0），新增游戏代理设备/分区；项目ptab.json保留实际板表所有原区域并增加A/B。本项目新增显式编码/双副本策略、写闸门、成绩规则与界面，不将库实现归为学生独立成果。rt_flash_*底层驱动继续复用SDK；主机RT/FAL/NOR桩仅用于故障注入，不是产品电脑端功能。

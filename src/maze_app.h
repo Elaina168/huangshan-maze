@@ -1,18 +1,10 @@
 #ifndef MAZE_APP_H
 #define MAZE_APP_H
+#include "maze_config.h"
 #include "maze_imu.h"
 #include "maze_model.h"
 
 /* 本阶段均为预研候选值，不是正式硬件性能基线。 */
-#define MAZE_CALIBRATION_COUNT 20
-#define MAZE_CALIBRATION_SPAN_MS 950
-#define MAZE_CALIBRATION_RANGE_RAW 300
-#define MAZE_CALIBRATION_BUDGET_MS 3000
-#define MAZE_INPUT_DEAD_ZONE_RAW 300
-#define MAZE_INPUT_MAX_AGE_MS 100
-#define MAZE_INPUT_MAX_GAP_MS MAZE_IMU_MAX_GAP_MS
-#define MAZE_PHYSICS_STEP_MS 10
-#define MAZE_UPDATE_MAX_GAP_MS 100
 
 typedef struct { float x, y; } maze_input_t;
 typedef enum
@@ -40,6 +32,7 @@ typedef struct
     uint32_t tick_hz, generation, started_tick, last_read_tick, last_sequence;
     uint32_t last_gap_count;
     bool has_sequence, has_read, has_reference;
+    bool reversed;
     maze_app_state_t state;
     maze_calibration_origin_t calibration_origin;
     maze_model_t model;
@@ -54,6 +47,8 @@ typedef struct
 } maze_app_t;
 
 void maze_app_init(maze_app_t *app, const maze_level_t *level, uint32_t tick_hz);
+/* 旧会话已取消后绑定新图；代次继续递增，不重新初始化整个app。 */
+void maze_app_bind_level(maze_app_t *app, const maze_level_t *level, bool reversed);
 void maze_app_begin(maze_app_t *app, uint32_t now_tick);
 void maze_app_cancel(maze_app_t *app);
 void maze_app_sample(maze_app_t *app, const maze_imu_sample_t *sample, uint32_t now_tick);

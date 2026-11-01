@@ -1,0 +1,143 @@
+{
+  "board": "sf32lb52-lchspi-ulp",
+  "sdk_path": "D:\\sifli\\SiFli-SDK\\v2.5.1",
+  "stage_path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-drwsszq7",
+  "sources": [
+    {
+      "path": "project/Kconfig",
+      "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc"
+    },
+    {
+      "path": "project/Kconfig.proj",
+      "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7"
+    },
+    {
+      "path": "project/proj.conf",
+      "sha256": "1d68e2d84601f36a5cb88c2185994772aedab6e867ccc2b652142c8eef14e52d"
+    },
+    {
+      "path": "project/rtconfig.py",
+      "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614"
+    },
+    {
+      "path": "project/SConscript",
+      "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4"
+    },
+    {
+      "path": "project/SConstruct",
+      "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf"
+    },
+    {
+      "path": "src/imu_probe.c",
+      "sha256": "4e07bc6e913cdb60ebdbf85287fe1e397f6dee02afb31c055db9bff51f963971"
+    },
+    {
+      "path": "src/main.c",
+      "sha256": "2522ea53355cbf546a159f64a2238f4fd89754cdc9a51dc22edcb9c3ff042ebd"
+    },
+    {
+      "path": "src/maze_app.c",
+      "sha256": "49d93519a8186629a35ae0b5e74baf3a630101dc02c7064b2d7c04b14ff2844d"
+    },
+    {
+      "path": "src/maze_app.h",
+      "sha256": "2dd0df64656d4af34abb6eabd79c015ca5250a7727efe9edf11c68bac6e9dc34"
+    },
+    {
+      "path": "src/maze_catalog.c",
+      "sha256": "460800df46a967c034bd0cfa16e6e28eec063d14ff68804dfca010b448c54d85"
+    },
+    {
+      "path": "src/maze_catalog.h",
+      "sha256": "0166481cff29b58a98b5e024a43b933644ce2149fc50fe0e767d3012a3131de3"
+    },
+    {
+      "path": "src/maze_config.h",
+      "sha256": "568f8a53888ec1d353ad67d45aed2cf21677fe5832b318db3d1d2305e53a1c50"
+    },
+    {
+      "path": "src/maze_font_zh_16.c",
+      "sha256": "9d3eb4c16b0d26ed7e9a1cde6284440bb7c2da2e37d6436851eace7d3ef3291a"
+    },
+    {
+      "path": "src/maze_font_zh_16.h",
+      "sha256": "978cc7dc162472ca74f4e9f2162c53c3d6b45da1735b0d4417cfaca5d0324e5c"
+    },
+    {
+      "path": "src/maze_imu.c",
+      "sha256": "a8ca7f62e644f60c922f705b5765cc6e2a74996d4cb7e51b54207833fd6aa5a7"
+    },
+    {
+      "path": "src/maze_imu.h",
+      "sha256": "555107b0fee4e75f59a4392e543b455c0ee0b1ef9d355bcaff1d2ac24ce6e220"
+    },
+    {
+      "path": "src/maze_level.c",
+      "sha256": "fa9d5d26d365d1cd8b1c2ba9b36eae1a6b9175a1e90db879ab01278d99605570"
+    },
+    {
+      "path": "src/maze_level.h",
+      "sha256": "7c6ad619a7eeea065cc8a351b283a87c9464817ce596a7b8b8138d432f7e74cf"
+    },
+    {
+      "path": "src/maze_map.c",
+      "sha256": "62c5a9cb7949c0a440319bef52ee6435a59058510efa1b989c6f9fa91598a28e"
+    },
+    {
+      "path": "src/maze_map.h",
+      "sha256": "8d50c037df0a313e1852ea9bd84fcefa8caaf34217cd3b712f1116a1063e42e1"
+    },
+    {
+      "path": "src/maze_map_frost_fork.c",
+      "sha256": "e8abaf639a1ed16cd2e1ddc03fa6602bb5100428c83acd76225bebf9608725fb"
+    },
+    {
+      "path": "src/maze_model.c",
+      "sha256": "f0b47f0e2b32748af94b17fd408c0d78dca6ffe671e6b5cc6954eef7bb067c45"
+    },
+    {
+      "path": "src/maze_model.h",
+      "sha256": "3715e955183b00ca31f90e9c528a312e6620c7036624bfa5c3244b97f0f27599"
+    },
+    {
+      "path": "src/maze_navigation.c",
+      "sha256": "3124c8c949e9c393fe11c8a5474082c51853a018214ffbe9cb79b835fa872b13"
+    },
+    {
+      "path": "src/maze_navigation.h",
+      "sha256": "5271d5a98c7ee178c6383a08e2b850fa4abe32088bf149892c1747c1c48249c2"
+    },
+    {
+      "path": "src/maze_ui.c",
+      "sha256": "515c8e47b147e0ff0943f2725ca5d86314428fa0d9272fd324a86d846c56729c"
+    },
+    {
+      "path": "src/maze_ui.h",
+      "sha256": "9a4e0a97e11f0b86f5a97f6918b0a0852479e8da53608c2bf00f18f8c0672d0e"
+    },
+    {
+      "path": "src/SConscript",
+      "sha256": "ffffc291d3787aa0aaaae292049aabe028092886cae28e06489a88f00fd9e8ba"
+    }
+  ],
+  "returncode": 0,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-drwsszq7\\project\\build_sf32lb52-lchspi-ulp_hcpu\\main.bin",
+      "sha256": "b28d4d1f28217aa05d57b0016320fa393485383736f09794ec0ec1a600001237",
+      "bytes": 591308
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-drwsszq7\\project\\build_sf32lb52-lchspi-ulp_hcpu\\bootloader\\bootloader.bin",
+      "sha256": "e59d70db44367d524fbb46a8a014ce0092462e86959d101a8e2e00ad27bb5e21",
+      "bytes": 58496
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-drwsszq7\\project\\build_sf32lb52-lchspi-ulp_hcpu\\ftab\\ftab.bin",
+      "sha256": "86cd9153cb627c949cd8063babd8bfd4b9a2d7071f0025b6905a4b2406275a33",
+      "bytes": 11288
+    }
+  ],
+  "hardware_verified": false,
+  "source_unchanged": true
+}

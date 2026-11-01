@@ -1,0 +1,4 @@
+PASS: normal/reverse, identical raw calibration, dead-zone edge, paused input and replay
+PASS: switch/reselect generation, reset, stale sample rejection and failed-load recovery
+PASS: final level has no next transition
+PASS: first-load failure, default mode and initialization recovery

@@ -1,0 +1,25 @@
+{
+  "source": "approved frost fork layout.json",
+  "ascii_rows": [
+    "+-+-+-+-+-+-+-+",
+    "|. .|. .|. . .|",
+    "+-+ + + +-+-+ +",
+    "|.|.|.|.|. . .|",
+    "+ + + + + +-+ +",
+    "|. .|.|. .|. .|",
+    "+ +-+ +-+-+-+ +",
+    "|. .|. . . .|.|",
+    "+-+ + +-+-+ + +",
+    "|.|.|~ ~ .|.|.|",
+    "+ + +-+ +-+ + +",
+    "|. . . . . .|.|",
+    "+-+-+-+-+-+-+-+"
+  ],
+  "wall_count": 29,
+  "walls_exact_and_order_equal": true,
+  "lattice_step_px": 5,
+  "reachable": true,
+  "discovered_nodes": 2292,
+  "witness_segments": 237,
+  "evidence_layer": "host-only representation/geometry spike; no product code or firmware change"
+}

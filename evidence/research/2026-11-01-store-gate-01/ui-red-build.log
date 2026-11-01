@@ -1,0 +1,5 @@
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_archive.c.o
+Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_progress.c.o
+Linking C executable ui-refresh

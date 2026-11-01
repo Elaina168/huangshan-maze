@@ -1,0 +1,11 @@
+#ifndef STORE_HOST_FDB_CFG_H
+#define STORE_HOST_FDB_CFG_H
+#include "rtthread.h"
+#define FDB_USING_KVDB
+#define FDB_USING_FAL_MODE
+#define PKG_FDB_USING_FAL_MODE
+#define PKG_FLASHDB_ERASE_GRAN 8192
+#define FDB_WRITE_GRAN 1
+#define FDB_KV_CACHE_TABLE_SIZE 16
+#define FDB_USING_NATIVE_ASSERT
+#endif

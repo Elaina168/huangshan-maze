@@ -3,6 +3,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "maze_model.h"
+#include "legacy_levels.h"
 
 static void near(float actual, float expected)
 {

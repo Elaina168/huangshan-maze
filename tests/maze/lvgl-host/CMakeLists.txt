@@ -12,7 +12,10 @@ target_compile_definitions(lvgl_host PUBLIC LV_CONF_SKIP LV_KCONFIG_IGNORE
     LV_FONT_MONTSERRAT_16=1 "LV_FONT_DEFAULT=&lv_font_montserrat_16")
 add_executable(ui-refresh "${REPO}/tests/maze/ui_refresh_harness.c"
     "${REPO}/src/maze_ui.c" "${REPO}/src/maze_app.c"
-    "${REPO}/src/maze_model.c" "${REPO}/src/maze_level.c" "${REPO}/src/maze_font_zh_16.c")
+    "${REPO}/src/maze_model.c" "${REPO}/src/maze_level.c" "${REPO}/src/maze_font_zh_16.c"
+    "${REPO}/src/maze_map.c" "${REPO}/src/maze_map_frost_fork.c"
+    "${REPO}/src/maze_map_second.c" "${REPO}/src/maze_catalog.c" "${REPO}/src/maze_navigation.c"
+    "${REPO}/src/maze_archive.c" "${REPO}/src/maze_progress.c")
 target_include_directories(ui-refresh PRIVATE "${REPO}/tests/maze" "${REPO}/src"
     "${LVGL_DIR}/../../middleware/lvgl")
 target_compile_options(ui-refresh PRIVATE -std=c99 -Wall -Wextra -Werror)

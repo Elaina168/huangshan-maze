@@ -12,6 +12,8 @@ evidence/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof
 evidence/**/serial-log.txt -text whitespace=-blank-at-eol,-blank-at-eof
 # 原样导入文件保留实际字节及换行，避免跨平台归档破坏来源校验。
 project/* -text
+# 项目分区表保留已构建的CRLF字节，CR不作为多余行尾空白。
+project/ptab.json -text whitespace=cr-at-eol
 src/main.c -text
 src/SConscript -text
 LICENSE-SiFli-SDK-Apache-2.0.txt -text

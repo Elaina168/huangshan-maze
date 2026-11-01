@@ -22,7 +22,8 @@ def main():
     subprocess.run([sys.executable, str(ROOT/'scripts/generate_ui_font.py'),
                     '--font', str(args.font), '--check'], check=True)
     manifest = json.loads((ROOT/'docs/design/chinese-ui-font.json').read_text(encoding='utf-8'))
-    source = (ROOT/'src/maze_ui.c').read_text(encoding='utf-8')
+    source = '\n'.join((ROOT/path).read_text(encoding='utf-8')
+                       for path in ['src/maze_ui.c', 'src/maze_catalog.c'])
     text = ''.join(ast.literal_eval(s) for s in re.findall(r'"(?:[^"\\]|\\.)*"', source))
     expected = {ord(c) for c in text if ord(c)>127}
     assert expected == set(manifest['codepoints'])

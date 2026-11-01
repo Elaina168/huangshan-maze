@@ -1,9 +1,9 @@
 #ifndef MAZE_IMU_H
 #define MAZE_IMU_H
+#include "maze_config.h"
 #include <stdbool.h>
 #include <stdint.h>
 /* 生产者记录断档事实，消费者仍决定校准清窗或游玩冻结。 */
-#define MAZE_IMU_MAX_GAP_MS 100
 
 typedef struct
 {

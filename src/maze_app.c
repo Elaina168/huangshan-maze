@@ -28,6 +28,13 @@ void maze_app_init(maze_app_t *a, const maze_level_t *level, uint32_t tick_hz)
     maze_model_reset(&a->model,level);
 }
 
+void maze_app_bind_level(maze_app_t *a, const maze_level_t *level, bool reversed)
+{
+    a->level=level;
+    a->reversed=reversed;
+    maze_app_cancel(a);
+}
+
 static void calibrate(maze_app_t *a, uint32_t now_tick, maze_calibration_origin_t origin)
 {
     a->generation++;
@@ -57,6 +64,7 @@ void maze_app_cancel(maze_app_t *a)
     a->state = MAZE_APP_READY;
     a->window_count = 0;
     a->has_reference = a->has_read = a->has_sequence = false;
+    memset(a->reference,0,sizeof(a->reference));
     a->error = 0;
     a->input = (maze_input_t){0,0};
     a->motion_units = 0;
@@ -194,6 +202,11 @@ void maze_app_sample(maze_app_t *a, const maze_imu_sample_t *s, uint32_t now_tic
         a->error=gap?MAZE_ERROR_INPUT_GAP:0;
         a->input.x = dead_zone((int32_t)s->raw[1]-a->reference[1]);
         a->input.y = dead_zone(a->reference[0]-(int32_t)s->raw[0]);
+        if (a->reversed)
+        {
+            a->input.x=-a->input.x;
+            a->input.y=-a->input.y;
+        }
         return;
     }
 

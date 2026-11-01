@@ -1,0 +1,26 @@
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:11:35: error: unknown type name ‘bool’
+   11 | static void clear(float x,float y,bool pits)
+      |                                   ^~~~
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:8:1: note: ‘bool’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+    7 | #include "second_fixture.h"
+  +++ |+#include <stdbool.h>
+    8 | extern const maze_map_definition_t maze_map_second;
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c: In function ‘main’:
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:37:23: error: unknown type name ‘bool’
+   37 |     unsigned steps=0; bool ice=false;
+      |                       ^~~~
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:37:23: note: ‘bool’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:37:32: error: ‘false’ undeclared (first use in this function)
+   37 |     unsigned steps=0; bool ice=false;
+      |                                ^~~~~
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:37:32: note: ‘false’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:37:32: note: each undeclared identifier is reported only once for each function it appears in
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:46:22: error: implicit declaration of function ‘clear’; did you mean ‘clearerr’? [-Werror=implicit-function-declaration]
+   46 |             steps++; clear(m.x,m.y,true);
+      |                      ^~~~~
+      |                      clearerr
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:46:36: error: ‘true’ undeclared (first use in this function)
+   46 |             steps++; clear(m.x,m.y,true);
+      |                                    ^~~~
+/mnt/d/codex/黄山派/tests/maze/second_map_harness.c:46:36: note: ‘true’ is defined in header ‘<stdbool.h>’; did you forget to ‘#include <stdbool.h>’?
+cc1: all warnings being treated as errors

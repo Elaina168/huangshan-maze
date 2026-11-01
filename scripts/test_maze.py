@@ -31,12 +31,14 @@ with tempfile.TemporaryDirectory(prefix='maze-test-') as folder:
     inertia_exe = Path(folder) / 'inertia-test'
     subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
                     '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/inertia_harness.c'),
+                    str(ROOT / 'tests/maze/legacy_levels.c'),
                     str(ROOT / 'src/maze_model.c'), str(ROOT / 'src/maze_level.c'),
                     '-lm', '-o', str(inertia_exe)], check=True)
     subprocess.run([str(inertia_exe)], check=True)
     model_exe = Path(folder) / 'model-test'
     subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
                     '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/model_harness.c'),
+                    str(ROOT / 'tests/maze/legacy_levels.c'),
                     str(ROOT / 'src/maze_model.c'), str(ROOT / 'src/maze_level.c'),
                     '-lm', '-o', str(model_exe)], check=True)
     subprocess.run([str(model_exe)], check=True)
@@ -49,6 +51,34 @@ with tempfile.TemporaryDirectory(prefix='maze-test-') as folder:
     map_exe = Path(folder) / 'map-test'
     subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
                     '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/map_harness.c'),
+                    str(ROOT / 'src/maze_map.c'), str(ROOT / 'src/maze_map_frost_fork.c'),
                     str(ROOT / 'src/maze_model.c'), str(ROOT / 'src/maze_level.c'),
                     '-lm', '-o', str(map_exe)], check=True)
     subprocess.run([str(map_exe)], check=True)
+    load_exe = Path(folder) / 'map-load-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/map_load_harness.c'),
+                    str(ROOT / 'src/maze_map.c'), str(ROOT / 'src/maze_map_frost_fork.c'),
+                    '-lm', '-o', str(load_exe)], check=True)
+    subprocess.run([str(load_exe)], check=True)
+    navigation_exe = Path(folder) / 'navigation-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/navigation_harness.c'),
+                    str(ROOT / 'src/maze_navigation.c'), str(ROOT / 'src/maze_app.c'),
+                    str(ROOT / 'src/maze_archive.c'), str(ROOT / 'src/maze_progress.c'),
+                    str(ROOT / 'src/maze_map.c'), str(ROOT / 'src/maze_model.c'),
+                    str(ROOT / 'src/maze_level.c'), '-lm', '-o', str(navigation_exe)], check=True)
+    subprocess.run([str(navigation_exe)], check=True)
+    second_exe = Path(folder) / 'second-map-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/second_map_harness.c'),
+                    str(ROOT / 'src/maze_map_second.c'), str(ROOT / 'src/maze_map.c'),
+                    str(ROOT / 'src/maze_model.c'), str(ROOT / 'src/maze_level.c'),
+                    '-lm', '-o', str(second_exe)], check=True)
+    subprocess.run([str(second_exe)], check=True)
+    progress_exe = Path(folder) / 'progress-test'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                    '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze/progress_harness.c'),
+                    str(ROOT / 'src/maze_progress.c'), str(ROOT / 'src/maze_archive.c'),
+                    '-o', str(progress_exe)], check=True)
+    subprocess.run([str(progress_exe)], check=True)

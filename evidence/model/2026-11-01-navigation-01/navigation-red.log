@@ -1,0 +1,4 @@
+/mnt/d/codex/黄山派/tests/maze/navigation_harness.c:5:10: fatal error: maze_navigation.h: No such file or directory
+    5 | #include "maze_navigation.h"
+      |          ^~~~~~~~~~~~~~~~~~~
+compilation terminated.

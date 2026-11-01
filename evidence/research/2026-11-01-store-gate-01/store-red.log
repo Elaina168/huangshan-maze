@@ -1,0 +1,4 @@
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:11:10: fatal error: maze_store.h: No such file or directory
+   11 | #include "maze_store.h"
+      |          ^~~~~~~~~~~~~~
+compilation terminated.

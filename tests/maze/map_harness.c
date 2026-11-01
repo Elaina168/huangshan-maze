@@ -4,8 +4,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "maze_model.h"
+#include "maze_map.h"
 
-static const maze_level_t *const l=&maze_level_frost_fork;
+static maze_map_t loaded;
+static const maze_level_t *const l=&loaded.level;
 
 static const maze_point_t normal_points[]={{25,25},{75,25},{65,60},{65,90},{75,125},{25,125},{25,175},{75,175},{75,225},{75,275},{125,275},{175,275},{225,275},{275,275},{275,225},{275,175},{225,175},{175,175},{125,175},{125,125},{125,75},{125,25},{175,25},{165,60},{165,90},{175,125},{225,125},{225,75},{275,75},{325,75},{325,125},{335,160},{335,190},{325,225},{325,275}};
 static const maze_point_t ice_points[]={{25,25},{75,25},{65,60},{65,90},{75,125},{25,125},{25,175},{75,175},{75,225},{75,275},{125,275},{175,275},{175,225},{125,225},{125,175},{125,125},{125,75},{125,25},{175,25},{165,60},{165,90},{175,125},{225,125},{225,75},{275,75},{325,75},{325,125},{335,160},{335,190},{325,225},{325,275}};
@@ -134,6 +136,7 @@ static void hazards(void)
 int main(void)
 {
     setbuf(stdout,NULL);
+    assert(maze_map_load(&maze_map_frost_fork,&loaded)==MAZE_MAP_OK);
     topology();
     route(normal_points,sizeof(normal_points)/sizeof(normal_points[0]),false);
     route(ice_points,sizeof(ice_points)/sizeof(ice_points[0]),true);

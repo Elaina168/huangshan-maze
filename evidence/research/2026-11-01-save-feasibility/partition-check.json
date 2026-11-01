@@ -1,0 +1,78 @@
+{
+  "source": "D:\\sifli\\SiFli-SDK\\v2.5.1\\customer\\boards\\sf32lb52-lchspi-ulp\\ptab.json",
+  "source_sha256": "1c7c406d3c780dcf85ca9da18e399770a557cd7aa2d699581ec59ee52d382b1b",
+  "mem": "flash2",
+  "base": "0x12000000",
+  "existing": [
+    {
+      "offset": 0,
+      "size": 32768,
+      "tags": [
+        "FLASH_TABLE"
+      ]
+    },
+    {
+      "offset": 65536,
+      "size": 65536,
+      "tags": [
+        "FLASH_BOOT_LOADER"
+      ]
+    },
+    {
+      "offset": 131072,
+      "size": 8388608,
+      "tags": [
+        "HCPU_FLASH_CODE"
+      ]
+    },
+    {
+      "offset": 8519680,
+      "size": 393216,
+      "tags": [
+        "DFU_FLASH_CODE"
+      ]
+    },
+    {
+      "offset": 8912896,
+      "size": 1179648,
+      "tags": [
+        "DFU_DOWNLOAD_REGION"
+      ]
+    },
+    {
+      "offset": 10092544,
+      "size": 4194304,
+      "tags": [
+        "FS_REGION"
+      ]
+    },
+    {
+      "offset": 14286848,
+      "size": 16384,
+      "tags": [
+        "KVDB_DFU_REGION"
+      ]
+    },
+    {
+      "offset": 14303232,
+      "size": 16384,
+      "tags": [
+        "KVDB_BLE_REGION"
+      ]
+    }
+  ],
+  "proposed": [
+    {
+      "name": "maze_a",
+      "offset": 14352384,
+      "size": 32768
+    },
+    {
+      "name": "maze_b",
+      "offset": 14385152,
+      "size": 32768
+    }
+  ],
+  "overlap": false,
+  "scope": "static partition arithmetic only; no device read/write"
+}

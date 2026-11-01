@@ -1,0 +1,1 @@
+PASS: linker mode no C declarations; FAL mode proxy declaration present

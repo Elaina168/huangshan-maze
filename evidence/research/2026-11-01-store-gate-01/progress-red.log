@@ -1,0 +1,4 @@
+/mnt/d/codex/黄山派/tests/maze/progress_harness.c:4:10: fatal error: maze_progress.h: No such file or directory
+    4 | #include "maze_progress.h"
+      |          ^~~~~~~~~~~~~~~~~
+compilation terminated.

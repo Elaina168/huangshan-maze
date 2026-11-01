@@ -1,0 +1,2 @@
+maze-navigation-test: /mnt/d/codex/黄山派/tests/maze/navigation_harness.c:65: main: Assertion `n.app.reference[0]==0 && n.app.reference[1]==0 && n.app.reference[2]==0' failed.
+Aborted (core dumped)
