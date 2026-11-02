@@ -42,8 +42,8 @@ int main(void)
     maze_map_definition_t d=maze_map_frost_fork;
     d.id="";bad(&d,MAZE_MAP_FORMAT);d=maze_map_frost_fork;
     d.columns=0;bad(&d,MAZE_MAP_FORMAT);
-    d=maze_map_frost_fork;d.columns=8;bad(&d,MAZE_MAP_FORMAT);
-    d=maze_map_frost_fork;d.rows=7;bad(&d,MAZE_MAP_FORMAT);
+    d=maze_map_frost_fork;d.columns=15;bad(&d,MAZE_MAP_FORMAT);
+    d=maze_map_frost_fork;d.rows=13;bad(&d,MAZE_MAP_FORMAT);
     d=maze_map_frost_fork;d.line_count--;bad(&d,MAZE_MAP_FORMAT);
     char rows[13][17];const char *lines[13];
     for (unsigned i=0;i<13;i++) { strcpy(rows[i],maze_map_frost_fork.lines[i]);lines[i]=rows[i]; }
@@ -79,27 +79,31 @@ int main(void)
     objects[2].circle=(maze_circle_t){25,50,8};bad(&d,MAZE_MAP_GEOMETRY);objects[2]=maze_map_frost_fork.objects[2];
     objects[2].circle=objects[3].circle;bad(&d,MAZE_MAP_GEOMETRY);
     puts("PASS: missing/duplicate/unknown/over-capacity objects and nonfinite/radius/bounds/overlap/wall rejection");
-    for (unsigned y=0;y<13;y++)
-        for (unsigned x=0;x<15;x++)
-        {
-            if (y%2 && x%2) rows[y][x]='~';
-            else if (y%2) rows[y][x]='|';
-            else if (x%2) rows[y][x]='-';
-        }
-    d=maze_map_frost_fork;d.lines=lines;bad(&d,MAZE_MAP_NO_ROUTE);
+    static char full_rows[2*MAZE_MAP_MAX_ROWS+1][2*MAZE_MAP_MAX_COLUMNS+2];
+    static const char *full_lines[2*MAZE_MAP_MAX_ROWS+1];
+    for(unsigned y=0;y<=2*MAZE_MAP_MAX_ROWS;y++)
+    {
+        full_lines[y]=full_rows[y];
+        for(unsigned x=0;x<=2*MAZE_MAP_MAX_COLUMNS;x++)
+            full_rows[y][x]=!(x%2) && !(y%2)?'+':(y%2?(x%2?'~':'|'):'-');
+        full_rows[y][2*MAZE_MAP_MAX_COLUMNS+1]=0;
+    }
+    d=maze_map_frost_fork;d.columns=MAZE_MAP_MAX_COLUMNS;d.rows=MAZE_MAP_MAX_ROWS;
+    d.lines=full_lines;d.line_count=2*MAZE_MAP_MAX_ROWS+1;bad(&d,MAZE_MAP_NO_ROUTE);
     assert(loaded.level.wall_count==MAZE_MAP_MAX_WALLS && loaded.level.surface_count==MAZE_MAP_MAX_CELLS);
-    for (unsigned y=1;y<12;y++)
-        for (unsigned x=1;x<14;x++) if ((x%2)!=(y%2)) rows[y][x]=' ';
+    for(unsigned y=1;y<2*MAZE_MAP_MAX_ROWS;y++)
+        for(unsigned x=1;x<2*MAZE_MAP_MAX_COLUMNS;x++)
+            if((x%2)!=(y%2)) full_rows[y][x]=' ';
     assert(maze_map_load(&d,&loaded)==MAZE_MAP_OK);
     assert(loaded.level.wall_count==0 && loaded.level.surface_count==MAZE_MAP_MAX_CELLS);
-    puts("PASS: full wall/surface capacities and zero internal walls without guard corruption");
+    puts("PASS: full 14x12 wall/surface capacities and zero internal walls without guard corruption");
     static const char *const open[]={"+-+-+-+","|. . .|","+-+-+-+"};
     static const char *const closed[]={"+-+-+-+","|.|. .|","+-+-+-+"};
     maze_map_object_t corridor_objects[]={
         {MAZE_MAP_START,{25,25,7}},{MAZE_MAP_GOAL,{125,25,8}},
         {MAZE_MAP_TRAP,{75,25,22}}
     };
-    d=(maze_map_definition_t){"test",3,1,open,3,corridor_objects,2};
+    d=(maze_map_definition_t){"test",3,1,open,3,corridor_objects,2,NULL,0};
     assert(maze_map_load(&d,&loaded)==MAZE_MAP_OK);
     d.lines=closed;bad(&d,MAZE_MAP_NO_ROUTE);d.lines=open;
     d.object_count=3;bad(&d,MAZE_MAP_NO_ROUTE);

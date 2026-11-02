@@ -1,0 +1,2 @@
+PASS: 353-byte LE archive, CRC32 vector, roundtrip, ID/count/version/truncation/sort/CRC boundaries
+PASS: original format1 encoder produced synthetic golden353

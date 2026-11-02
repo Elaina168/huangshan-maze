@@ -14,6 +14,8 @@ typedef struct
     unsigned line_count;
     const maze_map_object_t *objects;
     unsigned object_count;
+    const maze_mechanism_t *mechanisms;
+    unsigned mechanism_count;
 } maze_map_definition_t;
 
 enum
@@ -38,4 +40,6 @@ int maze_map_load(const maze_map_definition_t *definition, maze_map_t *out);
 size_t maze_map_workspace_size(void);
 extern const maze_map_definition_t maze_map_frost_fork;
 extern const maze_map_definition_t maze_map_second;
+extern const maze_map_definition_t maze_map_ice_loops;
+extern const maze_map_definition_t maze_map_mechanism_trial;
 #endif

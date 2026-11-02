@@ -39,6 +39,7 @@ def main():
             stream.reconfigure(encoding='utf-8')
     parser = argparse.ArgumentParser()
     parser.add_argument('-j', type=int, default=8)
+    parser.add_argument('--variant', choices=['normal', 'scrolling-trial'], default='normal')
     args = parser.parse_args()
     if args.j < 1:
         parser.error('并行数必须大于零')
@@ -60,14 +61,16 @@ def main():
         assert digest(destination) == item['sha256'], item['path']
     out = ROOT / 'build'
     out.mkdir(exist_ok=True)
-    state = {'board': BOARD, 'sdk_path': sdk, 'stage_path': str(stage), 'sources': sources,
+    child_env = os.environ.copy()
+    child_env['MAZE_BUILD_VARIANT'] = args.variant
+    state = {'variant': args.variant, 'defines': ['MAZE_SCROLL_TRIAL'] if args.variant == 'scrolling-trial' else [], 'board': BOARD, 'sdk_path': sdk, 'stage_path': str(stage), 'sources': sources,
              'returncode': None, 'artifacts': [], 'hardware_verified': False}
     command = [scons, f'--board={BOARD}', f'-j{args.j}']
     print('ASCII 快照工程：', stage)
     print('执行：', ' '.join(command))
     with (out / 'last_build.log').open('w', encoding='utf-8', newline='\n') as log:
         process = subprocess.Popen(command, cwd=stage / 'project', stdout=subprocess.PIPE,
-                                   stderr=subprocess.STDOUT, text=True, encoding='utf-8', errors='replace')
+                                   stderr=subprocess.STDOUT, text=True, encoding='utf-8', errors='replace', env=child_env)
         for line in process.stdout:
             print(line, end='')
             log.write(line)

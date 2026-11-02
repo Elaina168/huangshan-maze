@@ -1,8 +1,14 @@
 import os
 from building import *
 
-# Add source code
+# 显式构建变体；试验源码不进入正式应用组。
+variant = os.environ.get('MAZE_BUILD_VARIANT', 'normal')
+if variant not in ('normal', 'scrolling-trial'):
+    raise ValueError('Unknown MAZE_BUILD_VARIANT: ' + variant)
 src = Glob('*.c')
-group = DefineGroup('Applications', src, depend = [''])
-
+trial = ('maze_map_scroll_trial.c', 'maze_scroll_trial.c')
+if variant == 'normal':
+    src = [node for node in src if os.path.basename(str(node)) not in trial]
+group = DefineGroup('Applications', src, depend=[''],
+                    CPPDEFINES=['MAZE_SCROLL_TRIAL'] if variant == 'scrolling-trial' else [])
 Return('group')

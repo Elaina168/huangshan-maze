@@ -1,0 +1,2 @@
+stationary-camera intermediate ball min=0 full=128 parts=40
+ui-flicker-red: tests/maze/ui_scroll_harness.c:61: main: Assertion `minimum_ball>=full_ball' failed.

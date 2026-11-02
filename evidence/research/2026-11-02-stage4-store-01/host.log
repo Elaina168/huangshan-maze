@@ -1,0 +1,46 @@
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘read_kv’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:444:128: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  444 |     if (kvdb_log) FDB_INFO("read_kv: addr %x kv_len %x max %d %d\n", kv->addr.start, kv->len, db_max_size(db), db_sec_size(db));
+      |                                                                                                                                ^
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:448:88: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  448 |         if (kvdb_log) FDB_INFO("read_kv: kv_len %d max %d\n", kv->len, db_max_size(db));
+      |                                                                                        ^
+In file included from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/flashdb.h:23,
+                 from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:16:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘fdb_kv_print’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:15: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |               ^~~~~~~~~                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                              |
+      |                                                                              long unsigned int
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/fdb_def.h:71:47: note: in definition of macro ‘FDB_PRINT’
+   71 | #define FDB_PRINT(...)                 printf(__VA_ARGS__)
+      |                                               ^~~~~~~~~~~
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:23: note: format string is defined here
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |                      ~^
+      |                       |
+      |                       unsigned int
+      |                      %lu
+PASS: actual FlashDB initialization, reboot, alternating commit and failed-write retry
+PASS: unknown nonempty NOR preserved without formatting
+PASS: valid future-version and revision-conflict preserved; read/partial-write failures explicit
+PASS: v1 open read-only, RAM revision +1 once, v3 migration/readback/write retry idempotent
+PASS: mixed revisions/formats, equal canonical v3 preference, third/fourth conflict, future/rules long blob and UINT64_MAX preserved
+PASS: actual SDK direct v3 maximum and legacy maximum-1 migration preserve RAW/source without wrap
+PASS: migration 22 write/erase operations x5 cuts -> complete RAW old/v3, source unchanged
+PASS: migration-gc 14 write/erase operations x5 cuts -> complete RAW old/v3, source unchanged
+PASS: v1 180 migration forced-process cuts
+PASS: v2 open read-only, RAM revision +1 once, v3 migration/readback/write retry idempotent
+PASS: mixed revisions/formats, equal canonical v3 preference, third/fourth conflict, future/rules long blob and UINT64_MAX preserved
+PASS: actual SDK direct v3 maximum and legacy maximum-1 migration preserve RAW/source without wrap
+PASS: migration 22 write/erase operations x5 cuts -> complete RAW old/v3, source unchanged
+PASS: migration-gc 14 write/erase operations x5 cuts -> complete RAW old/v3, source unchanged
+PASS: v2 180 migration forced-process cuts
+PASS: ordinary 7 write/erase operations x 5 cut positions -> complete old/new archive
+PASS: gc 14 write/erase operations x 5 cut positions -> complete old/new archive
+PASS: final readback failure then same-revision retry preserves one logical snapshot
+PASS: first initialization 22 operations x 5 cuts -> valid default or explicit preserved error
+PASS: 215 forced-process cuts; NOR 1-to-0 writes, aligned erases and protected source bank
+PASS: total 575 forced-process cuts across v1/v2 migration, ordinary/GC and initialization
+{"vendor_sha256": {"fdb.c": "6aa4e90721b910de3998e925a952b2adc5e6ed6b4ac06abd117f67b3c206995c", "fdb_kvdb.c": "aa6edee1c725b3671a487e81293320ea4a164200477b6d89347254c8c1535545", "fdb_utils.c": "ec0f9b53df582bde0715cbc99f56e3e01a7cf8f56f44de10055c771b3be640da"}, "command": ["/usr/bin/cc", "-std=c99", "-Wall", "-Wextra", "-Wno-unused-parameter", "-I/mnt/d/codex/\u9ec4\u5c71\u6d3e/tests/maze/store-host", "-I/mnt/d/codex/\u9ec4\u5c71\u6d3e/src", "-I/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc", "-I/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/port/fal/inc", "/mnt/d/codex/\u9ec4\u5c71\u6d3e/tests/maze/store-host/nor_harness.c", "/mnt/d/codex/\u9ec4\u5c71\u6d3e/src/maze_store.c", "/mnt/d/codex/\u9ec4\u5c71\u6d3e/src/maze_archive.c", "/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb.c", "/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c", "/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_utils.c", "-o", "/tmp/maze-store-yy6h6ibt/store-test"]}

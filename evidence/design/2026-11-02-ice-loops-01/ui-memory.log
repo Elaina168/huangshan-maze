@@ -1,0 +1,8 @@
+before scene free=53232 total=62400
+state=0 free=16464 total=56920 max_used=41456
+state=1 free=16480 total=56928 max_used=41456
+state=2 free=16472 total=56928 max_used=41456
+state=5 free=13776 total=56592 max_used=43712
+state=6 free=15608 total=56816 max_used=43712
+state=4 free=15568 total=56808 max_used=43712
+PASS: actual existing UI creates 141-wall layout under host heap

@@ -14,6 +14,12 @@ compiler = os.environ.get('CC') or shutil.which('cc') or shutil.which('gcc')
 if not compiler:
     raise SystemExit('需要现有主机C编译器；可在已有WSL中执行。')
 with tempfile.TemporaryDirectory(prefix='maze-test-') as folder:
+    for name in ['archive_harness', 'archive_migration_harness']:
+        archive_exe = Path(folder) / name
+        subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                        '-I' + str(ROOT / 'src'), str(ROOT / 'tests/maze' / (name + '.c')),
+                        str(ROOT / 'src/maze_archive.c'), '-o', str(archive_exe)], check=True)
+        subprocess.run([str(archive_exe), str(ROOT / 'tests/maze/fixtures/archive-v1.bin'), str(ROOT / 'tests/maze/fixtures/archive-v2.bin')], check=True)
     exe = Path(folder) / 'imu-test'
     subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
                     '-I' + str(ROOT / 'tests/maze'), '-I' + str(ROOT / 'tests/imu_probe'),
@@ -82,3 +88,50 @@ with tempfile.TemporaryDirectory(prefix='maze-test-') as folder:
                     str(ROOT / 'src/maze_progress.c'), str(ROOT / 'src/maze_archive.c'),
                     '-o', str(progress_exe)], check=True)
     subprocess.run([str(progress_exe)], check=True)
+
+    for name, sources, flags in [
+        ('camera', ['camera_harness.c'], []),
+        ('scroll-trial', ['scroll_trial_harness.c'], ['-DMAZE_SCROLL_TRIAL']),
+    ]:
+        source_files = [ROOT / 'tests/maze' / file for file in sources]
+        source_files += [ROOT / 'src' / file for file in ['maze_model.c', 'maze_level.c']]
+        source_files += [ROOT / 'src' / ('maze_camera.c' if name == 'camera' else 'maze_map_scroll_trial.c')]
+        if name != 'camera':
+            source_files.append(ROOT / 'src/maze_map.c')
+        executable = Path(folder) / name
+        subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror',
+                        '-I' + str(ROOT / 'src'), *flags, *map(str, source_files), '-lm', '-o', str(executable)], check=True)
+        subprocess.run([str(executable)], check=True)
+
+    runner = Path(folder) / 'scroll-runner'
+    subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror', '-DMAZE_SCROLL_TRIAL',
+                    '-I' + str(ROOT / 'src'), '-I' + str(ROOT / 'tests/maze'),
+                    str(ROOT / 'tests/maze/scroll_runner_harness.c'),
+                    *[str(ROOT / 'src' / file) for file in ['maze_scroll_trial.c', 'maze_app.c', 'maze_model.c',
+                      'maze_level.c', 'maze_map.c', 'maze_map_scroll_trial.c']], '-lm', '-o', str(runner)], check=True)
+    for mode in [[], ["unchunked"], ["starved"], ["recovery"], ["bounded-single"]]:
+        subprocess.run([str(runner), *mode], check=True)
+
+    for name, harness, extras in [
+        ('third-map', 'third_map_harness.c', []),
+        ('stage4-core', 'stage4_harness.c', ['maze_app.c']),
+        ('third-navigation', 'third_navigation_harness.c', ['maze_navigation.c', 'maze_progress.c', 'maze_archive.c', 'maze_app.c',
+                                                       'maze_catalog.c', 'maze_map_frost_fork.c', 'maze_map_second.c', 'maze_map_mechanism_trial.c']),
+    ]:
+        executable = Path(folder) / name
+        sources = ['maze_map_ice_loops.c', 'maze_map.c', 'maze_model.c', 'maze_level.c', *extras]
+        if name == 'stage4-core':
+            sources.append('maze_map_mechanism_trial.c')
+        subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror', '-I' + str(ROOT / 'src'),
+                        str(ROOT / 'tests/maze' / harness), *[str(ROOT / 'src' / file) for file in sources],
+                        '-lm', '-o', str(executable)], check=True)
+        subprocess.run([str(executable)], check=True)
+
+    for name, sources in [
+        ('stage4-progress', ['maze_progress.c', 'maze_archive.c']),
+    ]:
+        executable = Path(folder) / name
+        subprocess.run([compiler, '-std=c99', '-Wall', '-Wextra', '-Werror', '-I'+str(ROOT/'src'),
+                        str(ROOT/'tests/maze/stage4_progress_harness.c'),
+                        *[str(ROOT/'src'/file) for file in sources], '-lm', '-o', str(executable)], check=True)
+        subprocess.run([str(executable)], check=True)

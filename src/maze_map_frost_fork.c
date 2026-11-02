@@ -25,5 +25,5 @@ static const maze_map_object_t objects[]={
 };
 const maze_map_definition_t maze_map_frost_fork={
     MAZE_LEVEL_ID_FROST_FORK,7,6,lines,sizeof(lines)/sizeof(lines[0]),
-    objects,sizeof(objects)/sizeof(objects[0])
+    objects,sizeof(objects)/sizeof(objects[0]),NULL,0
 };

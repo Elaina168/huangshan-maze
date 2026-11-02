@@ -1,0 +1,37 @@
+2026-11-02 第4阶段核心/地图主机证据
+范围：真实纯C model/app/map。没有烧录，没有板端运行结论。
+
+RED：先写 tests/maze/stage4_harness.c，再执行下面编译命令。
+结果：编译失败，unknown type maze_mechanism_t / MAZE_MECH_KEY，maze_model_respawn缺失，model keys/checkpoint缺失。随后实现共享接口与规则。
+
+GREEN：在仓库根目录执行：
+wsl gcc -std=c99 -Wall -Wextra -Werror -Isrc tests/maze/stage4_harness.c src/maze_model.c src/maze_level.c src/maze_app.c src/maze_map.c src/maze_map_mechanism_trial.c -lm -o /tmp/stage4
+wsl /tmp/stage4
+退出码均为0；输出：
+PASS stage4 core
+PASS rough continuity; slow/grazing impacts; real break and ordinary wall
+PASS swept chronology, checkpoint snapshot rollback and no resnapshot
+PASS respawn generation, calibration failure/retry, stale sample, exit/replay
+PASS map bounds, references, capacity, self-locked reachability; both trap corridors mandatory
+PASS real fourth-map trajectory: key branch, mandatory key/switch doors, speed break, both mandatory pit losses, checkpoint respawns and win
+
+新增第四关 mechanism_trial：8x8、400x400，小球半径7，固定六机制（key、keydoor、switch、switchdoor、breakable、checkpoint），两坑。
+钥匙支路75,125；钥匙门x146..154、y0..54。
+开关支路275,125；开关门x246..254、y46..104。
+直线冲墙通路125,175→375,175；破墙x296..304、y146..204。
+检查点325,225，快照保留钥匙/开关/已破墙。
+必经坑道一175,283,r8；必经坑道二383,350,r8。测试逐一封闭通道出口并断言NO_ROUTE证明必经，拓扑断路测试临时移除坑以免新墙与坑重叠先报几何错误；实际运动路线始终使用原图全部坑与真实机关。
+实际模型路线先经钥匙/开关支路开门，法向足速破墙，在第一坑LOST并复活；安全绕过第一坑后在第二坑LOST并复活；最后绕过两坑WON。正式路线不注入机关mask、不搬球绕门、不删除阻挡。
+
+原行为回归：同样std=c99 -Wall -Wextra -Werror编译运行以下8组，均退出0。
+model_harness + legacy_levels + maze_model + maze_level：7 PASS，含64方向重复接触与最早区域。
+inertia_harness + legacy_levels + maze_model + maze_level：4 PASS，原normal3/ice0.6轨迹保持。
+harness + maze_app + maze_model + maze_level：8 PASS，校准/采样时基。
+state_harness + maze_app + maze_model + maze_level：9 PASS，含100/101ms边界和终态单次结算。
+map_load_harness + maze_map + maze_map_frost_fork：5 PASS，新增结构尾字段仅补NULL,0。
+map_harness + maze_map + maze_map_frost_fork + maze_model + maze_level：4 PASS，原普通/冰捷径与全部3坑。
+second_map_harness + maze_map + maze_map_second + maze_model + maze_level：2 PASS，原路线与全部4坑。
+third_map_harness + maze_map + maze_map_ice_loops + maze_model + maze_level：3 PASS，原普通/冰捷径与全部5坑。
+
+物理兼容：level.mechanism_count==0时保留原运动分支；粗糙材质只为新图新增，不改旧图数据。map原has_route仍供旧图使用；新图使用有界单调锁存可达性；破墙静态只作候选通行，真实模型冲墙另证。
+局限：粗糙手感/破墙阈值和新关卡整体验收仍需用户真实板端完成；此文件不声明硬件通过。

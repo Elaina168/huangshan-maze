@@ -1,0 +1,3519 @@
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120767d8 <main>:
+120767d8:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+120767dc:	vpush	{d8-d10}
+120767e0:	ldr	r2, [pc, #396]	@ (12076970 <main+0x198>)
+120767e2:	sub.w	sp, sp, #828	@ 0x33c
+120767e6:	ldr	r1, [pc, #396]	@ (12076974 <main+0x19c>)
+120767e8:	ldr	r0, [pc, #396]	@ (12076978 <main+0x1a0>)
+120767ea:	bl	1207cbdc <rt_kprintf>
+120767ee:	movs	r3, #1
+120767f0:	movs	r2, #0
+120767f2:	movw	r1, #477	@ 0x1dd
+120767f6:	movs	r0, #46	@ 0x2e
+120767f8:	bl	120b4580 <__HAL_PIN_Set_veneer>
+120767fc:	movs	r2, #1
+120767fe:	movs	r0, #16
+12076800:	mov	r1, r2
+12076802:	bl	120b45c8 <__HAL_PMU_ConfigPeriLdo_veneer>
+12076806:	ldr	r0, [pc, #372]	@ (1207697c <main+0x1a4>)
+12076808:	bl	1207ae8c <rt_device_find>
+1207680c:	ldr	r3, [pc, #368]	@ (12076980 <main+0x1a8>)
+1207680e:	str	r0, [r3, #0]
+12076810:	cbnz	r0, 12076826 <main+0x4e>
+12076812:	ldr	r2, [pc, #360]	@ (1207697c <main+0x1a4>)
+12076814:	ldr	r1, [pc, #348]	@ (12076974 <main+0x19c>)
+12076816:	ldr	r0, [pc, #364]	@ (12076984 <main+0x1ac>)
+12076818:	bl	1207cbdc <rt_kprintf>
+1207681c:	movs	r2, #49	@ 0x31
+1207681e:	ldr	r1, [pc, #360]	@ (12076988 <main+0x1b0>)
+12076820:	ldr	r0, [pc, #360]	@ (1207698c <main+0x1b4>)
+12076822:	bl	1207cd9c <rt_assert_handler>
+12076826:	bl	12076698 <maze_rgb_off>
+1207682a:	mov	r4, r0
+1207682c:	cmp	r0, #0
+1207682e:	bne.w	12076e9a <main+0x6c2>
+12076832:	bl	12079ca0 <maze_ui_init>
+12076836:	mov	r4, r0
+12076838:	cmp	r0, #0
+1207683a:	bne.w	12076e9a <main+0x6c2>
+1207683e:	bl	12077e08 <maze_imu_init>
+12076842:	mov	r4, r0
+12076844:	cmp	r0, #0
+12076846:	bne.w	12076e9a <main+0x6c2>
+1207684a:	ldr	r5, [pc, #324]	@ (12076990 <main+0x1b8>)
+1207684c:	mov.w	r1, #1000	@ 0x3e8
+12076850:	mov	r0, r5
+12076852:	bl	12078fa0 <maze_navigation_init>
+12076856:	bl	1207ad18 <rt_tick_get>
+1207685a:	add	r1, sp, #168	@ 0xa8
+1207685c:	mov	r8, r0
+1207685e:	ldr	r0, [pc, #308]	@ (12076994 <main+0x1bc>)
+12076860:	bl	120797e8 <maze_store_open>
+12076864:	subs	r4, r0, #0
+12076866:	ite	eq
+12076868:	moveq	r6, #1
+1207686a:	movne	r6, #0
+1207686c:	bne.n	1207695e <main+0x186>
+1207686e:	ldr	r0, [pc, #296]	@ (12076998 <main+0x1c0>)
+12076870:	add	r1, sp, #168	@ 0xa8
+12076872:	bl	120791a6 <maze_progress_init>
+12076876:	ldr	r7, [pc, #284]	@ (12076994 <main+0x1bc>)
+12076878:	ldrb.w	r3, [r7, #3698]	@ 0xe72
+1207687c:	strb	r3, [r5, #28]
+1207687e:	bl	1207ad18 <rt_tick_get>
+12076882:	ldrb.w	r3, [r7, #3698]	@ 0xe72
+12076886:	sub.w	r2, r0, r8
+1207688a:	str	r3, [sp, #0]
+1207688c:	mov	r1, r4
+1207688e:	ldr.w	r3, [r7, #3708]	@ 0xe7c
+12076892:	ldr	r0, [pc, #264]	@ (1207699c <main+0x1c4>)
+12076894:	bl	1207cbdc <rt_kprintf>
+12076898:	cmp	r4, #0
+1207689a:	bne.n	12076966 <main+0x18e>
+1207689c:	ldr.w	r3, [r7, #3716]	@ 0xe84
+120768a0:	ldr.w	fp, [r7, #3712]	@ 0xe80
+120768a4:	str	r3, [sp, #56]	@ 0x38
+120768a6:	ldr	r1, [pc, #232]	@ (12076990 <main+0x1b8>)
+120768a8:	ldr	r0, [pc, #244]	@ (120769a0 <main+0x1c8>)
+120768aa:	bl	1207ace4 <maze_ui_set_service>
+120768ae:	bl	1207ad18 <rt_tick_get>
+120768b2:	str	r0, [sp, #52]	@ 0x34
+120768b4:	ldr	r0, [pc, #216]	@ (12076990 <main+0x1b8>)
+120768b6:	bl	12079ec0 <maze_ui_render>
+120768ba:	ldr	r3, [sp, #52]	@ 0x34
+120768bc:	ldr	r4, [pc, #208]	@ (12076990 <main+0x1b8>)
+120768be:	strd	r3, r3, [sp, #72]	@ 0x48
+120768c2:	movs	r3, #0
+120768c4:	strd	r3, r3, [sp, #64]	@ 0x40
+120768c8:	str	r3, [sp, #80]	@ 0x50
+120768ca:	str	r3, [sp, #60]	@ 0x3c
+120768cc:	add.w	r7, r4, #8192	@ 0x2000
+120768d0:	bl	1207ad18 <rt_tick_get>
+120768d4:	str	r0, [sp, #92]	@ 0x5c
+120768d6:	bl	12079d68 <maze_ui_process>
+120768da:	bl	1207ad18 <rt_tick_get>
+120768de:	ldr.w	r3, [r7, #2268]	@ 0x8dc
+120768e2:	mov	r5, r0
+120768e4:	str	r3, [sp, #96]	@ 0x60
+120768e6:	ldr.w	r3, [r7, #2264]	@ 0x8d8
+120768ea:	str	r3, [sp, #84]	@ 0x54
+120768ec:	ldrb	r3, [r4, #0]
+120768ee:	cmp	r3, #1
+120768f0:	bne.n	120768fc <main+0x124>
+120768f2:	ldr	r1, [pc, #176]	@ (120769a4 <main+0x1cc>)
+120768f4:	add.w	r0, r1, #360	@ 0x168
+120768f8:	bl	120792dc <maze_progress_observe>
+120768fc:	cbz	r6, 12076916 <main+0x13e>
+120768fe:	ldr	r3, [pc, #148]	@ (12076994 <main+0x1bc>)
+12076900:	ldrb.w	r3, [r3, #3699]	@ 0xe73
+12076904:	cbz	r3, 12076916 <main+0x13e>
+12076906:	ldr	r3, [pc, #144]	@ (12076998 <main+0x1c0>)
+12076908:	ldr	r1, [sp, #56]	@ 0x38
+1207690a:	ldrd	r2, r3, [r3]
+1207690e:	cmp	r3, r1
+12076910:	it	eq
+12076912:	cmpeq	r2, fp
+12076914:	bne.n	120769da <main+0x202>
+12076916:	add.w	r9, sp, #124	@ 0x7c
+1207691a:	mov	r1, r9
+1207691c:	ldr	r0, [pc, #112]	@ (12076990 <main+0x1b8>)
+1207691e:	bl	12079e40 <maze_ui_take_command>
+12076922:	mov	r8, r0
+12076924:	cmp	r0, #0
+12076926:	beq.n	120769da <main+0x202>
+12076928:	str	r5, [sp, #4]
+1207692a:	ldr	r3, [r4, #4]
+1207692c:	ldr	r0, [pc, #120]	@ (120769a8 <main+0x1d0>)
+1207692e:	str	r3, [sp, #0]
+12076930:	ldrb	r3, [r4, #0]
+12076932:	ldr.w	r2, [r9, #4]
+12076936:	ldrb.w	r1, [r9]
+1207693a:	bl	1207cbdc <rt_kprintf>
+1207693e:	ldrb.w	r3, [r9]
+12076942:	subs	r3, #1
+12076944:	cmp	r3, #7
+12076946:	bhi.w	12076d20 <main+0x548>
+1207694a:	tbh	[pc, r3, lsl #1]
+1207694e:	.short	0x01a9
+12076950:	.word	0x01e901e9
+12076954:	.word	0x01d1002f
+12076958:	.word	0x01e501d8
+1207695c:	.short	0x0048
+1207695e:	movs	r3, #4
+12076960:	str	r4, [r5, #24]
+12076962:	strb	r3, [r5, #0]
+12076964:	b.n	12076876 <main+0x9e>
+12076966:	mov.w	fp, #0
+1207696a:	str.w	fp, [sp, #56]	@ 0x38
+1207696e:	b.n	120768a6 <main+0xce>
+12076970:	.word	0x12097401
+12076974:	.word	0x12097415
+12076978:	.word	0x12097424
+1207697c:	.word	0x120929a9
+12076980:	.word	0x20020b78
+12076984:	.word	0x12097437
+12076988:	.word	0x120a692c
+1207698c:	.word	0x120986ae
+12076990:	.word	0x2001de90
+12076994:	.word	0x2001ce00
+12076998:	.word	0x200208c0
+1207699c:	.word	0x12097492
+120769a0:	.word	0x12076761
+120769a4:	.word	0x20020758
+120769a8:	.word	0x120974cc
+120769ac:	str	r5, [sp, #0]
+120769ae:	ldr.w	r3, [r7, #2256]	@ 0x8d0
+120769b2:	ldrb.w	r2, [r7, #2280]	@ 0x8e8
+120769b6:	ldrb.w	r1, [sp, #132]	@ 0x84
+120769ba:	ldr	r0, [pc, #748]	@ (12076ca8 <main+0x4d0>)
+120769bc:	bl	1207cbdc <rt_kprintf>
+120769c0:	ldr	r1, [pc, #744]	@ (12076cac <main+0x4d4>)
+120769c2:	ldrb.w	r2, [sp, #132]	@ 0x84
+120769c6:	add.w	r0, r1, #360	@ 0x168
+120769ca:	bl	120791de <maze_progress_before_event>
+120769ce:	mov	r2, r5
+120769d0:	ldrb.w	r1, [sp, #132]	@ 0x84
+120769d4:	ldr	r0, [pc, #724]	@ (12076cac <main+0x4d4>)
+120769d6:	bl	1207714a <maze_app_event>
+120769da:	mov.w	r8, #0
+120769de:	add	r0, sp, #136	@ 0x88
+120769e0:	bl	12077eec <maze_imu_latest>
+120769e4:	str	r0, [sp, #88]	@ 0x58
+120769e6:	cbz	r0, 120769f2 <main+0x21a>
+120769e8:	mov	r2, r5
+120769ea:	mov	r0, r4
+120769ec:	add	r1, sp, #136	@ 0x88
+120769ee:	bl	120790c8 <maze_navigation_sample>
+120769f2:	ldrb	r3, [r4, #0]
+120769f4:	cmp	r3, #1
+120769f6:	bne.n	12076a12 <main+0x23a>
+120769f8:	ldr	r3, [pc, #692]	@ (12076cb0 <main+0x4d8>)
+120769fa:	ldrb.w	r2, [r3, #2280]	@ 0x8e8
+120769fe:	cmp	r2, #2
+12076a00:	bne.n	12076a12 <main+0x23a>
+12076a02:	ldr	r2, [pc, #688]	@ (12076cb4 <main+0x4dc>)
+12076a04:	ldr.w	r3, [r3, #2312]	@ 0x908
+12076a08:	ldr	r1, [r2, #0]
+12076a0a:	subs	r3, r5, r3
+12076a0c:	cmp	r3, r1
+12076a0e:	it	hi
+12076a10:	strhi	r3, [r2, #0]
+12076a12:	mov	r1, r5
+12076a14:	mov	r0, r4
+12076a16:	bl	120790da <maze_navigation_update>
+12076a1a:	cmp.w	r8, #0
+12076a1e:	beq.n	12076a78 <main+0x2a0>
+12076a20:	cmp	r6, #0
+12076a22:	bne.w	12076dc0 <main+0x5e8>
+12076a26:	bl	1207ad18 <rt_tick_get>
+12076a2a:	add	r1, sp, #168	@ 0xa8
+12076a2c:	mov	sl, r0
+12076a2e:	ldr	r0, [pc, #648]	@ (12076cb8 <main+0x4e0>)
+12076a30:	bl	120797e8 <maze_store_open>
+12076a34:	mov	r9, r0
+12076a36:	bl	1207ad18 <rt_tick_get>
+12076a3a:	mov	r1, r9
+12076a3c:	sub.w	r2, r0, sl
+12076a40:	ldr	r0, [pc, #632]	@ (12076cbc <main+0x4e4>)
+12076a42:	bl	1207cbdc <rt_kprintf>
+12076a46:	cmp.w	r9, #0
+12076a4a:	bne.w	12076dbc <main+0x5e4>
+12076a4e:	ldr	r0, [pc, #624]	@ (12076cc0 <main+0x4e8>)
+12076a50:	add	r1, sp, #168	@ 0xa8
+12076a52:	bl	120791a6 <maze_progress_init>
+12076a56:	ldr	r3, [pc, #620]	@ (12076cc4 <main+0x4ec>)
+12076a58:	strb	r6, [r4, #0]
+12076a5a:	ldrd	fp, r3, [r3]
+12076a5e:	str	r3, [sp, #56]	@ 0x38
+12076a60:	mov	r6, r8
+12076a62:	mov.w	r8, #0
+12076a66:	ldr	r3, [pc, #592]	@ (12076cb8 <main+0x4e0>)
+12076a68:	str.w	r9, [r4, #24]
+12076a6c:	ldrb.w	r3, [r3, #3698]	@ 0xe72
+12076a70:	strb	r3, [r4, #28]
+12076a72:	ldr	r3, [r4, #4]
+12076a74:	adds	r3, #1
+12076a76:	str	r3, [r4, #4]
+12076a78:	ldrb.w	r3, [r7, #3267]	@ 0xcc3
+12076a7c:	cmp	r3, #0
+12076a7e:	beq.w	12076de2 <main+0x60a>
+12076a82:	ldr	r3, [r4, #24]
+12076a84:	cmn.w	r3, #3104	@ 0xc20
+12076a88:	beq.n	12076a94 <main+0x2bc>
+12076a8a:	ldr	r3, [pc, #572]	@ (12076cc8 <main+0x4f0>)
+12076a8c:	str	r3, [r4, #24]
+12076a8e:	ldr	r3, [r4, #4]
+12076a90:	adds	r3, #1
+12076a92:	str	r3, [r4, #4]
+12076a94:	add.w	r8, sp, #120	@ 0x78
+12076a98:	add.w	r9, sp, #119	@ 0x77
+12076a9c:	mov	r2, r9
+12076a9e:	mov	r1, r8
+12076aa0:	ldr	r0, [pc, #552]	@ (12076ccc <main+0x4f4>)
+12076aa2:	bl	12079102 <maze_navigation_request>
+12076aa6:	ldrb.w	r1, [sp, #119]	@ 0x77
+12076aaa:	ldr	r0, [sp, #120]	@ 0x78
+12076aac:	bl	12077e9c <maze_imu_request>
+12076ab0:	ldr	r2, [r4, #4]
+12076ab2:	ldr	r3, [sp, #68]	@ 0x44
+12076ab4:	ldr.w	r8, [pc, #504]	@ 12076cb0 <main+0x4d8>
+12076ab8:	cmp	r2, r3
+12076aba:	bne.n	12076ad2 <main+0x2fa>
+12076abc:	ldrb.w	r3, [r8, #2280]	@ 0x8e8
+12076ac0:	ldr	r1, [sp, #60]	@ 0x3c
+12076ac2:	cmp	r3, r1
+12076ac4:	bne.n	12076ad2 <main+0x2fa>
+12076ac6:	ldr.w	r3, [r8, #2256]	@ 0x8d0
+12076aca:	ldr	r1, [sp, #64]	@ 0x40
+12076acc:	cmp	r3, r1
+12076ace:	beq.w	12076dc4 <main+0x5ec>
+12076ad2:	ldr	r3, [r4, #20]
+12076ad4:	ldr	r0, [pc, #504]	@ (12076cd0 <main+0x4f8>)
+12076ad6:	str	r3, [sp, #4]
+12076ad8:	ldrb	r3, [r4, #16]
+12076ada:	ldr.w	r9, [pc, #468]	@ 12076cb0 <main+0x4d8>
+12076ade:	str	r3, [sp, #0]
+12076ae0:	ldr	r3, [r4, #12]
+12076ae2:	ldrb	r1, [r4, #0]
+12076ae4:	bl	1207cbdc <rt_kprintf>
+12076ae8:	ldrb	r3, [r4, #0]
+12076aea:	cmp	r3, #1
+12076aec:	bne.n	12076b70 <main+0x398>
+12076aee:	ldrb.w	r3, [r9, #2280]	@ 0x8e8
+12076af2:	cmp	r3, #4
+12076af4:	bne.n	12076b2c <main+0x354>
+12076af6:	ldr	r3, [sp, #84]	@ 0x54
+12076af8:	ldr	r2, [sp, #92]	@ 0x5c
+12076afa:	ldr	r1, [sp, #76]	@ 0x4c
+12076afc:	str	r3, [sp, #4]
+12076afe:	ldr	r3, [sp, #96]	@ 0x60
+12076b00:	ldr	r0, [pc, #464]	@ (12076cd4 <main+0x4fc>)
+12076b02:	str	r3, [sp, #0]
+12076b04:	subs	r2, r5, r2
+12076b06:	ldr	r3, [sp, #80]	@ 0x50
+12076b08:	subs	r1, r5, r1
+12076b0a:	bl	1207cbdc <rt_kprintf>
+12076b0e:	ldr	r3, [sp, #88]	@ 0x58
+12076b10:	cbz	r3, 12076b2c <main+0x354>
+12076b12:	ldr	r3, [sp, #152]	@ 0x98
+12076b14:	ldr	r2, [sp, #144]	@ 0x90
+12076b16:	str	r3, [sp, #8]
+12076b18:	ldr	r3, [sp, #148]	@ 0x94
+12076b1a:	ldr	r1, [sp, #140]	@ 0x8c
+12076b1c:	str	r3, [sp, #4]
+12076b1e:	ldr	r3, [sp, #84]	@ 0x54
+12076b20:	ldr	r0, [pc, #436]	@ (12076cd8 <main+0x500>)
+12076b22:	subs	r3, r2, r3
+12076b24:	str	r3, [sp, #0]
+12076b26:	subs	r3, r5, r2
+12076b28:	bl	1207cbdc <rt_kprintf>
+12076b2c:	ldr.w	r3, [r8, #2360]	@ 0x938
+12076b30:	ldr	r0, [pc, #424]	@ (12076cdc <main+0x504>)
+12076b32:	str	r3, [sp, #0]
+12076b34:	ldr.w	r3, [r8, #2336]	@ 0x920
+12076b38:	ldrb.w	r2, [r8, #2280]	@ 0x8e8
+12076b3c:	ldr.w	r1, [r8, #2256]	@ 0x8d0
+12076b40:	bl	1207cbdc <rt_kprintf>
+12076b44:	ldr	r3, [sp, #60]	@ 0x3c
+12076b46:	cmp	r3, #1
+12076b48:	bne.n	12076b70 <main+0x398>
+12076b4a:	ldrb.w	r3, [r8, #2280]	@ 0x8e8
+12076b4e:	cmp	r3, #1
+12076b50:	beq.n	12076b70 <main+0x398>
+12076b52:	ldrb.w	r3, [r8, #2278]	@ 0x8e6
+12076b56:	cbz	r3, 12076b70 <main+0x398>
+12076b58:	ldr.w	r3, [r8, #2336]	@ 0x920
+12076b5c:	cbnz	r3, 12076b70 <main+0x398>
+12076b5e:	ldr.w	r3, [r8, #2348]	@ 0x92c
+12076b62:	ldr.w	r2, [r8, #2344]	@ 0x928
+12076b66:	ldr.w	r1, [r8, #2340]	@ 0x924
+12076b6a:	ldr	r0, [pc, #372]	@ (12076ce0 <main+0x508>)
+12076b6c:	bl	1207cbdc <rt_kprintf>
+12076b70:	mov.w	r8, #1
+12076b74:	ldrb.w	r3, [r9, #2280]	@ 0x8e8
+12076b78:	str	r3, [sp, #60]	@ 0x3c
+12076b7a:	ldr.w	r3, [r9, #2256]	@ 0x8d0
+12076b7e:	str	r3, [sp, #64]	@ 0x40
+12076b80:	ldr	r3, [r4, #4]
+12076b82:	str	r3, [sp, #68]	@ 0x44
+12076b84:	ldrb	r3, [r4, #0]
+12076b86:	cmp	r3, #1
+12076b88:	bne.n	12076c6a <main+0x492>
+12076b8a:	ldrb.w	r3, [sp, #119]	@ 0x77
+12076b8e:	cbnz	r3, 12076b96 <main+0x3be>
+12076b90:	cmp.w	r8, #0
+12076b94:	beq.n	12076c72 <main+0x49a>
+12076b96:	ldr.w	r9, [pc, #280]	@ 12076cb0 <main+0x4d8>
+12076b9a:	ldr.w	sl, [pc, #336]	@ 12076cec <main+0x514>
+12076b9e:	ldr.w	r3, [r9, #2256]	@ 0x8d0
+12076ba2:	ldrb.w	r2, [r9, #2280]	@ 0x8e8
+12076ba6:	str	r3, [sp, #52]	@ 0x34
+12076ba8:	add.w	r3, r9, #2336	@ 0x920
+12076bac:	ldrd	r0, r1, [r3, #-8]
+12076bb0:	str	r2, [sp, #88]	@ 0x58
+12076bb2:	bl	12092090 <__aeabi_d2uiz>
+12076bb6:	str	r0, [sp, #84]	@ 0x54
+12076bb8:	addw	r0, r9, #2296	@ 0x8f8
+12076bbc:	vldr	s16, [r0]
+12076bc0:	addw	r0, r9, #2300	@ 0x8fc
+12076bc4:	vldr	s15, [pc, #284]	@ 12076ce4 <main+0x50c>
+12076bc8:	vldr	s17, [r0]
+12076bcc:	add.w	r1, r9, #2288	@ 0x8f0
+12076bd0:	vldr	s18, [r1]
+12076bd4:	addw	r1, r9, #2292	@ 0x8f4
+12076bd8:	vldr	s19, [r1]
+12076bdc:	add.w	r1, r9, #2352	@ 0x930
+12076be0:	vldr	s20, [r1]
+12076be4:	addw	r1, r9, #2356	@ 0x934
+12076be8:	vldr	s21, [r1]
+12076bec:	vmul.f32	s16, s16, s15
+12076bf0:	vmul.f32	s17, s17, s15
+12076bf4:	ldr.w	r1, [r9, #2336]	@ 0x920
+12076bf8:	vmov.f32	s1, s19
+12076bfc:	vmov.f32	s0, s18
+12076c00:	ldr.w	r0, [r9, #2248]	@ 0x8c8
+12076c04:	str	r1, [sp, #76]	@ 0x4c
+12076c06:	bl	12077f30 <maze_level_surface_at>
+12076c0a:	vcvt.s32.f32	s20, s20
+12076c0e:	vcvt.s32.f32	s21, s21
+12076c12:	vcvt.s32.f32	s16, s16
+12076c16:	vcvt.s32.f32	s17, s17
+12076c1a:	vcvt.s32.f32	s19, s19
+12076c1e:	vcvt.s32.f32	s18, s18
+12076c22:	ldr.w	r3, [sl]
+12076c26:	ldr.w	r9, [pc, #140]	@ 12076cb4 <main+0x4dc>
+12076c2a:	str	r3, [sp, #40]	@ 0x28
+12076c2c:	ldr.w	r3, [r9]
+12076c30:	ldr	r1, [sp, #76]	@ 0x4c
+12076c32:	strd	r0, r3, [sp, #32]
+12076c36:	ldr	r3, [sp, #84]	@ 0x54
+12076c38:	str	r1, [sp, #20]
+12076c3a:	str	r3, [sp, #0]
+12076c3c:	vstr	s17, [sp, #28]
+12076c40:	mov	r3, r5
+12076c42:	vstr	s16, [sp, #24]
+12076c46:	vstr	s21, [sp, #16]
+12076c4a:	vstr	s20, [sp, #12]
+12076c4e:	vstr	s19, [sp, #8]
+12076c52:	vstr	s18, [sp, #4]
+12076c56:	ldr	r2, [sp, #88]	@ 0x58
+12076c58:	ldr	r1, [sp, #52]	@ 0x34
+12076c5a:	ldr	r0, [pc, #140]	@ (12076ce8 <main+0x510>)
+12076c5c:	bl	1207cbdc <rt_kprintf>
+12076c60:	movs	r3, #0
+12076c62:	str.w	r3, [sl]
+12076c66:	str.w	r3, [r9]
+12076c6a:	cmp.w	r8, #0
+12076c6e:	bne.w	12076dde <main+0x606>
+12076c72:	str	r5, [sp, #52]	@ 0x34
+12076c74:	ldr	r3, [sp, #72]	@ 0x48
+12076c76:	movs	r0, #50	@ 0x32
+12076c78:	sub.w	r8, r5, r3
+12076c7c:	bl	1207ad50 <rt_tick_from_millisecond>
+12076c80:	cmp	r8, r0
+12076c82:	bcc.n	12076c9c <main+0x4c4>
+12076c84:	bl	1207ad18 <rt_tick_get>
+12076c88:	mov	r8, r0
+12076c8a:	mov	r0, r4
+12076c8c:	bl	12079ec0 <maze_ui_render>
+12076c90:	bl	1207ad18 <rt_tick_get>
+12076c94:	sub.w	r3, r0, r8
+12076c98:	str	r3, [sp, #80]	@ 0x50
+12076c9a:	str	r5, [sp, #72]	@ 0x48
+12076c9c:	str	r5, [sp, #76]	@ 0x4c
+12076c9e:	b.n	120768d0 <main+0xf8>
+12076ca0:	mov	r0, r4
+12076ca2:	bl	12079056 <maze_navigation_toggle_direction>
+12076ca6:	b.n	120769da <main+0x202>
+12076ca8:	.word	0x12097507
+12076cac:	.word	0x20020758
+12076cb0:	.word	0x2001fe90
+12076cb4:	.word	0x20020b74
+12076cb8:	.word	0x2001ce00
+12076cbc:	.word	0x120975a2
+12076cc0:	.word	0x200208c0
+12076cc4:	.word	0x2001dc80
+12076cc8:	.word	0xfffff3e0
+12076ccc:	.word	0x2001de90
+12076cd0:	.word	0x1209760b
+12076cd4:	.word	0x12097648
+12076cd8:	.word	0x120976a4
+12076cdc:	.word	0x1209771a
+12076ce0:	.word	0x12097744
+12076ce4:	.word	0x42c80000
+12076ce8:	.word	0x12097764
+12076cec:	.word	0x20020b70
+12076cf0:	movs	r3, #3
+12076cf2:	strb	r3, [r4, #0]
+12076cf4:	movs	r3, #0
+12076cf6:	str	r3, [r4, #32]
+12076cf8:	ldrb	r3, [r4, #16]
+12076cfa:	str	r3, [r4, #36]	@ 0x24
+12076cfc:	b.n	12076d10 <main+0x538>
+12076cfe:	ldr	r2, [pc, #436]	@ (12076eb4 <main+0x6dc>)
+12076d00:	ldr	r3, [r4, #32]
+12076d02:	ldr	r2, [r2, #0]
+12076d04:	adds	r3, #1
+12076d06:	udiv	r1, r3, r2
+12076d0a:	mls	r3, r2, r1, r3
+12076d0e:	str	r3, [r4, #32]
+12076d10:	ldr	r3, [r4, #4]
+12076d12:	adds	r3, #1
+12076d14:	str	r3, [r4, #4]
+12076d16:	b.n	120769da <main+0x202>
+12076d18:	ldr	r3, [r4, #36]	@ 0x24
+12076d1a:	rsb	r3, r3, #1
+12076d1e:	b.n	12076cfa <main+0x522>
+12076d20:	movs	r1, #0
+12076d22:	ldr.w	r0, [r7, #2256]	@ 0x8d0
+12076d26:	add.w	r8, sp, #124	@ 0x7c
+12076d2a:	bl	12077e9c <maze_imu_request>
+12076d2e:	ldrb.w	r3, [r8]
+12076d32:	cmp	r3, #2
+12076d34:	bne.n	12076d4a <main+0x572>
+12076d36:	bl	12079d84 <maze_ui_clear>
+12076d3a:	ldrb.w	r3, [r8]
+12076d3e:	cmp	r3, #2
+12076d40:	bne.n	12076d50 <main+0x578>
+12076d42:	mov	r0, r4
+12076d44:	bl	12079024 <maze_navigation_back>
+12076d48:	b.n	120769da <main+0x202>
+12076d4a:	bl	12079e14 <maze_ui_loading>
+12076d4e:	b.n	12076d3a <main+0x562>
+12076d50:	bl	1207ad18 <rt_tick_get>
+12076d54:	ldrb.w	r3, [r8]
+12076d58:	mov	r9, r0
+12076d5a:	cmp	r3, #3
+12076d5c:	bne.n	12076db0 <main+0x5d8>
+12076d5e:	ldr	r0, [pc, #344]	@ (12076eb8 <main+0x6e0>)
+12076d60:	bl	1207906c <maze_navigation_next>
+12076d64:	mov	sl, r0
+12076d66:	bl	1207ad18 <rt_tick_get>
+12076d6a:	sub.w	r9, r0, r9
+12076d6e:	bl	120780bc <maze_map_workspace_size>
+12076d72:	mov	r2, r9
+12076d74:	mov	r3, r0
+12076d76:	mov	r1, sl
+12076d78:	ldr	r0, [pc, #320]	@ (12076ebc <main+0x6e4>)
+12076d7a:	bl	1207cbdc <rt_kprintf>
+12076d7e:	cmp.w	sl, #0
+12076d82:	bne.w	120769da <main+0x202>
+12076d86:	ldrb	r3, [r4, #0]
+12076d88:	cmp	r3, #1
+12076d8a:	bne.w	120769da <main+0x202>
+12076d8e:	ldrb	r2, [r4, #16]
+12076d90:	ldr	r3, [pc, #300]	@ (12076ec0 <main+0x6e8>)
+12076d92:	ldr	r0, [pc, #304]	@ (12076ec4 <main+0x6ec>)
+12076d94:	ldr.w	r1, [r3, #2248]	@ 0x8c8
+12076d98:	str	r2, [sp, #8]
+12076d9a:	ldr.w	r3, [r3, #2244]	@ 0x8c4
+12076d9e:	str	r3, [sp, #4]
+12076da0:	ldr	r3, [r1, #52]	@ 0x34
+12076da2:	str	r3, [sp, #0]
+12076da4:	ldr	r3, [r1, #32]
+12076da6:	ldr	r2, [r1, #24]
+12076da8:	ldr	r1, [r1, #56]	@ 0x38
+12076daa:	bl	1207cbdc <rt_kprintf>
+12076dae:	b.n	120769da <main+0x202>
+12076db0:	mov	r0, r4
+12076db2:	ldr.w	r1, [r8, #4]
+12076db6:	bl	12078fd4 <maze_navigation_select>
+12076dba:	b.n	12076d64 <main+0x58c>
+12076dbc:	mov	r8, r6
+12076dbe:	b.n	12076a60 <main+0x288>
+12076dc0:	mov	r8, r6
+12076dc2:	b.n	12076a78 <main+0x2a0>
+12076dc4:	ldr	r3, [sp, #52]	@ 0x34
+12076dc6:	mov.w	r0, #500	@ 0x1f4
+12076dca:	sub.w	r8, r5, r3
+12076dce:	bl	1207ad50 <rt_tick_from_millisecond>
+12076dd2:	cmp	r8, r0
+12076dd4:	bcc.w	12076c74 <main+0x49c>
+12076dd8:	mov.w	r8, #0
+12076ddc:	b.n	12076b84 <main+0x3ac>
+12076dde:	str	r5, [sp, #52]	@ 0x34
+12076de0:	b.n	12076c84 <main+0x4ac>
+12076de2:	cmp	r6, #0
+12076de4:	beq.w	12076a94 <main+0x2bc>
+12076de8:	ldr.w	r9, [pc, #236]	@ 12076ed8 <main+0x700>
+12076dec:	ldr	r1, [pc, #216]	@ (12076ec8 <main+0x6f0>)
+12076dee:	ldr.w	r3, [r9, #4]
+12076df2:	ldr.w	r2, [r9]
+12076df6:	str	r3, [sp, #100]	@ 0x64
+12076df8:	ldr	r3, [r1, #0]
+12076dfa:	mov	r0, r4
+12076dfc:	ldr.w	sl, [r1, #4]
+12076e00:	str	r2, [sp, #108]	@ 0x6c
+12076e02:	str	r3, [sp, #104]	@ 0x68
+12076e04:	bl	12079134 <maze_navigation_can_save>
+12076e08:	cmp	r0, #0
+12076e0a:	beq.w	12076a94 <main+0x2bc>
+12076e0e:	cmp.w	r8, #0
+12076e12:	bne.n	12076e34 <main+0x65c>
+12076e14:	ldrd	r1, r3, [sp, #100]	@ 0x64
+12076e18:	ldr	r2, [sp, #108]	@ 0x6c
+12076e1a:	cmp	r1, sl
+12076e1c:	it	eq
+12076e1e:	cmpeq	r2, r3
+12076e20:	beq.w	12076a94 <main+0x2bc>
+12076e24:	ldrd	r2, r3, [r9]
+12076e28:	ldr	r1, [sp, #56]	@ 0x38
+12076e2a:	cmp	r3, r1
+12076e2c:	it	eq
+12076e2e:	cmpeq	r2, fp
+12076e30:	beq.w	12076a94 <main+0x2bc>
+12076e34:	movs	r1, #0
+12076e36:	ldr.w	r0, [r7, #2256]	@ 0x8d0
+12076e3a:	bl	12077e9c <maze_imu_request>
+12076e3e:	movs	r3, #1
+12076e40:	strb	r3, [r4, #29]
+12076e42:	ldr	r3, [r4, #4]
+12076e44:	ldr	r0, [pc, #112]	@ (12076eb8 <main+0x6e0>)
+12076e46:	adds	r3, #1
+12076e48:	str	r3, [r4, #4]
+12076e4a:	bl	12079ec0 <maze_ui_render>
+12076e4e:	bl	12079d68 <maze_ui_process>
+12076e52:	bl	1207ad18 <rt_tick_get>
+12076e56:	ldr.w	r9, [pc, #128]	@ 12076ed8 <main+0x700>
+12076e5a:	ldr.w	sl, [pc, #128]	@ 12076edc <main+0x704>
+12076e5e:	mov	fp, r0
+12076e60:	mov	r1, r9
+12076e62:	mov	r0, sl
+12076e64:	bl	120795fc <maze_store_save>
+12076e68:	mov	r8, r0
+12076e6a:	bl	1207ad18 <rt_tick_get>
+12076e6e:	ldr.w	r3, [sl, #3708]	@ 0xe7c
+12076e72:	sub.w	r2, r0, fp
+12076e76:	str	r3, [sp, #0]
+12076e78:	ldr.w	r3, [r9]
+12076e7c:	mov	r1, r8
+12076e7e:	ldr	r0, [pc, #76]	@ (12076ecc <main+0x6f4>)
+12076e80:	bl	1207cbdc <rt_kprintf>
+12076e84:	ldrd	fp, r3, [r9]
+12076e88:	str	r3, [sp, #56]	@ 0x38
+12076e8a:	movs	r3, #0
+12076e8c:	strb	r3, [r4, #29]
+12076e8e:	ldrb.w	r3, [sl, #3698]	@ 0xe72
+12076e92:	str.w	r8, [r4, #24]
+12076e96:	strb	r3, [r4, #28]
+12076e98:	b.n	12076a8e <main+0x2b6>
+12076e9a:	mov	r2, r4
+12076e9c:	ldr	r1, [pc, #48]	@ (12076ed0 <main+0x6f8>)
+12076e9e:	ldr	r0, [pc, #52]	@ (12076ed4 <main+0x6fc>)
+12076ea0:	bl	1207cbdc <rt_kprintf>
+12076ea4:	mov	r0, r4
+12076ea6:	add.w	sp, sp, #828	@ 0x33c
+12076eaa:	vpop	{d8-d10}
+12076eae:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+12076eb2:	nop
+12076eb4:	.word	0x120a698c
+12076eb8:	.word	0x2001de90
+12076ebc:	.word	0x12097530
+12076ec0:	.word	0x2001fe90
+12076ec4:	.word	0x12097562
+12076ec8:	.word	0x2001dc80
+12076ecc:	.word	0x120975ce
+12076ed0:	.word	0x12097415
+12076ed4:	.word	0x12097477
+12076ed8:	.word	0x200208c0
+12076edc:	.word	0x2001ce00
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120797e8 <maze_store_open>:
+120797e8:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+120797ec:	movw	r2, #4240	@ 0x1090
+120797f0:	subw	sp, sp, #2364	@ 0x93c
+120797f4:	mov	r7, r1
+120797f6:	movs	r1, #0
+120797f8:	mov	r4, r0
+120797fa:	bl	120b4590 <__memset_veneer>
+120797fe:	mov.w	r0, #4294967295
+12079802:	str.w	r0, [r4, #3708]	@ 0xe7c
+12079806:	bl	120b4678 <__maze_store_flash_allow_veneer>
+1207980a:	bl	1203620c <fal_init>
+1207980e:	cmp	r0, #0
+12079810:	bge.n	1207981c <maze_store_open+0x34>
+12079812:	ldr	r0, [pc, #496]	@ (12079a04 <maze_store_open+0x21c>)
+12079814:	addw	sp, sp, #2364	@ 0x93c
+12079818:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+1207981c:	movs	r5, #0
+1207981e:	ldr.w	sl, [pc, #504]	@ 12079a18 <maze_store_open+0x230>
+12079822:	add.w	r9, sp, #8
+12079826:	addw	r6, r4, #3700	@ 0xe74
+1207982a:	strh.w	r5, [r9]
+1207982e:	ldr.w	r0, [sl], #4
+12079832:	bl	120364c8 <fal_partition_find>
+12079836:	str.w	r0, [r6, #-12]
+1207983a:	cbnz	r0, 12079842 <maze_store_open+0x5a>
+1207983c:	mvn.w	r0, #3104	@ 0xc20
+12079840:	b.n	12079814 <maze_store_open+0x2c>
+12079842:	ldr	r3, [r0, #56]	@ 0x38
+12079844:	cmp.w	r3, #32768	@ 0x8000
+12079848:	bne.n	1207983c <maze_store_open+0x54>
+1207984a:	adds	r0, #28
+1207984c:	bl	120b44f8 <__fal_flash_device_find_veneer>
+12079850:	cmp	r0, #0
+12079852:	beq.n	1207983c <maze_store_open+0x54>
+12079854:	ldr	r3, [r0, #32]
+12079856:	cmp.w	r3, #8192	@ 0x2000
+1207985a:	bne.n	1207983c <maze_store_open+0x54>
+1207985c:	ldr.w	r0, [r6, #-12]
+12079860:	bl	12079474 <blank>
+12079864:	cmp	r0, #0
+12079866:	blt.n	12079812 <maze_store_open+0x2a>
+12079868:	beq.n	120798c8 <maze_store_open+0xe0>
+1207986a:	movs	r3, #1
+1207986c:	str	r3, [r6, #0]
+1207986e:	adds	r3, r5, #1
+12079870:	cmp	r3, #2
+12079872:	mov.w	r5, #1
+12079876:	add.w	r6, r6, #4
+1207987a:	bne.n	1207982e <maze_store_open+0x46>
+1207987c:	add	r6, sp, #12
+1207987e:	movs	r5, #0
+12079880:	mov	fp, r6
+12079882:	add.w	sl, r4, #3696	@ 0xe70
+12079886:	ldr.w	r3, [sl, #4]!
+1207988a:	cmp	r3, #0
+1207988c:	bne.n	12079942 <maze_store_open+0x15a>
+1207988e:	ldr.w	r8, [r4, #3708]	@ 0xe7c
+12079892:	cmp.w	r8, #0
+12079896:	blt.n	120798c2 <maze_store_open+0xda>
+12079898:	negs	r3, r5
+1207989a:	add.w	r2, sp, #1048	@ 0x418
+1207989e:	and.w	r3, r3, #656	@ 0x290
+120798a2:	ldr	r0, [r2, r3]
+120798a4:	adds	r1, r2, r3
+120798a6:	mov.w	r3, #656	@ 0x290
+120798aa:	mul.w	r3, r3, r8
+120798ae:	add.w	ip, r2, r3
+120798b2:	ldr	r2, [r2, r3]
+120798b4:	ldr	r1, [r1, #4]
+120798b6:	ldr.w	r3, [ip, #4]
+120798ba:	cmp	r2, r0
+120798bc:	sbcs.w	ip, r3, r1
+120798c0:	bcs.n	1207991a <maze_store_open+0x132>
+120798c2:	str.w	r5, [r4, #3708]	@ 0xe7c
+120798c6:	b.n	12079942 <maze_store_open+0x15a>
+120798c8:	movs	r2, #1
+120798ca:	mov	r1, r5
+120798cc:	mov	r0, r4
+120798ce:	bl	120794c8 <mount_bank>
+120798d2:	str	r0, [r6, #0]
+120798d4:	cmp	r0, #0
+120798d6:	bne.n	1207986e <maze_store_open+0x86>
+120798d8:	movw	fp, #517	@ 0x205
+120798dc:	rsb	r8, r5, #0
+120798e0:	and.w	fp, r8, fp
+120798e4:	add	r3, sp, #12
+120798e6:	add	fp, r3
+120798e8:	and.w	r8, r8, #656	@ 0x290
+120798ec:	add.w	r3, sp, #1048	@ 0x418
+120798f0:	add	r8, r3
+120798f2:	add.w	r3, r9, r5
+120798f6:	str	r3, [sp, #0]
+120798f8:	mov	r2, fp
+120798fa:	mov	r3, r8
+120798fc:	mov	r1, r5
+120798fe:	mov	r0, r4
+12079900:	bl	12079548 <read_archive>
+12079904:	str	r0, [r6, #0]
+12079906:	cbnz	r0, 12079910 <maze_store_open+0x128>
+12079908:	mov	r1, fp
+1207990a:	mov	r0, r8
+1207990c:	bl	12077560 <maze_archive_encode>
+12079910:	ldr	r0, [r6, #0]
+12079912:	ldr	r3, [pc, #244]	@ (12079a08 <maze_store_open+0x220>)
+12079914:	cmp	r0, r3
+12079916:	bne.n	1207986e <maze_store_open+0x86>
+12079918:	b.n	12079814 <maze_store_open+0x2c>
+1207991a:	cmp	r1, r3
+1207991c:	it	eq
+1207991e:	cmpeq	r0, r2
+12079920:	bne.n	12079942 <maze_store_open+0x15a>
+12079922:	movw	r2, #517	@ 0x205
+12079926:	mov	r0, r6
+12079928:	mla	r1, r2, r8, fp
+1207992c:	bl	120873d0 <memcmp>
+12079930:	cmp	r0, #0
+12079932:	bne.n	120799f8 <maze_store_open+0x210>
+12079934:	ldrb.w	r3, [r9, r8]
+12079938:	cbz	r3, 12079942 <maze_store_open+0x15a>
+1207993a:	ldrb.w	r3, [r9, r5]
+1207993e:	cmp	r3, #0
+12079940:	beq.n	120798c2 <maze_store_open+0xda>
+12079942:	adds	r3, r5, #1
+12079944:	cmp	r3, #2
+12079946:	mov.w	r5, #1
+1207994a:	addw	r6, r6, #517	@ 0x205
+1207994e:	bne.n	12079886 <maze_store_open+0x9e>
+12079950:	ldr.w	r6, [r4, #3708]	@ 0xe7c
+12079954:	cmp	r6, #0
+12079956:	bge.n	12079978 <maze_store_open+0x190>
+12079958:	ldr.w	r3, [r4, #3700]	@ 0xe74
+1207995c:	cmp	r3, r5
+1207995e:	bne.n	120799fc <maze_store_open+0x214>
+12079960:	ldr.w	r3, [r4, #3704]	@ 0xe78
+12079964:	cmp	r3, r5
+12079966:	bne.n	120799fc <maze_store_open+0x214>
+12079968:	mov	r0, r7
+1207996a:	bl	12077520 <maze_archive_default>
+1207996e:	mov	r1, r7
+12079970:	mov	r0, r4
+12079972:	bl	120795fc <maze_store_save>
+12079976:	b.n	12079814 <maze_store_open+0x2c>
+12079978:	mov.w	r3, #656	@ 0x290
+1207997c:	mul.w	r2, r3, r6
+12079980:	add.w	sl, sp, #1048	@ 0x418
+12079984:	ldr.w	r5, [sl, r2]
+12079988:	add.w	r1, sl, r2
+1207998c:	movw	r2, #517	@ 0x205
+12079990:	ldr.w	r8, [r1, #4]
+12079994:	str.w	r5, [r4, #3712]	@ 0xe80
+12079998:	mla	r1, r2, r6, fp
+1207999c:	str.w	r8, [r4, #3716]	@ 0xe84
+120799a0:	addw	r0, r4, #3720	@ 0xe88
+120799a4:	bl	12088b00 <memcpy>
+120799a8:	rsb	r2, r6, #924	@ 0x39c
+120799ac:	adds	r2, #1
+120799ae:	add.w	r2, r4, r2, lsl #2
+120799b2:	ldr	r2, [r2, #4]
+120799b4:	mov.w	r3, #656	@ 0x290
+120799b8:	lsrs	r2, r2, #31
+120799ba:	strb.w	r2, [r4, #3698]	@ 0xe72
+120799be:	ldrb.w	r2, [r9, r6]
+120799c2:	strb.w	r2, [r4, #3699]	@ 0xe73
+120799c6:	cbz	r2, 120799d4 <maze_store_open+0x1ec>
+120799c8:	cmp.w	r8, #4294967295
+120799cc:	it	eq
+120799ce:	cmpeq.w	r5, #4294967295
+120799d2:	beq.n	12079a00 <maze_store_open+0x218>
+120799d4:	mla	r1, r3, r6, sl
+120799d8:	mov.w	r2, #656	@ 0x290
+120799dc:	mov	r0, r7
+120799de:	bl	12088b00 <memcpy>
+120799e2:	ldrb.w	r3, [r4, #3699]	@ 0xe73
+120799e6:	cbnz	r3, 120799ec <maze_store_open+0x204>
+120799e8:	movs	r0, #0
+120799ea:	b.n	12079814 <maze_store_open+0x2c>
+120799ec:	adds	r5, #1
+120799ee:	adc.w	r3, r8, #0
+120799f2:	strd	r5, r3, [r7]
+120799f6:	b.n	120799e8 <maze_store_open+0x200>
+120799f8:	ldr	r0, [pc, #16]	@ (12079a0c <maze_store_open+0x224>)
+120799fa:	b.n	12079814 <maze_store_open+0x2c>
+120799fc:	ldr	r0, [pc, #16]	@ (12079a10 <maze_store_open+0x228>)
+120799fe:	b.n	12079814 <maze_store_open+0x2c>
+12079a00:	ldr	r0, [pc, #16]	@ (12079a14 <maze_store_open+0x22c>)
+12079a02:	b.n	12079814 <maze_store_open+0x2c>
+12079a04:	.word	0xfffff3e2
+12079a08:	.word	0xfffff446
+12079a0c:	.word	0xfffff3e1
+12079a10:	.word	0xfffff3e3
+12079a14:	.word	0xfffff3e0
+12079a18:	.word	0x120abe34
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120795fc <maze_store_save>:
+120795fc:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12079600:	mov	r7, r1
+12079602:	mov	r5, r0
+12079604:	movs	r6, #0
+12079606:	subw	sp, sp, #1732	@ 0x6c4
+1207960a:	mov	r0, r7
+1207960c:	add	r1, sp, #32
+1207960e:	strb.w	r6, [sp, #11]
+12079612:	bl	12077560 <maze_archive_encode>
+12079616:	ldr.w	r4, [r5, #3708]	@ 0xe7c
+1207961a:	add.w	r8, sp, #11
+1207961e:	cmp	r4, r6
+12079620:	blt.n	12079660 <maze_store_save+0x64>
+12079622:	ldrd	r0, r2, [r7]
+12079626:	ldr.w	r1, [r5, #3712]	@ 0xe80
+1207962a:	ldr.w	r3, [r5, #3716]	@ 0xe84
+1207962e:	cmp	r0, r1
+12079630:	sbcs.w	r6, r2, r3
+12079634:	bcc.w	120797ca <maze_store_save+0x1ce>
+12079638:	cmp	r2, r3
+1207963a:	it	eq
+1207963c:	cmpeq	r0, r1
+1207963e:	bne.n	1207965c <maze_store_save+0x60>
+12079640:	movw	r2, #517	@ 0x205
+12079644:	addw	r1, r5, #3720	@ 0xe88
+12079648:	add	r0, sp, #32
+1207964a:	bl	120873d0 <memcmp>
+1207964e:	cmp	r0, #0
+12079650:	bne.w	120797ce <maze_store_save+0x1d2>
+12079654:	ldrb.w	r3, [r5, #3698]	@ 0xe72
+12079658:	cmp	r3, #0
+1207965a:	beq.n	120796fe <maze_store_save+0x102>
+1207965c:	rsb	r6, r4, #1
+12079660:	add.w	r9, r5, r6
+12079664:	ldrb.w	r3, [r9, #3696]	@ 0xe70
+12079668:	cmp	r3, #0
+1207966a:	beq.n	12079702 <maze_store_save+0x106>
+1207966c:	movw	r4, #1844	@ 0x734
+12079670:	mov	r0, r6
+12079672:	bl	120b4678 <__maze_store_flash_allow_veneer>
+12079676:	movw	r2, #517	@ 0x205
+1207967a:	add	r1, sp, #32
+1207967c:	add	r0, sp, #12
+1207967e:	bl	120384c4 <fdb_blob_make>
+12079682:	mla	r4, r4, r6, r5
+12079686:	mov	r2, r0
+12079688:	ldr	r1, [pc, #328]	@ (120797d4 <maze_store_save+0x1d8>)
+1207968a:	mov	r0, r4
+1207968c:	bl	120381f0 <fdb_kv_set_blob>
+12079690:	mov	r4, r0
+12079692:	mov.w	r0, #4294967295
+12079696:	bl	120b4678 <__maze_store_flash_allow_veneer>
+1207969a:	cmp	r4, #0
+1207969c:	bne.w	120797b0 <maze_store_save+0x1b4>
+120796a0:	mov	r1, r6
+120796a2:	mov	r0, r5
+120796a4:	str.w	r8, [sp]
+120796a8:	add.w	r3, sp, #1072	@ 0x430
+120796ac:	add	r2, sp, #552	@ 0x228
+120796ae:	bl	12079548 <read_archive>
+120796b2:	mov	r4, r0
+120796b4:	cmp	r0, #0
+120796b6:	bne.w	120797be <maze_store_save+0x1c2>
+120796ba:	ldrb.w	r3, [r8]
+120796be:	cmp	r3, #0
+120796c0:	bne.w	120797c6 <maze_store_save+0x1ca>
+120796c4:	movw	r2, #517	@ 0x205
+120796c8:	add	r1, sp, #552	@ 0x228
+120796ca:	add	r0, sp, #32
+120796cc:	bl	120873d0 <memcmp>
+120796d0:	cmp	r0, #0
+120796d2:	bne.n	120797c6 <maze_store_save+0x1ca>
+120796d4:	str.w	r6, [r5, #3708]	@ 0xe7c
+120796d8:	add.w	r3, r5, #3712	@ 0xe80
+120796dc:	add.w	r6, r5, r6, lsl #2
+120796e0:	ldrd	r8, r9, [r7]
+120796e4:	movw	r2, #517	@ 0x205
+120796e8:	strd	r8, r9, [r3]
+120796ec:	add	r1, sp, #32
+120796ee:	str.w	r0, [r6, #3700]	@ 0xe74
+120796f2:	strh.w	r0, [r5, #3698]	@ 0xe72
+120796f6:	addw	r0, r5, #3720	@ 0xe88
+120796fa:	bl	12088b00 <memcpy>
+120796fe:	movs	r4, #0
+12079700:	b.n	1207975c <maze_store_save+0x160>
+12079702:	add.w	fp, r5, r6, lsl #2
+12079706:	ldr.w	r0, [fp, #3688]	@ 0xe68
+1207970a:	bl	12079474 <blank>
+1207970e:	subs.w	sl, r0, #0
+12079712:	blt.n	12079790 <maze_store_save+0x194>
+12079714:	ite	eq
+12079716:	moveq.w	r0, #4294967295
+1207971a:	movne	r0, r6
+1207971c:	bl	120b4678 <__maze_store_flash_allow_veneer>
+12079720:	eor.w	r2, sl, #1
+12079724:	mov	r1, r6
+12079726:	mov	r0, r5
+12079728:	and.w	r2, r2, #1
+1207972c:	bl	120794c8 <mount_bank>
+12079730:	mov	r4, r0
+12079732:	mov.w	r0, #4294967295
+12079736:	bl	120b4678 <__maze_store_flash_allow_veneer>
+1207973a:	cbnz	r4, 12079766 <maze_store_save+0x16a>
+1207973c:	cmp.w	sl, #0
+12079740:	bne.n	1207966c <maze_store_save+0x70>
+12079742:	add.w	r3, sp, #1072	@ 0x430
+12079746:	mov	r1, r6
+12079748:	mov	r0, r5
+1207974a:	str.w	r8, [sp]
+1207974e:	add	r2, sp, #552	@ 0x228
+12079750:	bl	12079548 <read_archive>
+12079754:	ldr	r3, [pc, #128]	@ (120797d8 <maze_store_save+0x1dc>)
+12079756:	mov	r4, r0
+12079758:	cmp	r0, r3
+1207975a:	bne.n	1207966c <maze_store_save+0x70>
+1207975c:	mov	r0, r4
+1207975e:	addw	sp, sp, #1732	@ 0x6c4
+12079762:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+12079766:	ldr.w	r3, [r5, #3708]	@ 0xe7c
+1207976a:	cmp	r3, #0
+1207976c:	blt.n	1207975c <maze_store_save+0x160>
+1207976e:	mov	r0, r6
+12079770:	bl	120b4678 <__maze_store_flash_allow_veneer>
+12079774:	mov.w	r2, #32768	@ 0x8000
+12079778:	movs	r1, #0
+1207977a:	ldr.w	r0, [fp, #3688]	@ 0xe68
+1207977e:	bl	120366fc <fal_partition_erase>
+12079782:	cmp.w	r0, #32768	@ 0x8000
+12079786:	beq.n	12079794 <maze_store_save+0x198>
+12079788:	mov.w	r0, #4294967295
+1207978c:	bl	120b4678 <__maze_store_flash_allow_veneer>
+12079790:	ldr	r4, [pc, #72]	@ (120797dc <maze_store_save+0x1e0>)
+12079792:	b.n	1207975c <maze_store_save+0x160>
+12079794:	movs	r2, #0
+12079796:	mov	r1, r6
+12079798:	mov	r0, r5
+1207979a:	bl	120794c8 <mount_bank>
+1207979e:	mov	r4, r0
+120797a0:	mov.w	r0, #4294967295
+120797a4:	bl	120b4678 <__maze_store_flash_allow_veneer>
+120797a8:	cmp	r4, #0
+120797aa:	beq.w	1207966c <maze_store_save+0x70>
+120797ae:	b.n	1207975c <maze_store_save+0x160>
+120797b0:	rsb	r4, r4, #4278190080	@ 0xff000000
+120797b4:	add.w	r4, r4, #16711680	@ 0xff0000
+120797b8:	add.w	r4, r4, #62208	@ 0xf300
+120797bc:	adds	r4, #128	@ 0x80
+120797be:	movs	r3, #0
+120797c0:	strb.w	r3, [r9, #3696]	@ 0xe70
+120797c4:	b.n	1207975c <maze_store_save+0x160>
+120797c6:	ldr	r4, [pc, #20]	@ (120797dc <maze_store_save+0x1e0>)
+120797c8:	b.n	120797be <maze_store_save+0x1c2>
+120797ca:	ldr	r4, [pc, #20]	@ (120797e0 <maze_store_save+0x1e4>)
+120797cc:	b.n	1207975c <maze_store_save+0x160>
+120797ce:	ldr	r4, [pc, #20]	@ (120797e4 <maze_store_save+0x1e8>)
+120797d0:	b.n	1207975c <maze_store_save+0x160>
+120797d2:	nop
+120797d4:	.word	0x12097ce2
+120797d8:	.word	0xfffff446
+120797dc:	.word	0xfffff3e2
+120797e0:	.word	0xfffff3e0
+120797e4:	.word	0xfffff3e1
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12079548 <read_archive>:
+12079548:	push	{r4, r5, r6, lr}
+1207954a:	mov	r4, r2
+1207954c:	mov	r6, r3
+1207954e:	movw	r3, #1844	@ 0x734
+12079552:	sub	sp, #24
+12079554:	mla	r5, r3, r1, r0
+12079558:	movw	r2, #517	@ 0x205
+1207955c:	mov	r1, r4
+1207955e:	add	r0, sp, #4
+12079560:	bl	120384c4 <fdb_blob_make>
+12079564:	ldr	r1, [pc, #132]	@ (120795ec <read_archive+0xa4>)
+12079566:	mov	r2, r0
+12079568:	mov	r0, r5
+1207956a:	bl	12037d88 <fdb_kv_get_blob>
+1207956e:	cmp	r0, #5
+12079570:	mov	r5, r0
+12079572:	bls.n	120795e0 <read_archive+0x98>
+12079574:	movs	r2, #4
+12079576:	mov	r0, r4
+12079578:	ldr	r1, [pc, #116]	@ (120795f0 <read_archive+0xa8>)
+1207957a:	bl	120873d0 <memcmp>
+1207957e:	cmp	r0, #0
+12079580:	bne.n	120795e4 <read_archive+0x9c>
+12079582:	ldrb	r3, [r4, #4]
+12079584:	subs	r3, #1
+12079586:	cmp	r3, #1
+12079588:	bhi.n	1207958e <read_archive+0x46>
+1207958a:	ldrb	r3, [r4, #5]
+1207958c:	cbz	r3, 120795dc <read_archive+0x94>
+1207958e:	ldr	r0, [pc, #100]	@ (120795f4 <read_archive+0xac>)
+12079590:	b.n	120795d8 <read_archive+0x90>
+12079592:	ldrb	r3, [r4, #16]
+12079594:	cmp	r3, #1
+12079596:	bne.n	1207958e <read_archive+0x46>
+12079598:	ldrb	r3, [r4, #17]
+1207959a:	cmp	r3, #0
+1207959c:	bne.n	1207958e <read_archive+0x46>
+1207959e:	ldrb	r3, [r4, #18]
+120795a0:	cmp	r3, #0
+120795a2:	bne.n	1207958e <read_archive+0x46>
+120795a4:	ldrb	r3, [r4, #19]
+120795a6:	cmp	r3, #0
+120795a8:	bne.n	1207958e <read_archive+0x46>
+120795aa:	movw	r3, #353	@ 0x161
+120795ae:	cmp	r5, r3
+120795b0:	beq.n	120795ba <read_archive+0x72>
+120795b2:	movw	r3, #517	@ 0x205
+120795b6:	cmp	r5, r3
+120795b8:	bne.n	120795e0 <read_archive+0x98>
+120795ba:	ldr	r3, [sp, #20]
+120795bc:	cmp	r3, r5
+120795be:	bne.n	120795e0 <read_archive+0x98>
+120795c0:	mov	r2, r6
+120795c2:	mov	r1, r5
+120795c4:	mov	r0, r4
+120795c6:	bl	12077680 <maze_archive_decode>
+120795ca:	cbnz	r0, 120795d8 <read_archive+0x90>
+120795cc:	ldrb	r3, [r4, #4]
+120795ce:	subs	r2, r3, #1
+120795d0:	negs	r3, r2
+120795d2:	adcs	r3, r2
+120795d4:	ldr	r2, [sp, #40]	@ 0x28
+120795d6:	strb	r3, [r2, #0]
+120795d8:	add	sp, #24
+120795da:	pop	{r4, r5, r6, pc}
+120795dc:	cmp	r5, #19
+120795de:	bhi.n	12079592 <read_archive+0x4a>
+120795e0:	ldr	r0, [pc, #20]	@ (120795f8 <read_archive+0xb0>)
+120795e2:	b.n	120795d8 <read_archive+0x90>
+120795e4:	cmp	r5, #19
+120795e6:	bls.n	120795e0 <read_archive+0x98>
+120795e8:	b.n	120795aa <read_archive+0x62>
+120795ea:	nop
+120795ec:	.word	0x12097ce2
+120795f0:	.word	0x12097810
+120795f4:	.word	0xfffff446
+120795f8:	.word	0xfffff447
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12077680 <maze_archive_decode>:
+12077680:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12077684:	cmp	r1, #5
+12077686:	sub.w	sp, sp, #916	@ 0x394
+1207768a:	mov	r7, r0
+1207768c:	mov	r5, r1
+1207768e:	str	r2, [sp, #20]
+12077690:	bhi.n	120776a0 <maze_archive_decode+0x20>
+12077692:	ldr.w	r9, [pc, #552]	@ 120778bc <maze_archive_decode+0x23c>
+12077696:	mov	r0, r9
+12077698:	add.w	sp, sp, #916	@ 0x394
+1207769c:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+120776a0:	movs	r2, #4
+120776a2:	ldr	r1, [pc, #532]	@ (120778b8 <maze_archive_decode+0x238>)
+120776a4:	bl	120873d0 <memcmp>
+120776a8:	cmp	r0, #0
+120776aa:	bne.n	12077692 <maze_archive_decode+0x12>
+120776ac:	add	r4, sp, #32
+120776ae:	adds	r3, r7, #4
+120776b0:	movs	r1, #2
+120776b2:	mov	r0, r4
+120776b4:	str	r3, [r4, #0]
+120776b6:	bl	120774b4 <get>
+120776ba:	subs	r3, r0, #1
+120776bc:	cmp	r3, #1
+120776be:	str	r0, [sp, #8]
+120776c0:	bls.n	120776c8 <maze_archive_decode+0x48>
+120776c2:	ldr.w	r9, [pc, #508]	@ 120778c0 <maze_archive_decode+0x240>
+120776c6:	b.n	12077696 <maze_archive_decode+0x16>
+120776c8:	ldr	r3, [sp, #8]
+120776ca:	cmp	r3, #1
+120776cc:	itete	eq
+120776ce:	movweq	r3, #353	@ 0x161
+120776d2:	movwne	r3, #517	@ 0x205
+120776d6:	moveq.w	sl, #2
+120776da:	movne.w	sl, #3
+120776de:	cmp	r5, r3
+120776e0:	bne.n	12077692 <maze_archive_decode+0x12>
+120776e2:	movs	r1, #2
+120776e4:	mov	r0, r4
+120776e6:	bl	120774b4 <get>
+120776ea:	movs	r6, #0
+120776ec:	cmp	r1, r6
+120776ee:	it	eq
+120776f0:	cmpeq	r0, r5
+120776f2:	bne.n	12077692 <maze_archive_decode+0x12>
+120776f4:	add	r0, sp, #256	@ 0x100
+120776f6:	bl	12077520 <maze_archive_default>
+120776fa:	movs	r1, #8
+120776fc:	mov	r0, r4
+120776fe:	bl	120774b4 <get>
+12077702:	strd	r0, r1, [sp, #256]	@ 0x100
+12077706:	movs	r1, #4
+12077708:	mov	r0, r4
+1207770a:	bl	120774b4 <get>
+1207770e:	subs	r0, #1
+12077710:	orrs	r0, r1
+12077712:	bne.n	120776c2 <maze_archive_decode+0x42>
+12077714:	movs	r1, #1
+12077716:	mov	r0, r4
+12077718:	bl	120774b4 <get>
+1207771c:	cmp	r1, r6
+1207771e:	it	eq
+12077720:	cmpeq	r0, sl
+12077722:	bne.n	12077692 <maze_archive_decode+0x12>
+12077724:	subs	r5, #4
+12077726:	adds	r3, r7, r5
+12077728:	movs	r1, #4
+1207772a:	add	r0, sp, #36	@ 0x24
+1207772c:	str	r3, [sp, #36]	@ 0x24
+1207772e:	bl	120774b4 <get>
+12077732:	mov	r9, r0
+12077734:	mov	r8, r1
+12077736:	mov	r0, r7
+12077738:	mov	r1, r5
+1207773a:	bl	120774f0 <maze_archive_crc32>
+1207773e:	cmp	r8, r6
+12077740:	it	eq
+12077742:	cmpeq	r9, r0
+12077744:	bne.w	120778b2 <maze_archive_decode+0x232>
+12077748:	str	r6, [sp, #12]
+1207774a:	add	r5, sp, #40	@ 0x28
+1207774c:	mov	r7, r5
+1207774e:	movs	r2, #184	@ 0xb8
+12077750:	movs	r1, #0
+12077752:	add	r0, sp, #72	@ 0x48
+12077754:	bl	120b4590 <__memset_veneer>
+12077758:	ldr	r3, [r4, #0]
+1207775a:	add.w	ip, r3, #32
+1207775e:	mov	r2, r7
+12077760:	ldr	r0, [r3, #0]
+12077762:	ldr	r1, [r3, #4]
+12077764:	adds	r3, #8
+12077766:	stmia	r2!, {r0, r1}
+12077768:	cmp	r3, ip
+1207776a:	mov	r7, r2
+1207776c:	bne.n	1207775e <maze_archive_decode+0xde>
+1207776e:	movs	r2, #32
+12077770:	movs	r1, #0
+12077772:	mov	r0, r5
+12077774:	str	r3, [r4, #0]
+12077776:	bl	12088a80 <memchr>
+1207777a:	cmp	r0, #0
+1207777c:	beq.n	12077692 <maze_archive_decode+0x12>
+1207777e:	movs	r7, #0
+12077780:	ldr.w	r8, [pc, #320]	@ 120778c4 <maze_archive_decode+0x244>
+12077784:	mov	r0, r5
+12077786:	ldr.w	r1, [r8], #4
+1207778a:	bl	12088808 <strcmp>
+1207778e:	mov	r9, r0
+12077790:	cmp	r0, #0
+12077792:	bne.w	120778a4 <maze_archive_decode+0x224>
+12077796:	cmp	sl, r7
+12077798:	beq.w	12077692 <maze_archive_decode+0x12>
+1207779c:	ldr	r3, [sp, #12]
+1207779e:	lsrs	r3, r7
+120777a0:	lsls	r3, r3, #31
+120777a2:	bmi.w	12077692 <maze_archive_decode+0x12>
+120777a6:	mov.w	fp, #1
+120777aa:	ldr	r2, [sp, #12]
+120777ac:	lsl.w	r3, fp, r7
+120777b0:	orrs	r2, r3
+120777b2:	mov	r1, fp
+120777b4:	mov	r0, r4
+120777b6:	str	r2, [sp, #12]
+120777b8:	bl	120774b4 <get>
+120777bc:	mov	r1, fp
+120777be:	mov	r8, r0
+120777c0:	mov	r0, r4
+120777c2:	bl	120774b4 <get>
+120777c6:	cmp	r8, fp
+120777c8:	str	r0, [r5, #36]	@ 0x24
+120777ca:	bhi.w	12077692 <maze_archive_decode+0x12>
+120777ce:	cmp	r0, #3
+120777d0:	bhi.w	12077692 <maze_archive_decode+0x12>
+120777d4:	movs	r3, #2
+120777d6:	and.w	r8, r8, fp
+120777da:	strb.w	r8, [r5, #32]
+120777de:	movs	r1, #4
+120777e0:	mov	r0, r4
+120777e2:	str	r3, [sp, #16]
+120777e4:	bl	120774b4 <get>
+120777e8:	movs	r1, #1
+120777ea:	str	r0, [r5, #40]	@ 0x28
+120777ec:	mov	r0, r4
+120777ee:	bl	120774b4 <get>
+120777f2:	cmp	r0, #5
+120777f4:	str	r0, [sp, #4]
+120777f6:	str	r0, [r5, #44]	@ 0x2c
+120777f8:	bhi.w	12077692 <maze_archive_decode+0x12>
+120777fc:	mov	r8, r5
+120777fe:	mov.w	fp, #0
+12077802:	movs	r1, #8
+12077804:	mov	r0, r4
+12077806:	bl	120774b4 <get>
+1207780a:	str.w	r0, [r8, #48]	@ 0x30
+1207780e:	str	r0, [sp, #28]
+12077810:	str.w	r1, [r8, #52]	@ 0x34
+12077814:	str	r1, [sp, #24]
+12077816:	mov	r0, r4
+12077818:	movs	r1, #4
+1207781a:	bl	120774b4 <get>
+1207781e:	str.w	r0, [r8, #56]	@ 0x38
+12077822:	cmp.w	fp, #0
+12077826:	beq.n	12077852 <maze_archive_decode+0x1d2>
+12077828:	ldr	r3, [sp, #4]
+1207782a:	cmp	r3, fp
+1207782c:	bls.n	12077852 <maze_archive_decode+0x1d2>
+1207782e:	ldrd	ip, r1, [r8, #32]
+12077832:	ldr	r2, [sp, #28]
+12077834:	ldr	r3, [sp, #24]
+12077836:	cmp	r2, ip
+12077838:	sbcs.w	lr, r3, r1
+1207783c:	bcc.w	12077692 <maze_archive_decode+0x12>
+12077840:	cmp	r3, r1
+12077842:	it	eq
+12077844:	cmpeq	r2, ip
+12077846:	bne.n	12077852 <maze_archive_decode+0x1d2>
+12077848:	ldr.w	r3, [r8, #40]	@ 0x28
+1207784c:	cmp	r0, r3
+1207784e:	bcc.w	12077692 <maze_archive_decode+0x12>
+12077852:	add.w	fp, fp, #1
+12077856:	cmp.w	fp, #5
+1207785a:	add.w	r8, r8, #16
+1207785e:	bne.n	12077802 <maze_archive_decode+0x182>
+12077860:	ldr	r3, [sp, #16]
+12077862:	adds	r5, #88	@ 0x58
+12077864:	cmp	r3, #1
+12077866:	bne.n	120778ae <maze_archive_decode+0x22e>
+12077868:	movs	r3, #216	@ 0xd8
+1207786a:	add	r5, sp, #256	@ 0x100
+1207786c:	mla	r0, r3, r7, r5
+12077870:	mov	r2, r3
+12077872:	add	r1, sp, #40	@ 0x28
+12077874:	adds	r0, #8
+12077876:	adds	r6, #1
+12077878:	bl	12088b00 <memcpy>
+1207787c:	cmp	sl, r6
+1207787e:	bne.w	1207774a <maze_archive_decode+0xca>
+12077882:	ldr	r3, [sp, #8]
+12077884:	cmp	r3, #1
+12077886:	bne.n	12077896 <maze_archive_decode+0x216>
+12077888:	ldr.w	r3, [r5, #260]	@ 0x104
+1207788c:	subs	r3, #0
+1207788e:	it	ne
+12077890:	movne	r3, #1
+12077892:	strb.w	r3, [r5, #472]	@ 0x1d8
+12077896:	mov.w	r2, #656	@ 0x290
+1207789a:	mov	r1, r5
+1207789c:	ldr	r0, [sp, #20]
+1207789e:	bl	12088b00 <memcpy>
+120778a2:	b.n	12077696 <maze_archive_decode+0x16>
+120778a4:	adds	r7, #1
+120778a6:	cmp	sl, r7
+120778a8:	bne.w	12077784 <maze_archive_decode+0x104>
+120778ac:	b.n	12077692 <maze_archive_decode+0x12>
+120778ae:	movs	r3, #1
+120778b0:	b.n	120777de <maze_archive_decode+0x15e>
+120778b2:	ldr.w	r9, [pc, #20]	@ 120778c8 <maze_archive_decode+0x248>
+120778b6:	b.n	12077696 <maze_archive_decode+0x16>
+120778b8:	.word	0x12097810
+120778bc:	.word	0xfffff447
+120778c0:	.word	0xfffff446
+120778c4:	.word	0x120a6980
+120778c8:	.word	0xfffff445
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120794c8 <mount_bank>:
+120794c8:	push	{r4, r5, r6, r7, lr}
+120794ca:	movw	r5, #1844	@ 0x734
+120794ce:	adds	r4, r0, r1
+120794d0:	ldrb.w	r3, [r4, #3696]	@ 0xe70
+120794d4:	sub	sp, #28
+120794d6:	mov	r6, r1
+120794d8:	mla	r5, r5, r1, r0
+120794dc:	strb.w	r2, [sp, #15]
+120794e0:	cbz	r3, 120794e8 <mount_bank+0x20>
+120794e2:	mov	r0, r5
+120794e4:	bl	12037e6c <fdb_kvdb_deinit>
+120794e8:	movs	r7, #0
+120794ea:	movw	r2, #1844	@ 0x734
+120794ee:	movs	r1, #0
+120794f0:	mov	r0, r5
+120794f2:	bl	120b4590 <__memset_veneer>
+120794f6:	mov.w	r3, #8192	@ 0x2000
+120794fa:	mov	r1, r7
+120794fc:	mov	r0, r5
+120794fe:	add	r2, sp, #20
+12079500:	strb.w	r7, [r4, #3696]	@ 0xe70
+12079504:	str	r3, [sp, #20]
+12079506:	bl	12037e00 <fdb_kvdb_control>
+1207950a:	movs	r1, #11
+1207950c:	mov	r0, r5
+1207950e:	add.w	r2, sp, #15
+12079512:	bl	12037e00 <fdb_kvdb_control>
+12079516:	ldr	r3, [pc, #44]	@ (12079544 <mount_bank+0x7c>)
+12079518:	mov	r0, r5
+1207951a:	ldr.w	r2, [r3, r6, lsl #2]
+1207951e:	str	r7, [sp, #0]
+12079520:	mov	r3, r7
+12079522:	mov	r1, r2
+12079524:	bl	12038304 <fdb_kvdb_init>
+12079528:	cbz	r0, 1207953c <mount_bank+0x74>
+1207952a:	rsb	r0, r0, #4278190080	@ 0xff000000
+1207952e:	add.w	r0, r0, #16711680	@ 0xff0000
+12079532:	add.w	r0, r0, #62208	@ 0xf300
+12079536:	adds	r0, #128	@ 0x80
+12079538:	add	sp, #28
+1207953a:	pop	{r4, r5, r6, r7, pc}
+1207953c:	movs	r3, #1
+1207953e:	strb.w	r3, [r4, #3696]	@ 0xe70
+12079542:	b.n	12079538 <mount_bank+0x70>
+12079544:	.word	0x120abe34
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12038304 <fdb_kvdb_init>:
+12038304:	push	{r4, r5, r6, lr}
+12038306:	sub	sp, #160	@ 0xa0
+12038308:	mov	r6, r3
+1203830a:	ldr	r3, [sp, #176]	@ 0xb0
+1203830c:	mov	r4, r0
+1203830e:	str	r3, [sp, #0]
+12038310:	movs	r3, #0
+12038312:	bl	12036f94 <_fdb_init_ex>
+12038316:	mov	r5, r0
+12038318:	cmp	r0, #0
+1203831a:	bne.w	12038420 <fdb_kvdb_init+0x11c>
+1203831e:	ldr	r3, [r4, #28]
+12038320:	cbz	r3, 12038326 <fdb_kvdb_init+0x22>
+12038322:	mov	r0, r4
+12038324:	blx	r3
+12038326:	movs	r2, #0
+12038328:	strh	r2, [r4, #48]	@ 0x30
+1203832a:	cmp	r6, #0
+1203832c:	beq.n	12038406 <fdb_kvdb_init+0x102>
+1203832e:	ldmia.w	r6, {r0, r1}
+12038332:	add.w	r3, r4, #40	@ 0x28
+12038336:	stmia.w	r3, {r0, r1}
+1203833a:	ldr	r3, [pc, #248]	@ (12038434 <fdb_kvdb_init+0x130>)
+1203833c:	add	r6, sp, #48	@ 0x30
+1203833e:	str	r2, [r4, #20]
+12038340:	mov	r0, r4
+12038342:	str	r2, [sp, #72]	@ 0x48
+12038344:	strb.w	r2, [sp, #48]	@ 0x30
+12038348:	str	r2, [sp, #8]
+1203834a:	str	r3, [sp, #4]
+1203834c:	movs	r2, #0
+1203834e:	add	r3, sp, #72	@ 0x48
+12038350:	add	r1, sp, #24
+12038352:	str	r6, [sp, #0]
+12038354:	bl	120376e8 <sector_iterator>
+12038358:	ldr	r3, [sp, #72]	@ 0x48
+1203835a:	mov	r2, r4
+1203835c:	str	r3, [r4, #20]
+1203835e:	movs	r3, #16
+12038360:	str.w	r3, [r4, #296]	@ 0x128
+12038364:	movs	r3, #64	@ 0x40
+12038366:	mov.w	r0, #4294967295
+1203836a:	str.w	r3, [r4, #1836]	@ 0x72c
+1203836e:	mov	r3, r4
+12038370:	add.w	r1, r4, #1536	@ 0x600
+12038374:	str.w	r0, [r2, #304]	@ 0x130
+12038378:	adds	r2, #24
+1203837a:	cmp	r2, r1
+1203837c:	bne.n	12038374 <fdb_kvdb_init+0x70>
+1203837e:	mov.w	r1, #4294967295
+12038382:	add.w	r2, r4, #128	@ 0x80
+12038386:	str.w	r1, [r3, #172]	@ 0xac
+1203838a:	adds	r3, #8
+1203838c:	cmp	r3, r2
+1203838e:	bne.n	12038386 <fdb_kvdb_init+0x82>
+12038390:	ldr	r3, [r4, #32]
+12038392:	cbz	r3, 12038398 <fdb_kvdb_init+0x94>
+12038394:	mov	r0, r4
+12038396:	blx	r3
+12038398:	movs	r3, #1
+1203839a:	movs	r2, #0
+1203839c:	strb.w	r3, [r4, #49]	@ 0x31
+120383a0:	ldr	r3, [pc, #148]	@ (12038438 <fdb_kvdb_init+0x134>)
+120383a2:	str	r2, [sp, #8]
+120383a4:	strd	r4, r3, [sp]
+120383a8:	mov	r1, r6
+120383aa:	add	r3, sp, #20
+120383ac:	mov	r0, r4
+120383ae:	str	r2, [sp, #20]
+120383b0:	bl	120376e8 <sector_iterator>
+120383b4:	ldrb	r3, [r4, #26]
+120383b6:	ldr	r2, [sp, #20]
+120383b8:	cbz	r3, 120383be <fdb_kvdb_init+0xba>
+120383ba:	cmp	r2, #0
+120383bc:	bne.n	1203842e <fdb_kvdb_init+0x12a>
+120383be:	ldrd	r1, r3, [r4, #12]
+120383c2:	udiv	r3, r3, r1
+120383c6:	cmp	r3, r2
+120383c8:	bne.n	120383d0 <fdb_kvdb_init+0xcc>
+120383ca:	mov	r0, r4
+120383cc:	bl	12038250 <fdb_kv_set_default>
+120383d0:	movs	r2, #0
+120383d2:	ldr	r3, [pc, #104]	@ (1203843c <fdb_kvdb_init+0x138>)
+120383d4:	mov	r1, r6
+120383d6:	strd	r2, r3, [sp]
+120383da:	mov	r0, r4
+120383dc:	mov	r3, r4
+120383de:	str	r2, [sp, #8]
+120383e0:	bl	120376e8 <sector_iterator>
+120383e4:	ldr	r6, [pc, #88]	@ (12038440 <fdb_kvdb_init+0x13c>)
+120383e6:	movs	r3, #0
+120383e8:	mov	r2, r4
+120383ea:	mov	r0, r4
+120383ec:	str	r6, [sp, #0]
+120383ee:	add	r1, sp, #72	@ 0x48
+120383f0:	bl	1203767c <kv_iterator>
+120383f4:	ldrb.w	r3, [r4, #48]	@ 0x30
+120383f8:	cbz	r3, 1203840c <fdb_kvdb_init+0x108>
+120383fa:	mov.w	r1, #4294967295
+120383fe:	mov	r0, r4
+12038400:	bl	12037e78 <fdb_gc_collect>
+12038404:	b.n	120383e6 <fdb_kvdb_init+0xe2>
+12038406:	strd	r2, r2, [r4, #40]	@ 0x28
+1203840a:	b.n	1203833a <fdb_kvdb_init+0x36>
+1203840c:	strb.w	r3, [r4, #49]	@ 0x31
+12038410:	ldr	r3, [r4, #28]
+12038412:	cbz	r3, 12038418 <fdb_kvdb_init+0x114>
+12038414:	mov	r0, r4
+12038416:	blx	r3
+12038418:	ldr	r3, [r4, #32]
+1203841a:	cbz	r3, 12038420 <fdb_kvdb_init+0x11c>
+1203841c:	mov	r0, r4
+1203841e:	blx	r3
+12038420:	mov	r0, r4
+12038422:	mov	r1, r5
+12038424:	bl	12037044 <_fdb_init_finish>
+12038428:	mov	r0, r5
+1203842a:	add	sp, #160	@ 0xa0
+1203842c:	pop	{r4, r5, r6, pc}
+1203842e:	movs	r5, #2
+12038430:	b.n	12038410 <fdb_kvdb_init+0x10c>
+12038432:	nop
+12038434:	.word	0x120370f5
+12038438:	.word	0x120378a9
+1203843c:	.word	0x120382e3
+12038440:	.word	0x12037c6d
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120381f0 <fdb_kv_set_blob>:
+120381f0:	push	{r3, r4, r5, r6, r7, lr}
+120381f2:	ldrb	r3, [r0, #24]
+120381f4:	mov	r5, r0
+120381f6:	mov	r7, r1
+120381f8:	mov	r6, r2
+120381fa:	cbz	r3, 12038240 <fdb_kv_set_blob+0x50>
+120381fc:	ldr	r3, [r0, #28]
+120381fe:	cbz	r3, 12038202 <fdb_kv_set_blob+0x12>
+12038200:	blx	r3
+12038202:	ldrd	r2, r3, [r6]
+12038206:	mov	r1, r7
+12038208:	mov	r0, r5
+1203820a:	bl	12038108 <set_kv>
+1203820e:	mov	r4, r0
+12038210:	cbz	r0, 12038220 <fdb_kv_set_blob+0x30>
+12038212:	ldrd	r2, r3, [r6]
+12038216:	mov	r1, r7
+12038218:	mov	r0, r5
+1203821a:	bl	12038108 <set_kv>
+1203821e:	mov	r4, r0
+12038220:	ldr	r3, [pc, #32]	@ (12038244 <fdb_kv_set_blob+0x54>)
+12038222:	ldrb	r3, [r3, #0]
+12038224:	cbz	r3, 12038234 <fdb_kv_set_blob+0x44>
+12038226:	cbz	r4, 12038234 <fdb_kv_set_blob+0x44>
+12038228:	movw	r2, #1594	@ 0x63a
+1203822c:	ldr	r1, [pc, #24]	@ (12038248 <fdb_kv_set_blob+0x58>)
+1203822e:	ldr	r0, [pc, #28]	@ (1203824c <fdb_kv_set_blob+0x5c>)
+12038230:	bl	1207cd9c <rt_assert_handler>
+12038234:	ldr	r3, [r5, #32]
+12038236:	cbz	r3, 1203823c <fdb_kv_set_blob+0x4c>
+12038238:	mov	r0, r5
+1203823a:	blx	r3
+1203823c:	mov	r0, r4
+1203823e:	pop	{r3, r4, r5, r6, r7, pc}
+12038240:	movs	r4, #8
+12038242:	b.n	1203823c <fdb_kv_set_blob+0x4c>
+12038244:	.word	0x2001ab51
+12038248:	.word	0x1209eb7a
+1203824c:	.word	0x12093a9b
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12037d88 <fdb_kv_get_blob>:
+12037d88:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+12037d8c:	ldrb	r4, [r0, #24]
+12037d8e:	mov	r5, r0
+12037d90:	mov	r7, r1
+12037d92:	mov	r6, r2
+12037d94:	sub	sp, #92	@ 0x5c
+12037d96:	cbz	r4, 12037de8 <fdb_kv_get_blob+0x60>
+12037d98:	ldr	r3, [r0, #28]
+12037d9a:	cbz	r3, 12037d9e <fdb_kv_get_blob+0x16>
+12037d9c:	blx	r3
+12037d9e:	ldrd	r8, r9, [r6]
+12037da2:	mov	r2, sp
+12037da4:	mov	r1, r7
+12037da6:	mov	r0, r5
+12037da8:	bl	120378ec <find_kv>
+12037dac:	mov	r4, r0
+12037dae:	cbz	r0, 12037df0 <fdb_kv_get_blob+0x68>
+12037db0:	ldr	r4, [sp, #12]
+12037db2:	cmp	r4, r9
+12037db4:	str	r4, [r6, #16]
+12037db6:	it	cs
+12037db8:	movcs	r4, r9
+12037dba:	cmp.w	r8, #0
+12037dbe:	beq.n	12037dcc <fdb_kv_get_blob+0x44>
+12037dc0:	mov	r3, r4
+12037dc2:	mov	r2, r8
+12037dc4:	mov	r0, r5
+12037dc6:	ldr	r1, [sp, #84]	@ 0x54
+12037dc8:	bl	120384ca <_fdb_flash_read>
+12037dcc:	ldr	r3, [pc, #36]	@ (12037df4 <fdb_kv_get_blob+0x6c>)
+12037dce:	ldrb	r3, [r3, #0]
+12037dd0:	cbz	r3, 12037de0 <fdb_kv_get_blob+0x58>
+12037dd2:	cbnz	r4, 12037de0 <fdb_kv_get_blob+0x58>
+12037dd4:	mov.w	r2, #860	@ 0x35c
+12037dd8:	ldr	r1, [pc, #28]	@ (12037df8 <fdb_kv_get_blob+0x70>)
+12037dda:	ldr	r0, [pc, #32]	@ (12037dfc <fdb_kv_get_blob+0x74>)
+12037ddc:	bl	1207cd9c <rt_assert_handler>
+12037de0:	ldr	r3, [r5, #32]
+12037de2:	cbz	r3, 12037de8 <fdb_kv_get_blob+0x60>
+12037de4:	mov	r0, r5
+12037de6:	blx	r3
+12037de8:	mov	r0, r4
+12037dea:	add	sp, #92	@ 0x5c
+12037dec:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+12037df0:	str	r0, [r6, #16]
+12037df2:	b.n	12037dcc <fdb_kv_get_blob+0x44>
+12037df4:	.word	0x2001ab51
+12037df8:	.word	0x1209eb8a
+12037dfc:	.word	0x120939a6
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12076760 <service_during_flush>:
+12076760:	push	{r4, r5, lr}
+12076762:	mov	r4, r0
+12076764:	sub	sp, #44	@ 0x2c
+12076766:	movs	r0, #1
+12076768:	bl	1207dd6e <rt_thread_mdelay>
+1207676c:	bl	1207ad18 <rt_tick_get>
+12076770:	mov	r5, r0
+12076772:	add	r0, sp, #8
+12076774:	bl	12077eec <maze_imu_latest>
+12076778:	cbz	r0, 12076784 <service_during_flush+0x24>
+1207677a:	mov	r2, r5
+1207677c:	mov	r0, r4
+1207677e:	add	r1, sp, #8
+12076780:	bl	120790c8 <maze_navigation_sample>
+12076784:	ldrb	r3, [r4, #0]
+12076786:	cmp	r3, #1
+12076788:	bne.n	120767a6 <service_during_flush+0x46>
+1207678a:	add.w	r3, r4, #8192	@ 0x2000
+1207678e:	ldrb.w	r2, [r3, #2280]	@ 0x8e8
+12076792:	cmp	r2, #2
+12076794:	bne.n	120767a6 <service_during_flush+0x46>
+12076796:	ldr	r2, [pc, #56]	@ (120767d0 <service_during_flush+0x70>)
+12076798:	ldr.w	r3, [r3, #2312]	@ 0x908
+1207679c:	ldr	r1, [r2, #0]
+1207679e:	subs	r3, r5, r3
+120767a0:	cmp	r3, r1
+120767a2:	it	hi
+120767a4:	strhi	r3, [r2, #0]
+120767a6:	mov	r1, r5
+120767a8:	mov	r0, r4
+120767aa:	bl	120790da <maze_navigation_update>
+120767ae:	ldr	r2, [pc, #36]	@ (120767d4 <service_during_flush+0x74>)
+120767b0:	mov	r0, r4
+120767b2:	ldr	r3, [r2, #0]
+120767b4:	add	r1, sp, #4
+120767b6:	adds	r3, #1
+120767b8:	str	r3, [r2, #0]
+120767ba:	add.w	r2, sp, #3
+120767be:	bl	12079102 <maze_navigation_request>
+120767c2:	ldrb.w	r1, [sp, #3]
+120767c6:	ldr	r0, [sp, #4]
+120767c8:	bl	12077e9c <maze_imu_request>
+120767cc:	add	sp, #44	@ 0x2c
+120767ce:	pop	{r4, r5, pc}
+120767d0:	.word	0x20020b74
+120767d4:	.word	0x20020b70
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120790da <maze_navigation_update>:
+120790da:	push	{r3, r4, r5, lr}
+120790dc:	ldrb	r3, [r0, #0]
+120790de:	mov	r4, r0
+120790e0:	cmp	r3, #1
+120790e2:	bne.n	12079100 <maze_navigation_update+0x26>
+120790e4:	add.w	r5, r0, #10432	@ 0x28c0
+120790e8:	adds	r5, #8
+120790ea:	mov	r0, r5
+120790ec:	bl	12076fd8 <maze_app_update>
+120790f0:	add.w	r0, r4, #10752	@ 0x2a00
+120790f4:	mov	r1, r5
+120790f6:	ldmia.w	sp!, {r3, r4, r5, lr}
+120790fa:	adds	r0, #48	@ 0x30
+120790fc:	b.w	120792dc <maze_progress_observe>
+12079100:	pop	{r3, r4, r5, pc}
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12076fd8 <maze_app_update>:
+12076fd8:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+12076fdc:	ldrb.w	r3, [r0, #32]
+12076fe0:	mov	r4, r0
+12076fe2:	cmp	r3, #1
+12076fe4:	mov	r6, r1
+12076fe6:	bne.n	12077010 <maze_app_update+0x38>
+12076fe8:	ldr	r3, [r0, #12]
+12076fea:	mov.w	r2, #1000	@ 0x3e8
+12076fee:	subs	r3, r1, r3
+12076ff0:	movw	r1, #3000	@ 0xbb8
+12076ff4:	ldr	r5, [r0, #4]
+12076ff6:	umull	r3, r2, r3, r2
+12076ffa:	umull	r5, r1, r5, r1
+12076ffe:	cmp	r3, r5
+12077000:	sbcs	r2, r1
+12077002:	bcc.n	1207700a <maze_app_update+0x32>
+12077004:	ldr	r1, [pc, #284]	@ (12077124 <maze_app_update+0x14c>)
+12077006:	bl	12076ee0 <fail>
+1207700a:	str	r6, [r4, #64]	@ 0x40
+1207700c:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, pc}
+12077010:	cmp	r3, #2
+12077012:	bne.n	1207700a <maze_app_update+0x32>
+12077014:	movs	r3, #100	@ 0x64
+12077016:	mov.w	r5, #1000	@ 0x3e8
+1207701a:	ldr	r2, [r0, #16]
+1207701c:	ldr	r7, [r0, #4]
+1207701e:	subs	r2, r6, r2
+12077020:	umull	r1, r3, r7, r3
+12077024:	umull	r2, ip, r2, r5
+12077028:	cmp	r1, r2
+1207702a:	sbcs.w	ip, r3, ip
+1207702e:	bcs.n	1207703c <maze_app_update+0x64>
+12077030:	mvn.w	r1, #1000	@ 0x3e8
+12077034:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, lr}
+12077038:	b.w	12076ee0 <fail>
+1207703c:	ldr	r2, [r0, #64]	@ 0x40
+1207703e:	subs	r2, r6, r2
+12077040:	umull	r5, sl, r2, r5
+12077044:	cmp	r1, r5
+12077046:	sbcs.w	r3, r3, sl
+1207704a:	bcs.n	12077050 <maze_app_update+0x78>
+1207704c:	ldr	r1, [pc, #216]	@ (12077128 <maze_app_update+0x150>)
+1207704e:	b.n	12077034 <maze_app_update+0x5c>
+12077050:	mov	r0, r2
+12077052:	bl	120919ec <__aeabi_ui2d>
+12077056:	movs	r2, #0
+12077058:	ldr	r3, [pc, #208]	@ (1207712c <maze_app_update+0x154>)
+1207705a:	bl	12091ae0 <__aeabi_dmul>
+1207705e:	mov	r8, r0
+12077060:	mov	r0, r7
+12077062:	mov	r9, r1
+12077064:	bl	120919ec <__aeabi_ui2d>
+12077068:	mov	r2, r0
+1207706a:	mov	r3, r1
+1207706c:	mov	r0, r8
+1207706e:	mov	r1, r9
+12077070:	bl	12091d34 <__aeabi_ddiv>
+12077074:	mov.w	r8, #10
+12077078:	mov	r2, r0
+1207707a:	mov	r3, r1
+1207707c:	ldrd	r0, r1, [r4, #80]	@ 0x50
+12077080:	bl	12091774 <__adddf3>
+12077084:	ldrd	r3, r2, [r4, #72]	@ 0x48
+12077088:	umull	r7, r8, r7, r8
+1207708c:	strd	r0, r1, [r4, #80]	@ 0x50
+12077090:	adds	r5, r5, r3
+12077092:	adc.w	r3, sl, r2
+12077096:	add.w	r9, r4, #36	@ 0x24
+1207709a:	cmp	r5, r7
+1207709c:	strd	r5, r3, [r4, #72]	@ 0x48
+120770a0:	sbcs.w	r3, r3, r8
+120770a4:	bcc.n	1207700a <maze_app_update+0x32>
+120770a6:	movs	r1, #10
+120770a8:	mov	r0, r9
+120770aa:	vldr	s1, [r4, #108]	@ 0x6c
+120770ae:	vldr	s0, [r4, #104]	@ 0x68
+120770b2:	bl	12078a54 <maze_model_step>
+120770b6:	ldrd	r0, r1, [r4, #72]	@ 0x48
+120770ba:	ldrb.w	r5, [r4, #60]	@ 0x3c
+120770be:	cbz	r5, 1207711c <maze_app_update+0x144>
+120770c0:	bl	12091a74 <__aeabi_ul2d>
+120770c4:	mov	r8, r0
+120770c6:	ldr	r0, [r4, #4]
+120770c8:	mov	r9, r1
+120770ca:	bl	120919ec <__aeabi_ui2d>
+120770ce:	mov	r2, r0
+120770d0:	mov	r3, r1
+120770d2:	mov	r0, r8
+120770d4:	mov	r1, r9
+120770d6:	bl	12091d34 <__aeabi_ddiv>
+120770da:	mov	r2, r0
+120770dc:	mov	r3, r1
+120770de:	ldrd	r0, r1, [r4, #80]	@ 0x50
+120770e2:	bl	12091770 <__aeabi_dsub>
+120770e6:	mov	r8, r0
+120770e8:	ldr	r0, [r4, #56]	@ 0x38
+120770ea:	mov	r9, r1
+120770ec:	bl	12091a30 <__aeabi_f2d>
+120770f0:	mov	r2, r0
+120770f2:	mov	r3, r1
+120770f4:	mov	r0, r8
+120770f6:	mov	r1, r9
+120770f8:	bl	12091774 <__adddf3>
+120770fc:	movs	r3, #0
+120770fe:	movs	r2, #0
+12077100:	cmp	r5, #1
+12077102:	strd	r2, r3, [r4, #72]	@ 0x48
+12077106:	ite	ne
+12077108:	movne	r3, #7
+1207710a:	moveq	r3, #6
+1207710c:	strb.w	r3, [r4, #32]
+12077110:	movs	r3, #0
+12077112:	strd	r0, r1, [r4, #80]	@ 0x50
+12077116:	str	r3, [r4, #104]	@ 0x68
+12077118:	str	r3, [r4, #108]	@ 0x6c
+1207711a:	b.n	1207700a <maze_app_update+0x32>
+1207711c:	subs	r5, r0, r7
+1207711e:	sbc.w	r3, r1, r8
+12077122:	b.n	1207709a <maze_app_update+0xc2>
+12077124:	.word	0xfffffc15
+12077128:	.word	0xfffffc14
+1207712c:	.word	0x408f4000
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12078a54 <maze_model_step>:
+12078a54:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12078a58:	vpush	{d8-d15}
+12078a5c:	vldr	s23, [pc, #604]	@ 12078cbc <maze_model_step+0x268>
+12078a60:	ldrb	r3, [r0, #24]
+12078a62:	sub	sp, #60	@ 0x3c
+12078a64:	mov	r4, r0
+12078a66:	vmov.f32	s17, s0
+12078a6a:	vmov.f32	s16, s1
+12078a6e:	vmov	s19, r1
+12078a72:	vstr	s23, [r0, #20]
+12078a76:	cmp	r3, #0
+12078a78:	bne.w	12078c42 <maze_model_step+0x1ee>
+12078a7c:	bl	120858a4 <hypotf>
+12078a80:	vldr	s15, [pc, #572]	@ 12078cc0 <maze_model_step+0x26c>
+12078a84:	vldr	s14, [pc, #572]	@ 12078cc4 <maze_model_step+0x270>
+12078a88:	vmaxnm.f32	s15, s0, s15
+12078a8c:	vldr	s31, [pc, #568]	@ 12078cc8 <maze_model_step+0x274>
+12078a90:	vdiv.f32	s21, s14, s15
+12078a94:	vcvt.f32.u32	s15, s19
+12078a98:	vldr	s1, [r4, #8]
+12078a9c:	vmov.f32	s18, s0
+12078aa0:	ldr	r0, [r4, #0]
+12078aa2:	vldr	s0, [r4, #4]
+12078aa6:	vdiv.f32	s19, s15, s31
+12078aaa:	vstr	s15, [sp, #4]
+12078aae:	bl	12077f30 <maze_level_surface_at>
+12078ab2:	vmov.f32	s30, #112	@ 0x3f800000  1.0
+12078ab6:	vldr	s15, [pc, #532]	@ 12078ccc <maze_model_step+0x278>
+12078aba:	vmov.f32	s14, #8	@ 0x40400000  3.0
+12078abe:	cmp	r0, #1
+12078ac0:	vseleq.f32	s14, s15, s14
+12078ac4:	vmul.f32	s17, s17, s21
+12078ac8:	vldr	s15, [r4, #12]
+12078acc:	vmov.f32	s13, s30
+12078ad0:	vfma.f32	s15, s17, s19
+12078ad4:	vfma.f32	s13, s14, s19
+12078ad8:	vmul.f32	s16, s16, s21
+12078adc:	vdiv.f32	s20, s15, s13
+12078ae0:	vldr	s15, [r4, #16]
+12078ae4:	vfma.f32	s15, s16, s19
+12078ae8:	vdiv.f32	s21, s15, s13
+12078aec:	vstr	s20, [r4, #12]
+12078af0:	vstr	s21, [r4, #16]
+12078af4:	vmov.f32	s1, s21
+12078af8:	vmov.f32	s0, s20
+12078afc:	bl	120858a4 <hypotf>
+12078b00:	vldr	s14, [pc, #460]	@ 12078cd0 <maze_model_step+0x27c>
+12078b04:	vcmpe.f32	s0, s14
+12078b08:	vmrs	APSR_nzcv, fpscr
+12078b0c:	ble.w	12078c4c <maze_model_step+0x1f8>
+12078b10:	vdiv.f32	s15, s14, s0
+12078b14:	vmul.f32	s20, s20, s15
+12078b18:	vmul.f32	s21, s21, s15
+12078b1c:	vstr	s20, [r4, #12]
+12078b20:	vstr	s21, [r4, #16]
+12078b24:	vldr	s24, [sp, #4]
+12078b28:	mov.w	sl, #4
+12078b2c:	vldr	s27, [pc, #396]	@ 12078cbc <maze_model_step+0x268>
+12078b30:	vmul.f32	s15, s24, s20
+12078b34:	vdiv.f32	s16, s15, s31
+12078b38:	vmul.f32	s15, s24, s21
+12078b3c:	add	r5, sp, #40	@ 0x28
+12078b3e:	movs	r2, #16
+12078b40:	movs	r1, #0
+12078b42:	mov	r0, r5
+12078b44:	vdiv.f32	s17, s15, s31
+12078b48:	bl	120b4590 <__memset_veneer>
+12078b4c:	vcmpe.f32	s16, #0.0
+12078b50:	vmrs	APSR_nzcv, fpscr
+12078b54:	ldr	r6, [r4, #0]
+12078b56:	vldr	s19, [r6, #8]
+12078b5a:	bpl.w	12078c78 <maze_model_step+0x224>
+12078b5e:	vldr	s0, [r4, #4]
+12078b62:	vmov.f32	s4, s17
+12078b66:	vsub.f32	s0, s19, s0
+12078b6a:	vmov.f32	s3, s16
+12078b6e:	vldr	s2, [pc, #332]	@ 12078cbc <maze_model_step+0x268>
+12078b72:	vmov.f32	s1, #112	@ 0x3f800000  1.0
+12078b76:	vdiv.f32	s0, s0, s16
+12078b7a:	mov	r0, r5
+12078b7c:	bl	120789e0 <contact>
+12078b80:	vcmpe.f32	s17, #0.0
+12078b84:	vmrs	APSR_nzcv, fpscr
+12078b88:	vldr	s18, [r4, #8]
+12078b8c:	bpl.w	12078c9c <maze_model_step+0x248>
+12078b90:	vsub.f32	s0, s19, s18
+12078b94:	vmov.f32	s4, s17
+12078b98:	vmov.f32	s3, s16
+12078b9c:	vmov.f32	s2, #112	@ 0x3f800000  1.0
+12078ba0:	vldr	s1, [pc, #280]	@ 12078cbc <maze_model_step+0x268>
+12078ba4:	vdiv.f32	s0, s0, s17
+12078ba8:	mov	r0, r5
+12078baa:	bl	120789e0 <contact>
+12078bae:	vcmpe.f32	s16, #0.0
+12078bb2:	vmov.f32	s15, #240	@ 0xbf800000 -1.0
+12078bb6:	vmrs	APSR_nzcv, fpscr
+12078bba:	vcmpe.f32	s17, #0.0
+12078bbe:	vselgt.f32	s14, s15, s30
+12078bc2:	vmrs	APSR_nzcv, fpscr
+12078bc6:	vselgt.f32	s15, s15, s30
+12078bca:	vstr	s14, [sp, #8]
+12078bce:	vstr	s15, [sp, #12]
+12078bd2:	mov.w	r8, #0
+12078bd6:	ldr	r3, [r6, #24]
+12078bd8:	vldr	s22, [r4, #4]
+12078bdc:	cmp	r8, r3
+12078bde:	bcc.n	12078cd4 <maze_model_step+0x280>
+12078be0:	movs	r7, #0
+12078be2:	vldr	s19, [sp, #40]	@ 0x28
+12078be6:	vmov.f32	s15, #112	@ 0x3f800000  1.0
+12078bea:	vldr	s28, [sp, #44]	@ 0x2c
+12078bee:	vldr	s26, [sp, #48]	@ 0x30
+12078bf2:	vmov.f32	s25, s27
+12078bf6:	mov	r8, r7
+12078bf8:	mov	r9, r7
+12078bfa:	ldrb.w	fp, [sp, #52]	@ 0x34
+12078bfe:	add.w	r3, r6, #36	@ 0x24
+12078c02:	cmp.w	fp, #0
+12078c06:	vseleq.f32	s19, s15, s19
+12078c0a:	str	r3, [sp, #8]
+12078c0c:	ldr	r3, [r6, #32]
+12078c0e:	cmp	r3, r8
+12078c10:	bcs.w	12078e60 <maze_model_step+0x40c>
+12078c14:	vldr	s15, [r4, #20]
+12078c18:	cmp.w	r9, #0
+12078c1c:	beq.w	12078ecc <maze_model_step+0x478>
+12078c20:	vfma.f32	s22, s16, s25
+12078c24:	vfma.f32	s18, s17, s25
+12078c28:	vfma.f32	s15, s24, s25
+12078c2c:	vstr	s22, [r4, #4]
+12078c30:	vstr	s18, [r4, #8]
+12078c34:	vstr	s15, [r4, #20]
+12078c38:	vstr	s23, [r4, #12]
+12078c3c:	vstr	s23, [r4, #16]
+12078c40:	strb	r7, [r4, #24]
+12078c42:	add	sp, #60	@ 0x3c
+12078c44:	vpop	{d8-d15}
+12078c48:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+12078c4c:	vcmp.f32	s18, #0.0
+12078c50:	vmrs	APSR_nzcv, fpscr
+12078c54:	bne.w	12078b24 <maze_model_step+0xd0>
+12078c58:	vmov.f32	s15, #120	@ 0x3fc00000  1.5
+12078c5c:	vcmpe.f32	s0, s15
+12078c60:	vmrs	APSR_nzcv, fpscr
+12078c64:	itttt	mi
+12078c66:	vstrmi	s23, [r4, #16]
+12078c6a:	vstrmi	s23, [r4, #12]
+12078c6e:	vmovmi.f32	s21, s23
+12078c72:	vmovmi.f32	s20, s23
+12078c76:	b.n	12078b24 <maze_model_step+0xd0>
+12078c78:	ble.n	12078b80 <maze_model_step+0x12c>
+12078c7a:	vldr	s0, [r6]
+12078c7e:	vldr	s15, [r4, #4]
+12078c82:	vsub.f32	s0, s0, s19
+12078c86:	vmov.f32	s4, s17
+12078c8a:	vsub.f32	s0, s0, s15
+12078c8e:	vmov.f32	s3, s16
+12078c92:	vmov.f32	s2, s27
+12078c96:	vmov.f32	s1, #240	@ 0xbf800000 -1.0
+12078c9a:	b.n	12078b76 <maze_model_step+0x122>
+12078c9c:	ble.n	12078bae <maze_model_step+0x15a>
+12078c9e:	vldr	s0, [r6, #4]
+12078ca2:	vsub.f32	s0, s0, s19
+12078ca6:	vmov.f32	s4, s17
+12078caa:	vsub.f32	s0, s0, s18
+12078cae:	vmov.f32	s3, s16
+12078cb2:	vmov.f32	s2, #240	@ 0xbf800000 -1.0
+12078cb6:	vmov.f32	s1, s27
+12078cba:	b.n	12078ba4 <maze_model_step+0x150>
+12078cbc:	.word	0x00000000
+12078cc0:	.word	0x46000000
+12078cc4:	.word	0x44160000
+12078cc8:	.word	0x447a0000
+12078ccc:	.word	0x3f19999a
+12078cd0:	.word	0x43340000
+12078cd4:	vcmp.f32	s16, #0.0
+12078cd8:	ldr	r3, [r6, #20]
+12078cda:	vmrs	APSR_nzcv, fpscr
+12078cde:	add.w	r3, r3, r8, lsl #4
+12078ce2:	vldr	s28, [r3]
+12078ce6:	vldr	s29, [r3, #4]
+12078cea:	vldr	s25, [r3, #8]
+12078cee:	vldr	s26, [r3, #12]
+12078cf2:	vadd.f32	s25, s28, s25
+12078cf6:	vadd.f32	s26, s29, s26
+12078cfa:	beq.n	12078d48 <maze_model_step+0x2f4>
+12078cfc:	vcmpe.f32	s16, #0.0
+12078d00:	vmrs	APSR_nzcv, fpscr
+12078d04:	ite	gt
+12078d06:	vsubgt.f32	s15, s28, s19
+12078d0a:	vaddle.f32	s15, s19, s25
+12078d0e:	vsub.f32	s15, s15, s22
+12078d12:	vdiv.f32	s0, s15, s16
+12078d16:	vmov.f32	s15, s18
+12078d1a:	vfma.f32	s15, s17, s0
+12078d1e:	vcmpe.f32	s29, s15
+12078d22:	vmrs	APSR_nzcv, fpscr
+12078d26:	bhi.n	12078d48 <maze_model_step+0x2f4>
+12078d28:	vcmpe.f32	s26, s15
+12078d2c:	vmrs	APSR_nzcv, fpscr
+12078d30:	blt.n	12078d48 <maze_model_step+0x2f4>
+12078d32:	vmov.f32	s4, s17
+12078d36:	vmov.f32	s3, s16
+12078d3a:	vmov.f32	s2, s27
+12078d3e:	vldr	s1, [sp, #8]
+12078d42:	mov	r0, r5
+12078d44:	bl	120789e0 <contact>
+12078d48:	vcmp.f32	s17, #0.0
+12078d4c:	vmrs	APSR_nzcv, fpscr
+12078d50:	beq.n	12078d9e <maze_model_step+0x34a>
+12078d52:	vcmpe.f32	s17, #0.0
+12078d56:	vmrs	APSR_nzcv, fpscr
+12078d5a:	ite	gt
+12078d5c:	vsubgt.f32	s15, s29, s19
+12078d60:	vaddle.f32	s15, s19, s26
+12078d64:	vsub.f32	s15, s15, s18
+12078d68:	vdiv.f32	s0, s15, s17
+12078d6c:	vmov.f32	s15, s22
+12078d70:	vfma.f32	s15, s16, s0
+12078d74:	vcmpe.f32	s28, s15
+12078d78:	vmrs	APSR_nzcv, fpscr
+12078d7c:	bhi.n	12078d9e <maze_model_step+0x34a>
+12078d7e:	vcmpe.f32	s25, s15
+12078d82:	vmrs	APSR_nzcv, fpscr
+12078d86:	blt.n	12078d9e <maze_model_step+0x34a>
+12078d88:	vmov.f32	s4, s17
+12078d8c:	vmov.f32	s3, s16
+12078d90:	vldr	s2, [sp, #12]
+12078d94:	vmov.f32	s1, s27
+12078d98:	mov	r0, r5
+12078d9a:	bl	120789e0 <contact>
+12078d9e:	movs	r7, #0
+12078da0:	ands.w	fp, r7, #1
+12078da4:	vseleq.f32	s4, s28, s25
+12078da8:	ands.w	r9, r7, #2
+12078dac:	vseleq.f32	s5, s29, s26
+12078db0:	vmov.f32	s6, s19
+12078db4:	vmov.f32	s3, s17
+12078db8:	vmov.f32	s2, s16
+12078dbc:	vmov.f32	s1, s18
+12078dc0:	vmov.f32	s0, s22
+12078dc4:	add	r0, sp, #24
+12078dc6:	vstr	s4, [sp, #28]
+12078dca:	vstr	s5, [sp, #32]
+12078dce:	vstr	s19, [sp, #36]	@ 0x24
+12078dd2:	vstr	s4, [sp, #20]
+12078dd6:	vstr	s5, [sp, #16]
+12078dda:	bl	12078820 <circle_entry>
+12078dde:	adds	r7, #1
+12078de0:	cbz	r0, 12078e42 <maze_model_step+0x3ee>
+12078de2:	vldr	s0, [sp, #24]
+12078de6:	vmov.f32	s1, s22
+12078dea:	vldr	s4, [sp, #20]
+12078dee:	vfma.f32	s1, s16, s0
+12078df2:	vsub.f32	s1, s1, s4
+12078df6:	vldr	s5, [sp, #16]
+12078dfa:	vcmpe.f32	s1, #0.0
+12078dfe:	cmp.w	fp, #0
+12078e02:	beq.n	12078e4c <maze_model_step+0x3f8>
+12078e04:	vmrs	APSR_nzcv, fpscr
+12078e08:	ite	ge
+12078e0a:	movge	r3, #1
+12078e0c:	movlt	r3, #0
+12078e0e:	cbz	r3, 12078e42 <maze_model_step+0x3ee>
+12078e10:	vmov.f32	s2, s18
+12078e14:	vfma.f32	s2, s17, s0
+12078e18:	vsub.f32	s2, s2, s5
+12078e1c:	vcmpe.f32	s2, #0.0
+12078e20:	cmp.w	r9, #0
+12078e24:	beq.n	12078e58 <maze_model_step+0x404>
+12078e26:	vmrs	APSR_nzcv, fpscr
+12078e2a:	blt.n	12078e42 <maze_model_step+0x3ee>
+12078e2c:	vmov.f32	s4, s17
+12078e30:	vmov.f32	s3, s16
+12078e34:	vdiv.f32	s2, s2, s19
+12078e38:	vdiv.f32	s1, s1, s19
+12078e3c:	mov	r0, r5
+12078e3e:	bl	120789e0 <contact>
+12078e42:	cmp	r7, #4
+12078e44:	bne.n	12078da0 <maze_model_step+0x34c>
+12078e46:	add.w	r8, r8, #1
+12078e4a:	b.n	12078bd6 <maze_model_step+0x182>
+12078e4c:	vmrs	APSR_nzcv, fpscr
+12078e50:	ite	ls
+12078e52:	movls	r3, #1
+12078e54:	movhi	r3, #0
+12078e56:	b.n	12078e0e <maze_model_step+0x3ba>
+12078e58:	vmrs	APSR_nzcv, fpscr
+12078e5c:	bls.n	12078e2c <maze_model_step+0x3d8>
+12078e5e:	b.n	12078da0 <maze_model_step+0x34c>
+12078e60:	ittet	ne
+12078e62:	movne	r1, #12
+12078e64:	ldrne	r2, [r6, #28]
+12078e66:	ldreq	r2, [sp, #8]
+12078e68:	mlane	r2, r1, r8, r2
+12078e6c:	ldmia	r2, {r0, r1, r2}
+12078e6e:	stmia.w	r5, {r0, r1, r2}
+12078e72:	vmov.f32	s3, s17
+12078e76:	vldr	s4, [sp, #40]	@ 0x28
+12078e7a:	vldr	s5, [sp, #44]	@ 0x2c
+12078e7e:	vldr	s6, [sp, #48]	@ 0x30
+12078e82:	vmov.f32	s2, s16
+12078e86:	vmov.f32	s1, s18
+12078e8a:	vmov.f32	s0, s22
+12078e8e:	add	r0, sp, #28
+12078e90:	str	r3, [sp, #12]
+12078e92:	bl	12078820 <circle_entry>
+12078e96:	cbz	r0, 12078ec6 <maze_model_step+0x472>
+12078e98:	vldr	s15, [sp, #28]
+12078e9c:	vcmpe.f32	s19, s15
+12078ea0:	vmrs	APSR_nzcv, fpscr
+12078ea4:	blt.n	12078ec6 <maze_model_step+0x472>
+12078ea6:	ldr	r3, [sp, #12]
+12078ea8:	cmp.w	r9, #0
+12078eac:	beq.n	12078eb8 <maze_model_step+0x464>
+12078eae:	vcmpe.f32	s15, s25
+12078eb2:	vmrs	APSR_nzcv, fpscr
+12078eb6:	bpl.n	12078ec6 <maze_model_step+0x472>
+12078eb8:	cmp	r3, r8
+12078eba:	vmov.f32	s25, s15
+12078ebe:	mov	r9, r0
+12078ec0:	ite	eq
+12078ec2:	moveq	r7, #1
+12078ec4:	movne	r7, #2
+12078ec6:	add.w	r8, r8, #1
+12078eca:	b.n	12078c0c <maze_model_step+0x1b8>
+12078ecc:	vfma.f32	s15, s19, s24
+12078ed0:	vfma.f32	s22, s19, s16
+12078ed4:	vfma.f32	s18, s19, s17
+12078ed8:	vsub.f32	s19, s30, s19
+12078edc:	vstr	s22, [r4, #4]
+12078ee0:	vstr	s18, [r4, #8]
+12078ee4:	vstr	s15, [r4, #20]
+12078ee8:	vmul.f32	s24, s24, s19
+12078eec:	cmp.w	fp, #0
+12078ef0:	beq.w	12078c42 <maze_model_step+0x1ee>
+12078ef4:	vmul.f32	s15, s26, s21
+12078ef8:	vfma.f32	s15, s28, s20
+12078efc:	vfms.f32	s20, s28, s15
+12078f00:	vfms.f32	s21, s15, s26
+12078f04:	subs.w	sl, sl, #1
+12078f08:	vstr	s20, [r4, #12]
+12078f0c:	vstr	s21, [r4, #16]
+12078f10:	bne.w	12078b30 <maze_model_step+0xdc>
+12078f14:	vldr	s15, [sp, #4]
+12078f18:	vstr	s23, [r4, #12]
+12078f1c:	vstr	s23, [r4, #16]
+12078f20:	vstr	s15, [r4, #20]
+12078f24:	b.n	12078c42 <maze_model_step+0x1ee>
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12079ec0 <maze_ui_render>:
+12079ec0:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12079ec4:	vpush	{d8-d9}
+12079ec8:	ldr	r6, [pc, #64]	@ (12079f0c <maze_ui_render+0x4c>)
+12079eca:	mov	fp, r0
+12079ecc:	ldrb	r3, [r6, #0]
+12079ece:	ldr	r5, [pc, #64]	@ (12079f10 <maze_ui_render+0x50>)
+12079ed0:	ldr	r4, [pc, #64]	@ (12079f14 <maze_ui_render+0x54>)
+12079ed2:	sub	sp, #228	@ 0xe4
+12079ed4:	cbz	r3, 12079ee6 <maze_ui_render+0x26>
+12079ed6:	ldrb	r2, [r0, #0]
+12079ed8:	ldrb	r3, [r5, #0]
+12079eda:	cmp	r2, r3
+12079edc:	bne.n	12079ee6 <maze_ui_render+0x26>
+12079ede:	ldr	r2, [r0, #4]
+12079ee0:	ldr	r3, [r4, #0]
+12079ee2:	cmp	r2, r3
+12079ee4:	beq.n	12079f98 <maze_ui_render+0xd8>
+12079ee6:	bl	12079d84 <maze_ui_clear>
+12079eea:	movs	r3, #1
+12079eec:	ldr.w	r2, [fp, #4]
+12079ef0:	strb	r3, [r6, #0]
+12079ef2:	ldrb.w	r3, [fp]
+12079ef6:	str	r2, [r4, #0]
+12079ef8:	strb	r3, [r5, #0]
+12079efa:	cmp	r3, #4
+12079efc:	bhi.n	12079f98 <maze_ui_render+0xd8>
+12079efe:	tbh	[pc, r3, lsl #1]
+12079f02:	.short	0x02ce
+12079f04:	.word	0x000b004b
+12079f08:	.word	0x01cb020f
+12079f0c:	.word	0x2002a239
+12079f10:	.word	0x2002a238
+12079f14:	.word	0x2002a234
+12079f18:	ldr.w	r6, [fp, #20]
+12079f1c:	bl	1203ff90 <lv_screen_active>
+12079f20:	mov.w	r5, #350	@ 0x15e
+12079f24:	mov	r4, r0
+12079f26:	addw	r3, r6, #2004	@ 0x7d4
+12079f2a:	cmp	r3, #3
+12079f2c:	itet	ls
+12079f2e:	ldrls	r2, [pc, #772]	@ (1207a234 <maze_ui_render+0x374>)
+12079f30:	ldrhi	r7, [pc, #772]	@ (1207a238 <maze_ui_render+0x378>)
+12079f32:	ldrls.w	r7, [r2, r3, lsl #2]
+12079f36:	ldr	r1, [pc, #772]	@ (1207a23c <maze_ui_render+0x37c>)
+12079f38:	movs	r3, #140	@ 0x8c
+12079f3a:	movs	r2, #20
+12079f3c:	str	r5, [sp, #0]
+12079f3e:	bl	12079a30 <label>
+12079f42:	movs	r3, #178	@ 0xb2
+12079f44:	movs	r2, #20
+12079f46:	mov	r1, r7
+12079f48:	mov	r0, r4
+12079f4a:	str	r5, [sp, #0]
+12079f4c:	bl	12079a30 <label>
+12079f50:	movs	r3, #206	@ 0xce
+12079f52:	movs	r2, #20
+12079f54:	ldr	r1, [pc, #744]	@ (1207a240 <maze_ui_render+0x380>)
+12079f56:	mov	r0, r4
+12079f58:	str	r5, [sp, #0]
+12079f5a:	bl	12079a30 <label>
+12079f5e:	mov	r2, r6
+12079f60:	ldr	r1, [pc, #736]	@ (1207a244 <maze_ui_render+0x384>)
+12079f62:	bl	120638f0 <lv_label_set_text_fmt>
+12079f66:	movs	r3, #238	@ 0xee
+12079f68:	movs	r2, #20
+12079f6a:	ldr	r1, [pc, #732]	@ (1207a248 <maze_ui_render+0x388>)
+12079f6c:	mov	r0, r4
+12079f6e:	str	r5, [sp, #0]
+12079f70:	bl	12079a30 <label>
+12079f74:	movs	r3, #45	@ 0x2d
+12079f76:	ldr.w	r9, [pc, #792]	@ 1207a290 <maze_ui_render+0x3d0>
+12079f7a:	movw	r2, #391	@ 0x187
+12079f7e:	strd	r3, r9, [sp]
+12079f82:	movs	r1, #20
+12079f84:	mov	r3, r5
+12079f86:	mov	r0, r4
+12079f88:	bl	12079a64 <box>
+12079f8c:	movs	r2, #130	@ 0x82
+12079f8e:	ldr	r3, [pc, #700]	@ (1207a24c <maze_ui_render+0x38c>)
+12079f90:	mov	r1, r2
+12079f92:	str	r0, [r3, #0]
+12079f94:	bl	12079c48 <back_button>
+12079f98:	ldrb.w	r3, [fp]
+12079f9c:	cmp	r3, #1
+12079f9e:	bne.w	1207a228 <maze_ui_render+0x368>
+12079fa2:	add.w	r3, fp, #10432	@ 0x28c0
+12079fa6:	adds	r3, #8
+12079fa8:	str	r3, [sp, #28]
+12079faa:	ldr	r3, [pc, #676]	@ (1207a250 <maze_ui_render+0x390>)
+12079fac:	add.w	r4, fp, #8192	@ 0x2000
+12079fb0:	ldrb	r6, [r3, #0]
+12079fb2:	ldrb.w	r2, [r4, #2280]	@ 0x8e8
+12079fb6:	ldr.w	sl, [pc, #680]	@ 1207a260 <maze_ui_render+0x3a0>
+12079fba:	cmp	r6, #0
+12079fbc:	beq.w	1207a6c8 <maze_ui_render+0x808>
+12079fc0:	ldr	r3, [pc, #656]	@ (1207a254 <maze_ui_render+0x394>)
+12079fc2:	ldrb	r3, [r3, #0]
+12079fc4:	cmp	r3, r2
+12079fc6:	bne.w	1207a6c8 <maze_ui_render+0x808>
+12079fca:	ldr	r3, [pc, #652]	@ (1207a258 <maze_ui_render+0x398>)
+12079fcc:	ldr.w	r2, [r4, #2256]	@ 0x8d0
+12079fd0:	ldr	r3, [r3, #0]
+12079fd2:	cmp	r2, r3
+12079fd4:	bne.w	1207a89c <maze_ui_render+0x9dc>
+12079fd8:	movs	r6, #0
+12079fda:	bl	1207ad18 <rt_tick_get>
+12079fde:	ldr	r3, [pc, #624]	@ (1207a250 <maze_ui_render+0x390>)
+12079fe0:	mov	r8, r0
+12079fe2:	ldrb	r3, [r3, #0]
+12079fe4:	ldr.w	r9, [pc, #624]	@ 1207a258 <maze_ui_render+0x398>
+12079fe8:	cbz	r3, 1207a004 <maze_ui_render+0x144>
+12079fea:	ldr.w	r2, [r4, #2256]	@ 0x8d0
+12079fee:	ldr.w	r3, [r9]
+12079ff2:	cmp	r2, r3
+12079ff4:	beq.n	1207a024 <maze_ui_render+0x164>
+12079ff6:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+12079ffa:	cbz	r3, 1207a004 <maze_ui_render+0x144>
+12079ffc:	ldrh.w	r3, [r4, #2280]	@ 0x8e8
+1207a000:	cmp	r3, #1
+1207a002:	bne.n	1207a024 <maze_ui_render+0x164>
+1207a004:	ldr.w	r2, [r4, #2248]	@ 0x8c8
+1207a008:	addw	r3, r4, #2248	@ 0x8c8
+1207a00c:	mov	r1, r8
+1207a00e:	vldr	s3, [r3, #44]	@ 0x2c
+1207a012:	vldr	s2, [r3, #40]	@ 0x28
+1207a016:	vldr	s1, [r2, #4]
+1207a01a:	vldr	s0, [r2]
+1207a01e:	ldr	r0, [pc, #572]	@ (1207a25c <maze_ui_render+0x39c>)
+1207a020:	bl	12077948 <maze_camera_reset>
+1207a024:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a028:	ldr	r7, [pc, #560]	@ (1207a25c <maze_ui_render+0x39c>)
+1207a02a:	subs	r2, r3, #2
+1207a02c:	negs	r3, r2
+1207a02e:	addw	r5, r4, #2248	@ 0x8c8
+1207a032:	mov	r1, r8
+1207a034:	ldr.w	r8, [pc, #604]	@ 1207a294 <maze_ui_render+0x3d4>
+1207a038:	adcs	r3, r2
+1207a03a:	vldr	s1, [r5, #44]	@ 0x2c
+1207a03e:	ldr.w	r2, [r4, #2252]	@ 0x8cc
+1207a042:	vldr	s0, [r5, #40]	@ 0x28
+1207a046:	mov	r0, r7
+1207a048:	bl	120779b0 <maze_camera_update>
+1207a04c:	add	r1, sp, #64	@ 0x40
+1207a04e:	ldr.w	r0, [r8]
+1207a052:	bl	1203aa3c <lv_obj_get_coords>
+1207a056:	ldr.w	r3, [sl]
+1207a05a:	vldr	s0, [r7]
+1207a05e:	str	r3, [sp, #24]
+1207a060:	bl	12085c6c <lroundf>
+1207a064:	vldr	s0, [r7, #4]
+1207a068:	mov	sl, r0
+1207a06a:	bl	12085c6c <lroundf>
+1207a06e:	rsb	r1, sl, #0
+1207a072:	negs	r2, r0
+1207a074:	ldr	r0, [sp, #24]
+1207a076:	bl	1203a8a4 <lv_obj_set_pos>
+1207a07a:	ldr.w	r3, [r4, #2248]	@ 0x8c8
+1207a07e:	vldr	s0, [r5, #40]	@ 0x28
+1207a082:	vldr	s16, [r3, #8]
+1207a086:	vsub.f32	s0, s0, s16
+1207a08a:	ldr.w	sl, [r8]
+1207a08e:	bl	12085c6c <lroundf>
+1207a092:	vldr	s0, [r5, #44]	@ 0x2c
+1207a096:	vsub.f32	s0, s0, s16
+1207a09a:	str	r0, [sp, #24]
+1207a09c:	bl	12085c6c <lroundf>
+1207a0a0:	ldr	r1, [sp, #24]
+1207a0a2:	mov	r2, r0
+1207a0a4:	mov	r0, sl
+1207a0a6:	bl	1203a8a4 <lv_obj_set_pos>
+1207a0aa:	vldr	s0, [r7]
+1207a0ae:	bl	12085c6c <lroundf>
+1207a0b2:	ldr.w	r3, [r4, #2248]	@ 0x8c8
+1207a0b6:	vldr	s0, [r5, #40]	@ 0x28
+1207a0ba:	vldr	s16, [r3, #8]
+1207a0be:	mov	sl, r0
+1207a0c0:	vsub.f32	s0, s0, s16
+1207a0c4:	bl	12085c6c <lroundf>
+1207a0c8:	rsb	sl, sl, #20
+1207a0cc:	vldr	s0, [r7, #4]
+1207a0d0:	add	sl, r0
+1207a0d2:	bl	12085c6c <lroundf>
+1207a0d6:	vldr	s0, [r5, #44]	@ 0x2c
+1207a0da:	mov	r7, r0
+1207a0dc:	vsub.f32	s0, s0, s16
+1207a0e0:	bl	12085c6c <lroundf>
+1207a0e4:	ldr	r3, [sp, #64]	@ 0x40
+1207a0e6:	rsb	r5, r7, #80	@ 0x50
+1207a0ea:	cmp	sl, r3
+1207a0ec:	add	r5, r0
+1207a0ee:	bne.n	1207a0f6 <maze_ui_render+0x236>
+1207a0f0:	ldr	r3, [sp, #68]	@ 0x44
+1207a0f2:	cmp	r5, r3
+1207a0f4:	beq.n	1207a14a <maze_ui_render+0x28a>
+1207a0f6:	ldr.w	r0, [r8]
+1207a0fa:	bl	1203aaf4 <lv_obj_get_width>
+1207a0fe:	mov	r7, r0
+1207a100:	ldr.w	r0, [r8]
+1207a104:	bl	1203ab1c <lv_obj_get_height>
+1207a108:	ldr	r3, [sp, #64]	@ 0x40
+1207a10a:	ldr	r2, [sp, #72]	@ 0x48
+1207a10c:	cmp	r3, sl
+1207a10e:	ite	le
+1207a110:	strle	r3, [sp, #144]	@ 0x90
+1207a112:	strgt.w	sl, [sp, #144]	@ 0x90
+1207a116:	ldr	r3, [sp, #68]	@ 0x44
+1207a118:	cmp	r3, r5
+1207a11a:	ite	le
+1207a11c:	strle	r3, [sp, #148]	@ 0x94
+1207a11e:	strgt	r5, [sp, #148]	@ 0x94
+1207a120:	add.w	r3, sl, r7
+1207a124:	subs	r3, #1
+1207a126:	cmp	r3, r2
+1207a128:	ite	ge
+1207a12a:	strge	r3, [sp, #152]	@ 0x98
+1207a12c:	strlt	r2, [sp, #152]	@ 0x98
+1207a12e:	add	r5, r0
+1207a130:	ldr	r3, [sp, #76]	@ 0x4c
+1207a132:	subs	r5, #1
+1207a134:	cmp	r5, r3
+1207a136:	ite	ge
+1207a138:	strge	r5, [sp, #156]	@ 0x9c
+1207a13a:	strlt	r3, [sp, #156]	@ 0x9c
+1207a13c:	ldr	r3, [pc, #288]	@ (1207a260 <maze_ui_render+0x3a0>)
+1207a13e:	ldr	r0, [r3, #0]
+1207a140:	bl	1203e178 <lv_obj_get_parent>
+1207a144:	add	r1, sp, #144	@ 0x90
+1207a146:	bl	1203b330 <lv_obj_invalidate_area>
+1207a14a:	movs	r3, #1
+1207a14c:	ldr	r2, [pc, #256]	@ (1207a250 <maze_ui_render+0x390>)
+1207a14e:	add.w	r0, fp, #10752	@ 0x2a00
+1207a152:	strb	r3, [r2, #0]
+1207a154:	ldrb.w	r2, [r4, #2280]	@ 0x8e8
+1207a158:	ldr	r3, [pc, #248]	@ (1207a254 <maze_ui_render+0x394>)
+1207a15a:	ldr	r1, [sp, #28]
+1207a15c:	strb	r2, [r3, #0]
+1207a15e:	ldr.w	r3, [r4, #2256]	@ 0x8d0
+1207a162:	adds	r0, #48	@ 0x30
+1207a164:	str.w	r3, [r9]
+1207a168:	bl	120792a0 <maze_progress_time_cs>
+1207a16c:	ldr	r3, [pc, #244]	@ (1207a264 <maze_ui_render+0x3a4>)
+1207a16e:	movs	r2, #100	@ 0x64
+1207a170:	ldr	r5, [r3, #0]
+1207a172:	movs	r3, #0
+1207a174:	bl	12092210 <__aeabi_uldivmod>
+1207a178:	strd	r2, r3, [sp]
+1207a17c:	mov	r3, r1
+1207a17e:	mov	r2, r0
+1207a180:	ldr	r1, [pc, #228]	@ (1207a268 <maze_ui_render+0x3a8>)
+1207a182:	mov	r0, r5
+1207a184:	bl	120638f0 <lv_label_set_text_fmt>
+1207a188:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a18c:	cmp	r3, #1
+1207a18e:	bne.n	1207a1a6 <maze_ui_render+0x2e6>
+1207a190:	ldr.w	r3, [r4, #3276]	@ 0xccc
+1207a194:	ldr	r0, [pc, #212]	@ (1207a26c <maze_ui_render+0x3ac>)
+1207a196:	str	r3, [sp, #0]
+1207a198:	ldr.w	r2, [r4, #2360]	@ 0x938
+1207a19c:	movs	r3, #20
+1207a19e:	ldr	r1, [pc, #208]	@ (1207a270 <maze_ui_render+0x3b0>)
+1207a1a0:	ldr	r0, [r0, #0]
+1207a1a2:	bl	120638f0 <lv_label_set_text_fmt>
+1207a1a6:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a1aa:	cmp	r3, #2
+1207a1ac:	bne.n	1207a1e8 <maze_ui_render+0x328>
+1207a1ae:	addw	r3, r4, #2248	@ 0x8c8
+1207a1b2:	vldr	s1, [r3, #44]	@ 0x2c
+1207a1b6:	vldr	s0, [r3, #40]	@ 0x28
+1207a1ba:	ldr.w	r0, [r4, #2248]	@ 0x8c8
+1207a1be:	bl	12077f30 <maze_level_surface_at>
+1207a1c2:	ldr	r7, [pc, #176]	@ (1207a274 <maze_ui_render+0x3b4>)
+1207a1c4:	mov	r5, r0
+1207a1c6:	cbnz	r6, 1207a1ce <maze_ui_render+0x30e>
+1207a1c8:	ldrb	r3, [r7, #0]
+1207a1ca:	cmp	r3, r0
+1207a1cc:	beq.n	1207a1e6 <maze_ui_render+0x326>
+1207a1ce:	ldr	r1, [pc, #168]	@ (1207a278 <maze_ui_render+0x3b8>)
+1207a1d0:	ldr	r2, [pc, #168]	@ (1207a27c <maze_ui_render+0x3bc>)
+1207a1d2:	ldr	r0, [pc, #152]	@ (1207a26c <maze_ui_render+0x3ac>)
+1207a1d4:	cmp	r5, #1
+1207a1d6:	it	ne
+1207a1d8:	movne	r2, r1
+1207a1da:	ldr.w	r3, [r4, #3276]	@ 0xccc
+1207a1de:	ldr	r1, [pc, #160]	@ (1207a280 <maze_ui_render+0x3c0>)
+1207a1e0:	ldr	r0, [r0, #0]
+1207a1e2:	bl	120638f0 <lv_label_set_text_fmt>
+1207a1e6:	strb	r5, [r7, #0]
+1207a1e8:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a1ec:	ldr.w	r2, [r4, #2336]	@ 0x920
+1207a1f0:	cmp	r3, #5
+1207a1f2:	ldr	r7, [pc, #144]	@ (1207a284 <maze_ui_render+0x3c4>)
+1207a1f4:	bne.w	1207ac36 <maze_ui_render+0xd76>
+1207a1f8:	cmp	r2, #0
+1207a1fa:	bne.w	1207ac2c <maze_ui_render+0xd6c>
+1207a1fe:	ldr	r1, [pc, #136]	@ (1207a288 <maze_ui_render+0x3c8>)
+1207a200:	ldr	r5, [r1, #0]
+1207a202:	cbnz	r6, 1207a210 <maze_ui_render+0x350>
+1207a204:	ldr	r1, [r7, #0]
+1207a206:	cmp	r1, r5
+1207a208:	beq.n	1207a226 <maze_ui_render+0x366>
+1207a20a:	cmp	r3, #5
+1207a20c:	bne.w	1207ac3c <maze_ui_render+0xd7c>
+1207a210:	cmp	r5, #0
+1207a212:	beq.w	1207ac22 <maze_ui_render+0xd62>
+1207a216:	ldr	r0, [pc, #84]	@ (1207a26c <maze_ui_render+0x3ac>)
+1207a218:	mov	r3, r5
+1207a21a:	ldr.w	r2, [r4, #3276]	@ 0xccc
+1207a21e:	ldr	r1, [pc, #108]	@ (1207a28c <maze_ui_render+0x3cc>)
+1207a220:	ldr	r0, [r0, #0]
+1207a222:	bl	120638f0 <lv_label_set_text_fmt>
+1207a226:	str	r5, [r7, #0]
+1207a228:	add	sp, #228	@ 0xe4
+1207a22a:	vpop	{d8-d9}
+1207a22e:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+1207a232:	nop
+1207a234:	.word	0x120abe3c
+1207a238:	.word	0x12097d7b
+1207a23c:	.word	0x12097f19
+1207a240:	.word	0x12099645
+1207a244:	.word	0x12097f2c
+1207a248:	.word	0x12097f3a
+1207a24c:	.word	0x2002a2b8
+1207a250:	.word	0x2002a2b7
+1207a254:	.word	0x2002a2b5
+1207a258:	.word	0x2002a2b0
+1207a25c:	.word	0x20063514
+1207a260:	.word	0x20063510
+1207a264:	.word	0x2002a2c8
+1207a268:	.word	0x120981b4
+1207a26c:	.word	0x2002a2c0
+1207a270:	.word	0x120981cc
+1207a274:	.word	0x2002a220
+1207a278:	.word	0x12097e83
+1207a27c:	.word	0x12097e9a
+1207a280:	.word	0x120981e9
+1207a284:	.word	0x2002a228
+1207a288:	.word	0x2002a224
+1207a28c:	.word	0x12098204
+1207a290:	.word	0x00101c27
+1207a294:	.word	0x2002a2cc
+1207a298:	bl	1203ff90 <lv_screen_active>
+1207a29c:	mov.w	r5, #350	@ 0x15e
+1207a2a0:	mov	r4, r0
+1207a2a2:	movs	r3, #140	@ 0x8c
+1207a2a4:	movs	r2, #20
+1207a2a6:	ldr	r1, [pc, #736]	@ (1207a588 <maze_ui_render+0x6c8>)
+1207a2a8:	str	r5, [sp, #0]
+1207a2aa:	bl	12079a30 <label>
+1207a2ae:	movs	r3, #178	@ 0xb2
+1207a2b0:	movs	r2, #20
+1207a2b2:	ldr	r1, [pc, #728]	@ (1207a58c <maze_ui_render+0x6cc>)
+1207a2b4:	mov	r0, r4
+1207a2b6:	str	r5, [sp, #0]
+1207a2b8:	bl	12079a30 <label>
+1207a2bc:	movs	r3, #206	@ 0xce
+1207a2be:	movs	r2, #20
+1207a2c0:	ldr	r1, [pc, #716]	@ (1207a590 <maze_ui_render+0x6d0>)
+1207a2c2:	mov	r0, r4
+1207a2c4:	str	r5, [sp, #0]
+1207a2c6:	bl	12079a30 <label>
+1207a2ca:	ldr.w	r2, [fp, #24]
+1207a2ce:	ldr	r1, [pc, #708]	@ (1207a594 <maze_ui_render+0x6d4>)
+1207a2d0:	bl	120638f0 <lv_label_set_text_fmt>
+1207a2d4:	movs	r3, #238	@ 0xee
+1207a2d6:	movs	r2, #20
+1207a2d8:	ldr	r1, [pc, #700]	@ (1207a598 <maze_ui_render+0x6d8>)
+1207a2da:	mov	r0, r4
+1207a2dc:	str	r5, [sp, #0]
+1207a2de:	bl	12079a30 <label>
+1207a2e2:	movs	r3, #45	@ 0x2d
+1207a2e4:	ldr.w	r8, [pc, #776]	@ 1207a5f0 <maze_ui_render+0x730>
+1207a2e8:	movw	r2, #391	@ 0x187
+1207a2ec:	movs	r1, #20
+1207a2ee:	strd	r3, r8, [sp]
+1207a2f2:	mov	r0, r4
+1207a2f4:	mov	r3, r5
+1207a2f6:	bl	12079a64 <box>
+1207a2fa:	movs	r2, #0
+1207a2fc:	movs	r1, #8
+1207a2fe:	strd	r2, r2, [sp, #144]	@ 0x90
+1207a302:	strb.w	r1, [sp, #144]	@ 0x90
+1207a306:	movs	r1, #130	@ 0x82
+1207a308:	ldr	r3, [pc, #656]	@ (1207a59c <maze_ui_render+0x6dc>)
+1207a30a:	str	r2, [sp, #152]	@ 0x98
+1207a30c:	str	r0, [r3, #0]
+1207a30e:	strd	r1, r1, [sp, #4]
+1207a312:	ldr	r1, [pc, #652]	@ (1207a5a0 <maze_ui_render+0x6e0>)
+1207a314:	add	r3, sp, #144	@ 0x90
+1207a316:	str	r2, [sp, #0]
+1207a318:	ldmia	r3, {r2, r3}
+1207a31a:	bl	12079ba0 <command_button>
+1207a31e:	b.n	12079f98 <maze_ui_render+0xd8>
+1207a320:	bl	1203ff90 <lv_screen_active>
+1207a324:	ldrd	r7, r4, [fp, #32]
+1207a328:	mov.w	r8, #350	@ 0x15e
+1207a32c:	mov	r6, r0
+1207a32e:	movs	r3, #30
+1207a330:	movs	r2, #20
+1207a332:	ldr	r1, [pc, #604]	@ (1207a590 <maze_ui_render+0x6d0>)
+1207a334:	str.w	r8, [sp]
+1207a338:	bl	12079a30 <label>
+1207a33c:	ldr	r3, [pc, #612]	@ (1207a5a4 <maze_ui_render+0x6e4>)
+1207a33e:	ldr.w	r2, [fp, #32]
+1207a342:	ldr	r1, [pc, #612]	@ (1207a5a8 <maze_ui_render+0x6e8>)
+1207a344:	ldr.w	r2, [r3, r2, lsl #3]
+1207a348:	bl	120638f0 <lv_label_set_text_fmt>
+1207a34c:	ldr	r5, [pc, #604]	@ (1207a5ac <maze_ui_render+0x6ec>)
+1207a34e:	ldr.w	r0, [fp, #36]	@ 0x24
+1207a352:	ldr	r1, [pc, #604]	@ (1207a5b0 <maze_ui_render+0x6f0>)
+1207a354:	movs	r3, #64	@ 0x40
+1207a356:	cmp	r0, #0
+1207a358:	it	eq
+1207a35a:	moveq	r1, r5
+1207a35c:	movs	r5, #216	@ 0xd8
+1207a35e:	movs	r2, #20
+1207a360:	mov	r0, r6
+1207a362:	str.w	r8, [sp]
+1207a366:	bl	12079a30 <label>
+1207a36a:	movs	r3, #96	@ 0x60
+1207a36c:	movs	r2, #20
+1207a36e:	ldr	r1, [pc, #544]	@ (1207a590 <maze_ui_render+0x6d0>)
+1207a370:	mov	r0, r6
+1207a372:	str.w	r8, [sp]
+1207a376:	bl	12079a30 <label>
+1207a37a:	movw	r3, #10844	@ 0x2a5c
+1207a37e:	muls	r5, r7
+1207a380:	add.w	r2, fp, r5
+1207a384:	ldr	r3, [r2, r3]
+1207a386:	ldr.w	r2, [fp, #36]	@ 0x24
+1207a38a:	ldr	r1, [pc, #552]	@ (1207a5b4 <maze_ui_render+0x6f4>)
+1207a38c:	lsrs	r3, r2
+1207a38e:	tst.w	r3, #1
+1207a392:	mov.w	r3, #88	@ 0x58
+1207a396:	mla	r5, r3, r4, r5
+1207a39a:	movw	r3, #10848	@ 0x2a60
+1207a39e:	add	r5, fp
+1207a3a0:	ldr	r3, [r5, r3]
+1207a3a2:	ldr	r2, [pc, #532]	@ (1207a5b8 <maze_ui_render+0x6f8>)
+1207a3a4:	it	eq
+1207a3a6:	moveq	r2, r1
+1207a3a8:	ldr	r1, [pc, #528]	@ (1207a5bc <maze_ui_render+0x6fc>)
+1207a3aa:	bl	120638f0 <lv_label_set_text_fmt>
+1207a3ae:	movw	r3, #10852	@ 0x2a64
+1207a3b2:	ldr	r3, [r5, r3]
+1207a3b4:	cbnz	r3, 1207a3c6 <maze_ui_render+0x506>
+1207a3b6:	movs	r3, #150	@ 0x96
+1207a3b8:	movs	r2, #20
+1207a3ba:	mov	r0, r6
+1207a3bc:	ldr	r1, [pc, #512]	@ (1207a5c0 <maze_ui_render+0x700>)
+1207a3be:	str.w	r8, [sp]
+1207a3c2:	bl	12079a30 <label>
+1207a3c6:	movs	r3, #88	@ 0x58
+1207a3c8:	muls	r4, r3
+1207a3ca:	movs	r3, #216	@ 0xd8
+1207a3cc:	mla	r4, r3, r7, r4
+1207a3d0:	movs	r7, #0
+1207a3d2:	add.w	r5, r4, #10816	@ 0x2a40
+1207a3d6:	add	r4, fp
+1207a3d8:	adds	r5, #40	@ 0x28
+1207a3da:	add.w	r4, r4, #10816	@ 0x2a40
+1207a3de:	add	r5, fp
+1207a3e0:	adds	r4, #36	@ 0x24
+1207a3e2:	ldr	r3, [r4, #0]
+1207a3e4:	adds	r5, #16
+1207a3e6:	cmp	r3, r7
+1207a3e8:	bhi.n	1207a45c <maze_ui_render+0x59c>
+1207a3ea:	movs	r5, #45	@ 0x2d
+1207a3ec:	ldr.w	r8, [pc, #512]	@ 1207a5f0 <maze_ui_render+0x730>
+1207a3f0:	movs	r4, #0
+1207a3f2:	mov.w	r9, #145	@ 0x91
+1207a3f6:	mov.w	r3, #350	@ 0x15e
+1207a3fa:	mov.w	r2, #320	@ 0x140
+1207a3fe:	movs	r1, #20
+1207a400:	mov	r0, r6
+1207a402:	strd	r5, r8, [sp]
+1207a406:	bl	12079a64 <box>
+1207a40a:	movs	r2, #6
+1207a40c:	strd	r4, r4, [sp, #64]	@ 0x40
+1207a410:	strd	r5, r9, [sp, #4]
+1207a414:	str	r4, [sp, #72]	@ 0x48
+1207a416:	strb.w	r2, [sp, #64]	@ 0x40
+1207a41a:	str	r4, [sp, #0]
+1207a41c:	add	r3, sp, #64	@ 0x40
+1207a41e:	ldmia	r3, {r2, r3}
+1207a420:	ldr	r1, [pc, #416]	@ (1207a5c4 <maze_ui_render+0x704>)
+1207a422:	mov	r7, r0
+1207a424:	bl	12079ba0 <command_button>
+1207a428:	movs	r2, #7
+1207a42a:	strd	r4, r4, [sp, #144]	@ 0x90
+1207a42e:	strb.w	r2, [sp, #144]	@ 0x90
+1207a432:	movs	r2, #200	@ 0xc8
+1207a434:	strd	r4, r2, [sp]
+1207a438:	str	r4, [sp, #152]	@ 0x98
+1207a43a:	str.w	r9, [sp, #8]
+1207a43e:	add	r3, sp, #144	@ 0x90
+1207a440:	ldmia	r3, {r2, r3}
+1207a442:	ldr	r1, [pc, #388]	@ (1207a5c8 <maze_ui_render+0x708>)
+1207a444:	mov	r0, r7
+1207a446:	bl	12079ba0 <command_button>
+1207a44a:	mov.w	r3, #350	@ 0x15e
+1207a44e:	movw	r2, #391	@ 0x187
+1207a452:	movs	r1, #20
+1207a454:	mov	r0, r6
+1207a456:	strd	r5, r8, [sp]
+1207a45a:	b.n	12079f88 <maze_ui_render+0xc8>
+1207a45c:	movs	r3, #34	@ 0x22
+1207a45e:	mov.w	r2, #350	@ 0x15e
+1207a462:	muls	r3, r7
+1207a464:	str	r2, [sp, #0]
+1207a466:	mov	r0, r6
+1207a468:	movs	r2, #20
+1207a46a:	ldr	r1, [pc, #292]	@ (1207a590 <maze_ui_render+0x6d0>)
+1207a46c:	adds	r3, #140	@ 0x8c
+1207a46e:	bl	12079a30 <label>
+1207a472:	movs	r2, #100	@ 0x64
+1207a474:	mov	r8, r0
+1207a476:	ldrd	r0, r1, [r5, #-16]
+1207a47a:	movs	r3, #0
+1207a47c:	bl	12092210 <__aeabi_uldivmod>
+1207a480:	ldr.w	r9, [r5, #-8]
+1207a484:	adds	r7, #1
+1207a486:	strd	r0, r1, [sp]
+1207a48a:	strd	r2, r3, [sp, #8]
+1207a48e:	mov	r0, r8
+1207a490:	mov	r2, r7
+1207a492:	ldr	r1, [pc, #312]	@ (1207a5cc <maze_ui_render+0x70c>)
+1207a494:	str.w	r9, [sp, #16]
+1207a498:	bl	120638f0 <lv_label_set_text_fmt>
+1207a49c:	b.n	1207a3e2 <maze_ui_render+0x522>
+1207a49e:	bl	1203ff90 <lv_screen_active>
+1207a4a2:	mov.w	r5, #350	@ 0x15e
+1207a4a6:	mov	r4, r0
+1207a4a8:	movs	r6, #0
+1207a4aa:	movs	r3, #32
+1207a4ac:	movs	r2, #20
+1207a4ae:	ldr	r1, [pc, #288]	@ (1207a5d0 <maze_ui_render+0x710>)
+1207a4b0:	str	r5, [sp, #0]
+1207a4b2:	bl	12079a30 <label>
+1207a4b6:	movs	r3, #66	@ 0x42
+1207a4b8:	movs	r2, #20
+1207a4ba:	mov	r0, r4
+1207a4bc:	ldr	r1, [pc, #276]	@ (1207a5d4 <maze_ui_render+0x714>)
+1207a4be:	str	r5, [sp, #0]
+1207a4c0:	bl	12079a30 <label>
+1207a4c4:	ldr	r3, [pc, #272]	@ (1207a5d8 <maze_ui_render+0x718>)
+1207a4c6:	ldr.w	r9, [pc, #220]	@ 1207a5a4 <maze_ui_render+0x6e4>
+1207a4ca:	ldr	r3, [r3, #0]
+1207a4cc:	ldr.w	r8, [pc, #288]	@ 1207a5f0 <maze_ui_render+0x730>
+1207a4d0:	ldr	r7, [pc, #264]	@ (1207a5dc <maze_ui_render+0x71c>)
+1207a4d2:	str	r3, [sp, #28]
+1207a4d4:	ldr	r3, [sp, #28]
+1207a4d6:	add	r5, sp, #64	@ 0x40
+1207a4d8:	cmp	r3, r6
+1207a4da:	bhi.w	1207a5f4 <maze_ui_render+0x734>
+1207a4de:	movs	r7, #45	@ 0x2d
+1207a4e0:	movs	r6, #0
+1207a4e2:	mov.w	r9, #300	@ 0x12c
+1207a4e6:	mov.w	r3, #350	@ 0x15e
+1207a4ea:	mov.w	r2, #292	@ 0x124
+1207a4ee:	movs	r1, #20
+1207a4f0:	mov	r0, r4
+1207a4f2:	str.w	r8, [sp, #4]
+1207a4f6:	str	r7, [sp, #0]
+1207a4f8:	bl	12079a64 <box>
+1207a4fc:	movs	r2, #5
+1207a4fe:	strd	r6, r6, [sp, #52]	@ 0x34
+1207a502:	strd	r7, r9, [sp, #4]
+1207a506:	strb.w	r2, [sp, #52]	@ 0x34
+1207a50a:	str	r6, [sp, #0]
+1207a50c:	add	r3, sp, #52	@ 0x34
+1207a50e:	ldmia	r3, {r2, r3}
+1207a510:	ldr	r1, [pc, #204]	@ (1207a5e0 <maze_ui_render+0x720>)
+1207a512:	str	r6, [sp, #60]	@ 0x3c
+1207a514:	bl	12079ba0 <command_button>
+1207a518:	mov.w	r3, #350	@ 0x15e
+1207a51c:	mov.w	r2, #342	@ 0x156
+1207a520:	movs	r1, #20
+1207a522:	mov	r0, r4
+1207a524:	strd	r7, r8, [sp]
+1207a528:	bl	12079a64 <box>
+1207a52c:	movs	r3, #1
+1207a52e:	ldrb.w	ip, [fp, #16]
+1207a532:	str	r6, [sp, #64]	@ 0x40
+1207a534:	strd	r6, r6, [r5, #4]
+1207a538:	strd	r7, r9, [sp, #4]
+1207a53c:	strb.w	r3, [sp, #64]	@ 0x40
+1207a540:	str	r6, [sp, #0]
+1207a542:	ldmia.w	r5, {r2, r3}
+1207a546:	ldr	r1, [pc, #156]	@ (1207a5e4 <maze_ui_render+0x724>)
+1207a548:	ldr	r5, [pc, #156]	@ (1207a5e8 <maze_ui_render+0x728>)
+1207a54a:	cmp	ip, r6
+1207a54c:	it	eq
+1207a54e:	moveq	r1, r5
+1207a550:	bl	12079ba0 <command_button>
+1207a554:	ldr.w	r2, [fp, #24]
+1207a558:	mov.w	r3, #350	@ 0x15e
+1207a55c:	cbnz	r2, 1207a568 <maze_ui_render+0x6a8>
+1207a55e:	ldrh.w	r2, [fp, #28]
+1207a562:	cmp	r2, #0
+1207a564:	beq.w	1207a6b6 <maze_ui_render+0x7f6>
+1207a568:	str	r3, [sp, #0]
+1207a56a:	movs	r2, #20
+1207a56c:	movs	r3, #84	@ 0x54
+1207a56e:	mov	r0, r4
+1207a570:	ldr	r1, [pc, #28]	@ (1207a590 <maze_ui_render+0x6d0>)
+1207a572:	bl	12079a30 <label>
+1207a576:	ldrb.w	r3, [fp, #29]
+1207a57a:	cmp	r3, #0
+1207a57c:	beq.n	1207a66c <maze_ui_render+0x7ac>
+1207a57e:	ldr	r1, [pc, #108]	@ (1207a5ec <maze_ui_render+0x72c>)
+1207a580:	bl	120637dc <lv_label_set_text>
+1207a584:	b.n	1207a678 <maze_ui_render+0x7b8>
+1207a586:	nop
+1207a588:	.word	0x12097f50
+1207a58c:	.word	0x12097f60
+1207a590:	.word	0x12099645
+1207a594:	.word	0x12097f2c
+1207a598:	.word	0x12097f73
+1207a59c:	.word	0x2002a2b8
+1207a5a0:	.word	0x12097f49
+1207a5a4:	.word	0x120a6990
+1207a5a8:	.word	0x12097f95
+1207a5ac:	.word	0x12097d9b
+1207a5b0:	.word	0x12097d8e
+1207a5b4:	.word	0x12097db2
+1207a5b8:	.word	0x12097da8
+1207a5bc:	.word	0x12097fa1
+1207a5c0:	.word	0x12097fb7
+1207a5c4:	.word	0x12097fea
+1207a5c8:	.word	0x12097ff7
+1207a5cc:	.word	0x12097fca
+1207a5d0:	.word	0x12098004
+1207a5d4:	.word	0x12098020
+1207a5d8:	.word	0x120a698c
+1207a5dc:	.word	0x12097dbc
+1207a5e0:	.word	0x1209803c
+1207a5e4:	.word	0x12097dcb
+1207a5e8:	.word	0x12097de1
+1207a5ec:	.word	0x12098043
+1207a5f0:	.word	0x00101c27
+1207a5f4:	movs	r2, #58	@ 0x3a
+1207a5f6:	movs	r3, #50	@ 0x32
+1207a5f8:	muls	r2, r6
+1207a5fa:	movs	r1, #20
+1207a5fc:	adds	r2, #112	@ 0x70
+1207a5fe:	str	r3, [sp, #0]
+1207a600:	mov	r0, r4
+1207a602:	mov.w	r3, #350	@ 0x15e
+1207a606:	str.w	r8, [sp, #4]
+1207a60a:	bl	12079a64 <box>
+1207a60e:	ldr.w	r3, [r9, #4]
+1207a612:	str	r0, [sp, #24]
+1207a614:	add.w	r0, fp, #10752	@ 0x2a00
+1207a618:	ldr	r1, [r3, #0]
+1207a61a:	adds	r0, #48	@ 0x30
+1207a61c:	bl	120791c4 <maze_progress_unlocked>
+1207a620:	subs.w	sl, r0, #0
+1207a624:	ldr	r2, [pc, #744]	@ (1207a910 <maze_ui_render+0xa50>)
+1207a626:	mov.w	r1, #80	@ 0x50
+1207a62a:	it	eq
+1207a62c:	moveq	r2, r7
+1207a62e:	ldr.w	r3, [r9]
+1207a632:	add	r0, sp, #144	@ 0x90
+1207a634:	bl	1205a364 <lv_snprintf>
+1207a638:	movs	r3, #0
+1207a63a:	movs	r2, #45	@ 0x2d
+1207a63c:	mov.w	lr, #300	@ 0x12c
+1207a640:	str	r3, [sp, #64]	@ 0x40
+1207a642:	str	r3, [r5, #8]
+1207a644:	strd	r2, lr, [sp, #4]
+1207a648:	str	r6, [sp, #68]	@ 0x44
+1207a64a:	str	r3, [sp, #0]
+1207a64c:	ldr	r0, [sp, #24]
+1207a64e:	add	r1, sp, #144	@ 0x90
+1207a650:	ldmia.w	r5, {r2, r3}
+1207a654:	bl	12079ba0 <command_button>
+1207a658:	cmp.w	sl, #0
+1207a65c:	bne.n	1207a664 <maze_ui_render+0x7a4>
+1207a65e:	movs	r1, #128	@ 0x80
+1207a660:	bl	120390d0 <lv_obj_add_state>
+1207a664:	adds	r6, #1
+1207a666:	add.w	r9, r9, #8
+1207a66a:	b.n	1207a4d4 <maze_ui_render+0x614>
+1207a66c:	ldr.w	r2, [fp, #24]
+1207a670:	cbz	r2, 1207a6b2 <maze_ui_render+0x7f2>
+1207a672:	ldr	r1, [pc, #672]	@ (1207a914 <maze_ui_render+0xa54>)
+1207a674:	bl	120638f0 <lv_label_set_text_fmt>
+1207a678:	movs	r3, #45	@ 0x2d
+1207a67a:	movw	r2, #391	@ 0x187
+1207a67e:	movs	r1, #20
+1207a680:	str	r3, [sp, #0]
+1207a682:	mov	r0, r4
+1207a684:	mov.w	r3, #350	@ 0x15e
+1207a688:	str.w	r8, [sp, #4]
+1207a68c:	bl	12079a64 <box>
+1207a690:	movs	r2, #0
+1207a692:	movs	r1, #8
+1207a694:	strd	r2, r2, [sp, #144]	@ 0x90
+1207a698:	strb.w	r1, [sp, #144]	@ 0x90
+1207a69c:	movs	r1, #130	@ 0x82
+1207a69e:	ldr	r3, [pc, #632]	@ (1207a918 <maze_ui_render+0xa58>)
+1207a6a0:	str	r2, [sp, #152]	@ 0x98
+1207a6a2:	str	r0, [r3, #0]
+1207a6a4:	strd	r1, r1, [sp, #4]
+1207a6a8:	add	r3, sp, #144	@ 0x90
+1207a6aa:	str	r2, [sp, #0]
+1207a6ac:	ldr	r1, [pc, #620]	@ (1207a91c <maze_ui_render+0xa5c>)
+1207a6ae:	ldmia	r3, {r2, r3}
+1207a6b0:	b.n	1207a31a <maze_ui_render+0x45a>
+1207a6b2:	ldr	r1, [pc, #620]	@ (1207a920 <maze_ui_render+0xa60>)
+1207a6b4:	b.n	1207a580 <maze_ui_render+0x6c0>
+1207a6b6:	str	r3, [sp, #0]
+1207a6b8:	movs	r2, #20
+1207a6ba:	movw	r3, #397	@ 0x18d
+1207a6be:	mov	r0, r4
+1207a6c0:	ldr	r1, [pc, #608]	@ (1207a924 <maze_ui_render+0xa64>)
+1207a6c2:	bl	12079a30 <label>
+1207a6c6:	b.n	12079f98 <maze_ui_render+0xd8>
+1207a6c8:	movs	r3, #0
+1207a6ca:	ldr	r1, [pc, #604]	@ (1207a928 <maze_ui_render+0xa68>)
+1207a6cc:	cmp	r2, #5
+1207a6ce:	strb	r3, [r1, #0]
+1207a6d0:	beq.w	1207a8a6 <maze_ui_render+0x9e6>
+1207a6d4:	ldr	r2, [pc, #596]	@ (1207a92c <maze_ui_render+0xa6c>)
+1207a6d6:	str	r3, [r2, #0]
+1207a6d8:	cmp	r6, #0
+1207a6da:	bne.w	1207a856 <maze_ui_render+0x996>
+1207a6de:	mov.w	r7, #350	@ 0x15e
+1207a6e2:	bl	1203ff90 <lv_screen_active>
+1207a6e6:	movs	r3, #10
+1207a6e8:	movs	r2, #20
+1207a6ea:	ldr	r1, [pc, #580]	@ (1207a930 <maze_ui_render+0xa70>)
+1207a6ec:	str	r7, [sp, #0]
+1207a6ee:	mov	r8, r0
+1207a6f0:	bl	12079a30 <label>
+1207a6f4:	ldr.w	r5, [fp, #24]
+1207a6f8:	ldr	r1, [pc, #564]	@ (1207a930 <maze_ui_render+0xa70>)
+1207a6fa:	ldr	r2, [pc, #568]	@ (1207a934 <maze_ui_render+0xa74>)
+1207a6fc:	ldr.w	r3, [fp, #12]
+1207a700:	cmp	r5, #0
+1207a702:	it	eq
+1207a704:	moveq	r2, r1
+1207a706:	str	r3, [sp, #24]
+1207a708:	ldr	r5, [pc, #556]	@ (1207a938 <maze_ui_render+0xa78>)
+1207a70a:	ldrb.w	r3, [r4, #2279]	@ 0x8e7
+1207a70e:	str	r2, [sp, #0]
+1207a710:	ldr	r2, [pc, #552]	@ (1207a93c <maze_ui_render+0xa7c>)
+1207a712:	ldr	r1, [sp, #24]
+1207a714:	cmp	r3, #0
+1207a716:	it	ne
+1207a718:	movne	r5, r2
+1207a71a:	ldr	r2, [pc, #548]	@ (1207a940 <maze_ui_render+0xa80>)
+1207a71c:	mov	r3, r5
+1207a71e:	ldr.w	r2, [r2, r1, lsl #3]
+1207a722:	ldr	r1, [pc, #544]	@ (1207a944 <maze_ui_render+0xa84>)
+1207a724:	bl	120638f0 <lv_label_set_text_fmt>
+1207a728:	movs	r3, #35	@ 0x23
+1207a72a:	movs	r2, #20
+1207a72c:	ldr	r1, [pc, #512]	@ (1207a930 <maze_ui_render+0xa70>)
+1207a72e:	str	r7, [sp, #0]
+1207a730:	mov	r0, r8
+1207a732:	bl	12079a30 <label>
+1207a736:	ldr	r3, [pc, #528]	@ (1207a948 <maze_ui_render+0xa88>)
+1207a738:	movs	r2, #95	@ 0x5f
+1207a73a:	str	r0, [r3, #0]
+1207a73c:	movs	r3, #200	@ 0xc8
+1207a73e:	ldr	r1, [pc, #524]	@ (1207a94c <maze_ui_render+0xa8c>)
+1207a740:	str	r3, [sp, #0]
+1207a742:	mov	r0, r8
+1207a744:	movs	r3, #58	@ 0x3a
+1207a746:	bl	12079a30 <label>
+1207a74a:	ldr	r3, [pc, #516]	@ (1207a950 <maze_ui_render+0xa90>)
+1207a74c:	ldr.w	ip, [pc, #556]	@ 1207a97c <maze_ui_render+0xabc>
+1207a750:	str	r0, [r3, #0]
+1207a752:	mov.w	r3, #302	@ 0x12e
+1207a756:	ldr.w	r5, [r4, #2248]	@ 0x8c8
+1207a75a:	movs	r2, #79	@ 0x4f
+1207a75c:	strd	r3, ip, [sp]
+1207a760:	movs	r1, #19
+1207a762:	mov.w	r3, #352	@ 0x160
+1207a766:	mov	r0, r8
+1207a768:	bl	12079a64 <box>
+1207a76c:	mov.w	r3, #300	@ 0x12c
+1207a770:	ldr.w	r9, [pc, #524]	@ 1207a980 <maze_ui_render+0xac0>
+1207a774:	movs	r2, #80	@ 0x50
+1207a776:	movs	r1, #20
+1207a778:	strd	r3, r9, [sp]
+1207a77c:	mov	r0, r8
+1207a77e:	mov	r3, r7
+1207a780:	bl	12079a64 <box>
+1207a784:	vldr	s0, [r5]
+1207a788:	str	r0, [sp, #24]
+1207a78a:	bl	12085c6c <lroundf>
+1207a78e:	vldr	s0, [r5, #4]
+1207a792:	mov	r7, r0
+1207a794:	bl	12085c6c <lroundf>
+1207a798:	mov	r3, r7
+1207a79a:	strd	r0, r9, [sp]
+1207a79e:	mov	r2, r6
+1207a7a0:	mov	r1, r6
+1207a7a2:	ldr	r0, [sp, #24]
+1207a7a4:	bl	12079a64 <box>
+1207a7a8:	mov	r7, r0
+1207a7aa:	str.w	r0, [sl]
+1207a7ae:	ldr	r3, [r5, #52]	@ 0x34
+1207a7b0:	cmp	r6, r3
+1207a7b2:	bcc.n	1207a8b4 <maze_ui_render+0x9f4>
+1207a7b4:	movs	r6, #0
+1207a7b6:	ldr.w	r9, [pc, #460]	@ 1207a984 <maze_ui_render+0xac4>
+1207a7ba:	ldr	r3, [r5, #24]
+1207a7bc:	cmp	r6, r3
+1207a7be:	bcc.w	1207a988 <maze_ui_render+0xac8>
+1207a7c2:	movs	r6, #0
+1207a7c4:	mov.w	r9, #12
+1207a7c8:	ldr	r3, [r5, #32]
+1207a7ca:	cmp	r6, r3
+1207a7cc:	bcc.w	1207a9d4 <maze_ui_render+0xb14>
+1207a7d0:	vldr	s0, [r5, #36]	@ 0x24
+1207a7d4:	vldr	s1, [r5, #40]	@ 0x28
+1207a7d8:	vldr	s2, [r5, #44]	@ 0x2c
+1207a7dc:	ldr	r1, [pc, #372]	@ (1207a954 <maze_ui_render+0xa94>)
+1207a7de:	mov	r0, r7
+1207a7e0:	bl	12079ac6 <circle>
+1207a7e4:	addw	r3, r4, #2248	@ 0x8c8
+1207a7e8:	vldr	s0, [r3, #40]	@ 0x28
+1207a7ec:	vldr	s1, [r3, #44]	@ 0x2c
+1207a7f0:	vstr	s0, [sp, #144]	@ 0x90
+1207a7f4:	vstr	s1, [sp, #148]	@ 0x94
+1207a7f8:	vldr	s2, [r5, #8]
+1207a7fc:	ldr	r1, [pc, #344]	@ (1207a958 <maze_ui_render+0xa98>)
+1207a7fe:	mov	r0, r7
+1207a800:	vstr	s2, [sp, #152]	@ 0x98
+1207a804:	bl	12079ac6 <circle>
+1207a808:	ldr	r3, [pc, #336]	@ (1207a95c <maze_ui_render+0xa9c>)
+1207a80a:	ldr	r1, [pc, #340]	@ (1207a960 <maze_ui_render+0xaa0>)
+1207a80c:	str	r0, [r3, #0]
+1207a80e:	movs	r3, #120	@ 0x78
+1207a810:	movs	r2, #90	@ 0x5a
+1207a812:	strd	r3, r1, [sp]
+1207a816:	ldr	r0, [sp, #24]
+1207a818:	mov.w	r3, #310	@ 0x136
+1207a81c:	movs	r1, #20
+1207a81e:	bl	12079a64 <box>
+1207a822:	ldr	r3, [pc, #320]	@ (1207a964 <maze_ui_render+0xaa4>)
+1207a824:	ldr	r1, [pc, #264]	@ (1207a930 <maze_ui_render+0xa70>)
+1207a826:	str	r0, [r3, #0]
+1207a828:	mov.w	r3, #286	@ 0x11e
+1207a82c:	str	r3, [sp, #0]
+1207a82e:	movs	r3, #12
+1207a830:	mov	r2, r3
+1207a832:	bl	12079a30 <label>
+1207a836:	ldr	r3, [pc, #304]	@ (1207a968 <maze_ui_render+0xaa8>)
+1207a838:	movw	r2, #391	@ 0x187
+1207a83c:	str	r0, [r3, #0]
+1207a83e:	movs	r3, #45	@ 0x2d
+1207a840:	ldr	r0, [pc, #296]	@ (1207a96c <maze_ui_render+0xaac>)
+1207a842:	movs	r1, #20
+1207a844:	strd	r3, r0, [sp]
+1207a848:	mov.w	r3, #350	@ 0x15e
+1207a84c:	mov	r0, r8
+1207a84e:	bl	12079a64 <box>
+1207a852:	ldr	r3, [pc, #196]	@ (1207a918 <maze_ui_render+0xa58>)
+1207a854:	str	r0, [r3, #0]
+1207a856:	ldr	r5, [pc, #192]	@ (1207a918 <maze_ui_render+0xa58>)
+1207a858:	ldr	r0, [r5, #0]
+1207a85a:	bl	1203e4c0 <lv_obj_clean>
+1207a85e:	movs	r2, #0
+1207a860:	ldr	r3, [pc, #268]	@ (1207a970 <maze_ui_render+0xab0>)
+1207a862:	movs	r1, #1
+1207a864:	str	r2, [r3, #0]
+1207a866:	ldr	r2, [pc, #252]	@ (1207a964 <maze_ui_render+0xaa4>)
+1207a868:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a86c:	ldr	r0, [r2, #0]
+1207a86e:	subs	r2, r3, #1
+1207a870:	cmp	r2, #1
+1207a872:	bls.n	1207a87a <maze_ui_render+0x9ba>
+1207a874:	cmp	r3, #5
+1207a876:	bne.w	1207a9f2 <maze_ui_render+0xb32>
+1207a87a:	bl	120396ac <lv_obj_add_flag>
+1207a87e:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207a882:	cmp	r3, #7
+1207a884:	bhi.w	1207ac18 <maze_ui_render+0xd58>
+1207a888:	tbh	[pc, r3, lsl #1]
+1207a88c:	.word	0x00d100b6
+1207a890:	.word	0x01ba00da
+1207a894:	.word	0x00e301ba
+1207a898:	.word	0x01010101
+1207a89c:	movs	r2, #0
+1207a89e:	ldr	r3, [pc, #136]	@ (1207a928 <maze_ui_render+0xa68>)
+1207a8a0:	strb	r2, [r3, #0]
+1207a8a2:	b.w	12079fd8 <maze_ui_render+0x118>
+1207a8a6:	ldr	r2, [pc, #204]	@ (1207a974 <maze_ui_render+0xab4>)
+1207a8a8:	ldrb	r2, [r2, #0]
+1207a8aa:	cmp	r2, #1
+1207a8ac:	it	eq
+1207a8ae:	ldreq.w	r3, [r4, #2336]	@ 0x920
+1207a8b2:	b.n	1207a6d4 <maze_ui_render+0x814>
+1207a8b4:	movs	r2, #20
+1207a8b6:	ldr	r3, [r5, #48]	@ 0x30
+1207a8b8:	mla	r3, r2, r6, r3
+1207a8bc:	ldrb	r2, [r3, #16]
+1207a8be:	vldr	s18, [r3, #4]
+1207a8c2:	vldr	s0, [r3]
+1207a8c6:	vldr	s17, [r3, #8]
+1207a8ca:	vldr	s16, [r3, #12]
+1207a8ce:	str	r2, [sp, #32]
+1207a8d0:	bl	12085c6c <lroundf>
+1207a8d4:	vmov.f32	s0, s18
+1207a8d8:	str	r0, [sp, #44]	@ 0x2c
+1207a8da:	bl	12085c6c <lroundf>
+1207a8de:	vmov.f32	s0, s17
+1207a8e2:	str	r0, [sp, #40]	@ 0x28
+1207a8e4:	bl	12085c6c <lroundf>
+1207a8e8:	vmov.f32	s0, s16
+1207a8ec:	str	r0, [sp, #36]	@ 0x24
+1207a8ee:	bl	12085c6c <lroundf>
+1207a8f2:	ldr	r2, [sp, #32]
+1207a8f4:	ldr	r3, [pc, #128]	@ (1207a978 <maze_ui_render+0xab8>)
+1207a8f6:	ldr	r1, [sp, #44]	@ 0x2c
+1207a8f8:	cmp	r2, #1
+1207a8fa:	it	ne
+1207a8fc:	movne	r3, r9
+1207a8fe:	strd	r0, r3, [sp]
+1207a902:	ldrd	r3, r2, [sp, #36]	@ 0x24
+1207a906:	mov	r0, r7
+1207a908:	bl	12079a64 <box>
+1207a90c:	adds	r6, #1
+1207a90e:	b.n	1207a7ae <maze_ui_render+0x8ee>
+1207a910:	.word	0x120981a7
+1207a914:	.word	0x12098050
+1207a918:	.word	0x2002a2b8
+1207a91c:	.word	0x12098049
+1207a920:	.word	0x1209805f
+1207a924:	.word	0x1209806f
+1207a928:	.word	0x2002a2b6
+1207a92c:	.word	0x2002a224
+1207a930:	.word	0x12099645
+1207a934:	.word	0x12097df7
+1207a938:	.word	0x12097df0
+1207a93c:	.word	0x12097dda
+1207a940:	.word	0x120a6990
+1207a944:	.word	0x12098094
+1207a948:	.word	0x2002a2c0
+1207a94c:	.word	0x1209809e
+1207a950:	.word	0x2002a2c8
+1207a954:	.word	0x0040c98d
+1207a958:	.word	0x007dd3fc
+1207a95c:	.word	0x2002a2cc
+1207a960:	.word	0x00243e50
+1207a964:	.word	0x2002a2bc
+1207a968:	.word	0x2002a2c4
+1207a96c:	.word	0x00101c27
+1207a970:	.word	0x2002a23c
+1207a974:	.word	0x2002a2b5
+1207a978:	.word	0x00294f68
+1207a97c:	.word	0x00526b80
+1207a980:	.word	0x00182b38
+1207a984:	.word	0x00708596
+1207a988:	ldr	r3, [r5, #20]
+1207a98a:	add.w	r3, r3, r6, lsl #4
+1207a98e:	vldr	s18, [r3, #4]
+1207a992:	vldr	s0, [r3]
+1207a996:	vldr	s17, [r3, #8]
+1207a99a:	vldr	s16, [r3, #12]
+1207a99e:	bl	12085c6c <lroundf>
+1207a9a2:	vmov.f32	s0, s18
+1207a9a6:	str	r0, [sp, #40]	@ 0x28
+1207a9a8:	bl	12085c6c <lroundf>
+1207a9ac:	vmov.f32	s0, s17
+1207a9b0:	str	r0, [sp, #36]	@ 0x24
+1207a9b2:	bl	12085c6c <lroundf>
+1207a9b6:	vmov.f32	s0, s16
+1207a9ba:	str	r0, [sp, #32]
+1207a9bc:	bl	12085c6c <lroundf>
+1207a9c0:	ldrd	r3, r2, [sp, #32]
+1207a9c4:	strd	r0, r9, [sp]
+1207a9c8:	ldr	r1, [sp, #40]	@ 0x28
+1207a9ca:	mov	r0, r7
+1207a9cc:	bl	12079a64 <box>
+1207a9d0:	adds	r6, #1
+1207a9d2:	b.n	1207a7ba <maze_ui_render+0x8fa>
+1207a9d4:	ldr	r3, [r5, #28]
+1207a9d6:	mov	r0, r7
+1207a9d8:	mla	r3, r9, r6, r3
+1207a9dc:	ldr	r1, [pc, #636]	@ (1207ac5c <maze_ui_render+0xd9c>)
+1207a9de:	vldr	s0, [r3]
+1207a9e2:	vldr	s1, [r3, #4]
+1207a9e6:	vldr	s2, [r3, #8]
+1207a9ea:	bl	12079ac6 <circle>
+1207a9ee:	adds	r6, #1
+1207a9f0:	b.n	1207a7c8 <maze_ui_render+0x908>
+1207a9f2:	bl	120391c0 <lv_obj_remove_flag>
+1207a9f6:	b.n	1207a87e <maze_ui_render+0x9be>
+1207a9f8:	movs	r6, #110	@ 0x6e
+1207a9fa:	ldr	r3, [pc, #612]	@ (1207ac60 <maze_ui_render+0xda0>)
+1207a9fc:	ldr	r1, [pc, #612]	@ (1207ac64 <maze_ui_render+0xda4>)
+1207a9fe:	ldr	r0, [r3, #0]
+1207aa00:	bl	120637dc <lv_label_set_text>
+1207aa04:	str	r6, [sp, #0]
+1207aa06:	movs	r3, #70	@ 0x46
+1207aa08:	movs	r2, #0
+1207aa0a:	ldr	r1, [pc, #604]	@ (1207ac68 <maze_ui_render+0xda8>)
+1207aa0c:	ldr	r0, [r5, #0]
+1207aa0e:	bl	12079c70 <button>
+1207aa12:	mov	r2, r6
+1207aa14:	movs	r1, #210	@ 0xd2
+1207aa16:	ldr	r0, [r5, #0]
+1207aa18:	bl	12079c48 <back_button>
+1207aa1c:	ldr	r6, [pc, #588]	@ (1207ac6c <maze_ui_render+0xdac>)
+1207aa1e:	ldr	r3, [pc, #592]	@ (1207ac70 <maze_ui_render+0xdb0>)
+1207aa20:	mov	r1, r6
+1207aa22:	ldr	r0, [r3, #0]
+1207aa24:	bl	120637dc <lv_label_set_text>
+1207aa28:	movs	r6, #1
+1207aa2a:	b.w	12079fda <maze_ui_render+0x11a>
+1207aa2e:	movs	r3, #130	@ 0x82
+1207aa30:	str	r3, [sp, #0]
+1207aa32:	movs	r2, #6
+1207aa34:	ldr	r1, [pc, #572]	@ (1207ac74 <maze_ui_render+0xdb4>)
+1207aa36:	ldr	r0, [r5, #0]
+1207aa38:	bl	12079c70 <button>
+1207aa3c:	ldr	r6, [pc, #568]	@ (1207ac78 <maze_ui_render+0xdb8>)
+1207aa3e:	b.n	1207aa1e <maze_ui_render+0xb5e>
+1207aa40:	movs	r3, #130	@ 0x82
+1207aa42:	str	r3, [sp, #0]
+1207aa44:	movs	r2, #1
+1207aa46:	ldr	r1, [pc, #564]	@ (1207ac7c <maze_ui_render+0xdbc>)
+1207aa48:	ldr	r0, [r5, #0]
+1207aa4a:	bl	12079c70 <button>
+1207aa4e:	ldr	r6, [pc, #560]	@ (1207ac80 <maze_ui_render+0xdc0>)
+1207aa50:	b.n	1207aa1e <maze_ui_render+0xb5e>
+1207aa52:	movs	r6, #80	@ 0x50
+1207aa54:	str	r6, [sp, #0]
+1207aa56:	movs	r3, #24
+1207aa58:	movs	r2, #2
+1207aa5a:	ldr	r1, [pc, #552]	@ (1207ac84 <maze_ui_render+0xdc4>)
+1207aa5c:	ldr	r0, [r5, #0]
+1207aa5e:	bl	12079c70 <button>
+1207aa62:	str	r6, [sp, #0]
+1207aa64:	movs	r3, #111	@ 0x6f
+1207aa66:	movs	r2, #3
+1207aa68:	ldr	r1, [pc, #540]	@ (1207ac88 <maze_ui_render+0xdc8>)
+1207aa6a:	ldr	r0, [r5, #0]
+1207aa6c:	bl	12079c70 <button>
+1207aa70:	str	r6, [sp, #0]
+1207aa72:	movs	r3, #198	@ 0xc6
+1207aa74:	movs	r2, #4
+1207aa76:	ldr	r1, [pc, #532]	@ (1207ac8c <maze_ui_render+0xdcc>)
+1207aa78:	ldr	r0, [r5, #0]
+1207aa7a:	bl	12079c70 <button>
+1207aa7e:	mov	r2, r6
+1207aa80:	movw	r1, #285	@ 0x11d
+1207aa84:	ldr	r0, [r5, #0]
+1207aa86:	bl	12079c48 <back_button>
+1207aa8a:	ldr	r6, [pc, #516]	@ (1207ac90 <maze_ui_render+0xdd0>)
+1207aa8c:	b.n	1207aa1e <maze_ui_render+0xb5e>
+1207aa8e:	cmp	r3, #6
+1207aa90:	beq.n	1207aab2 <maze_ui_render+0xbf2>
+1207aa92:	movs	r1, #80	@ 0x50
+1207aa94:	ldr	r2, [pc, #508]	@ (1207ac94 <maze_ui_render+0xdd4>)
+1207aa96:	add	r0, sp, #64	@ 0x40
+1207aa98:	bl	1205a364 <lv_snprintf>
+1207aa9c:	ldr	r6, [pc, #504]	@ (1207ac98 <maze_ui_render+0xdd8>)
+1207aa9e:	ldrb.w	r3, [fp, #29]
+1207aaa2:	add	r7, sp, #144	@ 0x90
+1207aaa4:	cbz	r3, 1207aae4 <maze_ui_render+0xc24>
+1207aaa6:	ldr	r2, [pc, #500]	@ (1207ac9c <maze_ui_render+0xddc>)
+1207aaa8:	movs	r1, #80	@ 0x50
+1207aaaa:	mov	r0, r7
+1207aaac:	bl	1205a364 <lv_snprintf>
+1207aab0:	b.n	1207aaf6 <maze_ui_render+0xc36>
+1207aab2:	ldr	r2, [pc, #492]	@ (1207aca0 <maze_ui_render+0xde0>)
+1207aab4:	ldr.w	r3, [fp, #12]
+1207aab8:	ldr	r1, [r2, #0]
+1207aaba:	ldr	r6, [pc, #488]	@ (1207aca4 <maze_ui_render+0xde4>)
+1207aabc:	ldr	r2, [pc, #488]	@ (1207aca8 <maze_ui_render+0xde8>)
+1207aabe:	adds	r3, #1
+1207aac0:	cmp	r3, r1
+1207aac2:	it	ne
+1207aac4:	movne	r6, r2
+1207aac6:	ldr.w	r3, [r4, #3280]	@ 0xcd0
+1207aaca:	cbz	r3, 1207aad8 <maze_ui_render+0xc18>
+1207aacc:	movs	r1, #80	@ 0x50
+1207aace:	ldr	r2, [pc, #476]	@ (1207acac <maze_ui_render+0xdec>)
+1207aad0:	add	r0, sp, #64	@ 0x40
+1207aad2:	bl	1205a364 <lv_snprintf>
+1207aad6:	b.n	1207aa9e <maze_ui_render+0xbde>
+1207aad8:	movs	r1, #80	@ 0x50
+1207aada:	ldr	r2, [pc, #468]	@ (1207acb0 <maze_ui_render+0xdf0>)
+1207aadc:	add	r0, sp, #64	@ 0x40
+1207aade:	bl	1205a364 <lv_snprintf>
+1207aae2:	b.n	1207aa9e <maze_ui_render+0xbde>
+1207aae4:	ldr.w	r3, [fp, #24]
+1207aae8:	cmp	r3, #0
+1207aaea:	beq.n	1207ab94 <maze_ui_render+0xcd4>
+1207aaec:	movs	r1, #80	@ 0x50
+1207aaee:	mov	r0, r7
+1207aaf0:	ldr	r2, [pc, #448]	@ (1207acb4 <maze_ui_render+0xdf4>)
+1207aaf2:	bl	1205a364 <lv_snprintf>
+1207aaf6:	ldr	r0, [pc, #360]	@ (1207ac60 <maze_ui_render+0xda0>)
+1207aaf8:	str	r7, [sp, #0]
+1207aafa:	ldr	r0, [r0, #0]
+1207aafc:	add	r3, sp, #64	@ 0x40
+1207aafe:	ldr.w	r2, [r4, #3276]	@ 0xccc
+1207ab02:	ldr	r1, [pc, #436]	@ (1207acb8 <maze_ui_render+0xdf8>)
+1207ab04:	bl	120638f0 <lv_label_set_text_fmt>
+1207ab08:	ldr.w	r3, [fp, #24]
+1207ab0c:	ldr	r0, [r5, #0]
+1207ab0e:	cbnz	r3, 1207ab1a <maze_ui_render+0xc5a>
+1207ab10:	ldrb.w	r8, [fp, #28]
+1207ab14:	cmp.w	r8, #0
+1207ab18:	beq.n	1207ab98 <maze_ui_render+0xcd8>
+1207ab1a:	movs	r7, #0
+1207ab1c:	movs	r2, #8
+1207ab1e:	strd	r7, r7, [sp, #144]	@ 0x90
+1207ab22:	mov.w	r8, #80	@ 0x50
+1207ab26:	strb.w	r2, [sp, #144]	@ 0x90
+1207ab2a:	movs	r2, #24
+1207ab2c:	strd	r2, r8, [sp, #4]
+1207ab30:	str	r7, [sp, #152]	@ 0x98
+1207ab32:	str	r7, [sp, #0]
+1207ab34:	add	r3, sp, #144	@ 0x90
+1207ab36:	ldmia	r3, {r2, r3}
+1207ab38:	ldr	r1, [pc, #384]	@ (1207acbc <maze_ui_render+0xdfc>)
+1207ab3a:	bl	12079ba0 <command_button>
+1207ab3e:	str.w	r8, [sp]
+1207ab42:	movs	r3, #111	@ 0x6f
+1207ab44:	movs	r2, #4
+1207ab46:	ldr	r1, [pc, #324]	@ (1207ac8c <maze_ui_render+0xdcc>)
+1207ab48:	ldr	r0, [r5, #0]
+1207ab4a:	bl	12079c70 <button>
+1207ab4e:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207ab52:	cmp	r3, #6
+1207ab54:	bne.n	1207ab86 <maze_ui_render+0xcc6>
+1207ab56:	ldr	r2, [pc, #328]	@ (1207aca0 <maze_ui_render+0xde0>)
+1207ab58:	ldr.w	r3, [fp, #12]
+1207ab5c:	ldr	r2, [r2, #0]
+1207ab5e:	adds	r3, #1
+1207ab60:	cmp	r3, r2
+1207ab62:	bcs.n	1207ab86 <maze_ui_render+0xcc6>
+1207ab64:	movs	r2, #3
+1207ab66:	strd	r7, r7, [sp, #64]	@ 0x40
+1207ab6a:	strb.w	r2, [sp, #64]	@ 0x40
+1207ab6e:	movs	r2, #198	@ 0xc6
+1207ab70:	strd	r7, r2, [sp]
+1207ab74:	str.w	r8, [sp, #8]
+1207ab78:	add	r3, sp, #64	@ 0x40
+1207ab7a:	str	r7, [sp, #72]	@ 0x48
+1207ab7c:	ldr	r1, [pc, #320]	@ (1207acc0 <maze_ui_render+0xe00>)
+1207ab7e:	ldr	r0, [r5, #0]
+1207ab80:	ldmia	r3, {r2, r3}
+1207ab82:	bl	12079ba0 <command_button>
+1207ab86:	movs	r2, #80	@ 0x50
+1207ab88:	movw	r1, #285	@ 0x11d
+1207ab8c:	ldr	r0, [r5, #0]
+1207ab8e:	bl	12079c48 <back_button>
+1207ab92:	b.n	1207aa1e <maze_ui_render+0xb5e>
+1207ab94:	ldr	r2, [pc, #300]	@ (1207acc4 <maze_ui_render+0xe04>)
+1207ab96:	b.n	1207aaa8 <maze_ui_render+0xbe8>
+1207ab98:	ldrb.w	r3, [r4, #2280]	@ 0x8e8
+1207ab9c:	cmp	r3, #6
+1207ab9e:	bne.n	1207abec <maze_ui_render+0xd2c>
+1207aba0:	ldr	r2, [pc, #252]	@ (1207aca0 <maze_ui_render+0xde0>)
+1207aba2:	ldr.w	r3, [fp, #12]
+1207aba6:	ldr	r2, [r2, #0]
+1207aba8:	adds	r3, #1
+1207abaa:	cmp	r3, r2
+1207abac:	bcs.n	1207abec <maze_ui_render+0xd2c>
+1207abae:	mov.w	r9, #106	@ 0x6a
+1207abb2:	movs	r3, #24
+1207abb4:	movs	r2, #4
+1207abb6:	ldr	r1, [pc, #212]	@ (1207ac8c <maze_ui_render+0xdcc>)
+1207abb8:	str.w	r9, [sp]
+1207abbc:	bl	12079c70 <button>
+1207abc0:	movs	r3, #3
+1207abc2:	str.w	r8, [sp, #144]	@ 0x90
+1207abc6:	strd	r8, r8, [r7, #4]
+1207abca:	strb.w	r3, [sp, #144]	@ 0x90
+1207abce:	movs	r3, #142	@ 0x8e
+1207abd0:	strd	r8, r3, [sp]
+1207abd4:	str.w	r9, [sp, #8]
+1207abd8:	ldr	r1, [pc, #228]	@ (1207acc0 <maze_ui_render+0xe00>)
+1207abda:	ldmia.w	r7, {r2, r3}
+1207abde:	ldr	r0, [r5, #0]
+1207abe0:	bl	12079ba0 <command_button>
+1207abe4:	mov	r2, r9
+1207abe6:	mov.w	r1, #260	@ 0x104
+1207abea:	b.n	1207ab8c <maze_ui_render+0xccc>
+1207abec:	movs	r7, #110	@ 0x6e
+1207abee:	movs	r3, #70	@ 0x46
+1207abf0:	movs	r2, #4
+1207abf2:	ldr	r1, [pc, #152]	@ (1207ac8c <maze_ui_render+0xdcc>)
+1207abf4:	str	r7, [sp, #0]
+1207abf6:	bl	12079c70 <button>
+1207abfa:	mov	r2, r7
+1207abfc:	movs	r1, #210	@ 0xd2
+1207abfe:	b.n	1207ab8c <maze_ui_render+0xccc>
+1207ac00:	movs	r7, #110	@ 0x6e
+1207ac02:	ldr	r2, [pc, #196]	@ (1207acc8 <maze_ui_render+0xe08>)
+1207ac04:	ldr	r6, [pc, #196]	@ (1207accc <maze_ui_render+0xe0c>)
+1207ac06:	str	r7, [sp, #0]
+1207ac08:	cmp	r3, #3
+1207ac0a:	it	eq
+1207ac0c:	moveq	r6, r2
+1207ac0e:	ldr	r1, [pc, #192]	@ (1207acd0 <maze_ui_render+0xe10>)
+1207ac10:	movs	r3, #70	@ 0x46
+1207ac12:	movs	r2, #5
+1207ac14:	ldr	r0, [r5, #0]
+1207ac16:	b.n	1207abf6 <maze_ui_render+0xd36>
+1207ac18:	ldr	r6, [pc, #184]	@ (1207acd4 <maze_ui_render+0xe14>)
+1207ac1a:	b.n	1207aa1e <maze_ui_render+0xb5e>
+1207ac1c:	mov	r5, r2
+1207ac1e:	b.w	1207a216 <maze_ui_render+0x356>
+1207ac22:	ldr.w	r2, [r4, #3276]	@ 0xccc
+1207ac26:	ldr	r1, [pc, #176]	@ (1207acd8 <maze_ui_render+0xe18>)
+1207ac28:	ldr	r3, [pc, #68]	@ (1207ac70 <maze_ui_render+0xdb0>)
+1207ac2a:	b.n	1207ac50 <maze_ui_render+0xd90>
+1207ac2c:	cmp	r6, #0
+1207ac2e:	bne.n	1207ac1c <maze_ui_render+0xd5c>
+1207ac30:	mov	r5, r2
+1207ac32:	b.w	1207a204 <maze_ui_render+0x344>
+1207ac36:	cmp	r6, #0
+1207ac38:	beq.n	1207ac30 <maze_ui_render+0xd70>
+1207ac3a:	mov	r5, r2
+1207ac3c:	subs	r1, r3, #3
+1207ac3e:	cmp	r1, #1
+1207ac40:	bhi.w	1207a226 <maze_ui_render+0x366>
+1207ac44:	ldr	r1, [pc, #148]	@ (1207acdc <maze_ui_render+0xe1c>)
+1207ac46:	ldr	r0, [pc, #152]	@ (1207ace0 <maze_ui_render+0xe20>)
+1207ac48:	cmp	r3, #3
+1207ac4a:	it	ne
+1207ac4c:	movne	r1, r0
+1207ac4e:	ldr	r3, [pc, #16]	@ (1207ac60 <maze_ui_render+0xda0>)
+1207ac50:	ldr	r0, [r3, #0]
+1207ac52:	bl	120638f0 <lv_label_set_text_fmt>
+1207ac56:	b.w	1207a226 <maze_ui_render+0x366>
+1207ac5a:	nop
+1207ac5c:	.word	0x00ef4b53
+1207ac60:	.word	0x2002a2c4
+1207ac64:	.word	0x120980af
+1207ac68:	.word	0x1209810d
+1207ac6c:	.word	0x12097e51
+1207ac70:	.word	0x2002a2c0
+1207ac74:	.word	0x12098114
+1207ac78:	.word	0x12097e6d
+1207ac7c:	.word	0x12097e93
+1207ac80:	.word	0x12097e77
+1207ac84:	.word	0x1209811b
+1207ac88:	.word	0x1209808d
+1207ac8c:	.word	0x12098122
+1207ac90:	.word	0x12097e90
+1207ac94:	.word	0x12098129
+1207ac98:	.word	0x12097e24
+1207ac9c:	.word	0x12098043
+1207aca0:	.word	0x120a698c
+1207aca4:	.word	0x12097e04
+1207aca8:	.word	0x12097e11
+1207acac:	.word	0x12098142
+1207acb0:	.word	0x12098151
+1207acb4:	.word	0x12098162
+1207acb8:	.word	0x12098194
+1207acbc:	.word	0x12098049
+1207acc0:	.word	0x120981aa
+1207acc4:	.word	0x12098184
+1207acc8:	.word	0x12097e37
+1207accc:	.word	0x12097e44
+1207acd0:	.word	0x12097f49
+1207acd4:	.word	0x12099645
+1207acd8:	.word	0x1209821f
+1207acdc:	.word	0x12097ea1
+1207ace0:	.word	0x12097ecc
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+1203f87c <lv_refr_now>:
+1203f87c:	push	{r4, lr}
+1203f87e:	mov	r4, r0
+1203f880:	bl	1204574e <lv_anim_refr_now>
+1203f884:	cbz	r4, 1203f89e <lv_refr_now+0x22>
+1203f886:	ldr.w	r0, [r4, #776]	@ 0x308
+1203f88a:	cbz	r0, 1203f8aa <lv_refr_now+0x2e>
+1203f88c:	ldmia.w	sp!, {r4, lr}
+1203f890:	b.w	1203f364 <lv_display_refr_timer>
+1203f894:	ldr.w	r0, [r4, #776]	@ 0x308
+1203f898:	cbz	r0, 1203f89e <lv_refr_now+0x22>
+1203f89a:	bl	1203f364 <lv_display_refr_timer>
+1203f89e:	mov	r0, r4
+1203f8a0:	bl	1203f8dc <lv_display_get_next>
+1203f8a4:	mov	r4, r0
+1203f8a6:	cmp	r0, #0
+1203f8a8:	bne.n	1203f894 <lv_refr_now+0x18>
+1203f8aa:	pop	{r4, pc}
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12079a1c <flush_finished>:
+12079a1c:	ldr	r3, [pc, #8]	@ (12079a28 <flush_finished+0xc>)
+12079a1e:	ldr	r2, [pc, #12]	@ (12079a2c <flush_finished+0x10>)
+12079a20:	ldr	r3, [r3, #0]
+12079a22:	ldr	r0, [r2, #0]
+12079a24:	bx	r3
+12079a26:	nop
+12079a28:	.word	0x2002a21c
+12079a2c:	.word	0x2002a218

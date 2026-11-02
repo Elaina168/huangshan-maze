@@ -1,0 +1,12 @@
+{
+  "src/maze_archive.c": "e55ebe89e4791e36638b187a820cbca53b98dd88cef43384f9a64838dbf7d8b7",
+  "src/maze_archive.h": "ad3215a3fa2e0bedc109f2f5313c1d880d501cddb3c3698da9d6d689efdc323f",
+  "src/maze_store.c": "2308b82e36cbb0ccc80c38071d009de49bdf2e866d88bf143bd924a06c2c14cf",
+  "src/maze_store.h": "50113e4b7f2ada9f74bd4c4f978dd9090c320c4f86a2ed880294cac8b08139b3",
+  "scripts/test_maze_store.py": "ecf9bb4aad2ebcebd453104839334fe54412eeb695df201e1b436ab4a24b9ebc",
+  "tests/maze/archive_harness.c": "a0625374375b6bfe9164f3a3d86aa2cec27803255c01d944eaf445d48e745aad",
+  "tests/maze/archive_migration_harness.c": "7a963fdba4d7c1178c2bffe37e57a52340d17d3092c8b5edf833b99a43178663",
+  "tests/maze/store-host/nor_harness.c": "ba8f165b65bb8d6406b9a20d5258b18ea58fb4ffec27be968430a3809c8f6cb1",
+  "tests/maze/fixtures/archive-v1.bin": "69f8f67cf0e169cd4b4f235c50f4db94c1a93b8668e5f307a3c8683a3cea33ef",
+  "tests/maze/fixtures/archive-v2.bin": "05c9c934a2811921d9ce14e25d679971da2bdc90ef6216783f6e55a10de5dc3f"
+}

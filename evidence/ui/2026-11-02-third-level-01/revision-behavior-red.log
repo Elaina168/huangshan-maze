@@ -1,0 +1,3 @@
+test: /mnt/d/codex/黄山派/tests/maze/progress_harness.c:91: main: Assertion `!memcmp(bytes,unchanged,sizeof(bytes))' failed.
+
+exit=-6

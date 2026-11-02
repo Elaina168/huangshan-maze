@@ -29,16 +29,19 @@ static int mount_bank(maze_store_t *s,unsigned bank,bool protect)
     return 0;
 }
 
-static int read_archive(maze_store_t *s,unsigned bank,uint8_t *bytes,maze_archive_t *out)
+static int read_archive(maze_store_t *s,unsigned bank,uint8_t *bytes,maze_archive_t *out,bool *legacy)
 {
     struct fdb_blob blob;
     size_t read=fdb_kv_get_blob(&s->db[bank],"archive",fdb_blob_make(&blob,bytes,MAZE_ARCHIVE_BYTES));
     /* 未来格式的长度可能变化，先识别同一魔数的版本，禁止当坏副本清除。 */
-    if(read>=6 && !memcmp(bytes,"HMZ1",4) && (bytes[4]!=1 || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
+    if(read>=6 && !memcmp(bytes,"HMZ1",4) && ((bytes[4]!=1 && bytes[4]!=2 && bytes[4]!=3) || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
     if(read>=20 && !memcmp(bytes,"HMZ1",4) &&
        (bytes[16]!=1 || bytes[17] || bytes[18] || bytes[19])) return MAZE_ARCHIVE_VERSION;
-    if(read!=MAZE_ARCHIVE_BYTES || blob.saved.len!=MAZE_ARCHIVE_BYTES) return MAZE_ARCHIVE_FORMAT;
-    return maze_archive_decode(bytes,MAZE_ARCHIVE_BYTES,out);
+    if((read!=MAZE_ARCHIVE_V1_BYTES && read!=MAZE_ARCHIVE_V2_BYTES && read!=MAZE_ARCHIVE_BYTES) || blob.saved.len!=read)
+        return MAZE_ARCHIVE_FORMAT;
+    int error=maze_archive_decode(bytes,read,out);
+    if(!error) *legacy=bytes[4]<3;
+    return error;
 }
 
 int maze_store_open(maze_store_t *s,maze_archive_t *out)
@@ -46,7 +49,10 @@ int maze_store_open(maze_store_t *s,maze_archive_t *out)
     memset(s,0,sizeof(*s));s->active=-1;
     maze_store_flash_allow(-1);
     if(fal_init()<0) return MAZE_STORE_IO;
-    uint8_t images[2][MAZE_ARCHIVE_BYTES];maze_archive_t records[2];
+    /* 仅主线程非重入打开；双镜像工作区移出main的8192字节栈。 */
+    static uint8_t images[2][MAZE_ARCHIVE_BYTES];
+    static maze_archive_t records[2];
+    bool legacy[2]={false,false};
     for(unsigned i=0;i<2;i++)
     {
         s->parts[i]=fal_partition_find(names[i]);
@@ -57,14 +63,19 @@ int maze_store_open(maze_store_t *s,maze_archive_t *out)
         if(empty<0) return empty;
         if(empty) { s->status[i]=1;continue; }
         s->status[i]=mount_bank(s,i,true);
-        if(!s->status[i]) s->status[i]=read_archive(s,i,images[i],&records[i]);
+        if(!s->status[i]) s->status[i]=read_archive(s,i,images[i],&records[i],&legacy[i]);
+        /* 比较同修订快照前，消除v1/v2/v3长度和合法ID顺序差异。 */
+        if(!s->status[i]) maze_archive_encode(&records[i],images[i]);
         if(s->status[i]==MAZE_ARCHIVE_VERSION) return s->status[i];
     }
     for(unsigned i=0;i<2;i++) if(s->status[i]==0)
     {
         if(s->active<0 || records[i].revision>records[s->active].revision) s->active=(int)i;
-        else if(records[i].revision==records[s->active].revision &&
-                memcmp(images[i],images[s->active],MAZE_ARCHIVE_BYTES)) return MAZE_STORE_CONFLICT;
+        else if(records[i].revision==records[s->active].revision)
+        {
+            if(memcmp(images[i],images[s->active],MAZE_ARCHIVE_BYTES)) return MAZE_STORE_CONFLICT;
+            if(legacy[s->active] && !legacy[i]) s->active=(int)i;
+        }
     }
     if(s->active<0)
     {
@@ -72,15 +83,21 @@ int maze_store_open(maze_store_t *s,maze_archive_t *out)
         maze_archive_default(out);
         return maze_store_save(s,out);
     }
-    *out=records[s->active];s->revision=out->revision;
+    s->revision=records[s->active].revision;
     memcpy(s->current,images[s->active],MAZE_ARCHIVE_BYTES);
     s->repair=s->status[1-s->active]<0;
+    s->upgrade_pending=legacy[s->active];
+    if(s->upgrade_pending && s->revision==UINT64_MAX) return MAZE_STORE_STALE;
+    *out=records[s->active];
+    /* 只准备RAM事务，成功提交前current/revision仍代表完整旧档。 */
+    if(s->upgrade_pending) out->revision++;
     return 0;
 }
 
 int maze_store_save(maze_store_t *s,const maze_archive_t *a)
 {
     uint8_t bytes[MAZE_ARCHIVE_BYTES],verify[MAZE_ARCHIVE_BYTES];maze_archive_t check;
+    bool legacy=false;
     maze_archive_encode(a,bytes);
     if(s->active>=0)
     {
@@ -101,7 +118,7 @@ int maze_store_save(maze_store_t *s,const maze_archive_t *a)
         maze_store_flash_allow(-1);
         if(!error && !empty)
         {
-            int status=read_archive(s,target,verify,&check);
+            int status=read_archive(s,target,verify,&check,&legacy);
             if(status==MAZE_ARCHIVE_VERSION) return status;
         }
         if(error && s->active>=0)
@@ -122,11 +139,12 @@ int maze_store_save(maze_store_t *s,const maze_archive_t *a)
     if(result) error=-3200-(int)result;
     else
     {
-        error=read_archive(s,target,verify,&check);
-        if(!error && memcmp(bytes,verify,sizeof(bytes))) error=MAZE_STORE_IO;
+        error=read_archive(s,target,verify,&check,&legacy);
+        if(!error && (legacy || memcmp(bytes,verify,sizeof(bytes)))) error=MAZE_STORE_IO;
     }
     if(error) { s->mounted[target]=false;return error; }
     s->active=(int)target;s->revision=a->revision;s->status[target]=0;s->repair=false;
+    s->upgrade_pending=false;
     memcpy(s->current,bytes,sizeof(bytes));
     return 0;
 }

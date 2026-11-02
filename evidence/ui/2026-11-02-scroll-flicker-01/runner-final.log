@@ -1,0 +1,10 @@
+runner mode=sliced
+PASS: selected display-service/input scenario; no store/progress linked
+runner mode=unchunked
+PASS: selected display-service/input scenario; no store/progress linked
+runner mode=starved
+PASS: selected display-service/input scenario; no store/progress linked
+runner mode=recovery
+PASS: selected display-service/input scenario; no store/progress linked
+runner mode=bounded-single
+PASS: selected display-service/input scenario; no store/progress linked

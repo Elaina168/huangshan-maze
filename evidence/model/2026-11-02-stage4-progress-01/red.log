@@ -1,0 +1,2 @@
+stage4-progress: tests/maze/stage4_progress_harness.c:18: main: Assertion `!p.accounted' failed.
+bash: line 1:  3021 Aborted                 (core dumped) /tmp/stage4-progress

@@ -1,0 +1,3 @@
+PASS: v1 all legacy fields preserved including unused slots; completed 0/1/2/3 controls third unlock without revision bump
+PASS: legacy swapped order and all six v2 ID permutations canonicalize without losing third data
+PASS: truncation/oversize/format/rules/CRC/ID/flags/count/sort rejected with caller output untouched

@@ -2,6 +2,7 @@
 *.md text eol=lf
 *.py text eol=lf
 *.c text eol=lf
+*.h text eol=lf
 *.json text eol=lf
 *.yml text eol=lf
 .githooks/* text eol=lf
@@ -21,3 +22,7 @@ LICENSE-SiFli-SDK-Apache-2.0.txt -text
 # LVGL原始PPM像素与第三方许可保留原字节，不按源码检查行尾。
 *.ppm binary
 licenses/NotoSansSC-OFL.txt -text whitespace=-blank-at-eol,-blank-at-eof
+
+# 构建证据保留SDK生成配置和下载脚本原字节及末尾空行。
+evidence/builds/**/*.h -text whitespace=cr-at-eol
+evidence/**/uart_download.bat -text whitespace=cr-at-eol,-blank-at-eof

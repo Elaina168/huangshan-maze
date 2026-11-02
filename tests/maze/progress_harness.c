@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include "maze_progress.h"
+#include <string.h>
 static const maze_level_t first={.id="frost_fork"},second={.id="ice_bends"};
 static maze_progress_t p;
 static maze_app_t a;
@@ -79,5 +80,19 @@ int main(void)
     uint8_t bytes[MAZE_ARCHIVE_BYTES];maze_archive_t decoded;
     assert(maze_archive_encode(&p.archive,bytes)==0 && maze_archive_decode(bytes,sizeof(bytes),&decoded)==0);
     puts("PASS: progress archive fits actual persistent format");
+    /* 最大修订不能接受不可表示的新结算，也不能回绕并覆盖旧档。 */
+    for(unsigned outcome=0;outcome<2;outcome++)
+    {
+        maze_archive_default(&decoded);decoded.revision=UINT64_MAX;
+        maze_progress_init(&p,&decoded);start(false);
+        maze_archive_encode(&p.archive,bytes);
+        result(outcome?MAZE_APP_WON:MAZE_APP_LOST,100);
+        uint8_t unchanged[MAZE_ARCHIVE_BYTES];maze_archive_encode(&p.archive,unchanged);
+        assert(!memcmp(bytes,unchanged,sizeof(bytes)));
+        assert(p.revision_exhausted && p.archive.revision==UINT64_MAX);
+        result(outcome?MAZE_APP_WON:MAZE_APP_LOST,100);
+        assert(p.archive.revision==UINT64_MAX);
+    }
+    puts("PASS: maximum revision rejects new win/loss explicitly, archive unchanged and never wraps");
     return 0;
 }

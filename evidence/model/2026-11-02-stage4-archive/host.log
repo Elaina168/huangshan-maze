@@ -1,0 +1,5 @@
+PASS: 681-byte v3 LE archive, CRC32 vector, roundtrip, ID/count/version/truncation/sort/CRC boundaries
+PASS: v1 all legacy fields preserved including unused slots; completed 0/1/2/3 controls third unlock without revision bump
+PASS: legacy swapped order and all six v3 first-three ID permutations canonicalize without losing third data
+PASS: truncation/oversize/format/rules/CRC/ID/flags/count/sort rejected with caller output untouched
+PASS: independent v2 golden all 492 prior bytes preserved; fourth unlock 0/1/2/3; empty new records; six v2 and 24 v3 permutations

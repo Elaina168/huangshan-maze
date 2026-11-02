@@ -1,0 +1,2 @@
+PASS: 184 glyphs, 22135 bitmap bytes; reproducibility check=True
+PASS: 184 actual LVGL decoded glyphs match source pixels, including 7 odd-width glyphs

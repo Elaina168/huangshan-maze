@@ -1,0 +1,1 @@
+archive-migration-red: tests/maze/archive_migration_harness.c:21: main: Assertion `MAZE_ARCHIVE_BYTES==517 && MAZE_ARCHIVE_LEVELS==3' failed.

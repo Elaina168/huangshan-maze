@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "maze_ui.h"
+#include "rtthread.h"
 #include "maze_map.h"
 #include "maze_navigation.h"
 #include "lvgl.h"
@@ -72,6 +73,7 @@ static void check_labels(lv_obj_t *obj)
 }
 int littlevgl2rtt_init(const char *name) { (void)name; return 0; }
 int rt_kprintf(const char *fmt, ...) { (void)fmt; return 0; }
+rt_tick_t rt_tick_get(void) { return lv_tick_get(); }
 void rt_thread_mdelay(int ms) { lv_tick_inc((uint32_t)ms); }
 static void flush(lv_display_t *display, const lv_area_t *area, uint8_t *data)
 {
@@ -132,6 +134,18 @@ static void navigation_ui(lv_display_t *display)
     screenshot("second-ready.ppm");
     navigation.app.state=MAZE_APP_WON;
     maze_ui_render(&navigation); lv_refr_now(display); check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"下一关"));
+    navigation.progress.archive.levels[2].unlocked=true;
+    maze_ui_clear();assert(maze_navigation_next(&navigation)==0);
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    navigation.app.state=MAZE_APP_WON;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    assert(caption(lv_screen_active(),"下一关"));
+    navigation.progress.archive.levels[3].unlocked=true;
+    maze_ui_clear();assert(maze_navigation_next(&navigation)==0);
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
+    navigation.app.state=MAZE_APP_WON;
+    maze_ui_render(&navigation);lv_refr_now(display);check_labels(lv_screen_active());
     assert(caption(lv_screen_active(),"全部完成") && !caption(lv_screen_active(),"下一关"));
     screenshot("all-complete.ppm");
     navigation.app.state=MAZE_APP_CALIBRATING;
@@ -233,8 +247,9 @@ int main(int argc, char **argv)
     render(display,&app,MAZE_APP_READY);
     assert(!strcmp(lv_label_get_text(lv_obj_get_child(lv_screen_active(),0)),"冰岔迷宫 | 正常"));
     screenshot("ready.ppm");
-    lv_obj_t *map=lv_obj_get_child(lv_screen_active(),4);
-    assert(lv_obj_get_child_count(map)==37);
+    lv_obj_t *view=lv_obj_get_child(lv_screen_active(),4);
+    lv_obj_t *map=lv_obj_get_child(view,0);
+    assert(lv_obj_get_child_count(map)==36);
     for (unsigned i=0;i<app.level->surface_count+app.level->wall_count;i++)
     {
         maze_rect_t r=i<app.level->surface_count?app.level->surfaces[i].area:

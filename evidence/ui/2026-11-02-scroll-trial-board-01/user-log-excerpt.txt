@@ -1,0 +1,9 @@
+用户日志节选（不是完整串口记录）：
+[scroll_trial] state=4 gen=6 tick=133496 ms=4679 pos=246,97 error=-1004 loop_tick=20 render_tick=0
+[scroll_trial] event=5 state=4 gen=6
+[scroll_trial] state=1 gen=7 tick=139952 ms=4679 pos=246,97 error=0 loop_tick=36 render_tick=3
+[scroll_trial] state=5 gen=7 tick=140984 ms=4679 pos=246,97 error=0 loop_tick=20 render_tick=6
+[scroll_trial] event=2 state=5 gen=7
+[scroll_trial] state=2 gen=7 tick=142619 ms=4679 pos=246,97 error=0 loop_tick=6 render_tick=3
+[scroll_trial] state=2 gen=7 tick=144138 ms=6198 pos=246,96 error=0 loop_tick=22 render_tick=1
+[scroll_trial] state=4 gen=7 tick=144265 ms=6198 pos=246,96 error=-1004 loop_tick=128 render_tick=4

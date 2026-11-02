@@ -1,0 +1,2 @@
+scroll LVGL heap free before=38560 after=38560
+PASS: real LVGL scroll clipping, fixed HUD/panel, stable scene, stale click, pause/reset; max_pixels=122100

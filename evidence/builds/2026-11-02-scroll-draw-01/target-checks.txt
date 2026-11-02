@@ -1,0 +1,5 @@
+PASS: 44 current source SHA and three firmware SHA match
+PASS: aligned234000B trial draw buffer; app service retained; no game store entry
+20028f40 00039210 b trial_draw_buffer
+bss_end=0x20062acc RAM_end=0x2007fc00 unallocated_tail=119092B (not actual heap free)
+PASS: original three download addresses

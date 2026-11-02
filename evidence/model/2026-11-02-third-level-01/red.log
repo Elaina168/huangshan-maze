@@ -1,0 +1,1 @@
+third-nav-red: tests/maze/third_navigation_harness.c:18: main: Assertion `maze_catalog_count==3' failed.

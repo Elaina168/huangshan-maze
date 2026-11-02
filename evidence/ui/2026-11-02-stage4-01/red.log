@@ -1,0 +1,3 @@
+stage4-ui-red: /mnt/d/codex/黄山派/tests/maze/stage4_ui_harness.c:44: main: Assertion `lv_obj_has_flag(objects[0],LV_OBJ_FLAG_HIDDEN)' failed.
+
+exit=-6

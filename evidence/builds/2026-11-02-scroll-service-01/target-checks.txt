@@ -1,0 +1,6 @@
+PASS: current 44 sources and three artifact SHA independently match
+PASS: service callback and setter in actual ARM ELF, no maze_store_open/save
+PASS: original three download addresses
+12077444 00000034 T maze_ui_set_trial_service
+12076c60 0000006c t service_during_flush
+2001d6b4 00008da0 b work

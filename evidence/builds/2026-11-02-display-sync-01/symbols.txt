@@ -1,0 +1,12 @@
+20063e8c B __bss_end
+20063e8c B __bss_end__
+2002a300 00039210 b draw_buffer
+12079b28 0000002c t flush_finished
+1203f984 00000020 T lv_display_set_draw_buffers
+2001de90 00002ce0 b nav.2
+2001ce00 00001090 b store.1
+20021478 00008da0 b work
+200213b0 00000084 b worker
+12077ac8 00000340 t worker_entry
+20020bb0 00000800 b worker_stack
+20019e91 00000100 D working_directory

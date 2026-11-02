@@ -1,0 +1,16 @@
+20064c8c B __bss_end
+20064c8c B __bss_end__
+2002b100 00039210 b draw_buffer
+1207a624 0000002c t flush_finished
+2002aa88 00000552 b images.1
+1203f9b0 00000020 T lv_display_set_draw_buffers
+120adae0 00000024 T maze_map_mechanism_trial
+2002aff4 00000040 b mechanism_objects
+2001df38 00002dd8 b nav.2
+2002a3b8 000006d0 b records.0
+2001ce00 00001138 b store.1
+20021618 00008da0 b work
+20021550 00000084 b worker
+12077ba8 00000340 t worker_entry
+20020d50 00000800 b worker_stack
+20019e91 00000100 D working_directory

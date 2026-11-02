@@ -1,0 +1,2 @@
+async transfers=354 waits=1 services=354 overwritten_sources=302 ball=0
+ui-async: tests/maze/ui_async_harness.c:70: main: Assertion `overwrites==0' failed.

@@ -1,0 +1,6 @@
+PASS: all current source and three artifact SHA match trial build
+PASS: trial map/runner in ELF, maze_store_open/save absent
+PASS: default download retains three files without archive image
+120a7a58 0000001c T maze_map_scroll_trial
+12076c60 000001a8 T maze_scroll_trial_run
+2001d6b4 00008da0 b work

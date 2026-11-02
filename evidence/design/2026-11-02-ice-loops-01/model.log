@@ -1,0 +1,4 @@
+draft load=0 walls=141 traps=5 ice=6 nodes=8515 work=36256
+PASS: actual inertia model ordinary route WON, 255320 model-ms
+PASS: actual inertia model ice-shortcuts route WON, 188370 model-ms
+PASS: all five pits approached by real model, LOST then frozen

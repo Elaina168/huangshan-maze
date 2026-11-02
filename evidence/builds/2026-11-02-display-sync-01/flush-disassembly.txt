@@ -1,0 +1,26 @@
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-ccn8gy48\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12079b28 <flush_finished>:
+12079b28:	push	{r4, lr}
+12079b2a:	bl	12046924 <lv_event_get_target>
+12079b2e:	ldr	r3, [r0, #48]	@ 0x30
+12079b30:	mov	r4, r0
+12079b32:	cbz	r3, 12079b3c <flush_finished+0x14>
+12079b34:	blx	r3
+12079b36:	mov	r0, r4
+12079b38:	bl	1203fb0c <lv_display_flush_ready>
+12079b3c:	ldmia.w	sp!, {r4, lr}
+12079b40:	ldr	r3, [pc, #8]	@ (12079b4c <flush_finished+0x24>)
+12079b42:	ldr	r2, [pc, #12]	@ (12079b50 <flush_finished+0x28>)
+12079b44:	ldr	r3, [r3, #0]
+12079b46:	ldr	r0, [r2, #0]
+12079b48:	bx	r3
+12079b4a:	nop
+12079b4c:	.word	0x2002a21c
+12079b50:	.word	0x2002a218

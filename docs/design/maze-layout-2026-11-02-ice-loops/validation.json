@@ -1,0 +1,56 @@
+{
+  "connected_cells": 168,
+  "passages": 169,
+  "walls": 141,
+  "independent_loops": 2,
+  "junctions": 21,
+  "dead_ends_excluding_start_goal": 18,
+  "normal_steps": 100,
+  "shortcut_steps": 74,
+  "normal_turns": 58,
+  "shortcut_turns": 38,
+  "mandatory_trap_cells": [
+    155,
+    119,
+    17,
+    35,
+    120
+  ],
+  "normal_route": {
+    "min_wall_clearance_after_ball_radius_px": 4.0,
+    "min_pit_clearance_after_ball_radius_px": 3.0
+  },
+  "shortcut_route": {
+    "min_wall_clearance_after_ball_radius_px": 4.0,
+    "min_pit_clearance_after_ball_radius_px": 3.0
+  },
+  "mandatory_trap_proof": [
+    {
+      "trap_cell": 155,
+      "reachable_from_start_when_removed": 36,
+      "goal_disconnected": true
+    },
+    {
+      "trap_cell": 119,
+      "reachable_from_start_when_removed": 45,
+      "goal_disconnected": true
+    },
+    {
+      "trap_cell": 17,
+      "reachable_from_start_when_removed": 63,
+      "goal_disconnected": true
+    },
+    {
+      "trap_cell": 35,
+      "reachable_from_start_when_removed": 88,
+      "goal_disconnected": true
+    },
+    {
+      "trap_cell": 120,
+      "reachable_from_start_when_removed": 147,
+      "goal_disconnected": true
+    }
+  ],
+  "normal_safe_length_px": 5016.227766016838,
+  "shortcut_safe_length_px": 3716.227766016838
+}

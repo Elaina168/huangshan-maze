@@ -1,0 +1,4 @@
+stationary-camera intermediate ball min=128 full=128 parts=30
+scroll intermediate ball min=128 full=128 parts=500
+scroll LVGL heap free before=38528 after=38528
+PASS: real LVGL scroll clipping, fixed HUD/panel, stable scene, stale click, pause/reset; max_pixels=122100

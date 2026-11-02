@@ -1,0 +1,8 @@
+runner mode=sliced
+PASS: actual trial runner calibration/play/pause/resume/replay/cancel, IMU stop; 128ms sliced refresh, genuine stall/stale guards; no store/progress linked
+runner mode=unchunked
+PASS: actual trial runner calibration/play/pause/resume/replay/cancel, IMU stop; 128ms sliced refresh, genuine stall/stale guards; no store/progress linked
+runner mode=starved
+PASS: actual trial runner calibration/play/pause/resume/replay/cancel, IMU stop; 128ms sliced refresh, genuine stall/stale guards; no store/progress linked
+runner mode=recovery
+PASS: actual trial runner calibration/play/pause/resume/replay/cancel, IMU stop; 128ms sliced refresh, genuine stall/stale guards; no store/progress linked

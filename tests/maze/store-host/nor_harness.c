@@ -2,6 +2,7 @@
 #define _POSIX_C_SOURCE 200809L
 #include <assert.h>
 #include <fcntl.h>
+#include <inttypes.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -78,12 +79,34 @@ static void variant(unsigned revision)
     archive.levels[0].modes[0].count=1;
     archive.levels[0].modes[0].scores[0]=(maze_score_t){1000+revision,revision};
 }
+/* 夹具经真实FlashDB写入，不绕过数据库布局。 */
+static void put_fixture(unsigned bank,const uint8_t *bytes,size_t size)
+{
+    struct fdb_kvdb db={0};bool protect=false;uint32_t sector=8192;
+    fdb_kvdb_control(&db,FDB_KVDB_CTRL_SET_NOT_FORMAT,&protect);
+    fdb_kvdb_control(&db,FDB_KVDB_CTRL_SET_SEC_SIZE,&sector);
+    maze_store_flash_allow((int)bank);
+    assert(fdb_kvdb_init(&db,bank?"maze_b":"maze_a",bank?"maze_b":"maze_a",NULL,NULL)==0);
+    struct fdb_blob blob;
+    assert(fdb_kv_set_blob(&db,"archive",fdb_blob_make(&blob,bytes,size))==0);
+    fdb_kvdb_deinit(&db);maze_store_flash_allow(-1);
+}
+
 int main(int argc,char **argv)
 {
     assert(argc>=3);
     int fd=open(argv[2],O_RDWR);assert(fd>=0);
     flash=mmap(NULL,65536,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);assert(flash!=MAP_FAILED);
     if(argc>=6) { cut_operation=(unsigned)atoi(argv[4]);cut_prefix=(unsigned)atoi(argv[5]); }
+    if(!strcmp(argv[1],"putblob"))
+    {
+        assert(argc==5);unsigned bank=(unsigned)atoi(argv[3]);assert(bank<2);
+        FILE *input=fopen(argv[4],"rb");assert(input);uint8_t bytes[2048];
+        size_t size=fread(bytes,1,sizeof(bytes),input);assert(fgetc(input)==EOF);assert(!fclose(input));
+        put_fixture(bank,bytes,size);
+        assert(msync(flash,65536,MS_SYNC)==0);assert(munmap(flash,65536)==0);close(fd);
+        return 0;
+    }
     armed=!strcmp(argv[1],"init");
     read_failure=!strcmp(argv[1],"readerror");
     int error=maze_store_open(&store,&archive);
@@ -100,7 +123,7 @@ int main(int argc,char **argv)
         uint8_t bytes[MAZE_ARCHIVE_BYTES];
         if(!strcmp(argv[1],"conflict")) archive.levels[0].modes[0].losses++;
         maze_archive_encode(&archive,bytes);
-        if(!strcmp(argv[1],"version")) bytes[4]=2;
+        if(!strcmp(argv[1],"version")) bytes[4]=4;
         uint32_t crc=maze_archive_crc32(bytes,MAZE_ARCHIVE_BYTES-4);
         for(unsigned i=0;i<4;i++) bytes[MAZE_ARCHIVE_BYTES-4+i]=(uint8_t)(crc>>(8*i));
         struct fdb_blob blob;
@@ -120,6 +143,31 @@ int main(int argc,char **argv)
         error=maze_store_save(&store,&archive);
         if(error) { printf("ERROR %d\n",error);return 2; }
     }
+    if(!strcmp(argv[1],"migrate") || !strcmp(argv[1],"migrateretry") || !strcmp(argv[1],"migratereadback"))
+    {
+        assert(store.upgrade_pending && archive.revision==store.revision+1);
+        armed=true;operations=erases=reads=0;
+        if(strcmp(argv[1],"migrate"))
+        {
+            write_failure=!strcmp(argv[1],"migrateretry");
+            if(!strcmp(argv[1],"migratereadback")) read_cut=(unsigned)atoi(argv[4]);
+            uint64_t committed=store.revision,revision=archive.revision;
+            assert(maze_store_save(&store,&archive)!=0);
+            assert(store.upgrade_pending && store.revision==committed && archive.revision==revision);
+            write_failure=false;read_cut=0;
+        }
+        error=maze_store_save(&store,&archive);
+        if(error) { printf("ERROR %d\n",error);return 2; }
+        assert(!store.upgrade_pending);
+        unsigned completed_operations=operations;
+        assert(maze_store_save(&store,&archive)==0 && operations==completed_operations);
+    }
+    armed=false;
+    uint8_t disk[MAZE_ARCHIVE_BYTES];struct fdb_blob disk_blob;
+    size_t disk_size=fdb_kv_get_blob(&store.db[store.active],"archive",fdb_blob_make(&disk_blob,disk,sizeof(disk)));
+    assert(disk_size==disk_blob.saved.len && (disk_size==353 || disk_size==517 || disk_size==681));
+    printf("RAW ");for(unsigned i=0;i<disk_size;i++) printf("%02x",disk[i]);
+    printf("\nCOMMITTED %" PRIu64 " UPGRADE %d\n",store.revision,store.upgrade_pending);
     uint8_t bytes[MAZE_ARCHIVE_BYTES];maze_archive_encode(&archive,bytes);
     printf("STATE ");for(unsigned i=0;i<sizeof(bytes);i++) printf("%02x",bytes[i]);
     printf("\nOPS %u ERASES %u READS %u ACTIVE %d REPAIR %d\n",operations,erases,reads,store.active,store.repair);

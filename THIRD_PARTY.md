@@ -33,3 +33,9 @@ Codex使用现有Pillow 12.3.0（仅离线工具）按实际UI字符串栅格化
 存档复用SiFli SDK v2.5.1自带external/FlashDB，头文件标记FlashDB 2.1.1，包含SiFli适配修改，不能当成未经修改的上游同名版本。FlashDB版权Armink、Apache-2.0；FAL版权RT-Thread Development Team、Apache-2.0。原库在SDK内原样编译链接，没有复制进本仓库或改写恢复算法；实际使用文件SHA见[evidence](evidence/research/2026-11-01-store-gate-01/README.md)。
 
 project/custom_mem_map.h依据SDK同板hcpu/custom_mem_map.h保留原DFU/BLE映射（原文件Copyright 2019-2022 SiFli Technologies(Nanjing) Co., Ltd，Apache-2.0），新增游戏代理设备/分区；项目ptab.json保留实际板表所有原区域并增加A/B。本项目新增显式编码/双副本策略、写闸门、成绩规则与界面，不将库实现归为学生独立成果。rt_flash_*底层驱动继续复用SDK；主机RT/FAL/NOR桩仅用于故障注入，不是产品电脑端功能。
+
+2026-11-01滚动地图试验：src/SConscript新增正式/试验构建选择，导入清单将其标记已修改；原始来源SHA保持不变。字体仍使用原已登记字体来源，新界面共160字形，19207字节位图。
+
+2026-11-02三关正式接入：沿用同一固定SHA Noto字体，重新生成161字形、19319B位图（新增冰环关卡文案），许可与来源不变。
+
+2026-11-02基础机关阶段：仍沿用固定SHA原Noto字体与OFL许可，为新增中文规则/状态重生成184字形、22135B位图并经真实LVGL源像素复核；未安装依赖或修改SDK。

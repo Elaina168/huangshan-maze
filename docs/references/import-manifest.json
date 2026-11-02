@@ -45,7 +45,7 @@
     "path": "src/SConscript",
     "source": "course_starter/src/SConscript",
     "sha256": "ffffc291d3787aa0aaaae292049aabe028092886cae28e06489a88f00fd9e8ba",
-    "modified": false
+    "modified": true
   },
   {
     "path": "LICENSE-SiFli-SDK-Apache-2.0.txt",

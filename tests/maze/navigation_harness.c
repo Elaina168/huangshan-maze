@@ -8,9 +8,9 @@ static const char *const lines[]={"+-+-+","|. .|","+-+-+"};
 static const maze_map_object_t objects[]={
     {MAZE_MAP_START,{25,25,7}}, {MAZE_MAP_GOAL,{75,25,10}}
 };
-static const maze_map_definition_t first={"frost_fork",2,1,lines,3,objects,2};
-static const maze_map_definition_t second={"ice_bends",2,1,lines,3,objects,2};
-static const maze_map_definition_t broken={"frost_fork",0,1,lines,3,objects,2};
+static const maze_map_definition_t first={"frost_fork",2,1,lines,3,objects,2,NULL,0};
+static const maze_map_definition_t second={"ice_bends",2,1,lines,3,objects,2,NULL,0};
+static const maze_map_definition_t broken={"frost_fork",0,1,lines,3,objects,2,NULL,0};
 const maze_catalog_entry_t maze_catalog[]={
     {"测试一",&first},{"测试二",&second},{"非法图",&broken},{"末关",&second}
 };

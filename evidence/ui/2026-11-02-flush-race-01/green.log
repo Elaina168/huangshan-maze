@@ -1,0 +1,2 @@
+async transfers=354 waits=354 services=354 overwritten_sources=0 ball=128 min_ball=128 black_pixels=0
+PASS: async delayed consumption/late completion flag, stationary+scroll+turn source stable, no black holes and complete ball

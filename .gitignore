@@ -25,3 +25,7 @@ secrets.*
 *.bin
 *.hex
 *.map
+
+# 编解码回归的合成旧档夹具，不是板端固件或真实用户存档。
+!tests/maze/fixtures/archive-v1.bin
+!tests/maze/fixtures/archive-v2.bin

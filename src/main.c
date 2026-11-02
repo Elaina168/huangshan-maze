@@ -17,11 +17,19 @@
 #include "maze_ui.h"
 #include "maze_map.h"
 #include "maze_imu.h"
+#ifdef MAZE_SCROLL_TRIAL
+#include "maze_scroll_trial.h"
+#else
 #include "maze_store.h"
+#endif
 #include "finsh.h"
 
 #define APP_NAME        "huangshan_maze"
-#define APP_VERSION     "0.9.0-progress-save"
+#ifdef MAZE_SCROLL_TRIAL
+#define APP_VERSION     "0.11.0-scroll-trial"
+#else
+#define APP_VERSION     "0.11.0-basic-mechanisms"
+#endif
 
 #define RGBLED_NAME     "rgbled"
 
@@ -72,6 +80,26 @@ static int maze_rgb_off(void)
 }
 MSH_CMD_EXPORT(maze_rgb_off, Send a black frame and report the RGB driver result);
 
+#ifndef MAZE_SCROLL_TRIAL
+static uint32_t physics_max_gap,flush_services;
+/* 显示提交间推进纯逻辑，不访问LVGL、触摸或持久化接口。 */
+static void service_during_flush(void *context)
+{
+    maze_navigation_t *nav=context;
+    rt_thread_mdelay(1);
+    uint32_t now=rt_tick_get();
+    maze_imu_sample_t sample;
+    if(maze_imu_latest(&sample)) maze_navigation_sample(nav,&sample,now);
+    if(nav->page==MAZE_NAV_GAME && nav->app.state==MAZE_APP_PLAYING &&
+       now-nav->app.last_update_tick>physics_max_gap)
+        physics_max_gap=now-nav->app.last_update_tick;
+    maze_navigation_update(nav,now);flush_services++;
+    uint32_t generation;bool enabled;
+    maze_navigation_request(nav,&generation,&enabled);
+    maze_imu_request(generation,enabled);
+}
+#endif
+
 int main(void)
 {
     rt_kprintf("\n[%s] v%s boot ok\n", APP_NAME, APP_VERSION);
@@ -84,6 +112,9 @@ int main(void)
         rt_kprintf("[%s] init failed error=%d\n",APP_NAME,error);
         return error;
     }
+#ifdef MAZE_SCROLL_TRIAL
+    return maze_scroll_trial_run();
+#else
     static maze_navigation_t nav;
     maze_navigation_init(&nav,RT_TICK_PER_SECOND);
     static maze_store_t store;
@@ -96,7 +127,8 @@ int main(void)
     nav.store_repair=store.repair;
     rt_kprintf("[maze_store] open result=%d ticks=%u active=%d repair=%d\n",
                error,rt_tick_get()-open_start,store.active,store.repair);
-    uint64_t attempted_revision=store_ready?loaded.revision:0;
+    uint64_t attempted_revision=store_ready?store.revision:0;
+    maze_ui_set_service(service_during_flush,&nav);
     maze_app_t *app=&nav.app;
     maze_app_state_t last_state=MAZE_APP_READY;
     uint32_t last_generation=0,last_page_version=0;
@@ -113,7 +145,9 @@ int main(void)
         if(nav.page==MAZE_NAV_GAME) maze_progress_observe(&nav.progress,app);
         bool force_save=false;
         maze_ui_command_t command;
-        if(maze_ui_take_command(&nav,&command))
+        /* 旧档升级首次写入先于菜单命令；失败只抑制自动重试，不阻止手动保存或游玩。 */
+        bool first_upgrade=store_ready && store.upgrade_pending && attempted_revision!=nav.progress.archive.revision;
+        if(!first_upgrade && maze_ui_take_command(&nav,&command))
         {
             rt_kprintf("[maze_nav] command=%d index=%u page=%d version=%u tick=%u\n",
                        command.kind,command.index,nav.page,nav.page_version,now);
@@ -130,13 +164,14 @@ int main(void)
             {
                 nav.page=MAZE_NAV_SCORES;nav.score_index=0;nav.score_mode=nav.reversed?1:0;nav.page_version++;
             }
-            else if(command.kind==MAZE_UI_SCORE_LEVEL) { nav.score_index=1-nav.score_index;nav.page_version++; }
+            else if(command.kind==MAZE_UI_SCORE_LEVEL) { nav.score_index=(nav.score_index+1)%maze_catalog_count;nav.page_version++; }
             else if(command.kind==MAZE_UI_SCORE_MODE) { nav.score_mode=1-nav.score_mode;nav.page_version++; }
             else
             {
                 /* 装载之前关闭生产请求并删除持有旧地图的场景。 */
                 maze_imu_request(app->generation,false);
-                maze_ui_clear();
+                if(command.kind==MAZE_UI_BACK) maze_ui_clear();
+                else maze_ui_loading();
                 if(command.kind==MAZE_UI_BACK) maze_navigation_back(&nav);
                 else
                 {
@@ -155,6 +190,8 @@ int main(void)
         maze_imu_sample_t sample;
         bool have_sample=maze_imu_latest(&sample);
         if(have_sample) maze_navigation_sample(&nav,&sample,now);
+        if(nav.page==MAZE_NAV_GAME && app->state==MAZE_APP_PLAYING && now-app->last_update_tick>physics_max_gap)
+            physics_max_gap=now-app->last_update_tick;
         maze_navigation_update(&nav,now);
         if(force_save && !store_ready)
         {
@@ -164,13 +201,17 @@ int main(void)
             if(!error)
             {
                 store_ready=true;maze_progress_init(&nav.progress,&loaded);
-                attempted_revision=loaded.revision;nav.page=MAZE_NAV_SELECT;
+                attempted_revision=store.revision;nav.page=MAZE_NAV_SELECT;
             }
             nav.store_error=error;nav.store_repair=store.repair;nav.page_version++;
             force_save=false;
         }
+        if(nav.progress.revision_exhausted && nav.store_error!=MAZE_STORE_STALE)
+        {
+            nav.store_error=MAZE_STORE_STALE;nav.page_version++;
+        }
         bool dirty=store_ready && nav.progress.archive.revision!=store.revision;
-        if(store_ready && maze_navigation_can_save(&nav) &&
+        if(store_ready && !nav.progress.revision_exhausted && maze_navigation_can_save(&nav) &&
            (force_save || (dirty && attempted_revision!=nav.progress.archive.revision)))
         {
             /* 结果/菜单才写，显式停止IMU；读取失败不伪装保存成功。 */
@@ -216,11 +257,15 @@ int main(void)
         if(changed || (rt_tick_t)(now-last_log)>=rt_tick_from_millisecond(500))
         {
             if(nav.page==MAZE_NAV_GAME && (enabled || changed))
-                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d vel_centi=%ld,%ld surface=%d\n",
+            {
+                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d vel_centi=%ld,%ld surface=%d physics_gap_tick=%u flush_services=%u keys=%u switches=%u broken=%u checkpoint=%u\n",
                            app->generation,app->state,now,(unsigned long)app->elapsed_ms,
                            (long)app->model.x,(long)app->model.y,(long)app->input.x,(long)app->input.y,app->error,
                            (long)(app->model.vx*100),(long)(app->model.vy*100),
-                           maze_level_surface_at(app->level,app->model.x,app->model.y));
+                           maze_level_surface_at(app->level,app->model.x,app->model.y),physics_max_gap,flush_services,
+                           (unsigned)app->model.keys,(unsigned)app->model.switches,(unsigned)app->model.broken,app->model.checkpoint);
+                physics_max_gap=flush_services=0;
+            }
             last_log=now;
         }
         if(changed || (rt_tick_t)(now-last_ui)>=rt_tick_from_millisecond(50))
@@ -232,4 +277,5 @@ int main(void)
         }
     }
     return 0;
+#endif
 }

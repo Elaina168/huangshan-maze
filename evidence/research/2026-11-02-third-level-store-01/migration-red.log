@@ -1,0 +1,49 @@
+In file included from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/fdb_def.h:16,
+                 from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/flashdb.h:23,
+                 from /mnt/d/codex/黄山派/src/maze_store.h:4,
+                 from /mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:12:
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c: In function ‘main’:
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:148:21: error: ‘maze_store_t’ has no member named ‘upgrade_pending’
+  148 |         assert(store.upgrade_pending && archive.revision==store.revision+1);
+      |                     ^
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:156:25: error: ‘maze_store_t’ has no member named ‘upgrade_pending’
+  156 |             assert(store.upgrade_pending && store.revision==committed && archive.revision==revision);
+      |                         ^
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:161:22: error: ‘maze_store_t’ has no member named ‘upgrade_pending’
+  161 |         assert(!store.upgrade_pending);
+      |                      ^
+/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c:170:71: error: ‘maze_store_t’ has no member named ‘upgrade_pending’
+  170 |     printf("\nCOMMITTED %" PRIu64 " UPGRADE %d\n",store.revision,store.upgrade_pending);
+      |                                                                       ^
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘read_kv’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:444:128: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  444 |     if (kvdb_log) FDB_INFO("read_kv: addr %x kv_len %x max %d %d\n", kv->addr.start, kv->len, db_max_size(db), db_sec_size(db));
+      |                                                                                                                                ^
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:448:88: warning: suggest braces around empty body in an ‘if’ statement [-Wempty-body]
+  448 |         if (kvdb_log) FDB_INFO("read_kv: kv_len %d max %d\n", kv->len, db_max_size(db));
+      |                                                                                        ^
+In file included from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/flashdb.h:23,
+                 from /mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:16:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c: In function ‘fdb_kv_print’:
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:15: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 2 has type ‘long unsigned int’ [-Wformat=]
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |               ^~~~~~~~~                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                              |
+      |                                                                              long unsigned int
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc/fdb_def.h:71:47: note: in definition of macro ‘FDB_PRINT’
+   71 | #define FDB_PRINT(...)                 printf(__VA_ARGS__)
+      |                                               ^~~~~~~~~~~
+/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c:1746:23: note: format string is defined here
+ 1746 |     FDB_PRINT("size: %" PRIu32 "/%" PRIu32 " bytes.\n", (uint32_t)using_size + ((SECTOR_NUM - FDB_GC_EMPTY_SEC_THRESHOLD) * SECTOR_HDR_DATA_SIZE),
+      |                      ~^
+      |                       |
+      |                       unsigned int
+      |                      %lu
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_store.py", line 261, in <module>
+    main()
+  File "/mnt/d/codex/黄山派/scripts/test_maze_store.py", line 33, in main
+    subprocess.run(command, check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/usr/bin/cc', '-std=c99', '-Wall', '-Wextra', '-Wno-unused-parameter', '-I/mnt/d/codex/黄山派/tests/maze/store-host', '-I/mnt/d/codex/黄山派/src', '-I/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/inc', '-I/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/port/fal/inc', '/mnt/d/codex/黄山派/tests/maze/store-host/nor_harness.c', '/mnt/d/codex/黄山派/src/maze_store.c', '/mnt/d/codex/黄山派/src/maze_archive.c', '/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb.c', '/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_kvdb.c', '/mnt/d/sifli/SiFli-SDK/v2.5.1/external/FlashDB/src/fdb_utils.c', '-o', '/tmp/maze-store-8hcgvcn0/store-test']' returned non-zero exit status 1.

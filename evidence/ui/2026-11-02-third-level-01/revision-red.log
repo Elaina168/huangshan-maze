@@ -1,0 +1,14 @@
+In file included from tests/maze/progress_harness.c:2:
+tests/maze/progress_harness.c: In function ‘main’:
+tests/maze/progress_harness.c:90:17: error: implicit declaration of function ‘memcmp’ [-Werror=implicit-function-declaration]
+   90 |         assert(!memcmp(bytes,unchanged,sizeof(bytes)));
+      |                 ^~~~~~
+tests/maze/progress_harness.c:5:1: note: include ‘<string.h>’ or provide a declaration of ‘memcmp’
+    4 | #include "maze_progress.h"
+  +++ |+#include <string.h>
+    5 | static const maze_level_t first={.id="frost_fork"},second={.id="ice_bends"};
+In file included from tests/maze/progress_harness.c:2:
+tests/maze/progress_harness.c:91:17: error: ‘maze_progress_t’ has no member named ‘revision_exhausted’
+   91 |         assert(p.revision_exhausted && p.archive.revision==UINT64_MAX);
+      |                 ^
+cc1: all warnings being treated as errors

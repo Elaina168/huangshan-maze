@@ -7,8 +7,15 @@ typedef struct { float x, y; } maze_point_t;
 typedef struct { float x, y, width, height; } maze_rect_t;
 typedef struct { float x, y, radius; } maze_circle_t;
 
-typedef enum { MAZE_SURFACE_NORMAL, MAZE_SURFACE_ICE } maze_surface_t;
+typedef enum { MAZE_SURFACE_NORMAL, MAZE_SURFACE_ICE, MAZE_SURFACE_ROUGH } maze_surface_t;
 typedef struct { maze_rect_t area; maze_surface_t surface; } maze_surface_area_t;
+
+typedef enum
+{
+    MAZE_MECH_KEY, MAZE_MECH_SWITCH, MAZE_MECH_KEY_DOOR,
+    MAZE_MECH_SWITCH_DOOR, MAZE_MECH_BREAKABLE, MAZE_MECH_CHECKPOINT
+} maze_mechanism_kind_t;
+typedef struct { maze_mechanism_kind_t kind; maze_rect_t area; unsigned link; } maze_mechanism_t;
 
 typedef struct maze_level
 {
@@ -22,6 +29,8 @@ typedef struct maze_level
     const maze_surface_area_t *surfaces;
     unsigned surface_count;
     const char *id;
+    const maze_mechanism_t *mechanisms;
+    unsigned mechanism_count;
 } maze_level_t;
 
 maze_surface_t maze_level_surface_at(const maze_level_t *level, float x, float y);

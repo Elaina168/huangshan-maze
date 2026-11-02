@@ -1,0 +1,7 @@
+# 独立针对性复核
+
+2026-11-02，flush_completion_review只读核对项目与实际SDK代码，未发现本次修复的重要问题。
+
+复核确认wait_flush_done取/还同一lcd_sema，逐笔显式等待不消耗下一次许可，flush_ready后LVGL不会额外因flushing再次阻塞；draw_core完成后另一个lcd_task线程才发完成回调，当前调用关系无死锁。RED/GREEN实际日志为302→0、354笔等待。
+
+该结论仅支持代码和替身的生命周期修复；真实DMA闪烁/黑块是否消失、等待间隔与操作手感仍须板端复测。没有提出其他重要问题，没有修改文件或SDK。

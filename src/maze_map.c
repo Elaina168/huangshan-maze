@@ -2,6 +2,7 @@
 #include "maze_map.h"
 #include <math.h>
 #include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
 
 #define CHECK_COLUMNS (MAZE_MAP_MAX_COLUMNS*MAZE_MAP_CELL_PX/MAZE_MAP_CHECK_STEP_PX+1)
@@ -52,7 +53,7 @@ static int format_valid(const maze_map_definition_t *d)
                 if (c!='|' && c!=' ') return 0;
                 if ((x==0 || x+1==width) && c!='|') return 0;
             }
-            else if (c!='.' && c!='~') return 0;
+            else if (c!='.' && c!='~' && c!=':') return 0;
         }
     }
     return 1;
@@ -96,6 +97,21 @@ static int segment_clear(const maze_level_t *l, float ax, float ay, float bx, fl
     return 1;
 }
 
+static int mechanism_segment_clear(const maze_level_t *l, float ax, float ay, float bx, float by,
+                                   uint32_t keys, uint32_t switches)
+{
+    if (!segment_clear(l,ax,ay,bx,by)) return 0;
+    for (unsigned i=0;i<l->mechanism_count;i++)
+    {
+        maze_mechanism_t o=l->mechanisms[i];
+        bool blocked=o.kind==MAZE_MECH_KEY_DOOR?!(keys&(1u<<o.link)):
+                     o.kind==MAZE_MECH_SWITCH_DOOR?!(switches&(1u<<o.link)):false;
+        /* 破墙仅作静态可通候选，动力学必经路线另由真实模型验证。 */
+        if (blocked && wall_distance_sq(ax,ay,bx,by,o.area)<l->ball_radius*l->ball_radius) return 0;
+    }
+    return 1;
+}
+
 static int has_route(maze_map_t *out)
 {
     const maze_level_t *l=&out->level;
@@ -127,21 +143,121 @@ static int has_route(maze_map_t *out)
     return 0;
 }
 
+/* 锁存状态只增加；每轮从起点重算闭门区域，直到不再获得钥匙/开关。 */
+static int mechanisms_route(maze_map_t *out)
+{
+    const maze_level_t *l=&out->level;
+    uint32_t keys=0,switches=0,reached=0;
+    unsigned nx=(unsigned)l->width/MAZE_MAP_CHECK_STEP_PX+1;
+    unsigned ny=(unsigned)l->height/MAZE_MAP_CHECK_STEP_PX+1;
+    unsigned start=(unsigned)(l->start.y/MAZE_MAP_CHECK_STEP_PX)*nx+(unsigned)(l->start.x/MAZE_MAP_CHECK_STEP_PX);
+    out->checked_nodes=0;
+    for (unsigned pass=0;pass<=l->mechanism_count;pass++)
+    {
+        uint32_t next_keys=keys,next_switches=switches;
+        bool goal=false;
+        unsigned head=0,tail=1;
+        memset(work.seen,0,sizeof(work.seen));
+        work.queue[0]=(uint16_t)start;work.seen[start/8]|=(uint8_t)(1u<<(start%8));
+        while (head<tail)
+        {
+            unsigned node=work.queue[head++],ix=node%nx,iy=node/nx;
+            float x=ix*MAZE_MAP_CHECK_STEP_PX,y=iy*MAZE_MAP_CHECK_STEP_PX;
+            out->checked_nodes++;
+            if (distance_sq(x,y,l->goal.x,l->goal.y)<=l->goal.radius*l->goal.radius) goal=true;
+            for (unsigned i=0;i<l->mechanism_count;i++)
+            {
+                maze_mechanism_t o=l->mechanisms[i];
+                float r=fminf(o.area.width,o.area.height)/2+l->ball_radius;
+                if (distance_sq(x,y,o.area.x+o.area.width/2,o.area.y+o.area.height/2)>r*r) continue;
+                if (o.kind==MAZE_MECH_KEY) { next_keys|=1u<<o.link;reached|=1u<<i; }
+                else if (o.kind==MAZE_MECH_SWITCH) { next_switches|=1u<<o.link;reached|=1u<<i; }
+                else if (o.kind==MAZE_MECH_CHECKPOINT) reached|=1u<<i;
+            }
+            const int dx[]={1,-1,0,0},dy[]={0,0,1,-1};
+            for (unsigned k=0;k<4;k++)
+            {
+                int xx=(int)ix+dx[k],yy=(int)iy+dy[k];
+                if (xx<0 || yy<0 || (unsigned)xx>=nx || (unsigned)yy>=ny) continue;
+                unsigned next=(unsigned)yy*nx+(unsigned)xx;
+                if (work.seen[next/8]&(1u<<(next%8))) continue;
+                if (!mechanism_segment_clear(l,x,y,xx*MAZE_MAP_CHECK_STEP_PX,yy*MAZE_MAP_CHECK_STEP_PX,keys,switches)) continue;
+                work.seen[next/8]|=(uint8_t)(1u<<(next%8));work.queue[tail++]=(uint16_t)next;
+            }
+        }
+        if (next_keys==keys && next_switches==switches)
+        {
+            if (!goal) return 0;
+            for (unsigned i=0;i<l->mechanism_count;i++)
+            {
+                maze_mechanism_kind_t kind=l->mechanisms[i].kind;
+                if ((kind==MAZE_MECH_KEY || kind==MAZE_MECH_SWITCH || kind==MAZE_MECH_CHECKPOINT) && !(reached&(1u<<i))) return 0;
+            }
+            return 1;
+        }
+        keys=next_keys;switches=next_switches;
+    }
+    return 0;
+}
+
+static int mechanisms_valid(const maze_level_t *l)
+{
+    for (unsigned i=0;i<l->mechanism_count;i++)
+    {
+        maze_mechanism_t o=l->mechanisms[i];maze_rect_t a=o.area;
+        if (o.kind<MAZE_MECH_KEY || o.kind>MAZE_MECH_CHECKPOINT || !isfinite(a.x) ||
+            !isfinite(a.y) || !isfinite(a.width) || !isfinite(a.height) || a.width<=0 || a.height<=0 ||
+            a.x<0 || a.y<0 || a.x+a.width>l->width || a.y+a.height>l->height) return 0;
+        if (o.kind!=MAZE_MECH_BREAKABLE && o.kind!=MAZE_MECH_CHECKPOINT && o.link>7) return 0;
+        if (o.kind==MAZE_MECH_KEY_DOOR || o.kind==MAZE_MECH_SWITCH_DOOR)
+        {
+            bool found=false;
+            maze_mechanism_kind_t trigger=o.kind==MAZE_MECH_KEY_DOOR?MAZE_MECH_KEY:MAZE_MECH_SWITCH;
+            for (unsigned k=0;k<l->mechanism_count;k++)
+                if (l->mechanisms[k].kind==trigger && l->mechanisms[k].link==o.link) found=true;
+            if (!found) return 0;
+        }
+        bool solid=o.kind==MAZE_MECH_KEY_DOOR || o.kind==MAZE_MECH_SWITCH_DOOR || o.kind==MAZE_MECH_BREAKABLE;
+        if (solid)
+        {
+            if (wall_distance_sq(l->start.x,l->start.y,l->start.x,l->start.y,a)<l->ball_radius*l->ball_radius ||
+                wall_distance_sq(l->goal.x,l->goal.y,l->goal.x,l->goal.y,a)<l->goal.radius*l->goal.radius) return 0;
+        }
+        else
+        {
+            maze_circle_t c={a.x+a.width/2,a.y+a.height/2,fminf(a.width,a.height)/2};
+            if (o.kind==MAZE_MECH_CHECKPOINT) c.radius=fmaxf(c.radius,l->ball_radius);
+            if (!circle_clear(l,c)) return 0;
+            for (unsigned k=0;k<l->trap_count;k++) if (circles_overlap(c,l->traps[k])) return 0;
+            for (unsigned k=0;k<l->mechanism_count;k++)
+            {
+                maze_mechanism_t other=l->mechanisms[k];
+                if ((other.kind==MAZE_MECH_KEY_DOOR || other.kind==MAZE_MECH_SWITCH_DOOR || other.kind==MAZE_MECH_BREAKABLE) &&
+                    wall_distance_sq(c.x,c.y,c.x,c.y,other.area)<c.radius*c.radius) return 0;
+            }
+        }
+    }
+    return 1;
+}
+
 int maze_map_load(const maze_map_definition_t *d, maze_map_t *out)
 {
     if (!format_valid(d)) return MAZE_MAP_FORMAT;
-    if (d->object_count>MAZE_MAP_MAX_OBJECTS) return MAZE_MAP_OBJECT;
+    if (d->object_count>MAZE_MAP_MAX_OBJECTS || d->mechanism_count>MAZE_MAP_MAX_MECHANISMS ||
+        (d->mechanism_count && !d->mechanisms)) return MAZE_MAP_OBJECT;
     memset(out,0,sizeof(*out));
     maze_level_t *l=&out->level;
     l->id=d->id;l->width=d->columns*MAZE_MAP_CELL_PX;l->height=d->rows*MAZE_MAP_CELL_PX;
+    l->mechanisms=d->mechanisms;l->mechanism_count=d->mechanism_count;
     l->walls=out->walls;l->surfaces=out->surfaces;l->traps=out->traps;
     float half=MAZE_MAP_WALL_PX/2;
     for (unsigned y=0;y<d->rows;y++)
         for (unsigned x=0;x<d->columns;x++)
         {
             float px=x*MAZE_MAP_CELL_PX,py=y*MAZE_MAP_CELL_PX;
-            if (d->lines[2*y+1][2*x+1]=='~')
-                out->surfaces[l->surface_count++]=(maze_surface_area_t){{px,py,MAZE_MAP_CELL_PX,MAZE_MAP_CELL_PX},MAZE_SURFACE_ICE};
+            if (d->lines[2*y+1][2*x+1]=='~' || d->lines[2*y+1][2*x+1]==':')
+                out->surfaces[l->surface_count++]=(maze_surface_area_t){{px,py,MAZE_MAP_CELL_PX,MAZE_MAP_CELL_PX},
+                    d->lines[2*y+1][2*x+1]=='~'?MAZE_SURFACE_ICE:MAZE_SURFACE_ROUGH};
             if (x+1<d->columns && d->lines[2*y+1][2*x+2]=='|')
             {
                 float lo=fmaxf(0,py-half),hi=fminf(l->height,py+MAZE_MAP_CELL_PX+half);
@@ -178,5 +294,6 @@ int maze_map_load(const maze_map_definition_t *d, maze_map_t *out)
         if (!circle_clear(l,t) || circles_overlap(start,t) || circles_overlap(l->goal,t)) return MAZE_MAP_GEOMETRY;
         for (unsigned k=0;k<i;k++) if (circles_overlap(t,l->traps[k])) return MAZE_MAP_GEOMETRY;
     }
-    return has_route(out)?MAZE_MAP_OK:MAZE_MAP_NO_ROUTE;
+    if (!mechanisms_valid(l)) return MAZE_MAP_OBJECT;
+    return (l->mechanism_count?mechanisms_route(out):has_route(out))?MAZE_MAP_OK:MAZE_MAP_NO_ROUTE;
 }

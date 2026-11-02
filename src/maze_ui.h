@@ -16,7 +16,15 @@ typedef struct
 } maze_ui_command_t;
 /* 装载新地图前解除旧地图场景引用，并丢弃旧页面待处理命令。 */
 void maze_ui_clear(void);
+void maze_ui_loading(void);
 bool maze_ui_take_command(const maze_navigation_t *nav, maze_ui_command_t *command);
 void maze_ui_render(const maze_navigation_t *nav);
 
+/* 条带提交后的协作服务只处理采样/物理，不得调用LVGL或消费触摸事件。 */
+void maze_ui_set_service(void (*service)(void *),void *context);
+
+#ifdef MAZE_SCROLL_TRIAL
+void maze_ui_render_trial(const maze_app_t *app);
+bool maze_ui_take_trial_event(const maze_app_t *app,maze_event_t *event);
+#endif
 #endif

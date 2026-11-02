@@ -1,0 +1,908 @@
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12038108 <set_kv>:
+12038108:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+1203810c:	sub	sp, #76	@ 0x4c
+1203810e:	mov	r4, r0
+12038110:	mov	r6, r1
+12038112:	mov	r9, r3
+12038114:	str	r2, [sp, #20]
+12038116:	cbnz	r2, 12038124 <set_kv+0x1c>
+12038118:	movs	r3, #1
+1203811a:	add	sp, #76	@ 0x4c
+1203811c:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12038120:	b.w	120379c4 <del_kv>
+12038124:	add.w	fp, r0, #140	@ 0x8c
+12038128:	mov	r0, r1
+1203812a:	bl	12088bec <strlen>
+1203812e:	add.w	r8, r9, #24
+12038132:	add.w	r2, r0, r8
+12038136:	mov	r1, fp
+12038138:	mov	r0, r4
+1203813a:	bl	12037f44 <new_kv>
+1203813e:	adds	r0, #1
+12038140:	beq.n	120381e2 <set_kv+0xda>
+12038142:	add.w	sl, r4, #52	@ 0x34
+12038146:	mov	r2, sl
+12038148:	mov	r1, r6
+1203814a:	mov	r0, r4
+1203814c:	bl	120378ec <find_kv>
+12038150:	mov	r7, r0
+12038152:	cbnz	r0, 1203817a <set_kv+0x72>
+12038154:	mov	r2, r6
+12038156:	mov	r1, fp
+12038158:	mov	r0, r4
+1203815a:	ldr	r3, [sp, #20]
+1203815c:	str.w	r9, [sp]
+12038160:	bl	12037fa0 <create_kv_blob>
+12038164:	mov	r5, r0
+12038166:	cbz	r7, 1203818c <set_kv+0x84>
+12038168:	cbnz	r0, 1203818c <set_kv+0x84>
+1203816a:	movs	r3, #1
+1203816c:	mov	r2, sl
+1203816e:	mov	r1, r6
+12038170:	mov	r0, r4
+12038172:	bl	120379c4 <del_kv>
+12038176:	mov	r5, r0
+12038178:	b.n	1203818c <set_kv+0x84>
+1203817a:	movs	r3, #0
+1203817c:	mov	r2, sl
+1203817e:	mov	r1, r6
+12038180:	mov	r0, r4
+12038182:	bl	120379c4 <del_kv>
+12038186:	mov	r5, r0
+12038188:	cmp	r0, #0
+1203818a:	beq.n	12038154 <set_kv+0x4c>
+1203818c:	ldrb.w	r3, [r4, #48]	@ 0x30
+12038190:	cbz	r3, 120381da <set_kv+0xd2>
+12038192:	mov	r0, r6
+12038194:	bl	12088bec <strlen>
+12038198:	movs	r6, #0
+1203819a:	ldr	r3, [pc, #76]	@ (120381e8 <set_kv+0xe0>)
+1203819c:	add	r0, r8
+1203819e:	strd	r0, r6, [sp, #40]	@ 0x28
+120381a2:	strd	r6, r3, [sp]
+120381a6:	movs	r2, #1
+120381a8:	add	r3, sp, #28
+120381aa:	mov	r0, r4
+120381ac:	str	r6, [sp, #8]
+120381ae:	add	r1, sp, #48	@ 0x30
+120381b0:	strd	r6, r4, [sp, #28]
+120381b4:	str	r6, [sp, #36]	@ 0x24
+120381b6:	bl	120376e8 <sector_iterator>
+120381ba:	ldr	r3, [sp, #28]
+120381bc:	cmp	r3, #1
+120381be:	bhi.n	120381d4 <set_kv+0xcc>
+120381c0:	ldr	r3, [pc, #40]	@ (120381ec <set_kv+0xe4>)
+120381c2:	mov	r2, r6
+120381c4:	strd	r6, r3, [sp]
+120381c8:	mov	r0, r4
+120381ca:	str	r6, [sp, #8]
+120381cc:	add	r3, sp, #32
+120381ce:	add	r1, sp, #48	@ 0x30
+120381d0:	bl	120376e8 <sector_iterator>
+120381d4:	movs	r3, #0
+120381d6:	strb.w	r3, [r4, #48]	@ 0x30
+120381da:	mov	r0, r5
+120381dc:	add	sp, #76	@ 0x4c
+120381de:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+120381e2:	movs	r5, #7
+120381e4:	b.n	120381da <set_kv+0xd2>
+120381e6:	nop
+120381e8:	.word	0x120370e7
+120381ec:	.word	0x12037cc5
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12037fa0 <create_kv_blob>:
+12037fa0:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+12037fa4:	mov	r9, r3
+12037fa6:	movs	r3, #0
+12037fa8:	sub	sp, #44	@ 0x2c
+12037faa:	mov	r5, r0
+12037fac:	mov	r0, r2
+12037fae:	mov	r8, r1
+12037fb0:	mov	r7, r2
+12037fb2:	strb.w	r3, [sp, #15]
+12037fb6:	bl	12088bec <strlen>
+12037fba:	cmp	r0, #64	@ 0x40
+12037fbc:	ldr	r4, [sp, #72]	@ 0x48
+12037fbe:	bhi.w	12038100 <create_kv_blob+0x160>
+12037fc2:	movs	r2, #20
+12037fc4:	movs	r1, #255	@ 0xff
+12037fc6:	add	r0, sp, #16
+12037fc8:	ldr.w	r6, [r8, #20]
+12037fcc:	bl	120b4590 <__memset_veneer>
+12037fd0:	ldr	r3, [pc, #304]	@ (12038104 <create_kv_blob+0x164>)
+12037fd2:	mov	r0, r7
+12037fd4:	str	r3, [sp, #20]
+12037fd6:	bl	12088bec <strlen>
+12037fda:	ldr	r3, [r5, #12]
+12037fdc:	str	r4, [sp, #36]	@ 0x24
+12037fde:	adds	r4, #24
+12037fe0:	uxtab	r2, r4, r0
+12037fe4:	subs	r3, #16
+12037fe6:	cmp	r2, r3
+12037fe8:	strb.w	r0, [sp, #32]
+12037fec:	str	r2, [sp, #24]
+12037fee:	bls.n	12037ffa <create_kv_blob+0x5a>
+12037ff0:	movs	r4, #7
+12037ff2:	mov	r0, r4
+12037ff4:	add	sp, #44	@ 0x2c
+12037ff6:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+12037ffa:	adds	r1, r6, #1
+12037ffc:	bne.n	1203800c <create_kv_blob+0x6c>
+12037ffe:	mov	r1, r8
+12038000:	mov	r0, r5
+12038002:	bl	12037f44 <new_kv>
+12038006:	adds	r3, r0, #1
+12038008:	mov	r6, r0
+1203800a:	beq.n	12037ff0 <create_kv_blob+0x50>
+1203800c:	mov	r1, r8
+1203800e:	mov	r0, r5
+12038010:	ldr	r2, [sp, #24]
+12038012:	add.w	r3, sp, #15
+12038016:	bl	12037ab4 <update_sec_status>
+1203801a:	mov	r4, r0
+1203801c:	cmp	r0, #0
+1203801e:	bne.n	12037ff2 <create_kv_blob+0x52>
+12038020:	movs	r2, #4
+12038022:	add	r1, sp, #32
+12038024:	str	r0, [sp, #28]
+12038026:	bl	12038444 <fdb_calc_crc32>
+1203802a:	movs	r2, #4
+1203802c:	add	r1, sp, #36	@ 0x24
+1203802e:	str	r0, [sp, #28]
+12038030:	bl	12038444 <fdb_calc_crc32>
+12038034:	mov	r1, r7
+12038036:	ldrb.w	r2, [sp, #32]
+1203803a:	str	r0, [sp, #28]
+1203803c:	bl	12038444 <fdb_calc_crc32>
+12038040:	mov	r1, r9
+12038042:	ldr	r2, [sp, #36]	@ 0x24
+12038044:	str	r0, [sp, #28]
+12038046:	bl	12038444 <fdb_calc_crc32>
+1203804a:	movs	r3, #1
+1203804c:	str	r0, [sp, #28]
+1203804e:	str	r4, [sp, #4]
+12038050:	str	r3, [sp, #0]
+12038052:	mov	r1, r6
+12038054:	movs	r3, #6
+12038056:	mov	r0, r5
+12038058:	add	r2, sp, #16
+1203805a:	bl	120385a0 <_fdb_write_status>
+1203805e:	mov	r4, r0
+12038060:	cmp	r0, #0
+12038062:	bne.n	12037ff2 <create_kv_blob+0x52>
+12038064:	movs	r3, #20
+12038066:	str	r0, [sp, #0]
+12038068:	add.w	r2, sp, r3
+1203806c:	mov	r0, r5
+1203806e:	adds	r1, r6, #4
+12038070:	bl	12038588 <_fdb_flash_write>
+12038074:	mov	r4, r0
+12038076:	cmp	r0, #0
+12038078:	bne.n	12037ff2 <create_kv_blob+0x52>
+1203807a:	ldrb.w	r3, [sp, #32]
+1203807e:	str	r0, [sp, #0]
+12038080:	mov	r2, r7
+12038082:	mov	r0, r5
+12038084:	add.w	r1, r6, #24
+12038088:	bl	12038588 <_fdb_flash_write>
+1203808c:	ldrb.w	r3, [sp, #15]
+12038090:	mov	r4, r0
+12038092:	cbnz	r3, 120380aa <create_kv_blob+0x10a>
+12038094:	ldr	r2, [sp, #36]	@ 0x24
+12038096:	ldrb.w	r3, [sp, #32]
+1203809a:	adds	r2, #24
+1203809c:	add	r2, r3
+1203809e:	mov	r0, r5
+120380a0:	ldr.w	r1, [r8, #4]
+120380a4:	add	r2, r6
+120380a6:	bl	120370a4 <update_sector_empty_addr_cache>
+120380aa:	mov	r3, r6
+120380ac:	mov	r1, r7
+120380ae:	mov	r0, r5
+120380b0:	ldrb.w	r2, [sp, #32]
+120380b4:	bl	12037150 <update_kv_cache>
+120380b8:	cmp	r4, #0
+120380ba:	bne.n	12037ff2 <create_kv_blob+0x52>
+120380bc:	ldrb.w	r1, [sp, #32]
+120380c0:	str	r4, [sp, #0]
+120380c2:	adds	r1, #24
+120380c4:	mov	r2, r9
+120380c6:	mov	r0, r5
+120380c8:	ldr	r3, [sp, #36]	@ 0x24
+120380ca:	add	r1, r6
+120380cc:	bl	12038588 <_fdb_flash_write>
+120380d0:	mov	r4, r0
+120380d2:	cmp	r0, #0
+120380d4:	bne.n	12037ff2 <create_kv_blob+0x52>
+120380d6:	movs	r3, #2
+120380d8:	movs	r7, #1
+120380da:	mov	r1, r6
+120380dc:	strd	r3, r7, [sp]
+120380e0:	mov	r0, r5
+120380e2:	movs	r3, #6
+120380e4:	add	r2, sp, #16
+120380e6:	bl	120385a0 <_fdb_write_status>
+120380ea:	mov	r4, r0
+120380ec:	cmp	r0, #0
+120380ee:	bne.n	12037ff2 <create_kv_blob+0x52>
+120380f0:	ldrb.w	r3, [sp, #15]
+120380f4:	cmp	r3, #0
+120380f6:	beq.w	12037ff2 <create_kv_blob+0x52>
+120380fa:	strb.w	r7, [r5, #48]	@ 0x30
+120380fe:	b.n	12037ff2 <create_kv_blob+0x52>
+12038100:	movs	r4, #5
+12038102:	b.n	12037ff2 <create_kv_blob+0x52>
+12038104:	.word	0x3030564b
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12036f94 <_fdb_init_ex>:
+12036f94:	push	{r3, r4, r5, r6, r7, lr}
+12036f96:	mov	r6, r1
+12036f98:	mov	r5, r2
+12036f9a:	mov	r7, r3
+12036f9c:	mov	r4, r0
+12036f9e:	cbnz	r0, 12036faa <_fdb_init_ex+0x16>
+12036fa0:	movs	r2, #27
+12036fa2:	ldr	r1, [pc, #152]	@ (1203703c <_fdb_init_ex+0xa8>)
+12036fa4:	ldr	r0, [pc, #152]	@ (12037040 <_fdb_init_ex+0xac>)
+12036fa6:	bl	1207cd9c <rt_assert_handler>
+12036faa:	cbnz	r6, 12036fb6 <_fdb_init_ex+0x22>
+12036fac:	movs	r2, #28
+12036fae:	ldr	r1, [pc, #140]	@ (1203703c <_fdb_init_ex+0xa8>)
+12036fb0:	ldr	r0, [pc, #140]	@ (12037040 <_fdb_init_ex+0xac>)
+12036fb2:	bl	1207cd9c <rt_assert_handler>
+12036fb6:	cbnz	r5, 12036fc2 <_fdb_init_ex+0x2e>
+12036fb8:	movs	r2, #29
+12036fba:	ldr	r1, [pc, #128]	@ (1203703c <_fdb_init_ex+0xa8>)
+12036fbc:	ldr	r0, [pc, #128]	@ (12037040 <_fdb_init_ex+0xac>)
+12036fbe:	bl	1207cd9c <rt_assert_handler>
+12036fc2:	ldrb	r3, [r4, #24]
+12036fc4:	cmp	r3, #0
+12036fc6:	bne.n	12037032 <_fdb_init_ex+0x9e>
+12036fc8:	ldr	r3, [sp, #24]
+12036fca:	str	r6, [r4, #0]
+12036fcc:	str	r3, [r4, #36]	@ 0x24
+12036fce:	ldrb	r3, [r4, #25]
+12036fd0:	strb	r7, [r4, #4]
+12036fd2:	cbnz	r3, 12036ff6 <_fdb_init_ex+0x62>
+12036fd4:	bl	1203620c <fal_init>
+12036fd8:	mov	r0, r5
+12036fda:	bl	120364c8 <fal_partition_find>
+12036fde:	str	r0, [r4, #8]
+12036fe0:	cbz	r0, 12037036 <_fdb_init_ex+0xa2>
+12036fe2:	adds	r0, #28
+12036fe4:	bl	120b44f8 <__fal_flash_device_find_veneer>
+12036fe8:	ldr	r3, [r4, #12]
+12036fea:	ldr	r2, [r0, #32]
+12036fec:	cbnz	r3, 12037022 <_fdb_init_ex+0x8e>
+12036fee:	str	r2, [r4, #12]
+12036ff0:	ldr	r3, [r4, #8]
+12036ff2:	ldr	r3, [r3, #56]	@ 0x38
+12036ff4:	str	r3, [r4, #16]
+12036ff6:	ldr	r3, [r4, #12]
+12036ff8:	subs	r2, r3, #1
+12036ffa:	tst	r2, r3
+12036ffc:	beq.n	12037008 <_fdb_init_ex+0x74>
+12036ffe:	movs	r2, #81	@ 0x51
+12037000:	ldr	r1, [pc, #56]	@ (1203703c <_fdb_init_ex+0xa8>)
+12037002:	ldr	r0, [pc, #60]	@ (12037040 <_fdb_init_ex+0xac>)
+12037004:	bl	1207cd9c <rt_assert_handler>
+12037008:	ldrd	r2, r3, [r4, #12]
+1203700c:	udiv	r0, r3, r2
+12037010:	mls	r3, r2, r0, r3
+12037014:	cbnz	r3, 1203702e <_fdb_init_ex+0x9a>
+12037016:	cmp	r0, #1
+12037018:	ite	hi
+1203701a:	movhi	r0, #0
+1203701c:	movls	r0, #1
+1203701e:	lsls	r0, r0, #3
+12037020:	b.n	12037030 <_fdb_init_ex+0x9c>
+12037022:	udiv	r1, r3, r2
+12037026:	mls	r3, r2, r1, r3
+1203702a:	cmp	r3, #0
+1203702c:	beq.n	12036ff0 <_fdb_init_ex+0x5c>
+1203702e:	movs	r0, #8
+12037030:	pop	{r3, r4, r5, r6, r7, pc}
+12037032:	movs	r0, #0
+12037034:	b.n	12037030 <_fdb_init_ex+0x9c>
+12037036:	movs	r0, #4
+12037038:	b.n	12037030 <_fdb_init_ex+0x9c>
+1203703a:	nop
+1203703c:	.word	0x1209eb48
+12037040:	.word	0x120986ae
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+1203730c <read_kv>:
+1203730c:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, lr}
+12037310:	sub	sp, #68	@ 0x44
+12037312:	add	r6, sp, #8
+12037314:	mov	r4, r1
+12037316:	movs	r3, #24
+12037318:	mov	r2, r6
+1203731a:	ldr	r1, [r1, #80]	@ 0x50
+1203731c:	mov	r5, r0
+1203731e:	bl	120384ca <_fdb_flash_read>
+12037322:	movs	r1, #6
+12037324:	mov	r0, r6
+12037326:	bl	12038498 <_fdb_get_status>
+1203732a:	movs	r7, #0
+1203732c:	ldr.w	r8, [pc, #352]	@ 12037490 <read_kv+0x184>
+12037330:	strb	r0, [r4, #0]
+12037332:	ldrb.w	r3, [r8]
+12037336:	cbz	r3, 12037340 <read_kv+0x34>
+12037338:	ldrb	r1, [r6, r7]
+1203733a:	ldr	r0, [pc, #316]	@ (12037478 <read_kv+0x16c>)
+1203733c:	bl	1207cbdc <rt_kprintf>
+12037340:	adds	r7, #1
+12037342:	cmp	r7, #32
+12037344:	bne.n	12037332 <read_kv+0x26>
+12037346:	ldr	r3, [sp, #16]
+12037348:	str	r3, [r4, #8]
+1203734a:	ldrb.w	r3, [r8]
+1203734e:	cbz	r3, 12037356 <read_kv+0x4a>
+12037350:	ldr	r0, [pc, #296]	@ (1203747c <read_kv+0x170>)
+12037352:	bl	1207cbdc <rt_kprintf>
+12037356:	ldr	r3, [r4, #8]
+12037358:	adds	r2, r3, #1
+1203735a:	beq.n	12037372 <read_kv+0x66>
+1203735c:	ldr	r1, [r5, #16]
+1203735e:	cmp	r3, r1
+12037360:	bhi.n	12037372 <read_kv+0x66>
+12037362:	cmp	r3, #23
+12037364:	bls.n	12037372 <read_kv+0x66>
+12037366:	ldr	r2, [r5, #12]
+12037368:	subs	r2, #16
+1203736a:	cmp	r3, r2
+1203736c:	bls.n	120373b6 <read_kv+0xaa>
+1203736e:	cmp	r3, r1
+12037370:	bcs.n	120373b6 <read_kv+0xaa>
+12037372:	movs	r3, #24
+12037374:	str	r3, [r4, #8]
+12037376:	ldrb	r3, [r4, #0]
+12037378:	cmp	r3, #5
+1203737a:	beq.n	12037392 <read_kv+0x86>
+1203737c:	movs	r3, #5
+1203737e:	movs	r2, #1
+12037380:	strb	r3, [r4, #0]
+12037382:	strd	r3, r2, [sp]
+12037386:	mov	r0, r5
+12037388:	movs	r3, #6
+1203738a:	mov	r2, r6
+1203738c:	ldr	r1, [r4, #80]	@ 0x50
+1203738e:	bl	120385a0 <_fdb_write_status>
+12037392:	movs	r3, #0
+12037394:	strb	r3, [r4, #1]
+12037396:	ldr	r3, [pc, #232]	@ (12037480 <read_kv+0x174>)
+12037398:	ldrb	r3, [r3, #0]
+1203739a:	cbz	r3, 120373ae <read_kv+0xa2>
+1203739c:	ldr	r3, [r4, #8]
+1203739e:	cmp	r3, #24
+120373a0:	bne.n	120373ae <read_kv+0xa2>
+120373a2:	movw	r2, #457	@ 0x1c9
+120373a6:	ldr	r1, [pc, #220]	@ (12037484 <read_kv+0x178>)
+120373a8:	ldr	r0, [pc, #220]	@ (12037488 <read_kv+0x17c>)
+120373aa:	bl	1207cd9c <rt_assert_handler>
+120373ae:	movs	r0, #2
+120373b0:	add	sp, #68	@ 0x44
+120373b2:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
+120373b6:	movs	r2, #4
+120373b8:	add	r1, sp, #24
+120373ba:	movs	r0, #0
+120373bc:	bl	12038444 <fdb_calc_crc32>
+120373c0:	movs	r2, #4
+120373c2:	add	r1, sp, #28
+120373c4:	bl	12038444 <fdb_calc_crc32>
+120373c8:	mov	r6, r0
+120373ca:	movs	r0, #0
+120373cc:	ldr	r7, [r4, #8]
+120373ce:	subs	r7, #24
+120373d0:	cmp	r0, r7
+120373d2:	bcc.n	1203740c <read_kv+0x100>
+120373d4:	ldr	r3, [sp, #20]
+120373d6:	add.w	r7, r4, #16
+120373da:	cmp	r3, r6
+120373dc:	beq.n	12037444 <read_kv+0x138>
+120373de:	ldr	r3, [pc, #160]	@ (12037480 <read_kv+0x174>)
+120373e0:	ldrb	r3, [r3, #0]
+120373e2:	cbz	r3, 120373f0 <read_kv+0xe4>
+120373e4:	mov.w	r2, #484	@ 0x1e4
+120373e8:	ldr	r1, [pc, #152]	@ (12037484 <read_kv+0x178>)
+120373ea:	ldr	r0, [pc, #160]	@ (1203748c <read_kv+0x180>)
+120373ec:	bl	1207cd9c <rt_assert_handler>
+120373f0:	movs	r2, #0
+120373f2:	ldrb.w	r3, [sp, #24]
+120373f6:	ldr	r1, [r4, #80]	@ 0x50
+120373f8:	cmp	r3, #64	@ 0x40
+120373fa:	strb	r2, [r4, #1]
+120373fc:	it	cs
+120373fe:	movcs	r3, #64	@ 0x40
+12037400:	mov	r2, r7
+12037402:	mov	r0, r5
+12037404:	adds	r1, #24
+12037406:	bl	120384ca <_fdb_flash_read>
+1203740a:	b.n	120373ae <read_kv+0xa2>
+1203740c:	add.w	r8, r0, #32
+12037410:	cmp	r8, r7
+12037412:	it	cc
+12037414:	movcc.w	r9, #32
+12037418:	ldr	r1, [r4, #80]	@ 0x50
+1203741a:	it	cs
+1203741c:	subcs.w	r9, r7, r0
+12037420:	add.w	r1, r1, #24
+12037424:	add	r1, r0
+12037426:	mov	r3, r9
+12037428:	add	r2, sp, #32
+1203742a:	mov	r0, r5
+1203742c:	it	cs
+1203742e:	movcs	r8, r7
+12037430:	bl	120384ca <_fdb_flash_read>
+12037434:	mov	r0, r6
+12037436:	mov	r2, r9
+12037438:	add	r1, sp, #32
+1203743a:	bl	12038444 <fdb_calc_crc32>
+1203743e:	mov	r6, r0
+12037440:	mov	r0, r8
+12037442:	b.n	120373d0 <read_kv+0xc4>
+12037444:	movs	r3, #1
+12037446:	ldr	r6, [r4, #80]	@ 0x50
+12037448:	strb	r3, [r4, #1]
+1203744a:	adds	r6, #24
+1203744c:	mov	r2, r7
+1203744e:	mov	r1, r6
+12037450:	ldrb.w	r3, [sp, #24]
+12037454:	mov	r0, r5
+12037456:	bl	120384ca <_fdb_flash_read>
+1203745a:	ldrb.w	r3, [sp, #24]
+1203745e:	ldr	r2, [sp, #28]
+12037460:	add	r6, r3
+12037462:	movs	r0, #0
+12037464:	str	r6, [r4, #84]	@ 0x54
+12037466:	str	r2, [r4, #12]
+12037468:	strb	r3, [r4, #2]
+1203746a:	cmp	r3, #63	@ 0x3f
+1203746c:	ite	ls
+1203746e:	addls	r4, r4, r3
+12037470:	addhi	r4, #63	@ 0x3f
+12037472:	strb	r0, [r4, #16]
+12037474:	b.n	120373b0 <read_kv+0xa4>
+12037476:	nop
+12037478:	.word	0x1209395c
+1203747c:	.word	0x12093212
+12037480:	.word	0x2001ab51
+12037484:	.word	0x1209ebab
+12037488:	.word	0x12093962
+1203748c:	.word	0x1209397e
+12037490:	.word	0x2001ab52
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120378ec <find_kv>:
+120378ec:	movs	r3, #1
+120378ee:	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+120378f2:	mov	r4, r0
+120378f4:	sub	sp, #76	@ 0x4c
+120378f6:	mov	r0, r1
+120378f8:	strb	r3, [r2, #1]
+120378fa:	mov	r7, r1
+120378fc:	mov	r5, r2
+120378fe:	bl	12088bec <strlen>
+12037902:	mov	r1, r7
+12037904:	mov	r2, r0
+12037906:	mov	r8, r0
+12037908:	movs	r0, #0
+1203790a:	bl	12038444 <fdb_calc_crc32>
+1203790e:	mov	r9, r4
+12037910:	movs	r6, #0
+12037912:	mov.w	sl, r0, lsr #16
+12037916:	ldr.w	r3, [r4, #296]	@ 0x128
+1203791a:	cmp	r6, r3
+1203791c:	bcs.n	12037982 <find_kv+0x96>
+1203791e:	ldr.w	fp, [r9, #172]	@ 0xac
+12037922:	cmp.w	fp, #4294967295
+12037926:	beq.n	120379b2 <find_kv+0xc6>
+12037928:	ldrh.w	r3, [r9, #168]	@ 0xa8
+1203792c:	cmp	r3, sl
+1203792e:	bne.n	120379b2 <find_kv+0xc6>
+12037930:	movs	r2, #64	@ 0x40
+12037932:	movs	r1, #0
+12037934:	add	r0, sp, #8
+12037936:	bl	120b4590 <__memset_veneer>
+1203793a:	add	r2, sp, #8
+1203793c:	add.w	r1, fp, #24
+12037940:	movs	r3, #64	@ 0x40
+12037942:	mov	r0, r4
+12037944:	bl	120384ca <_fdb_flash_read>
+12037948:	mov	r2, r8
+1203794a:	mov	r0, r7
+1203794c:	add	r1, sp, #8
+1203794e:	bl	12087660 <strncmp>
+12037952:	cbnz	r0, 120379b2 <find_kv+0xc6>
+12037954:	add.w	r6, r4, r6, lsl #3
+12037958:	ldr.w	r3, [r6, #172]	@ 0xac
+1203795c:	str	r3, [r5, #80]	@ 0x50
+1203795e:	movw	r3, #65535	@ 0xffff
+12037962:	ldr.w	r1, [r4, #296]	@ 0x128
+12037966:	ldrh.w	r2, [r6, #170]	@ 0xaa
+1203796a:	subs	r0, r3, r1
+1203796c:	cmp	r2, r0
+1203796e:	itt	cc
+12037970:	addcc	r2, r2, r1
+12037972:	uxthcc	r3, r2
+12037974:	mov	r1, r5
+12037976:	mov	r0, r4
+12037978:	strh.w	r3, [r6, #170]	@ 0xaa
+1203797c:	bl	1203730c <read_kv>
+12037980:	cbz	r0, 120379ba <find_kv+0xce>
+12037982:	movs	r3, #0
+12037984:	strb.w	r3, [sp, #8]
+12037988:	ldr	r3, [pc, #52]	@ (120379c0 <find_kv+0xd4>)
+1203798a:	mov	r0, r4
+1203798c:	str	r3, [sp, #0]
+1203798e:	mov	r2, r7
+12037990:	mov	r1, r5
+12037992:	add	r3, sp, #8
+12037994:	bl	1203767c <kv_iterator>
+12037998:	ldrb.w	r0, [sp, #8]
+1203799c:	cbz	r0, 120379ac <find_kv+0xc0>
+1203799e:	mov	r0, r4
+120379a0:	mov	r2, r8
+120379a2:	mov	r1, r7
+120379a4:	ldr	r3, [r5, #80]	@ 0x50
+120379a6:	bl	12037150 <update_kv_cache>
+120379aa:	ldrb	r0, [r5, #1]
+120379ac:	add	sp, #76	@ 0x4c
+120379ae:	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+120379b2:	adds	r6, #1
+120379b4:	add.w	r9, r9, #8
+120379b8:	b.n	12037916 <find_kv+0x2a>
+120379ba:	movs	r0, #1
+120379bc:	b.n	120379ac <find_kv+0xc0>
+120379be:	nop
+120379c0:	.word	0x120372d5
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120379c4 <del_kv>:
+120379c4:	push	{r4, r5, r6, r7, lr}
+120379c6:	mov	r6, r2
+120379c8:	sub	sp, #108	@ 0x6c
+120379ca:	mov	r4, r0
+120379cc:	mov	r7, r1
+120379ce:	movs	r2, #88	@ 0x58
+120379d0:	movs	r1, #0
+120379d2:	add	r0, sp, #16
+120379d4:	mov	r5, r3
+120379d6:	bl	120b4590 <__memset_veneer>
+120379da:	cbnz	r6, 120379ec <del_kv+0x28>
+120379dc:	mov	r1, r7
+120379de:	mov	r0, r4
+120379e0:	add	r2, sp, #16
+120379e2:	bl	120378ec <find_kv>
+120379e6:	cmp	r0, #0
+120379e8:	beq.n	12037aac <del_kv+0xe8>
+120379ea:	add	r6, sp, #16
+120379ec:	ldr	r1, [r6, #80]	@ 0x50
+120379ee:	cbnz	r5, 12037a10 <del_kv+0x4c>
+120379f0:	movs	r3, #3
+120379f2:	str	r5, [sp, #4]
+120379f4:	str	r3, [sp, #0]
+120379f6:	mov	r0, r4
+120379f8:	movs	r3, #6
+120379fa:	add	r2, sp, #12
+120379fc:	bl	120385a0 <_fdb_write_status>
+12037a00:	movs	r3, #1
+12037a02:	mov	r5, r0
+12037a04:	strb.w	r3, [r4, #164]	@ 0xa4
+12037a08:	cbz	r5, 12037a4a <del_kv+0x86>
+12037a0a:	mov	r0, r5
+12037a0c:	add	sp, #108	@ 0x6c
+12037a0e:	pop	{r4, r5, r6, r7, pc}
+12037a10:	movs	r3, #4
+12037a12:	movs	r2, #1
+12037a14:	mov	r0, r4
+12037a16:	strd	r3, r2, [sp]
+12037a1a:	movs	r3, #6
+12037a1c:	add	r2, sp, #12
+12037a1e:	bl	120385a0 <_fdb_write_status>
+12037a22:	ldrb.w	r3, [r4, #164]	@ 0xa4
+12037a26:	mov	r5, r0
+12037a28:	cmp	r3, #0
+12037a2a:	bne.n	12037aa8 <del_kv+0xe4>
+12037a2c:	cmp	r0, #0
+12037a2e:	bne.n	12037a0a <del_kv+0x46>
+12037a30:	cbz	r7, 12037a92 <del_kv+0xce>
+12037a32:	mov	r0, r7
+12037a34:	bl	12088bec <strlen>
+12037a38:	mov.w	r3, #4294967295
+12037a3c:	mov	r2, r0
+12037a3e:	mov	r1, r7
+12037a40:	mov	r0, r4
+12037a42:	bl	12037150 <update_kv_cache>
+12037a46:	strb.w	r5, [r4, #164]	@ 0xa4
+12037a4a:	ldr	r3, [r4, #12]
+12037a4c:	ldr	r5, [r6, #80]	@ 0x50
+12037a4e:	mov	r0, r4
+12037a50:	udiv	r5, r5, r3
+12037a54:	muls	r5, r3
+12037a56:	adds	r5, #1
+12037a58:	movs	r3, #4
+12037a5a:	mov	r1, r5
+12037a5c:	add	r2, sp, #12
+12037a5e:	bl	120384e0 <_fdb_read_status>
+12037a62:	cmp	r0, #1
+12037a64:	bne.n	12037ab0 <del_kv+0xec>
+12037a66:	movs	r7, #2
+12037a68:	mov	r1, r5
+12037a6a:	movs	r3, #4
+12037a6c:	str	r0, [sp, #4]
+12037a6e:	str	r7, [sp, #0]
+12037a70:	mov	r0, r4
+12037a72:	add	r2, sp, #12
+12037a74:	bl	120385a0 <_fdb_write_status>
+12037a78:	ldr	r1, [r4, #12]
+12037a7a:	ldr	r3, [r6, #80]	@ 0x50
+12037a7c:	mov	r5, r0
+12037a7e:	udiv	r3, r3, r1
+12037a82:	mov	r0, r4
+12037a84:	muls	r1, r3
+12037a86:	bl	12037078 <get_sector_from_cache>
+12037a8a:	cmp	r0, #0
+12037a8c:	beq.n	12037a0a <del_kv+0x46>
+12037a8e:	strb	r7, [r0, #2]
+12037a90:	b.n	12037a0a <del_kv+0x46>
+12037a92:	mov.w	r3, #4294967295
+12037a96:	mov	r0, r4
+12037a98:	ldrb	r2, [r6, #2]
+12037a9a:	add.w	r1, r6, #16
+12037a9e:	bl	12037150 <update_kv_cache>
+12037aa2:	strb.w	r7, [r4, #164]	@ 0xa4
+12037aa6:	b.n	12037a4a <del_kv+0x86>
+12037aa8:	movs	r3, #0
+12037aaa:	b.n	12037a04 <del_kv+0x40>
+12037aac:	movs	r5, #5
+12037aae:	b.n	12037a0a <del_kv+0x46>
+12037ab0:	movs	r5, #0
+12037ab2:	b.n	12037a0a <del_kv+0x46>
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12038588 <_fdb_flash_write>:
+12038588:	push	{r4, lr}
+1203858a:	ldrb	r4, [r0, #25]
+1203858c:	cbz	r4, 12038592 <_fdb_flash_write+0xa>
+1203858e:	movs	r0, #3
+12038590:	pop	{r4, pc}
+12038592:	ldr	r0, [r0, #8]
+12038594:	bl	12036610 <fal_partition_write>
+12038598:	cmp	r0, #0
+1203859a:	blt.n	1203858e <_fdb_flash_write+0x6>
+1203859c:	mov	r0, r4
+1203859e:	b.n	12038590 <_fdb_flash_write+0x8>
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+12036610 <fal_partition_write>:
+12036610:	push	{r3, r4, r5, r6, r7, lr}
+12036612:	mov	r5, r1
+12036614:	mov	r6, r3
+12036616:	adds	r7, r5, r3
+12036618:	ldr	r3, [r0, #56]	@ 0x38
+1203661a:	mov	r4, r0
+1203661c:	cmp	r7, r3
+1203661e:	mov	r1, r2
+12036620:	bls.n	12036670 <fal_partition_write+0x60>
+12036622:	mov.w	r2, #462	@ 0x1ce
+12036626:	ldr	r1, [pc, #168]	@ (120366d0 <fal_partition_write+0xc0>)
+12036628:	ldr	r0, [pc, #168]	@ (120366d4 <fal_partition_write+0xc4>)
+1203662a:	bl	1207cbdc <rt_kprintf>
+1203662e:	ldr	r3, [r4, #56]	@ 0x38
+12036630:	mov	r2, r6
+12036632:	mov	r1, r5
+12036634:	ldr	r0, [pc, #160]	@ (120366d8 <fal_partition_write+0xc8>)
+12036636:	bl	1207cbdc <rt_kprintf>
+1203663a:	ldr	r0, [pc, #160]	@ (120366dc <fal_partition_write+0xcc>)
+1203663c:	bl	1207cbdc <rt_kprintf>
+12036640:	movw	r2, #463	@ 0x1cf
+12036644:	ldr	r1, [pc, #136]	@ (120366d0 <fal_partition_write+0xc0>)
+12036646:	ldr	r0, [pc, #140]	@ (120366d4 <fal_partition_write+0xc4>)
+12036648:	bl	1207cbdc <rt_kprintf>
+1203664c:	ldr	r0, [pc, #144]	@ (120366e0 <fal_partition_write+0xd0>)
+1203664e:	bl	1207cbdc <rt_kprintf>
+12036652:	ldr	r0, [pc, #136]	@ (120366dc <fal_partition_write+0xcc>)
+12036654:	bl	1207cbdc <rt_kprintf>
+12036658:	ldr	r3, [r4, #56]	@ 0x38
+1203665a:	cmp	r7, r3
+1203665c:	bls.n	1203666a <fal_partition_write+0x5a>
+1203665e:	mov.w	r2, #464	@ 0x1d0
+12036662:	ldr	r1, [pc, #128]	@ (120366e4 <fal_partition_write+0xd4>)
+12036664:	ldr	r0, [pc, #128]	@ (120366e8 <fal_partition_write+0xd8>)
+12036666:	bl	1207cd9c <rt_assert_handler>
+1203666a:	mov.w	r5, #4294967295
+1203666e:	b.n	120366ca <fal_partition_write+0xba>
+12036670:	ldr	r3, [pc, #120]	@ (120366ec <fal_partition_write+0xdc>)
+12036672:	ldr	r2, [pc, #124]	@ (120366f0 <fal_partition_write+0xe0>)
+12036674:	ldr	r3, [r3, #0]
+12036676:	subs	r3, r0, r3
+12036678:	asrs	r3, r3, #6
+1203667a:	ldr.w	r3, [r2, r3, lsl #2]
+1203667e:	cbnz	r3, 120366a0 <fal_partition_write+0x90>
+12036680:	movw	r2, #471	@ 0x1d7
+12036684:	ldr	r1, [pc, #72]	@ (120366d0 <fal_partition_write+0xc0>)
+12036686:	ldr	r0, [pc, #76]	@ (120366d4 <fal_partition_write+0xc4>)
+12036688:	bl	1207cbdc <rt_kprintf>
+1203668c:	ldr	r0, [pc, #100]	@ (120366f4 <fal_partition_write+0xe4>)
+1203668e:	adds	r2, r4, #4
+12036690:	add.w	r1, r4, #28
+12036694:	bl	1207cbdc <rt_kprintf>
+12036698:	ldr	r0, [pc, #64]	@ (120366dc <fal_partition_write+0xcc>)
+1203669a:	bl	1207cbdc <rt_kprintf>
+1203669e:	b.n	1203666a <fal_partition_write+0x5a>
+120366a0:	ldr	r0, [r0, #52]	@ 0x34
+120366a2:	mov	r2, r6
+120366a4:	add	r0, r5
+120366a6:	ldr	r3, [r3, #48]	@ 0x30
+120366a8:	blx	r3
+120366aa:	subs	r5, r0, #0
+120366ac:	bge.n	120366ca <fal_partition_write+0xba>
+120366ae:	mov.w	r2, #478	@ 0x1de
+120366b2:	ldr	r1, [pc, #28]	@ (120366d0 <fal_partition_write+0xc0>)
+120366b4:	ldr	r0, [pc, #28]	@ (120366d4 <fal_partition_write+0xc4>)
+120366b6:	bl	1207cbdc <rt_kprintf>
+120366ba:	ldr	r0, [pc, #60]	@ (120366f8 <fal_partition_write+0xe8>)
+120366bc:	add.w	r1, r4, #28
+120366c0:	bl	1207cbdc <rt_kprintf>
+120366c4:	ldr	r0, [pc, #20]	@ (120366dc <fal_partition_write+0xcc>)
+120366c6:	bl	1207cbdc <rt_kprintf>
+120366ca:	mov	r0, r5
+120366cc:	pop	{r3, r4, r5, r6, r7, pc}
+120366ce:	nop
+120366d0:	.word	0x1209e94c
+120366d4:	.word	0x12092d3f
+120366d8:	.word	0x1209300a
+120366dc:	.word	0x12092d39
+120366e0:	.word	0x1209303a
+120366e4:	.word	0x1209e938
+120366e8:	.word	0x12092f75
+120366ec:	.word	0x2001ab44
+120366f0:	.word	0x2001ab34
+120366f4:	.word	0x12093071
+120366f8:	.word	0x120930bc
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+
+C:\Users\zytx\AppData\Local\Temp\huangshan-maze-wbool1zd\project\build_sf32lb52-lchspi-ulp_hcpu\main.elf:     file format elf32-littlearm
+
+
+Disassembly of section .retm_data:
+
+Disassembly of section .text:
+
+120774f0 <maze_archive_crc32>:
+120774f0:	mov.w	r3, #4294967295
+120774f4:	push	{r4, r5, lr}
+120774f6:	ldr	r5, [pc, #36]	@ (1207751c <maze_archive_crc32+0x2c>)
+120774f8:	add	r1, r0
+120774fa:	cmp	r0, r1
+120774fc:	bne.n	12077502 <maze_archive_crc32+0x12>
+120774fe:	mvns	r0, r3
+12077500:	pop	{r4, r5, pc}
+12077502:	ldrb.w	r2, [r0], #1
+12077506:	eors	r3, r2
+12077508:	movs	r2, #8
+1207750a:	sbfx	r4, r3, #0, #1
+1207750e:	ands	r4, r5
+12077510:	subs	r2, #1
+12077512:	eor.w	r3, r4, r3, lsr #1
+12077516:	bne.n	1207750a <maze_archive_crc32+0x1a>
+12077518:	b.n	120774fa <maze_archive_crc32+0xa>
+1207751a:	nop
+1207751c:	.word	0xedb88320

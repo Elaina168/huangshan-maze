@@ -1,0 +1,5 @@
+PASS: current sources and three artifact hashes match normal build
+PASS: normal ELF has store entry; no trial runner/map symbols
+120792e0 000001b4 T maze_store_open
+2001cdc8 00000ff0 b store.1
+2001f410 000023f4 b work

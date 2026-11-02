@@ -6,6 +6,7 @@ typedef struct
 {
     maze_archive_t archive;
     bool active,finished,accounted;
+    bool revision_exhausted;
     unsigned level,mode,mistakes,rank;
     double accrued_ms;
 } maze_progress_t;

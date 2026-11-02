@@ -1,0 +1,4 @@
+formal third: ball_min=128 full=128 parts=270 heap_before=16448 heap_after=16448 max_used=42248
+PASS: formal three-level menu/loading, common single buffer/service, large-world clipping, stale result click and final boundary
+
+exit=0

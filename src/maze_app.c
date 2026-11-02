@@ -151,6 +151,13 @@ void maze_app_event(maze_app_t *a, maze_event_t event, uint32_t now_tick)
         if (a->state==MAZE_APP_CALIBRATION_FAILED) calibrate(a,now_tick,MAZE_CAL_NEW);
         else if (a->state==MAZE_APP_DEVICE_ERROR) calibrate(a,now_tick,MAZE_CAL_RECOVERY);
         break;
+    case MAZE_EVENT_RESPAWN:
+        if (a->state==MAZE_APP_LOST && maze_model_respawn(&a->model))
+        {
+            a->elapsed_ms=0;
+            calibrate(a,now_tick,MAZE_CAL_NEW);
+        }
+        break;
     case MAZE_EVENT_EXIT:
         if (a->state!=MAZE_APP_READY && a->state!=MAZE_APP_PLAYING) maze_app_cancel(a);
         break;

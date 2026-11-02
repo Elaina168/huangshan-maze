@@ -9,11 +9,13 @@ typedef struct
     struct fdb_kvdb db[2];
     const struct fal_partition *parts[2];
     bool mounted[2],repair;
+    bool upgrade_pending;
     int status[2],active;
     uint64_t revision;
     uint8_t current[MAZE_ARCHIVE_BYTES];
 } maze_store_t;
-/* 实例静态存放，仅安全状态的主线程调用；不自动覆盖未知格式档案。 */
+/* 只读打开v1/v2时返回待提交revision+1，store.revision仍为源值；不自动改写源bank。
+ * 实例静态存放，仅安全状态的主线程非重入调用；不自动覆盖未知格式档案。 */
 int maze_store_open(maze_store_t *store,maze_archive_t *archive);
 int maze_store_save(maze_store_t *store,const maze_archive_t *archive);
 /* 项目NOR适配层的写闸门：-1只读，0/1仅允许对应副本写擦。 */

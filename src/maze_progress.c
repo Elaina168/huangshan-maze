@@ -40,6 +40,11 @@ void maze_progress_before_event(maze_progress_t *p,const maze_app_t *a,maze_even
         if(a->state==MAZE_APP_WON) begin(p,a);
         else if(p->active) { fold(p,a);p->accounted=false;p->rank=0; }
     }
+    else if(event==MAZE_EVENT_RESPAWN && a->state==MAZE_APP_LOST && a->model.checkpoint && p->active)
+    {
+        /* 落坑已折入挑战，复活开始新段；校准期间不重复累计旧段。 */
+        fold(p,a);p->accounted=false;p->rank=0;
+    }
     else if(event==MAZE_EVENT_EXIT && p->active && a->state==MAZE_APP_CALIBRATING) fold(p,a);
 }
 
@@ -69,6 +74,8 @@ void maze_progress_observe(maze_progress_t *p,const maze_app_t *a)
 {
     if(!p->active || p->finished || p->accounted ||
        (a->state!=MAZE_APP_LOST && a->state!=MAZE_APP_WON)) return;
+    /* 外部档案可带最大修订；明确拒绝不可表示的新结算，保留整个旧快照。 */
+    if(p->archive.revision==UINT64_MAX) { p->revision_exhausted=true;return; }
     fold(p,a);
     maze_level_record_t *level=&p->archive.levels[p->level];
     if(a->state==MAZE_APP_LOST)
