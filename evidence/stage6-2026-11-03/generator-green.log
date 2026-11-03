@@ -1,0 +1,1 @@
+PASS: random generator accepted=32/32 distinct-adjacent=31; exact seed and budget independence

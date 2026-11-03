@@ -1,6 +1,7 @@
 /* 挑战累计与存档内容纯逻辑；IMU代次不作为玩家尝试身份。 */
 #include "maze_progress.h"
 #include <string.h>
+#include "maze_random.h"
 
 void maze_progress_init(maze_progress_t *p,const maze_archive_t *archive)
 {
@@ -20,7 +21,8 @@ bool maze_progress_unlocked(const maze_progress_t *p,const char *id)
 static void begin(maze_progress_t *p,const maze_app_t *a)
 {
     p->active=true;p->finished=false;p->accounted=false;
-    p->level=(unsigned)index_of(p,a->level->id);p->mode=a->reversed?1:0;
+    p->random=!strcmp(a->level->id,MAZE_RANDOM_ID);
+    p->level=p->random?0:(unsigned)index_of(p,a->level->id);p->mode=a->reversed?1:0;
     p->accrued_ms=0;p->mistakes=p->rank=0;
 }
 static void fold(maze_progress_t *p,const maze_app_t *a)
@@ -74,21 +76,26 @@ void maze_progress_observe(maze_progress_t *p,const maze_app_t *a)
 {
     if(!p->active || p->finished || p->accounted ||
        (a->state!=MAZE_APP_LOST && a->state!=MAZE_APP_WON)) return;
+    /* 娱乐模式只维护复活/重玩的局内状态，不统计成绩或失误。 */
+    if(p->random){fold(p,a);p->finished=a->state==MAZE_APP_WON;return;}
     /* 外部档案可带最大修订；明确拒绝不可表示的新结算，保留整个旧快照。 */
     if(p->archive.revision==UINT64_MAX) { p->revision_exhausted=true;return; }
     fold(p,a);
-    maze_level_record_t *level=&p->archive.levels[p->level];
+    maze_mode_record_t *mode=&p->archive.levels[p->level].modes[p->mode];
     if(a->state==MAZE_APP_LOST)
     {
-        p->mistakes++;level->modes[p->mode].losses++;p->archive.revision++;
+        p->mistakes++;mode->losses++;p->archive.revision++;
         return;
     }
-    p->rank=insert(&level->modes[p->mode],(maze_score_t){maze_progress_time_cs(p,a),p->mistakes});
-    bool changed=p->rank!=0 || !(level->completed&(1u<<p->mode));
-    level->completed|=1u<<p->mode;
-    if(p->level+1<MAZE_ARCHIVE_LEVELS && !p->archive.levels[p->level+1].unlocked)
+    p->rank=insert(mode,(maze_score_t){maze_progress_time_cs(p,a),p->mistakes});
+    bool changed=p->rank!=0;
+    if(!p->random)
     {
-        p->archive.levels[p->level+1].unlocked=true;changed=true;
+        maze_level_record_t *level=&p->archive.levels[p->level];
+        changed=changed || !(level->completed&(1u<<p->mode));
+        level->completed|=1u<<p->mode;
+        if(p->level+1<MAZE_ARCHIVE_LEVELS&&!p->archive.levels[p->level+1].unlocked)
+        {p->archive.levels[p->level+1].unlocked=true;changed=true;}
     }
     if(changed) p->archive.revision++;
     p->finished=true;
@@ -98,4 +105,12 @@ void maze_progress_leave(maze_progress_t *p,const maze_app_t *a)
 {
     if(p->active) fold(p,a);
     p->active=false;p->finished=false;
+}
+
+bool maze_progress_random_accept(maze_progress_t*p,uint16_t version,uint32_t seed)
+{
+    if(p->archive.revision==UINT64_MAX){p->revision_exhausted=true;return false;}
+    p->archive.random=(maze_random_record_t){.valid=true,.generator_version=version,.seed=seed};
+    p->archive.revision++;p->active=p->finished=p->accounted=false;p->accrued_ms=0;p->mistakes=p->rank=0;
+    return true;
 }

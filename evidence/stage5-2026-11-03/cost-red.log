@@ -1,0 +1,3 @@
+precise_circle_entries_per_10ms=4250
+dynamic-cost: tests/maze/dynamic_cost_harness.c:15: main: Assertion `expensive_entries<=100' failed.
+Aborted (core dumped)

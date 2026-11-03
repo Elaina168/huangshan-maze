@@ -2,16 +2,16 @@
 
 单人课程项目，目标是在黄山派上通过倾斜控制小球避开墙壁和固定陷阱，到达终点。使用触摸完成校准、暂停、继续、重玩和退出。
 
-**当前状态：本人修改与预研阶段。** 已确认选题和第一版玩法，已整理课程标准、需求与验收计划。`src/main.c` 基于课程串口/RGB 例程，用户已修改版本与闪烁节奏，构建和烧录校验通过，板上 RGB 切换已观察，版本与节奏等验证待补；迷宫尚未实现。本仓库首次导入此前的真实资料和记录，不补造历史提交。
+**当前状态：三固定关＋随机娱乐。** 保留冰环迷宫、机关试炼、动力机关及板端随机挑战；随机模式不计成绩/失误、不设排行榜。原两图与随机成绩功能已删除，三关旧记录按ID迁移。当前实现与软件验证、固件构建和板端验收分别记录；新版板端短测见[当前指南](docs/guides/stage6-use.md)。
 
 ## 开发标准
 
 - [课程要求与检查清单](docs/course-requirements.md)：用户指定的开发标准。
 - [产品需求规格](docs/product-requirements.md)：已确认范围及仍需预研的数值。
-- [验收测试计划](docs/acceptance-test-plan.md)：需求-用例关联，当前产品用例未执行。
+- [验收测试计划](docs/acceptance-test-plan.md)：需求-用例关联，各版本证据及未执行项目分开记录。
 - [工程建立计划](docs/project-setup-plan.md)、[项目进度](docs/project-plan.md)、[风险记录](docs/risks.md)。
 - [开发规范](AGENTS.md)、[Git 工作流](docs/guides/git-workflow.md)、[第三方清单](THIRD_PARTY.md)。
-- 当前下一步：[本人修改练习](docs/guides/first-personal-change.md)、[平台接口核对](docs/research/platform-interface-audit.md)。
+- 当前操作：[固件烧录与短测](docs/guides/stage6-use.md)。早期预研记录保留历史。
 - IMU预研已加入串口诊断命令并构建通过，尚未上板取样：[操作指导](docs/guides/imu-mapping-probe.md)、[诊断构建记录](evidence/builds/2026-10-10-imu-probe-01/README.md)。main.c仍显示v0.1.1，诊断固件以命令与哈希区分。
 
 ## 目录

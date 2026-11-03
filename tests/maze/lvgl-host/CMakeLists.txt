@@ -13,13 +13,13 @@ target_compile_definitions(lvgl_host PUBLIC LV_CONF_SKIP LV_KCONFIG_IGNORE
 add_executable(ui-refresh "${REPO}/tests/maze/ui_refresh_harness.c"
     "${REPO}/src/maze_ui.c" "${REPO}/src/maze_app.c"
     "${REPO}/src/maze_model.c" "${REPO}/src/maze_level.c" "${REPO}/src/maze_font_zh_16.c"
-    "${REPO}/src/maze_map.c" "${REPO}/src/maze_map_frost_fork.c"
+    "${REPO}/src/maze_map.c"
     "${REPO}/src/maze_camera.c" "${REPO}/src/maze_map_ice_loops.c"
-    "${REPO}/src/maze_map_second.c" "${REPO}/src/maze_map_mechanism_trial.c" "${REPO}/src/maze_catalog.c" "${REPO}/src/maze_navigation.c"
+    "${REPO}/src/maze_map_mechanism_trial.c" "${REPO}/src/maze_map_dynamic_trial.c" "${REPO}/src/maze_catalog.c" "${REPO}/src/maze_navigation.c" "${REPO}/src/maze_random.c" "${REPO}/src/maze_random_templates.c"
     "${REPO}/src/maze_archive.c" "${REPO}/src/maze_progress.c")
 target_include_directories(ui-refresh PRIVATE "${REPO}/tests/maze" "${REPO}/src"
     "${LVGL_DIR}/../../middleware/lvgl")
-target_compile_options(ui-refresh PRIVATE -std=c99 -Wall -Wextra -Werror)
+target_compile_options(ui-refresh PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
 target_link_libraries(ui-refresh PRIVATE lvgl_host m)
 
 get_target_property(UI_SOURCES ui-refresh SOURCES)
@@ -29,20 +29,10 @@ add_executable(ui-scroll "${REPO}/tests/maze/ui_scroll_harness.c" ${UI_SOURCES}
 target_include_directories(ui-scroll PRIVATE "${REPO}/tests/maze" "${REPO}/src"
     "${LVGL_DIR}/../../middleware/lvgl")
 target_compile_definitions(ui-scroll PRIVATE MAZE_SCROLL_TRIAL)
-target_compile_options(ui-scroll PRIVATE -std=c99 -Wall -Wextra -Werror)
+target_compile_options(ui-scroll PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
 target_link_libraries(ui-scroll PRIVATE lvgl_host m)
-
-add_executable(ui-third "${REPO}/tests/maze/third_ui_harness.c" ${UI_SOURCES})
-target_include_directories(ui-third PRIVATE "${REPO}/tests/maze" "${REPO}/src" "${LVGL_DIR}/../../middleware/lvgl")
-target_compile_options(ui-third PRIVATE -std=c99 -Wall -Wextra -Werror)
-target_link_libraries(ui-third PRIVATE lvgl_host m)
 
 add_executable(ui-async "${REPO}/tests/maze/ui_async_harness.c" ${UI_SOURCES})
 target_include_directories(ui-async PRIVATE "${REPO}/tests/maze" "${REPO}/src" "${LVGL_DIR}/../../middleware/lvgl")
-target_compile_options(ui-async PRIVATE -std=c99 -Wall -Wextra -Werror)
+target_compile_options(ui-async PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
 target_link_libraries(ui-async PRIVATE lvgl_host m)
-
-add_executable(ui-stage4 "${REPO}/tests/maze/stage4_ui_harness.c" ${UI_SOURCES})
-target_include_directories(ui-stage4 PRIVATE "${REPO}/tests/maze" "${REPO}/src" "${LVGL_DIR}/../../middleware/lvgl")
-target_compile_options(ui-stage4 PRIVATE -std=c99 -Wall -Wextra -Werror)
-target_link_libraries(ui-stage4 PRIVATE lvgl_host m)

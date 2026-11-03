@@ -1,0 +1,7 @@
+PASS: random generator accepted=32/32 distinct-adjacent=31; exact seed and budget independence
+PASS: four dynamic templates x four rotations x three arrival phases real-model traversal
+PASS: random seed=1196435762 nodes=21 branches=5 model_time_ms=50238 WON checkpoint=2
+PASS: random seed=3027450565 nodes=20 branches=4 model_time_ms=45132 WON checkpoint=2
+PASS: random seed=2 nodes=18 branches=3 model_time_ms=43782 WON checkpoint=2
+PASS: random seed=3 nodes=25 branches=5 model_time_ms=56752 WON checkpoint=2
+PASS: original v4 five records retained; v5 seed0, modes, unknown-generator opaque block and invalid-empty reject

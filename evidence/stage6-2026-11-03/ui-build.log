@@ -1,0 +1,29 @@
+[ 76%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+Consolidate compiler generated dependencies of target ui-random
+Consolidate compiler generated dependencies of target ui-stage4
+Consolidate compiler generated dependencies of target ui-stage5
+Consolidate compiler generated dependencies of target ui-third
+Consolidate compiler generated dependencies of target ui-async
+Consolidate compiler generated dependencies of target ui-scroll
+[ 77%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-stage4.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-stage5.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-third.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-async.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Building C object CMakeFiles/ui-scroll.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 77%] Linking C executable ui-stage4
+[ 77%] Linking C executable ui-refresh
+[ 77%] Linking C executable ui-random
+[ 77%] Linking C executable ui-stage5
+[ 78%] Linking C executable ui-third
+[ 78%] Linking C executable ui-async
+[ 79%] Linking C executable ui-scroll
+[ 84%] Built target ui-stage4
+[ 84%] Built target ui-refresh
+[ 90%] Built target ui-stage5
+[ 91%] Built target ui-random
+[ 94%] Built target ui-third
+[ 97%] Built target ui-async
+[100%] Built target ui-scroll

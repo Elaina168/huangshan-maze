@@ -1,0 +1,225 @@
+{
+  "variant": "normal",
+  "defines": [],
+  "board": "sf32lb52-lchspi-ulp",
+  "sdk_path": "D:\\sifli\\SiFli-SDK\\v2.5.1",
+  "stage_path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-l9iq37is",
+  "sources": [
+    {
+      "path": "project/custom_mem_map.h",
+      "sha256": "b20084c7a0e3fba836993274ce9544c0f1691222f8b66d4fbe5a350b257f4743"
+    },
+    {
+      "path": "project/Kconfig",
+      "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc"
+    },
+    {
+      "path": "project/Kconfig.proj",
+      "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7"
+    },
+    {
+      "path": "project/proj.conf",
+      "sha256": "c89cf04fc2bf92351f2c500654585863067dd796e65f08bec5493aebaf8a130b"
+    },
+    {
+      "path": "project/ptab.json",
+      "sha256": "aea8850c7abfeaa9689eedd643805c196bbab0afa1ebd61ec435d78a36746d02"
+    },
+    {
+      "path": "project/rtconfig.py",
+      "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614"
+    },
+    {
+      "path": "project/SConscript",
+      "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4"
+    },
+    {
+      "path": "project/SConstruct",
+      "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf"
+    },
+    {
+      "path": "src/imu_probe.c",
+      "sha256": "4e07bc6e913cdb60ebdbf85287fe1e397f6dee02afb31c055db9bff51f963971"
+    },
+    {
+      "path": "src/main.c",
+      "sha256": "af3881a6501073fb2a67b95339e0af6cedfeaa4967ce0222f2ed090b6f98ce88"
+    },
+    {
+      "path": "src/maze_app.c",
+      "sha256": "ec6e8784ac0034b13f15db2b302c71199a71e07f4a43a15f976342c6bede1333"
+    },
+    {
+      "path": "src/maze_app.h",
+      "sha256": "40605e457b7b10e36dbfeb3ebb14f46b3d69a42350f15a985e7396569109caf8"
+    },
+    {
+      "path": "src/maze_archive.c",
+      "sha256": "5e9ba6e06f0281b86a19367bb8a176119aad4195a1954278f674b4ef138e0136"
+    },
+    {
+      "path": "src/maze_archive.h",
+      "sha256": "680a20a2eb3519e55c94448f983d52374a5143a27253c2912b6e3390205c44b1"
+    },
+    {
+      "path": "src/maze_camera.c",
+      "sha256": "388ecde0f3d7386863273615e4d734174ce9b104be2a4b0c18d471d0a39dd17a"
+    },
+    {
+      "path": "src/maze_camera.h",
+      "sha256": "5640238e888997462c6d79c51318a1218af2ec1bc234f3426eedad71c920f8ec"
+    },
+    {
+      "path": "src/maze_catalog.c",
+      "sha256": "168871419b34e745f5c085edbf14e2d6adbd91f5ac6aa6cd4e2eace712001204"
+    },
+    {
+      "path": "src/maze_catalog.h",
+      "sha256": "0166481cff29b58a98b5e024a43b933644ce2149fc50fe0e767d3012a3131de3"
+    },
+    {
+      "path": "src/maze_config.h",
+      "sha256": "d89852ead3ece00fd60ffbf68f46fb2779ef54f24d5644473f42658779c80dc9"
+    },
+    {
+      "path": "src/maze_font_zh_16.c",
+      "sha256": "6d4281084093422d00f0979fac639c0f5171268bae954fcb699d073339a326a8"
+    },
+    {
+      "path": "src/maze_font_zh_16.h",
+      "sha256": "978cc7dc162472ca74f4e9f2162c53c3d6b45da1735b0d4417cfaca5d0324e5c"
+    },
+    {
+      "path": "src/maze_imu.c",
+      "sha256": "a8ca7f62e644f60c922f705b5765cc6e2a74996d4cb7e51b54207833fd6aa5a7"
+    },
+    {
+      "path": "src/maze_imu.h",
+      "sha256": "e0dcfa099f4a3d7ca72880637381f006ca1760ef5d1446b7001abfa0c4b73505"
+    },
+    {
+      "path": "src/maze_level.c",
+      "sha256": "cf2c2e2470ed98bd58ce0c075bdc46c155345def90e9c1ed0624b473a43af72b"
+    },
+    {
+      "path": "src/maze_level.h",
+      "sha256": "6a89441a1cbc160b41d650f21f379caf1b310ec53ae72dfbb55e51c5aeb0335c"
+    },
+    {
+      "path": "src/maze_map.c",
+      "sha256": "b3101969e82dd1183fafb867bd0e21aac3231b44c5f5fd110b245a478d324227"
+    },
+    {
+      "path": "src/maze_map.h",
+      "sha256": "3b9b667763270b0751fa47dc8df087590082d88645981ef9e51cac2feaa64113"
+    },
+    {
+      "path": "src/maze_map_dynamic_trial.c",
+      "sha256": "3386a0cc55818772b596c4c9786cacde2ea462977013c6fb5c92f97b604b8734"
+    },
+    {
+      "path": "src/maze_map_ice_loops.c",
+      "sha256": "e38e525ee9f4ce4dddb303de39002210a9021b1c786a96a54efc3514c7e7d27f"
+    },
+    {
+      "path": "src/maze_map_mechanism_trial.c",
+      "sha256": "472ed9c071d8b33c44bea0666bc1080d10ad5c2dd3451b786da42e43fcf30d7a"
+    },
+    {
+      "path": "src/maze_map_scroll_trial.c",
+      "sha256": "e585f210618d3c008dd8bc2df43d87a88ada4993c422b6bacd5a539249a7339f"
+    },
+    {
+      "path": "src/maze_model.c",
+      "sha256": "81cb324a0e90d156ba53f94af89bbc9591a0268f22d67d51c29c5813cc41b16b"
+    },
+    {
+      "path": "src/maze_model.h",
+      "sha256": "6aa8e5ea313ed001f2f5dcd5a4c456e42792b5e969cdf006f0f001e96a513e6f"
+    },
+    {
+      "path": "src/maze_navigation.c",
+      "sha256": "048a2af7a1cca4d8e27e592aeec8dab7578dc7b539bdcb3e9f8403d9060bacbd"
+    },
+    {
+      "path": "src/maze_navigation.h",
+      "sha256": "7e189aa6f0848b1c82110374f27bb08fd165cd38aeb0b1d985db1e027f201c0c"
+    },
+    {
+      "path": "src/maze_progress.c",
+      "sha256": "6ee522ad7d0121dd3ced250ff9cfd0d95641c7028de174a30defca073ff6236e"
+    },
+    {
+      "path": "src/maze_progress.h",
+      "sha256": "045a8f67113591c9be7b4689732e7d1252886bcbe11c07f406444bdadb5b9140"
+    },
+    {
+      "path": "src/maze_random.c",
+      "sha256": "c9fbe4208c474a398f06035de62b1d04a7d8b294b5b52a081974b76632261409"
+    },
+    {
+      "path": "src/maze_random.h",
+      "sha256": "0a13e497e1584a3c17a12836da0417624cfd64f99acef1d657bc6e2816baef55"
+    },
+    {
+      "path": "src/maze_random_templates.c",
+      "sha256": "77e221d116232f6a648ba6c42530d67a023b24166d5b8aa1e7f29a74354823f2"
+    },
+    {
+      "path": "src/maze_random_templates.h",
+      "sha256": "81446a741e63ebdbfd038b1202942d034015889ccf8d4e096ddb1e37d095806d"
+    },
+    {
+      "path": "src/maze_scroll_trial.c",
+      "sha256": "3ad9fb815921a2f661fe9502cfc807beca375642c8cf5c43e27ed88b50843405"
+    },
+    {
+      "path": "src/maze_scroll_trial.h",
+      "sha256": "c507d7162c3efe3b299891cb70fbdd06d8359828e4574f1867634098a08f3285"
+    },
+    {
+      "path": "src/maze_store.c",
+      "sha256": "63a0a21c71efd80f5158a286c4585dec0b3f54d1d1c5449aea963f08c587b3f7"
+    },
+    {
+      "path": "src/maze_store.h",
+      "sha256": "50113e4b7f2ada9f74bd4c4f978dd9090c320c4f86a2ed880294cac8b08139b3"
+    },
+    {
+      "path": "src/maze_store_flash.c",
+      "sha256": "dba9dd3675c9f07bdc7bbd6ca5037691e6c75562911ae74ecf25aa53047ea25f"
+    },
+    {
+      "path": "src/maze_ui.c",
+      "sha256": "a07f2f6f8320fd9a120190f4ecca402efe97657512b11b7aa7391291ccd55c20"
+    },
+    {
+      "path": "src/maze_ui.h",
+      "sha256": "20830b8f163b53858339ce3fab4b58587384cd156d693624326692ff1b90da0f"
+    },
+    {
+      "path": "src/SConscript",
+      "sha256": "9a3d1db805e6bd9240e3debe5d63ba135e722f7651bfe2b982e642ae1f228b31"
+    }
+  ],
+  "returncode": 0,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-l9iq37is\\project\\build_sf32lb52-lchspi-ulp_hcpu\\main.bin",
+      "sha256": "88a881ca4790470727353c36ea5f926d8746cd5046bf62af71cfcff8e592349b",
+      "bytes": 643276
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-l9iq37is\\project\\build_sf32lb52-lchspi-ulp_hcpu\\bootloader\\bootloader.bin",
+      "sha256": "e59d70db44367d524fbb46a8a014ce0092462e86959d101a8e2e00ad27bb5e21",
+      "bytes": 58496
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-l9iq37is\\project\\build_sf32lb52-lchspi-ulp_hcpu\\ftab\\ftab.bin",
+      "sha256": "9f0256c7cfe03a4e8b83530ab529f15402ab72e98af0f984e8952c44546013af",
+      "bytes": 11288
+    }
+  ],
+  "hardware_verified": false,
+  "source_unchanged": true
+}

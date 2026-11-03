@@ -1,8 +1,6 @@
 #ifndef MAZE_LEVEL_H
 #define MAZE_LEVEL_H
 
-#define MAZE_LEVEL_ID_FROST_FORK "frost_fork"
-
 typedef struct { float x, y; } maze_point_t;
 typedef struct { float x, y, width, height; } maze_rect_t;
 typedef struct { float x, y, radius; } maze_circle_t;
@@ -16,6 +14,15 @@ typedef enum
     MAZE_MECH_SWITCH_DOOR, MAZE_MECH_BREAKABLE, MAZE_MECH_CHECKPOINT
 } maze_mechanism_kind_t;
 typedef struct { maze_mechanism_kind_t kind; maze_rect_t area; unsigned link; } maze_mechanism_t;
+
+typedef enum { MAZE_DYNAMIC_MAGNET, MAZE_DYNAMIC_LASER, MAZE_DYNAMIC_GATE, MAZE_DYNAMIC_PATROL } maze_dynamic_kind_t;
+typedef struct {
+    maze_dynamic_kind_t kind;
+    maze_rect_t area;
+    maze_point_t end;
+    float force, outer_radius, inner_radius, speed;
+    unsigned off_ms, warning_ms, on_ms, dwell_ms, phase_ms;
+} maze_dynamic_t;
 
 typedef struct maze_level
 {
@@ -31,6 +38,8 @@ typedef struct maze_level
     const char *id;
     const maze_mechanism_t *mechanisms;
     unsigned mechanism_count;
+    const maze_dynamic_t *dynamics;
+    unsigned dynamic_count;
 } maze_level_t;
 
 maze_surface_t maze_level_surface_at(const maze_level_t *level, float x, float y);

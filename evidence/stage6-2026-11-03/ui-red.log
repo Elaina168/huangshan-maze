@@ -1,0 +1,36 @@
+Consolidate compiler generated dependencies of target lvgl_host
+[ 95%] Built target lvgl_host
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_app.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_model.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_level.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_font_zh_16.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map_frost_fork.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_camera.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map_ice_loops.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map_second.c.o
+[ 97%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map_mechanism_trial.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_map_dynamic_trial.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_catalog.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_random.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_random_templates.c.o
+[ 98%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_archive.c.o
+[100%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_progress.c.o
+In file included from /mnt/d/codex/黄山派/tests/maze/ui_refresh_harness.c:2,
+                 from /mnt/d/codex/黄山派/tests/maze/random_ui_harness.c:4:
+/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c: In function ‘main’:
+/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c:10:59: error: ‘MAZE_UI_RANDOM’ undeclared (first use in this function); did you mean ‘MAZE_UI_SAVE’?
+   10 |  assert(maze_ui_take_command(&navigation,&cmd)&&cmd.kind==MAZE_UI_RANDOM);assert(!maze_navigation_random_open(&navigation,0));refresh(d);
+      |                                                           ^~~~~~~~~~~~~~
+/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c:10:59: note: each undeclared identifier is reported only once for each function it appears in
+/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c:11:124: error: ‘MAZE_UI_RANDOM_CANCEL’ undeclared (first use in this function)
+   11 |  assert(caption(lv_screen_active(),"取消生成"));click("取消生成");assert(maze_ui_take_command(&navigation,&cmd)&&cmd.kind==MAZE_UI_RANDOM_CANCEL);maze_navigation_random_cancel(&navigation);refresh(d);
+      |                                                                                                                            ^~~~~~~~~~~~~~~~~~~~~
+gmake[3]: *** [CMakeFiles/ui-random.dir/build.make:76: CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c.o] Error 1
+gmake[3]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/Makefile2:279: CMakeFiles/ui-random.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:286: CMakeFiles/ui-random.dir/rule] Error 2
+gmake: *** [Makefile:215: ui-random] Error 2

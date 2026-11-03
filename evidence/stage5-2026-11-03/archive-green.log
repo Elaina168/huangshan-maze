@@ -1,0 +1,1 @@
+PASS: actual old-v3 golden preserves all four records and unlocks fifth in v4

@@ -1,0 +1,13 @@
+[ 95%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-random
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/tests/maze/random_ui_harness.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 96%] Building C object CMakeFiles/ui-random.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+[ 96%] Linking C executable ui-random
+[100%] Built target ui-random
+[ 96%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+[ 96%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 96%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_navigation.c.o
+[ 96%] Linking C executable ui-refresh
+[100%] Built target ui-refresh

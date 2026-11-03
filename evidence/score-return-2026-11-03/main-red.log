@@ -1,0 +1,7 @@
+main-runtime: /mnt/d/codex/黄山派/tests/maze/main-host/main_runtime_harness.c:108: maze_ui_take_command: Assertion `!memcmp(&n->app,&score_app,sizeof(score_app))&&!memcmp(&n->progress,&score_progress,sizeof(score_progress))' failed.
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_main.py", line 24, in <module>
+    subprocess.run([str(exe)], check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/tmp/maze-main-5ihydb4j/main-runtime']' died with <Signals.SIGABRT: 6>.

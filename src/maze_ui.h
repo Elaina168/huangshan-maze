@@ -7,7 +7,7 @@
 int maze_ui_init(void);
 void maze_ui_process(void);
 typedef enum { MAZE_UI_SELECT, MAZE_UI_TOGGLE, MAZE_UI_BACK, MAZE_UI_NEXT, MAZE_UI_GAME,
-               MAZE_UI_SCORES, MAZE_UI_SCORE_LEVEL, MAZE_UI_SCORE_MODE, MAZE_UI_SAVE } maze_ui_command_kind_t;
+               MAZE_UI_SCORES, MAZE_UI_SCORE_LEVEL, MAZE_UI_SCORE_MODE, MAZE_UI_SAVE, MAZE_UI_RANDOM, MAZE_UI_RANDOM_REPLACE, MAZE_UI_RANDOM_CANCEL } maze_ui_command_kind_t;
 typedef struct
 {
     maze_ui_command_kind_t kind;

@@ -1,0 +1,12 @@
+PASS: five maps sync/incremental identical; per-check yield, deadline wrap and cancel/reuse
+PASS: random generator accepted=32/32 distinct-adjacent=31; exact seed and budget independence
+PASS: eight rejected candidates exhaust, exact rejection retains seed0, cancellation stops
+PASS: four dynamic templates x four rotations x three arrival phases real-model traversal
+PASS: random seed=1196435762 nodes=21 branches=5 model_time_ms=50238 WON checkpoint=2
+PASS: random seed=3027450565 nodes=20 branches=4 model_time_ms=45142 WON checkpoint=2
+PASS: random seed=2 nodes=18 branches=3 model_time_ms=43782 WON checkpoint=2
+PASS: random seed=3 nodes=25 branches=5 model_time_ms=56752 WON checkpoint=2
+PASS: actual random-map laser loss, checkpoint respawn and continued traversal
+PASS: original v4 five records retained; v5 seed0, modes, unknown-generator opaque block and invalid-empty reject
+PASS: random challenge cumulative time/loss once, fixed-five isolation, atomic seed reset and maximum revision guard
+PASS: generated candidate, stable-pointer publish, cancel paused challenge/IMU, stale job, exact reboot seed, unknown generator and timeout

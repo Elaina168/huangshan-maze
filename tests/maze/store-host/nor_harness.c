@@ -74,13 +74,17 @@ static maze_archive_t archive;
 static void variant(unsigned revision)
 {
     archive.revision=revision;
+    if(archive.random.valid && archive.random.generator_version==1)
+    {
+        archive.random.seed=revision;
+    }
     archive.levels[0].completed=1;archive.levels[1].unlocked=true;
     archive.levels[0].modes[0].losses=revision;
     archive.levels[0].modes[0].count=1;
     archive.levels[0].modes[0].scores[0]=(maze_score_t){1000+revision,revision};
 }
 /* 夹具经真实FlashDB写入，不绕过数据库布局。 */
-static void put_fixture(unsigned bank,const uint8_t *bytes,size_t size)
+static void put_fixture(unsigned bank,const uint8_t *bytes,size_t size,const char *key)
 {
     struct fdb_kvdb db={0};bool protect=false;uint32_t sector=8192;
     fdb_kvdb_control(&db,FDB_KVDB_CTRL_SET_NOT_FORMAT,&protect);
@@ -88,7 +92,7 @@ static void put_fixture(unsigned bank,const uint8_t *bytes,size_t size)
     maze_store_flash_allow((int)bank);
     assert(fdb_kvdb_init(&db,bank?"maze_b":"maze_a",bank?"maze_b":"maze_a",NULL,NULL)==0);
     struct fdb_blob blob;
-    assert(fdb_kv_set_blob(&db,"archive",fdb_blob_make(&blob,bytes,size))==0);
+    assert(fdb_kv_set_blob(&db,key,fdb_blob_make(&blob,bytes,size))==0);
     fdb_kvdb_deinit(&db);maze_store_flash_allow(-1);
 }
 
@@ -98,12 +102,12 @@ int main(int argc,char **argv)
     int fd=open(argv[2],O_RDWR);assert(fd>=0);
     flash=mmap(NULL,65536,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);assert(flash!=MAP_FAILED);
     if(argc>=6) { cut_operation=(unsigned)atoi(argv[4]);cut_prefix=(unsigned)atoi(argv[5]); }
-    if(!strcmp(argv[1],"putblob"))
+    if(!strcmp(argv[1],"putblob") || !strcmp(argv[1],"putpad"))
     {
         assert(argc==5);unsigned bank=(unsigned)atoi(argv[3]);assert(bank<2);
         FILE *input=fopen(argv[4],"rb");assert(input);uint8_t bytes[2048];
         size_t size=fread(bytes,1,sizeof(bytes),input);assert(fgetc(input)==EOF);assert(!fclose(input));
-        put_fixture(bank,bytes,size);
+        put_fixture(bank,bytes,size,!strcmp(argv[1],"putpad")?"padding":"archive");
         assert(msync(flash,65536,MS_SYNC)==0);assert(munmap(flash,65536)==0);close(fd);
         return 0;
     }
@@ -123,7 +127,7 @@ int main(int argc,char **argv)
         uint8_t bytes[MAZE_ARCHIVE_BYTES];
         if(!strcmp(argv[1],"conflict")) archive.levels[0].modes[0].losses++;
         maze_archive_encode(&archive,bytes);
-        if(!strcmp(argv[1],"version")) bytes[4]=4;
+        if(!strcmp(argv[1],"version")) bytes[4]=7;
         uint32_t crc=maze_archive_crc32(bytes,MAZE_ARCHIVE_BYTES-4);
         for(unsigned i=0;i<4;i++) bytes[MAZE_ARCHIVE_BYTES-4+i]=(uint8_t)(crc>>(8*i));
         struct fdb_blob blob;
@@ -163,9 +167,9 @@ int main(int argc,char **argv)
         assert(maze_store_save(&store,&archive)==0 && operations==completed_operations);
     }
     armed=false;
-    uint8_t disk[MAZE_ARCHIVE_BYTES];struct fdb_blob disk_blob;
+    uint8_t disk[MAZE_ARCHIVE_MAX_BYTES];struct fdb_blob disk_blob;
     size_t disk_size=fdb_kv_get_blob(&store.db[store.active],"archive",fdb_blob_make(&disk_blob,disk,sizeof(disk)));
-    assert(disk_size==disk_blob.saved.len && (disk_size==353 || disk_size==517 || disk_size==681));
+    assert(disk_size==disk_blob.saved.len && (disk_size==353 || disk_size==517 || disk_size==681 || disk_size==845 || disk_size==982 || disk_size==524));
     printf("RAW ");for(unsigned i=0;i<disk_size;i++) printf("%02x",disk[i]);
     printf("\nCOMMITTED %" PRIu64 " UPGRADE %d\n",store.revision,store.upgrade_pending);
     uint8_t bytes[MAZE_ARCHIVE_BYTES];maze_archive_encode(&archive,bytes);

@@ -1,0 +1,54 @@
+tests/maze/random_navigation_harness.c: In function ‘finish’:
+tests/maze/random_navigation_harness.c:6:54: warning: implicit declaration of function ‘maze_navigation_random_step’; did you mean ‘maze_navigation_can_save’? [-Wimplicit-function-declaration]
+    6 | static void finish(void){int r;unsigned turns=0;do{r=maze_navigation_random_step(&n,0,NULL);assert(++turns<200000);}while(r==MAZE_RANDOM_PENDING);assert(r==MAZE_RANDOM_READY);}
+      |                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                      maze_navigation_can_save
+tests/maze/random_navigation_harness.c:6:126: error: ‘MAZE_RANDOM_PENDING’ undeclared (first use in this function); did you mean ‘MAZE_MAP_PENDING’?
+    6 | static void finish(void){int r;unsigned turns=0;do{r=maze_navigation_random_step(&n,0,NULL);assert(++turns<200000);}while(r==MAZE_RANDOM_PENDING);assert(r==MAZE_RANDOM_READY);}
+      |                                                                                                                              ^~~~~~~~~~~~~~~~~~~
+      |                                                                                                                              MAZE_MAP_PENDING
+tests/maze/random_navigation_harness.c:6:126: note: each undeclared identifier is reported only once for each function it appears in
+In file included from tests/maze/random_navigation_harness.c:2:
+tests/maze/random_navigation_harness.c:6:157: error: ‘MAZE_RANDOM_READY’ undeclared (first use in this function); did you mean ‘MAZE_APP_READY’?
+    6 | static void finish(void){int r;unsigned turns=0;do{r=maze_navigation_random_step(&n,0,NULL);assert(++turns<200000);}while(r==MAZE_RANDOM_PENDING);assert(r==MAZE_RANDOM_READY);}
+      |                                                                                                                                                             ^~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c: In function ‘main’:
+tests/maze/random_navigation_harness.c:7:54: warning: implicit declaration of function ‘maze_navigation_random_open’; did you mean ‘maze_navigation_can_save’? [-Wimplicit-function-declaration]
+    7 | int main(void){maze_navigation_init(&n,1000);assert(!maze_navigation_random_open(&n,0));finish();uint32_t job=n.random_job_id;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:7:112: error: ‘maze_navigation_t’ has no member named ‘random_job_id’
+    7 | int main(void){maze_navigation_init(&n,1000);assert(!maze_navigation_random_open(&n,0));finish();uint32_t job=n.random_job_id;
+      |                                                                                                                ^
+In file included from tests/maze/random_navigation_harness.c:2:
+tests/maze/random_navigation_harness.c:8:10: warning: implicit declaration of function ‘maze_navigation_random_accept’; did you mean ‘maze_navigation_can_save’? [-Wimplicit-function-declaration]
+    8 |  assert(!maze_navigation_random_accept(&n,job));assert(n.random&&n.page==MAZE_NAV_GAME&&n.app.level==&n.active_map->level&&n.progress.archive.random.valid);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:8:57: error: ‘maze_navigation_t’ has no member named ‘random’
+    8 |  assert(!maze_navigation_random_accept(&n,job));assert(n.random&&n.page==MAZE_NAV_GAME&&n.app.level==&n.active_map->level&&n.progress.archive.random.valid);
+      |                                                         ^
+tests/maze/random_navigation_harness.c:11:10: warning: implicit declaration of function ‘maze_navigation_random_replace’; did you mean ‘maze_navigation_can_save’? [-Wimplicit-function-declaration]
+   11 |  assert(!maze_navigation_random_replace(&n));assert(n.page==MAZE_NAV_GENERATING);uint32_t generation;bool enabled;maze_navigation_request(&n,&generation,&enabled);assert(enabled);
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:11:61: error: ‘MAZE_NAV_GENERATING’ undeclared (first use in this function); did you mean ‘MAZE_NAV_SELECT’?
+   11 |  assert(!maze_navigation_random_replace(&n));assert(n.page==MAZE_NAV_GENERATING);uint32_t generation;bool enabled;maze_navigation_request(&n,&generation,&enabled);assert(enabled);
+      |                                                             ^~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:12:41: warning: implicit declaration of function ‘maze_navigation_random_cancel’; did you mean ‘maze_navigation_can_save’? [-Wimplicit-function-declaration]
+   12 |  maze_navigation_random_step(&n,1,NULL);maze_navigation_random_cancel(&n);assert(n.page==MAZE_NAV_GAME&&n.app.state==MAZE_APP_PAUSED&&n.app.elapsed_ms==1234&&n.active_map==old&&n.progress.archive.revision==rev);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                         maze_navigation_can_save
+In file included from tests/maze/random_navigation_harness.c:2:
+tests/maze/random_navigation_harness.c:14:44: error: ‘maze_navigation_t’ has no member named ‘random_job_id’
+   14 |  assert(!maze_navigation_random_accept(&n,n.random_job_id));assert(n.active_map!=old&&n.progress.archive.random.seed!=seed&&n.progress.archive.revision==rev+1);
+      |                                            ^
+tests/maze/random_navigation_harness.c:15:191: error: ‘maze_navigation_t’ has no member named ‘random_job_id’
+   15 |  maze_navigation_back(&n);seed=n.progress.archive.random.seed;rev=n.progress.archive.revision;assert(!maze_navigation_random_open(&n,999));finish();assert(!maze_navigation_random_accept(&n,n.random_job_id));assert(n.progress.archive.random.seed==seed&&n.progress.archive.revision==rev);
+      |                                                                                                                                                                                               ^
+tests/maze/random_navigation_harness.c:16:116: error: ‘MAZE_RANDOM_VERSION’ undeclared (first use in this function); did you mean ‘MAZE_ARCHIVE_VERSION’?
+   16 |  maze_navigation_back(&n);n.progress.archive.random.generator_version=99;assert(maze_navigation_random_open(&n,1)==MAZE_RANDOM_VERSION&&n.page==MAZE_NAV_RANDOM_ERROR);maze_navigation_random_cancel(&n);assert(n.page==MAZE_NAV_SELECT);
+      |                                                                                                                    ^~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:16:145: error: ‘MAZE_NAV_RANDOM_ERROR’ undeclared (first use in this function); did you mean ‘MAZE_NAV_MAP_ERROR’?
+   16 |  maze_navigation_back(&n);n.progress.archive.random.generator_version=99;assert(maze_navigation_random_open(&n,1)==MAZE_RANDOM_VERSION&&n.page==MAZE_NAV_RANDOM_ERROR);maze_navigation_random_cancel(&n);assert(n.page==MAZE_NAV_SELECT);
+      |                                                                                                                                                 ^~~~~~~~~~~~~~~~~~~~~
+tests/maze/random_navigation_harness.c:17:172: error: ‘MAZE_RANDOM_TIMEOUT’ undeclared (first use in this function)
+   17 |  n.progress.archive.random.valid=false;assert(!maze_navigation_random_open(&n,1));maze_navigation_random_step(&n,0,NULL);assert(maze_navigation_random_step(&n,3000,NULL)==MAZE_RANDOM_TIMEOUT);maze_navigation_random_cancel(&n);assert(n.page==MAZE_NAV_SELECT);
+      |                                                                                                                                                                            ^~~~~~~~~~~~~~~~~~~

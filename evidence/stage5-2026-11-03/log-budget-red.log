@@ -1,0 +1,5 @@
+PASS: direct v2 max and migrated max show storage error without new save/wrap; actual main migration precedes navigation, failed same-revision retry, four-score cycle, loading and callback WON/outer observe exactly once
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_main.py", line 35, in <module>
+    assert len(worst.encode('utf-8'))<128,(len(worst.encode('utf-8')),fmt)
+AssertionError: (131, '[maze_timing] loop_tick=%u service_tick=%u render_tick=%u previous_seq=%u previous_read=%u\n')

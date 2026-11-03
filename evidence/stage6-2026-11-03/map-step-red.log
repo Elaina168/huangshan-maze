@@ -1,0 +1,21 @@
+tests/maze/random_map_step_harness.c:7:8: error: unknown type name ‘uint32_t’
+    7 | static uint32_t tick;
+      |        ^~~~~~~~
+tests/maze/random_map_step_harness.c:8:8: error: unknown type name ‘uint32_t’
+    8 | static uint32_t now(void){return tick++;}
+      |        ^~~~~~~~
+tests/maze/random_map_step_harness.c: In function ‘main’:
+tests/maze/random_map_step_harness.c:11:37: warning: implicit declaration of function ‘maze_map_begin’ [-Wimplicit-function-declaration]
+   11 |  assert(!maze_map_load(defs[i],&a));maze_map_begin(defs[i],&b);int result=MAZE_MAP_PENDING;unsigned calls=0;
+      |                                     ^~~~~~~~~~~~~~
+tests/maze/random_map_step_harness.c:11:75: error: ‘MAZE_MAP_PENDING’ undeclared (first use in this function)
+   11 |  assert(!maze_map_load(defs[i],&a));maze_map_begin(defs[i],&b);int result=MAZE_MAP_PENDING;unsigned calls=0;
+      |                                                                           ^~~~~~~~~~~~~~~~
+tests/maze/random_map_step_harness.c:11:75: note: each undeclared identifier is reported only once for each function it appears in
+tests/maze/random_map_step_harness.c:12:41: warning: implicit declaration of function ‘maze_map_step’; did you mean ‘maze_map_load’? [-Wimplicit-function-declaration]
+   12 |  while(result==MAZE_MAP_PENDING){result=maze_map_step(1,1,0,NULL);assert(++calls<10000000);}
+      |                                         ^~~~~~~~~~~~~
+      |                                         maze_map_load
+tests/maze/random_map_step_harness.c:18:27: warning: implicit declaration of function ‘maze_map_cancel’ [-Wimplicit-function-declaration]
+   18 |  assert(tick<=0xfffffff6);maze_map_cancel();
+      |                           ^~~~~~~~~~~~~~~

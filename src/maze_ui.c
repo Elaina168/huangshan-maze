@@ -18,10 +18,11 @@ static uint16_t draw_buffer[MAZE_DRAW_COLUMNS*MAZE_DRAW_ROWS]
 
 static lv_obj_t *ball, *time_label, *info_label;
 static lv_obj_t *heading_label, *info_panel, *controls;
+static lv_obj_t *random_controls,*random_status_label;
 static bool has_page, event_pending;
 static maze_app_state_t page_state, event_state;
 static uint32_t page_generation, event_generation;
-static maze_ui_command_t pending_command, button_commands[8];
+static maze_ui_command_t pending_command, button_commands[MAZE_UI_MAX_BUTTONS];
 static unsigned button_count;
 static bool navigation_known;
 static maze_navigation_page_t navigation_page;
@@ -34,6 +35,9 @@ static maze_surface_t shown_surface;
 static lv_obj_t *mechanism_objects[MAZE_MAP_MAX_MECHANISMS];
 static uint32_t shown_keys,shown_switches,shown_broken;
 static unsigned shown_checkpoint;
+static lv_obj_t *dynamic_objects[MAZE_MAP_MAX_DYNAMICS];
+static maze_dynamic_view_t shown_dynamic[MAZE_MAP_MAX_DYNAMICS];
+static bool dynamic_known[MAZE_MAP_MAX_DYNAMICS];
 
 static int32_t pixel(float value) { return (int32_t)lroundf(value); }
 
@@ -113,7 +117,8 @@ static void make_scene(const maze_app_t *app,const maze_navigation_t *nav)
     (void)nav;
     lv_label_set_text(title,"大地图 | 试验 | 不保存成绩");
 #else
-    lv_label_set_text_fmt(title,"%s | %s%s",maze_catalog[nav->index].title,app->reversed?"反转":"正常",
+    if(nav->random) lv_label_set_text_fmt(title,"随机 v%u %08lx | %s%s",nav->progress.archive.random.generator_version,(unsigned long)nav->progress.archive.random.seed,app->reversed?"反转":"正常",nav->store_error?" | 未保存":"");
+    else lv_label_set_text_fmt(title,"%s | %s%s",maze_catalog[nav->index].title,app->reversed?"反转":"正常",
                          nav->store_error?" | 未保存":"");
 #endif
     heading_label=label(screen,"",20,35,350);
@@ -149,12 +154,28 @@ static void make_scene(const maze_app_t *app,const maze_navigation_t *nav)
             lv_obj_set_style_radius(obj,LV_RADIUS_CIRCLE,0);
         mechanism_objects[i]=obj;
     }
+    memset(dynamic_known,0,sizeof(dynamic_known));
+    for(unsigned i=0;i<level->dynamic_count;i++)
+    {
+        const maze_dynamic_t *d=&level->dynamics[i];
+        if(d->kind==MAZE_DYNAMIC_MAGNET)
+        {
+            lv_obj_t *field=circle(map,(maze_circle_t){d->area.x+d->area.width/2,d->area.y+d->area.height/2,d->outer_radius},0x263b51);
+            lv_obj_set_style_bg_opa(field,LV_OPA_20,0);
+            lv_obj_set_style_border_width(field,1,0);
+            lv_obj_set_style_border_color(field,lv_color_hex(0xb48be8),0);
+        }
+        dynamic_objects[i]=box(map,pixel(d->area.x),pixel(d->area.y),pixel(d->area.width),pixel(d->area.height),0x7b5caf);
+    }
     shown_keys=shown_switches=shown_broken=UINT32_MAX;
     shown_checkpoint=UINT32_MAX;
     ball=circle(map,(maze_circle_t){app->model.x,app->model.y,level->ball_radius},0x7dd3fc);
     info_panel=box(view,20,90,310,120,0x243e50);
     info_label=label(info_panel,"",12,12,286);
     controls=box(screen,20,391,350,45,0x101c27);
+#ifndef MAZE_SCROLL_TRIAL
+    if(nav->random)random_controls=box(screen,20,340,350,42,0x101c27);
+#endif
 }
 
 /* 机关位图属于model，UI只读；快照回滚和重玩同样走这一路径。 */
@@ -184,6 +205,33 @@ static void update_mechanisms(const maze_app_t *app)
     }
     shown_keys=model->keys;shown_switches=model->switches;
     shown_broken=model->broken;shown_checkpoint=model->checkpoint;
+}
+
+static void update_dynamics(const maze_app_t *app)
+{
+    for(unsigned i=0;i<app->level->dynamic_count;i++)
+    {
+        maze_dynamic_view_t v;maze_model_dynamic_view(&app->model,i,&v);
+        lv_obj_t *obj=dynamic_objects[i];
+        maze_dynamic_kind_t kind=app->level->dynamics[i].kind;
+        if(!dynamic_known[i] || pixel(v.area.x)!=pixel(shown_dynamic[i].area.x) || pixel(v.area.y)!=pixel(shown_dynamic[i].area.y))
+        {
+            lv_area_t old;lv_obj_get_coords(obj,&old);
+            lv_obj_set_pos(obj,pixel(v.area.x),pixel(v.area.y));
+            lv_area_t next;lv_obj_get_coords(obj,&next);
+            old.x1=LV_MIN(old.x1,next.x1);old.y1=LV_MIN(old.y1,next.y1);
+            old.x2=LV_MAX(old.x2,next.x2);old.y2=LV_MAX(old.y2,next.y2);
+            lv_obj_invalidate_area(world,&old);
+        }
+        if(!dynamic_known[i] || v.phase!=shown_dynamic[i].phase)
+        {
+            uint32_t color=kind==MAZE_DYNAMIC_MAGNET?0xb48be8:kind==MAZE_DYNAMIC_PATROL?0xeb9c4a:
+                v.phase==2?0xf05265:v.phase==1?0xf3c94d:0x476478;
+            lv_obj_set_style_bg_color(obj,lv_color_hex(color),0);
+            lv_obj_set_style_bg_opa(obj,v.phase==0?LV_OPA_30:LV_OPA_COVER,0);
+        }
+        shown_dynamic[i]=v;dynamic_known[i]=true;
+    }
 }
 
 /* 新会话重置镜头；暂停恢复保留世界位置和镜头。 */
@@ -229,11 +277,20 @@ static void make_page(const maze_navigation_t *nav)
     {
     case MAZE_APP_READY:
         heading="准备就绪 | USB在右侧";
-        lv_label_set_text(info_label,app->level->mechanism_count?
+        lv_label_set_text(info_label,nav->random?"重玩保持同一地图\n黄灯预警，红色激光危险\n绿点存检查点\n随时换一张地图":app->level->mechanism_count?
             "金钥开金门，紫开关开紫门\n棕墙快速正撞可破坏\n绿点存检查点，落坑可复活\n褐色粗糙地面减速\n轻倾加速，反向制动":
             "轻倾加速，反向制动\n红色陷阱请绕行\n蓝色冰面更滑\n到达绿色终点获胜");
-        button(controls,"开始",MAZE_EVENT_START,70,110);
-        back_button(controls,210,110); break;
+        if(nav->random&&nav->save_pending)lv_label_set_text(info_label,"正在保存地图");
+        else if(nav->random&&nav->store_error)lv_label_set_text_fmt(info_label,"未保存 (%d)\n当前地图仅在内存中\n点击保存重试\n重启可能恢复旧图",nav->store_error);
+        else if(nav->random&&nav->store_repair)lv_label_set_text(info_label,"存档副本待修复\n请点击保存重试");
+        if(nav->random&&(nav->store_error||nav->store_repair)&&!nav->save_pending)
+        {
+            button(controls,"开始",MAZE_EVENT_START,24,106);
+            command_button(controls,"保存",(maze_ui_command_t){.kind=MAZE_UI_SAVE},142,106);
+            back_button(controls,260,106);
+        }
+        else {button(controls,"开始",MAZE_EVENT_START,70,110);back_button(controls,210,110);}
+        break;
     case MAZE_APP_CALIBRATING:
         heading="校准中";
         button(controls,"取消",MAZE_EVENT_EXIT,130,130); break;
@@ -249,7 +306,8 @@ static void make_page(const maze_navigation_t *nav)
     case MAZE_APP_WON:
     case MAZE_APP_LOST:
         heading=app->state==MAZE_APP_WON?
-            (nav->index+1==maze_catalog_count?"全部完成":"成功到达终点"):"小球落入陷阱";
+            (nav->random?"随机挑战完成":nav->index+1==maze_catalog_count?"全部完成":"成功到达终点"):app->model.loss_reason==MAZE_LOSS_LASER?"小球碰到激光":app->model.loss_reason==MAZE_LOSS_CRUSH?"被机关挤压":"小球落入陷阱";
+        if(!nav->random)
         {
             char outcome[80],feedback[80];
             if(app->state==MAZE_APP_LOST) lv_snprintf(outcome,sizeof(outcome),app->model.checkpoint?
@@ -261,6 +319,7 @@ static void make_page(const maze_navigation_t *nav)
             else lv_snprintf(feedback,sizeof(feedback),"成绩已保存");
             lv_label_set_text_fmt(info_label,"本次失误:%u\n%s\n%s",nav->progress.mistakes,outcome,feedback);
         }
+        else lv_label_set_text(info_label,app->state==MAZE_APP_WON?"到达终点\n娱乐模式不记录成绩":app->model.checkpoint?"复活回检查点\n重玩回起点":"重玩回起点");
         if(app->state==MAZE_APP_LOST && app->model.checkpoint)
         {
             button(controls,"复活",MAZE_EVENT_RESPAWN,24,80);
@@ -273,11 +332,11 @@ static void make_page(const maze_navigation_t *nav)
         {
             command_button(controls,"保存",(maze_ui_command_t){.kind=MAZE_UI_SAVE},24,80);
             button(controls,"重玩",MAZE_EVENT_REPLAY,111,80);
-            if(app->state==MAZE_APP_WON && nav->index+1<maze_catalog_count)
+            if(app->state==MAZE_APP_WON && !nav->random && nav->index+1<maze_catalog_count)
                 command_button(controls,"下一关",(maze_ui_command_t){.kind=MAZE_UI_NEXT},198,80);
             back_button(controls,285,80);
         }
-        else if(app->state==MAZE_APP_WON && nav->index+1<maze_catalog_count)
+        else if(app->state==MAZE_APP_WON && !nav->random && nav->index+1<maze_catalog_count)
         {
             button(controls,"重玩",MAZE_EVENT_REPLAY,24,106);
             command_button(controls,"下一关",(maze_ui_command_t){.kind=MAZE_UI_NEXT},142,106);
@@ -294,6 +353,17 @@ static void make_page(const maze_navigation_t *nav)
         heading=app->state==MAZE_APP_CALIBRATION_FAILED?"校准失败":"设备异常";
         button(controls,"重试",MAZE_EVENT_RETRY,70,110);
         back_button(controls,210,110); break;
+    }
+    if(nav->random)
+    {
+        lv_obj_clean(random_controls);
+        bool actions=app->state==MAZE_APP_READY||app->state==MAZE_APP_PAUSED||app->state==MAZE_APP_WON||app->state==MAZE_APP_LOST;
+        if(actions)
+        {
+            lv_obj_remove_flag(random_controls,LV_OBJ_FLAG_HIDDEN);
+            command_button(random_controls,"换一张地图",(maze_ui_command_t){.kind=MAZE_UI_RANDOM_REPLACE},24,342);
+        }
+        else lv_obj_add_flag(random_controls,LV_OBJ_FLAG_HIDDEN);
     }
     lv_label_set_text(heading_label,heading);
 }
@@ -320,8 +390,8 @@ int maze_ui_init(void)
 void maze_ui_process(void)
 {
     uint32_t delay=lv_timer_handler();
-    if (delay<2) delay=2;
-    if (delay>20) delay=20;
+    if(navigation_known&&navigation_page==MAZE_NAV_GENERATING)delay=1;
+    else {if(delay<2)delay=2;if(delay>20)delay=20;}
     rt_thread_mdelay(delay);
 }
 
@@ -334,6 +404,7 @@ void maze_ui_clear(void)
     shown_error=paused_calibration_error=0;
     shown_surface=MAZE_SURFACE_NORMAL;
     memset(mechanism_objects,0,sizeof(mechanism_objects));
+    random_controls=random_status_label=NULL;
     shown_keys=shown_switches=shown_broken=UINT32_MAX;
     shown_checkpoint=UINT32_MAX;
     page_generation=0;
@@ -387,7 +458,24 @@ void maze_ui_render(const maze_navigation_t *nav)
         navigation_known=true;
         navigation_page=nav->page;
         navigation_version=nav->page_version;
-        if(nav->page==MAZE_NAV_MAP_ERROR) map_error(nav->error);
+        if(nav->page==MAZE_NAV_GENERATING)
+        {
+            lv_obj_t *screen=lv_screen_active();label(screen,"生成随机地图",20,120,350);
+            random_status_label=label(screen,"",20,166,350);
+            controls=box(screen,20,391,350,45,0x101c27);
+            command_button(controls,"取消生成",(maze_ui_command_t){.kind=MAZE_UI_RANDOM_CANCEL},130,130);
+        }
+        else if(nav->page==MAZE_NAV_RANDOM_ERROR)
+        {
+            lv_obj_t *screen=lv_screen_active();label(screen,"随机地图未生成",20,120,350);
+            label(screen,nav->error==MAZE_RANDOM_VERSION?"不支持此地图生成版本":nav->error==MAZE_RANDOM_TIMEOUT?"生成超时，请重试":"未找到满足要求的地图",20,158,350);
+            lv_obj_t *code=label(screen,"",20,208,350);lv_label_set_text_fmt(code,"错误码: %d",nav->error);
+            lv_obj_t *row=box(screen,20,330,350,42,0x101c27);
+            command_button(row,"换一张地图",(maze_ui_command_t){.kind=MAZE_UI_RANDOM_REPLACE},45,300);
+            controls=box(screen,20,391,350,45,0x101c27);
+            command_button(controls,nav->random_origin_page==MAZE_NAV_GAME?"返回原图":"返回选关",(maze_ui_command_t){.kind=MAZE_UI_RANDOM_CANCEL},130,130);
+        }
+        else if(nav->page==MAZE_NAV_MAP_ERROR) map_error(nav->error);
         else if(nav->page==MAZE_NAV_STORAGE_ERROR)
         {
             lv_obj_t *screen=lv_screen_active();
@@ -422,7 +510,8 @@ void maze_ui_render(const maze_navigation_t *nav)
             lv_obj_t *row=box(screen,20,320,350,45,0x101c27);
             command_button(row,"切换关卡",(maze_ui_command_t){.kind=MAZE_UI_SCORE_LEVEL},45,145);
             command_button(row,"切换模式",(maze_ui_command_t){.kind=MAZE_UI_SCORE_MODE},200,145);
-            controls=box(screen,20,391,350,45,0x101c27);back_button(controls,130,130);
+            controls=box(screen,20,391,350,45,0x101c27);
+            command_button(controls,"返回选关",(maze_ui_command_t){.kind=MAZE_UI_BACK},130,130);
         }
         else if(nav->page==MAZE_NAV_SELECT)
         {
@@ -431,18 +520,18 @@ void maze_ui_render(const maze_navigation_t *nav)
             label(screen,"USB在右侧 | 轻倾加速",20,66,350);
             for(unsigned i=0;i<maze_catalog_count;i++)
             {
-                lv_obj_t *row=box(screen,20,112+(int)i*46,350,42,0x101c27);
+                lv_obj_t *row=box(screen,20,102+(int)i*40,350,42,0x101c27);
                 bool unlocked=maze_progress_unlocked(&nav->progress,maze_catalog[i].definition->id);
                 char title[80];lv_snprintf(title,sizeof(title),unlocked?"%s":"%s [未解锁]",maze_catalog[i].title);
                 lv_obj_t *choice=command_button(row,title,
                     (maze_ui_command_t){.kind=MAZE_UI_SELECT,.index=i},45,300);
                 if(!unlocked) lv_obj_add_state(choice,LV_STATE_DISABLED);
             }
-            lv_obj_t *scores=box(screen,20,304,350,42,0x101c27);
-            command_button(scores,"成绩",(maze_ui_command_t){.kind=MAZE_UI_SCORES},45,300);
+            lv_obj_t *random_row=box(screen,20,222,350,42,0x101c27);
+            command_button(random_row,"随机挑战",(maze_ui_command_t){.kind=MAZE_UI_RANDOM},45,300);
             lv_obj_t *row=box(screen,20,354,350,42,0x101c27);
-            command_button(row,nav->reversed?"控制方向：反转":"控制方向：正常",
-                (maze_ui_command_t){.kind=MAZE_UI_TOGGLE},45,300);
+            command_button(row,"成绩",(maze_ui_command_t){.kind=MAZE_UI_SCORES},24,168);
+            command_button(row,nav->reversed?"控制方向：反转":"控制方向：正常",(maze_ui_command_t){.kind=MAZE_UI_TOGGLE},202,164);
             if(nav->store_error || nav->store_repair || nav->save_pending)
             {
                 lv_obj_t *status=label(screen,"",20,84,350);
@@ -455,6 +544,11 @@ void maze_ui_render(const maze_navigation_t *nav)
             else label(screen,"选关后点击开始并放稳校准",20,410,350);
         }
     }
+    if(nav->page==MAZE_NAV_GENERATING)
+    {
+        lv_label_set_text_fmt(random_status_label,"第%u次尝试\n%s\n可随时取消",nav->generator.attempt+1,nav->random_checking?"正在检查通路":"正在生成迷宫");
+        return;
+    }
     if(nav->page!=MAZE_NAV_GAME) return;
     const maze_app_t *app=&nav->app;
     bool changed=!has_page || page_state!=app->state;
@@ -466,12 +560,14 @@ void maze_ui_render(const maze_navigation_t *nav)
         make_page(nav);
     }
     update_mechanisms(app);
+    update_dynamics(app);
     position_ball(app);
     has_page=true;
     page_state=app->state;
     page_generation=app->generation;
     uint64_t cs=maze_progress_time_cs(&nav->progress,app);
     lv_label_set_text_fmt(time_label,"挑战: %llu.%02llu 秒",(unsigned long long)(cs/100),(unsigned long long)(cs%100));
+    if(nav->random)lv_label_set_text(time_label,"娱乐模式 | 不记录成绩");
     if (app->state==MAZE_APP_CALIBRATING)
         lv_label_set_text_fmt(heading_label,"请放稳: %u/%u | 失误:%u",
                               app->window_count,MAZE_CALIBRATION_COUNT,nav->progress.mistakes);
@@ -502,6 +598,12 @@ void maze_ui_render(const maze_navigation_t *nav)
                 "传感器或时序异常 (%d)\n请放稳后重试。\n恢复后返回暂停。",app->error);
         else if (app->state==MAZE_APP_PAUSED)
             lv_label_set_text_fmt(heading_label,"已暂停 | 失误:%u",nav->progress.mistakes);
+    }
+    if(nav->random)
+    {
+        if(app->state==MAZE_APP_CALIBRATING)lv_label_set_text_fmt(heading_label,"请放稳: %u/%u",app->window_count,MAZE_CALIBRATION_COUNT);
+        else if(app->state==MAZE_APP_PAUSED)lv_label_set_text_fmt(heading_label,"已暂停%s",feedback_error?" | 请重新校准":"");
+        else if(app->state==MAZE_APP_PLAYING&&!app->level->mechanism_count)lv_label_set_text(heading_label,"游玩中 | 娱乐模式");
     }
     shown_error=feedback_error;
 }
@@ -577,6 +679,7 @@ void maze_ui_render_trial(const maze_app_t *app)
         }
     }
     update_mechanisms(app);
+    update_dynamics(app);
     position_ball(app);
     has_page=true;page_state=app->state;page_generation=app->generation;
     uint64_t cs=(uint64_t)(app->elapsed_ms/10);

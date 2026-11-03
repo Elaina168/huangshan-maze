@@ -1,0 +1,2 @@
+PASS: actual main three fixed score cycle/selection, migration retry, random map seed save once; win/loss/replay never saves scores; no generation in flush
+PASS: timing/state diagnostics retain newline within actual 128-byte console buffer

@@ -1,0 +1,1 @@
+PASS: CRC32 vector, truncated/oversized/future/rules/duplicate/unknown/count/sort/random identity rejected without output changes; six stable-ID orders canonicalize

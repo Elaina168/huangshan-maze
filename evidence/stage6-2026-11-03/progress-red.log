@@ -1,0 +1,8 @@
+In file included from tests/maze/random_progress_harness.c:3:
+tests/maze/random_progress_harness.c: In function ‘main’:
+tests/maze/random_progress_harness.c:7:40: warning: implicit declaration of function ‘maze_progress_random_accept’; did you mean ‘maze_progress_unlocked’? [-Wimplicit-function-declaration]
+    7 |  uint8_t before[982],after[982];assert(maze_progress_random_accept(&p,1,0));assert(p.archive.random.valid&&p.archive.random.seed==0&&p.archive.revision==1);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+tests/maze/random_progress_harness.c:10:10: error: ‘maze_progress_t’ has no member named ‘random’
+   10 |  assert(p.random&&p.mistakes==1&&p.archive.random.modes[0].losses==1);maze_progress_before_event(&p,&a,MAZE_EVENT_REPLAY);
+      |          ^

@@ -5,11 +5,12 @@
 typedef struct
 {
     maze_archive_t archive;
-    bool active,finished,accounted;
+    bool active,finished,accounted,random;
     bool revision_exhausted;
     unsigned level,mode,mistakes,rank;
     double accrued_ms;
 } maze_progress_t;
+bool maze_progress_random_accept(maze_progress_t*,uint16_t version,uint32_t seed);
 void maze_progress_init(maze_progress_t *progress,const maze_archive_t *archive);
 void maze_progress_before_event(maze_progress_t *progress,const maze_app_t *app,maze_event_t event);
 void maze_progress_observe(maze_progress_t *progress,const maze_app_t *app);

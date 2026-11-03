@@ -1,0 +1,2 @@
+maze-a5: tests/maze/stage5_archive_harness.c:7: main: Assertion `MAZE_ARCHIVE_LEVELS==5 && MAZE_ARCHIVE_BYTES==845' failed.
+Aborted (core dumped)

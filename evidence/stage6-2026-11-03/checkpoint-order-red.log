@@ -1,0 +1,2 @@
+cp-order: tests/maze/random_generator_harness.c:13: main: Assertion `cp<trap&&trap<a.path_count' failed.
+Aborted (core dumped)

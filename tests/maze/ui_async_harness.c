@@ -58,8 +58,8 @@ int main(void)
     lv_display_set_flush_cb(d,async_flush);lv_display_set_flush_wait_cb(d,wait_complete);
     assert(maze_ui_init()==0);maze_ui_set_service(service,d);
     maze_navigation_init(&navigation,1000);
-    navigation.progress.archive.levels[2].unlocked=true;
-    assert(maze_navigation_select(&navigation,2)==0);
+    navigation.progress.archive.levels[0].unlocked=true;
+    assert(maze_navigation_select(&navigation,0)==0);
     navigation.app.state=MAZE_APP_PLAYING;
     maze_ui_render(&navigation);lv_refr_now(d);consume(d);
     unsigned full_ball=ball_pixels();assert(full_ball==128);
@@ -81,8 +81,8 @@ int main(void)
     screenshot("async-edge.ppm");maze_ui_clear();
     /* 原第三关交错路径保留，再覆盖第四关开门/破墙/快照回滚引起的重绘。 */
     late_tail=false;
-    navigation.progress.archive.levels[3].unlocked=true;
-    assert(maze_navigation_select(&navigation,3)==0);
+    navigation.progress.archive.levels[1].unlocked=true;
+    assert(maze_navigation_select(&navigation,1)==0);
     navigation.app.state=MAZE_APP_PLAYING;
     maze_ui_render(&navigation);lv_refr_now(d);consume(d);
     assert(ball_pixels()==full_ball);
@@ -100,6 +100,42 @@ int main(void)
     printf("stage4 async transfers=%u waits=%u services=%u overwritten_sources=%u ball=%u min_ball=%u black_pixels=%u\n",
            transfers,waits,services,overwrites,ball_pixels(),minimum_ball,black_pixels);
     assert(overwrites==0 && !pending && ball_pixels()==full_ball && minimum_ball==full_ball && black_pixels==0);
-    screenshot("stage4-async-edge.ppm");maze_ui_clear();
-    puts("PASS: third/fourth async delayed consumption/late completion flag, mechanism redraw source stable, no black holes and complete ball");
+    screenshot("stage4-async-edge.ppm");
+    late_tail=false;navigation.progress.archive.levels[2].unlocked=true;
+    assert(!maze_navigation_select(&navigation,2));navigation.app.state=MAZE_APP_PLAYING;
+    maze_ui_render(&navigation);lv_refr_now(d);consume(d);late_tail=true;
+    for(unsigned i=0;i<140;i++)
+    {
+        navigation.app.model.dynamic_us=i*50000;
+        navigation.app.model.x=25+fminf(i*6,navigation.app.level->width-50);
+        navigation.app.model.y=25+fminf(i*4,navigation.app.level->height-50);
+        lv_tick_inc(50);maze_ui_render(&navigation);lv_refr_now(d);
+    }
+    consume(d);
+    printf("stage5 async transfers=%u overwritten=%u min_ball=%u black=%u\n",transfers,overwrites,minimum_ball,black_pixels);
+    assert(!overwrites && minimum_ball==full_ball && !black_pixels);
+    screenshot("stage5-async-edge.ppm");maze_ui_clear();
+    /* 使用实际生成并发布的地图，覆盖滚动和机关变化的延迟传输。 */
+    late_tail=false;maze_navigation_back(&navigation);
+    assert(!maze_navigation_random_open(&navigation,0));
+    int result;
+    do { result=maze_navigation_random_step(&navigation,0,NULL); } while(result==MAZE_RANDOM_PENDING);
+    assert(result==MAZE_RANDOM_READY);
+    assert(!maze_navigation_random_accept(&navigation,navigation.random_job_id));
+    navigation.app.state=MAZE_APP_PLAYING;
+    maze_ui_render(&navigation);lv_refr_now(d);consume(d);late_tail=true;
+    for(unsigned i=0;i<140;i++)
+    {
+        navigation.app.model.dynamic_us=i*50000;
+        navigation.app.model.x=25+fminf(i*6,navigation.app.level->width-50);
+        navigation.app.model.y=25+fminf(i*4,navigation.app.level->height-50);
+        navigation.app.model.keys=i%2?255:0;
+        navigation.app.model.switches=i%2?255:0;
+        lv_tick_inc(50);maze_ui_render(&navigation);lv_refr_now(d);
+    }
+    consume(d);
+    printf("random async transfers=%u overwritten=%u min_ball=%u black=%u\n",transfers,overwrites,minimum_ball,black_pixels);
+    assert(!overwrites && minimum_ball==full_ball && !black_pixels);
+    screenshot("random-async-edge.ppm");maze_ui_clear();
+    puts("PASS: fixed/random async delayed consumption, source stable, no black holes and complete ball");
 }

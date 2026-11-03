@@ -1,0 +1,2 @@
+priority-red: .superpowers/stage5/priority_red.c:4: main: Assertion `m.result==MAZE_MODEL_LOST&&!m.checkpoint' failed.
+Aborted (core dumped)

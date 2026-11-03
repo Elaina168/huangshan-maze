@@ -1,0 +1,10 @@
+12076820 <main>:
+12076820:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12076824:	ed2d 8b04 	vpush	{d8-d9}
+12076828:	4a65      	ldr	r2, [pc, #404]	@ (120769c0 <main+0x1a0>)
+1207682a:	f2ad 4dcc 	subw	sp, sp, #1228	@ 0x4cc
+1207682e:	4965      	ldr	r1, [pc, #404]	@ (120769c4 <main+0x1a4>)
+12076830:	4865      	ldr	r0, [pc, #404]	@ (120769c8 <main+0x1a8>)
+12076832:	f008 fc73 	bl	1207f11c <rt_kprintf>
+12076836:	2301      	movs	r3, #1
+12076838:	2200      	movs	r2, #0

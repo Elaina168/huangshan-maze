@@ -26,9 +26,9 @@
 
 #define APP_NAME        "huangshan_maze"
 #ifdef MAZE_SCROLL_TRIAL
-#define APP_VERSION     "0.11.0-scroll-trial"
+#define APP_VERSION     "0.14.0-scroll-trial"
 #else
-#define APP_VERSION     "0.11.0-basic-mechanisms"
+#define APP_VERSION     "0.14.0-three-and-casual"
 #endif
 
 #define RGBLED_NAME     "rgbled"
@@ -81,7 +81,8 @@ static int maze_rgb_off(void)
 MSH_CMD_EXPORT(maze_rgb_off, Send a black frame and report the RGB driver result);
 
 #ifndef MAZE_SCROLL_TRIAL
-static uint32_t physics_max_gap,flush_services;
+static uint32_t physics_max_gap,physics_max_cost,flush_services;
+static uint32_t random_clock(void){return rt_tick_get();}
 /* 显示提交间推进纯逻辑，不访问LVGL、触摸或持久化接口。 */
 static void service_during_flush(void *context)
 {
@@ -93,7 +94,11 @@ static void service_during_flush(void *context)
     if(nav->page==MAZE_NAV_GAME && nav->app.state==MAZE_APP_PLAYING &&
        now-nav->app.last_update_tick>physics_max_gap)
         physics_max_gap=now-nav->app.last_update_tick;
-    maze_navigation_update(nav,now);flush_services++;
+    rt_tick_t update_start=rt_tick_get();
+    maze_navigation_update(nav,now);
+    uint32_t cost=rt_tick_get()-update_start;
+    if(cost>physics_max_cost) physics_max_cost=cost;
+    flush_services++;
     uint32_t generation;bool enabled;
     maze_navigation_request(nav,&generation,&enabled);
     maze_imu_request(generation,enabled);
@@ -164,6 +169,9 @@ int main(void)
             {
                 nav.page=MAZE_NAV_SCORES;nav.score_index=0;nav.score_mode=nav.reversed?1:0;nav.page_version++;
             }
+            else if(command.kind==MAZE_UI_RANDOM) maze_navigation_random_open(&nav,now^0xa511e9b3u);
+            else if(command.kind==MAZE_UI_RANDOM_REPLACE) maze_navigation_random_replace(&nav);
+            else if(command.kind==MAZE_UI_RANDOM_CANCEL){maze_ui_clear();maze_navigation_random_cancel(&nav);}
             else if(command.kind==MAZE_UI_SCORE_LEVEL) { nav.score_index=(nav.score_index+1)%maze_catalog_count;nav.page_version++; }
             else if(command.kind==MAZE_UI_SCORE_MODE) { nav.score_mode=1-nav.score_mode;nav.page_version++; }
             else
@@ -183,7 +191,7 @@ int main(void)
                     if(error==0 && nav.page==MAZE_NAV_GAME)
                         rt_kprintf("[maze_map] id=%s walls=%u traps=%u ice=%u nodes=%u reversed=%d\n",
                                    app->level->id,app->level->wall_count,app->level->trap_count,
-                                   app->level->surface_count,nav.map.checked_nodes,nav.reversed);
+                                   app->level->surface_count,nav.active_map->checked_nodes,nav.reversed);
                 }
             }
         }
@@ -192,7 +200,21 @@ int main(void)
         if(have_sample) maze_navigation_sample(&nav,&sample,now);
         if(nav.page==MAZE_NAV_GAME && app->state==MAZE_APP_PLAYING && now-app->last_update_tick>physics_max_gap)
             physics_max_gap=now-app->last_update_tick;
+        rt_tick_t update_start=rt_tick_get();
         maze_navigation_update(&nav,now);
+        uint32_t update_cost=rt_tick_get()-update_start;
+        if(update_cost>physics_max_cost) physics_max_cost=update_cost;
+        if(nav.page==MAZE_NAV_GENERATING)
+        {
+            int generated=maze_navigation_random_step(&nav,rt_tick_get(),random_clock);
+            if(generated==MAZE_RANDOM_READY)
+            {
+                maze_ui_clear();int publish_error=maze_navigation_random_accept(&nav,nav.random_job_id);
+                if(publish_error)rt_kprintf("[maze_random] publish_error=%d\n",publish_error);
+                else rt_kprintf("[maze_random] seed=%u version=%u total_tick=%u slice_tick=%u\n",nav.progress.archive.random.seed,MAZE_GENERATOR_VERSION,nav.random_total_tick,nav.random_max_step_tick);
+            }
+            else if(generated<0)rt_kprintf("[maze_random] error=%d check_error=%d total_tick=%u\n",generated,nav.random_check_error,nav.random_total_tick);
+        }
         if(force_save && !store_ready)
         {
             rt_tick_t begin=rt_tick_get();
@@ -238,12 +260,17 @@ int main(void)
             {
                 if(app->state==MAZE_APP_DEVICE_ERROR)
                 {
-                    rt_kprintf("[maze_timing] loop_tick=%u service_tick=%u render_tick=%u previous_seq=%u previous_read=%u\n",
-                               loop_gap,service_cost,last_render_cost,previous_sequence,previous_read);
+                    rt_kprintf("[maze_timing] loop_tick=%u service_tick=%u render_tick=%u\n",
+                               loop_gap,service_cost,last_render_cost);
+                    rt_kprintf("[maze_timing] previous_seq=%u previous_read=%u physics_cost_tick=%u\n",
+                               previous_sequence,previous_read,physics_max_cost);
                     if(have_sample)
-                        rt_kprintf("[maze_timing] sample_seq=%u read_tick=%u age_tick=%u consumed_gap_tick=%u producer_gap_tick=%u producer_gap_count=%u\n",
-                                   sample.sequence,sample.read_start_tick,now-sample.read_start_tick,
+                    {
+                        rt_kprintf("[maze_timing] sample_seq=%u read_tick=%u age_tick=%u\n",
+                                   sample.sequence,sample.read_start_tick,now-sample.read_start_tick);
+                        rt_kprintf("[maze_timing] consumed_gap_tick=%u producer_gap_tick=%u producer_gap_count=%u\n",
                                    sample.read_start_tick-previous_read,sample.read_gap_tick,sample.read_gap_count);
+                    }
                 }
                 rt_kprintf("[maze] gen=%u state=%d error=%d count=%u\n",
                            app->generation,app->state,app->error,app->window_count);
@@ -258,13 +285,18 @@ int main(void)
         {
             if(nav.page==MAZE_NAV_GAME && (enabled || changed))
             {
-                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld input=%ld,%ld error=%d vel_centi=%ld,%ld surface=%d physics_gap_tick=%u flush_services=%u keys=%u switches=%u broken=%u checkpoint=%u\n",
+                /* 实际console缓冲128字节，每条日志连同最宽整数都须保留换行。 */
+                rt_kprintf("[maze] gen=%u state=%d tick=%u ms=%lu pos=%ld,%ld error=%d\n",
                            app->generation,app->state,now,(unsigned long)app->elapsed_ms,
-                           (long)app->model.x,(long)app->model.y,(long)app->input.x,(long)app->input.y,app->error,
-                           (long)(app->model.vx*100),(long)(app->model.vy*100),
-                           maze_level_surface_at(app->level,app->model.x,app->model.y),physics_max_gap,flush_services,
+                           (long)app->model.x,(long)app->model.y,app->error);
+                rt_kprintf("[maze_motion] input=%ld,%ld vel_centi=%ld,%ld surface=%d\n",
+                           (long)app->input.x,(long)app->input.y,(long)(app->model.vx*100),(long)(app->model.vy*100),
+                           maze_level_surface_at(app->level,app->model.x,app->model.y));
+                rt_kprintf("[maze_health] physics_gap_tick=%u physics_cost_tick=%u flush_services=%u\n",
+                           physics_max_gap,physics_max_cost,flush_services);
+                rt_kprintf("[maze_mech] keys=%u switches=%u broken=%u checkpoint=%u\n",
                            (unsigned)app->model.keys,(unsigned)app->model.switches,(unsigned)app->model.broken,app->model.checkpoint);
-                physics_max_gap=flush_services=0;
+                physics_max_gap=physics_max_cost=flush_services=0;
             }
             last_log=now;
         }

@@ -1,0 +1,7 @@
+dynamic: /mnt/d/codex/黄山派/tests/maze/dynamic_harness.c:23: main: Assertion `m.result==MAZE_MODEL_LOST && m.loss_reason==MAZE_LOSS_LASER' failed.
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_dynamic.py", line 10, in <module>
+    subprocess.run([str(exe)],check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/tmp/tmpxaibv_tf/dynamic']' died with <Signals.SIGABRT: 6>.

@@ -1,0 +1,33 @@
+In file included from tests/maze/random_archive_harness.c:2:
+tests/maze/random_archive_harness.c: In function ‘main’:
+tests/maze/random_archive_harness.c:6:108: error: ‘maze_archive_t’ has no member named ‘random’
+    6 |  assert(MAZE_ARCHIVE_BYTES==982&&MAZE_ARCHIVE_LEVELS==5);assert(!maze_archive_decode(old,845,&a));assert(!a.random.valid&&a.revision==53);
+      |                                                                                                            ^
+tests/maze/random_archive_harness.c:7:3: error: ‘maze_archive_t’ has no member named ‘random’
+    7 |  a.random.valid=true;a.random.generator_version=1;a.random.seed=0;a.random.modes[1].count=1;a.random.modes[1].scores[0]=(maze_score_t){4321,7};
+      |   ^
+tests/maze/random_archive_harness.c:7:23: error: ‘maze_archive_t’ has no member named ‘random’
+    7 |  a.random.valid=true;a.random.generator_version=1;a.random.seed=0;a.random.modes[1].count=1;a.random.modes[1].scores[0]=(maze_score_t){4321,7};
+      |                       ^
+tests/maze/random_archive_harness.c:7:52: error: ‘maze_archive_t’ has no member named ‘random’
+    7 |  a.random.valid=true;a.random.generator_version=1;a.random.seed=0;a.random.modes[1].count=1;a.random.modes[1].scores[0]=(maze_score_t){4321,7};
+      |                                                    ^
+tests/maze/random_archive_harness.c:7:68: error: ‘maze_archive_t’ has no member named ‘random’
+    7 |  a.random.valid=true;a.random.generator_version=1;a.random.seed=0;a.random.modes[1].count=1;a.random.modes[1].scores[0]=(maze_score_t){4321,7};
+      |                                                                    ^
+tests/maze/random_archive_harness.c:7:94: error: ‘maze_archive_t’ has no member named ‘random’
+    7 |  a.random.valid=true;a.random.generator_version=1;a.random.seed=0;a.random.modes[1].count=1;a.random.modes[1].scores[0]=(maze_score_t){4321,7};
+      |                                                                                              ^
+In file included from tests/maze/random_archive_harness.c:2:
+tests/maze/random_archive_harness.c:9:44: error: ‘maze_archive_t’ has no member named ‘random’
+    9 |  assert(!maze_archive_decode(raw,982,&b)&&b.random.valid&&b.random.seed==0&&b.random.modes[1].scores[0].time_cs==4321);
+      |                                            ^
+tests/maze/random_archive_harness.c:9:60: error: ‘maze_archive_t’ has no member named ‘random’
+    9 |  assert(!maze_archive_decode(raw,982,&b)&&b.random.valid&&b.random.seed==0&&b.random.modes[1].scores[0].time_cs==4321);
+      |                                                            ^
+tests/maze/random_archive_harness.c:9:78: error: ‘maze_archive_t’ has no member named ‘random’
+    9 |  assert(!maze_archive_decode(raw,982,&b)&&b.random.valid&&b.random.seed==0&&b.random.modes[1].scores[0].time_cs==4321);
+      |                                                                              ^
+tests/maze/random_archive_harness.c:10:3: error: ‘maze_archive_t’ has no member named ‘random’
+   10 |  b.random.generator_version=99;assert(!maze_archive_encode(&b,raw));assert(!maze_archive_decode(raw,982,&a));
+      |   ^

@@ -1,0 +1,3 @@
+PASS: actual main random cancel/accept, paused challenge preservation, seed save once, change/scores and no generation inside flush
+PASS: direct v2 max and migrated max show storage error without new save/wrap; actual main migration precedes navigation, failed same-revision retry, four-score cycle, loading and callback WON/outer observe exactly once
+PASS: timing/state diagnostics retain newline within actual 128-byte console buffer

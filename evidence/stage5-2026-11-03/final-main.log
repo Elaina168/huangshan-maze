@@ -1,0 +1,1 @@
+PASS: direct v2 max and migrated max show storage error without new save/wrap; actual main migration precedes navigation, failed same-revision retry, four-score cycle, loading and callback WON/outer observe exactly once

@@ -1,0 +1,4 @@
+patrol result=0 x=102.000198 t=1400000 reason=0
+PASS: magnet starts stationary ball, center/edge zero and full-input escape
+PASS: laser tangent and step-boundary activation; occupied gate waits until exit
+PASS: stationary ball pushed by relative sweep; wall squeeze fails once

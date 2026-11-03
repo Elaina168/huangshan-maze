@@ -1,0 +1,81 @@
+PASS: 19/20 samples, duplicate sequence, 950ms and range300 boundary
+PASS: range301 rejected and 3000ms timeout without reference commit
+PASS: USB-right signs, dead zone300 and age100/101 boundary
+PASS: read gap100/101 and late sample rejection
+PASS: missing sequence/gap/stale reset window, old generation ignored
+PASS: tick wrap and 100Hz tick conversion
+PASS: timeout preserves reference, I/O failure and cancel invalidation
+PASS: short span not accepted, sliding window succeeds, late result cannot beat deadline
+PASS: calibration starts time, 10s pause, no catch-up and invalid events
+PASS: replay/exit clear partial steps, new generations and late result isolation
+PASS: paused recalibration success/failure preserve round and stale resume fails
+PASS: I/O freezes round, recovery retries pause, paused read error checked on resume
+PASS: 100/101ms scheduler boundary, partial step, tick wrap and 1280Hz fraction
+PASS: fractional-step win/loss time, single settlement, terminal freeze and replay
+PASS: same 50ms samples, 20/40Hz app update, fixed 10ms motion (host only)
+PASS: skipped latest snapshots do not invent a sensor read gap
+PASS: real producer gap cannot disappear behind a newer healthy snapshot
+PASS: proportional speed, saturation, diagonal limit and neutral
+PASS: thin wall, large sweep, contact sliding, inside corner and all borders
+PASS: rounded expansion, exact tangent and oblique corner sliding
+PASS: earliest region, inclusive boundary, tangent, wall occlusion and terminal freeze
+PASS: one-level geometry, disjoint regions and ball-radius-safe route witness
+PASS: 64 approach directions with 150 repeated contact steps each
+PASS: 10s fixed-step acceleration remains bounded; display cadence is tested at app level
+PASS: tuned speed >170; 80px/s neutral for 1s normal=25.28px ice=60.03px
+PASS: acceleration builds speed, neutral coasts and eventually stops
+PASS: reverse brakes before turning; lateral acceleration retains momentum; vector speed limited
+PASS: ice coasts farther, both floors stop, half-open regions and bidirectional crossings stay continuous
+PASS: current-map dimensions/row characters/object capacity/nonfinite/radius/bounds/overlap and guard checks
+PASS: full 14x12 wall/surface capacities and zero internal walls without guard corruption
+PASS: disconnected corridor, blocking pit, safe bypass, and between-node pit crossings
+draft load=0 walls=141 traps=5 ice=6 nodes=8515 work=40722
+PASS: actual inertia model ordinary route WON, 255320 model-ms
+PASS: actual inertia model ice-shortcuts route WON, 188370 model-ms
+PASS: all five pits approached by real model, LOST then frozen
+PASS stage4 core
+PASS rough continuity; slow/grazing impacts; real break and ordinary wall
+PASS swept chronology, checkpoint snapshot rollback and no resnapshot
+PASS respawn generation, calibration failure/retry, stale sample, exit/replay
+PASS map bounds, references, capacity, self-locked reachability; both trap corridors mandatory
+PASS real fourth-map trajectory: key branch, mandatory key/switch doors, speed break, both mandatory pit losses, checkpoint respawns and win
+PASS: three fixed IDs/first unlocked/next-level, v1-v5 migration retains kept scores, 524B v6 roundtrip; random win/loss never scores or changes archive
+PASS: normal (injected I/O and scheduler, not hardware)
+PASS: late_read (injected I/O and scheduler, not hardware)
+PASS: stop_during_read (injected I/O and scheduler, not hardware)
+PASS: stop_during_status (injected I/O and scheduler, not hardware)
+PASS: read_failed (injected I/O and scheduler, not hardware)
+PASS: configure_failed (injected I/O and scheduler, not hardware)
+PASS: restore_failed (injected I/O and scheduler, not hardware)
+PASS: save_failed (injected I/O and scheduler, not hardware)
+PASS: bus_missing (injected I/O and scheduler, not hardware)
+PASS: not_ready (injected I/O and scheduler, not hardware)
+PASS: queued_failure (injected I/O and scheduler, not hardware)
+PASS: cadence (injected I/O and scheduler, not hardware)
+PASS: gap_latch (injected I/O and scheduler, not hardware)
+patrol result=0 x=102.000198 t=1400000 reason=0
+PASS: magnet center/edge, inner peak, combined force cap and full-input escape
+PASS: laser tangent and step-boundary activation; occupied gate waits until exit
+PASS: stationary ball pushed by relative sweep; wall squeeze fails once
+PASS: exact final-step laser activation is not deferred
+PASS: paused/calibration/error freeze; checkpoint phase and gate snapshot rollback; replay reset
+PASS: independent review exact moving corner-tangent laser contact
+PASS: exact laser-off boundary contact remains safe
+PASS: laser activation at same instant precedes checkpoint
+PASS: actual patrol push sweeps trap/laser; result freezes time
+PASS: 20Hz/40Hz app calling gives identical dynamic clock and motion
+route result=1 reason=0 point=14 x=515.35 y=464.85 ms=57190 checkpoint=2 steps=5720
+PASS: actual fifth-map waiting/gate/magnet/patrol corridor route WON
+PASS: invalid magnet and non-axis patrol rejected
+PASS: closing timed-gate corridor disconnects goal; no branch bypass
+precise_circle_entries_per_10ms=50
+PASS: distant walls do not invoke expensive corner sweep; original state/time retained
+PASS: three maps sync/incremental identical; per-check yield, deadline wrap and cancel/reuse
+PASS: random generator accepted=32/32 distinct-adjacent=31; exact seed and budget independence
+PASS: eight rejected candidates exhaust, exact rejection retains seed0, cancellation stops
+PASS: four dynamic templates x four rotations x three arrival phases real-model traversal
+PASS: random seed=1196435762 nodes=21 branches=5 model_time_ms=50238 WON checkpoint=2
+PASS: random seed=3027450565 nodes=20 branches=4 model_time_ms=45142 WON checkpoint=2
+PASS: random seed=2 nodes=18 branches=3 model_time_ms=43782 WON checkpoint=2
+PASS: random seed=3 nodes=25 branches=5 model_time_ms=56752 WON checkpoint=2
+PASS: actual random-map laser loss, checkpoint respawn and continued traversal

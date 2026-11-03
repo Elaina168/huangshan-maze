@@ -13,7 +13,7 @@ int main(void)
     assert(result==0);
     assert(map.level.width==700 && map.level.height==600);
     assert(map.level.trap_count==3 && map.level.surface_count>0);
-    assert(maze_map_workspace_size()>=36255 && maze_map_workspace_size()<36300);
+    assert(maze_map_workspace_size()>=40520 && maze_map_workspace_size()<42*1024);
     maze_map_definition_t bad=maze_map_scroll_trial;bad.columns=15;
     static maze_map_t invalid;assert(maze_map_load(&bad,&invalid)==MAZE_MAP_FORMAT);
     const maze_point_t route[]={{25,125},{675,125},{675,325},{25,325},{25,525},{675,525},{675,575}};

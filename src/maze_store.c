@@ -32,15 +32,15 @@ static int mount_bank(maze_store_t *s,unsigned bank,bool protect)
 static int read_archive(maze_store_t *s,unsigned bank,uint8_t *bytes,maze_archive_t *out,bool *legacy)
 {
     struct fdb_blob blob;
-    size_t read=fdb_kv_get_blob(&s->db[bank],"archive",fdb_blob_make(&blob,bytes,MAZE_ARCHIVE_BYTES));
+    size_t read=fdb_kv_get_blob(&s->db[bank],"archive",fdb_blob_make(&blob,bytes,MAZE_ARCHIVE_MAX_BYTES));
     /* 未来格式的长度可能变化，先识别同一魔数的版本，禁止当坏副本清除。 */
-    if(read>=6 && !memcmp(bytes,"HMZ1",4) && ((bytes[4]!=1 && bytes[4]!=2 && bytes[4]!=3) || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
+    if(read>=6 && !memcmp(bytes,"HMZ1",4) && (bytes[4]<1 || bytes[4]>6 || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
     if(read>=20 && !memcmp(bytes,"HMZ1",4) &&
        (bytes[16]!=1 || bytes[17] || bytes[18] || bytes[19])) return MAZE_ARCHIVE_VERSION;
-    if((read!=MAZE_ARCHIVE_V1_BYTES && read!=MAZE_ARCHIVE_V2_BYTES && read!=MAZE_ARCHIVE_BYTES) || blob.saved.len!=read)
+    if((read!=MAZE_ARCHIVE_V1_BYTES && read!=MAZE_ARCHIVE_V2_BYTES && read!=MAZE_ARCHIVE_V3_BYTES && read!=MAZE_ARCHIVE_V4_BYTES && read!=MAZE_ARCHIVE_V5_BYTES && read!=MAZE_ARCHIVE_BYTES) || blob.saved.len!=read)
         return MAZE_ARCHIVE_FORMAT;
     int error=maze_archive_decode(bytes,read,out);
-    if(!error) *legacy=bytes[4]<3;
+    if(!error) *legacy=bytes[4]<6;
     return error;
 }
 
@@ -50,7 +50,7 @@ int maze_store_open(maze_store_t *s,maze_archive_t *out)
     maze_store_flash_allow(-1);
     if(fal_init()<0) return MAZE_STORE_IO;
     /* 仅主线程非重入打开；双镜像工作区移出main的8192字节栈。 */
-    static uint8_t images[2][MAZE_ARCHIVE_BYTES];
+    static uint8_t images[2][MAZE_ARCHIVE_MAX_BYTES];
     static maze_archive_t records[2];
     bool legacy[2]={false,false};
     for(unsigned i=0;i<2;i++)
@@ -96,7 +96,7 @@ int maze_store_open(maze_store_t *s,maze_archive_t *out)
 
 int maze_store_save(maze_store_t *s,const maze_archive_t *a)
 {
-    uint8_t bytes[MAZE_ARCHIVE_BYTES],verify[MAZE_ARCHIVE_BYTES];maze_archive_t check;
+    uint8_t bytes[MAZE_ARCHIVE_BYTES],verify[MAZE_ARCHIVE_MAX_BYTES];maze_archive_t check;
     bool legacy=false;
     maze_archive_encode(a,bytes);
     if(s->active>=0)

@@ -1,0 +1,10 @@
+In file included from tests/maze/ui_refresh_harness.c:2,
+                 from tests/maze/random_ui_harness.c:4:
+tests/maze/random_ui_harness.c: In function ‘main’:
+tests/maze/random_ui_harness.c:10:59: error: ‘MAZE_UI_RANDOM’ undeclared (first use in this function); did you mean ‘MAZE_UI_SAVE’?
+   10 |  assert(maze_ui_take_command(&navigation,&cmd)&&cmd.kind==MAZE_UI_RANDOM);assert(!maze_navigation_random_open(&navigation,0));refresh(d);
+      |                                                           ^~~~~~~~~~~~~~
+tests/maze/random_ui_harness.c:10:59: note: each undeclared identifier is reported only once for each function it appears in
+tests/maze/random_ui_harness.c:11:124: error: ‘MAZE_UI_RANDOM_CANCEL’ undeclared (first use in this function)
+   11 |  assert(caption(lv_screen_active(),"取消生成"));click("取消生成");assert(maze_ui_take_command(&navigation,&cmd)&&cmd.kind==MAZE_UI_RANDOM_CANCEL);maze_navigation_random_cancel(&navigation);refresh(d);
+      |                                                                                                                            ^~~~~~~~~~~~~~~~~~~~~
