@@ -22,7 +22,7 @@ static void begin(maze_progress_t *p,const maze_app_t *a)
 {
     p->active=true;p->finished=false;p->accounted=false;
     p->random=!strcmp(a->level->id,MAZE_RANDOM_ID);
-    p->level=p->random?0:(unsigned)index_of(p,a->level->id);p->mode=a->reversed?1:0;
+    p->level=p->random?0:(unsigned)index_of(p,a->level->id);p->mode=maze_app_mode(a);
     p->accrued_ms=0;p->mistakes=p->rank=0;
 }
 static void fold(maze_progress_t *p,const maze_app_t *a)
@@ -56,22 +56,6 @@ uint64_t maze_progress_time_cs(const maze_progress_t *p,const maze_app_t *a)
     return (uint64_t)((p->accrued_ms+(p->accounted?0:a->elapsed_ms))/10);
 }
 
-static unsigned insert(maze_mode_record_t *mode,maze_score_t score)
-{
-    unsigned at=0;
-    while(at<mode->count)
-    {
-        maze_score_t prev=mode->scores[at];
-        if(score.time_cs<prev.time_cs || (score.time_cs==prev.time_cs && score.mistakes<prev.mistakes)) break;
-        at++;
-    }
-    if(at>=MAZE_ARCHIVE_RANKS) return 0;
-    if(mode->count<MAZE_ARCHIVE_RANKS) mode->count++;
-    for(unsigned i=mode->count-1;i>at;i--) mode->scores[i]=mode->scores[i-1];
-    mode->scores[at]=score;
-    return at+1;
-}
-
 void maze_progress_observe(maze_progress_t *p,const maze_app_t *a)
 {
     if(!p->active || p->finished || p->accounted ||
@@ -81,13 +65,13 @@ void maze_progress_observe(maze_progress_t *p,const maze_app_t *a)
     /* 外部档案可带最大修订；明确拒绝不可表示的新结算，保留整个旧快照。 */
     if(p->archive.revision==UINT64_MAX) { p->revision_exhausted=true;return; }
     fold(p,a);
-    maze_mode_record_t *mode=&p->archive.levels[p->level].modes[p->mode];
+    maze_level_record_t *level=&p->archive.levels[p->level];
     if(a->state==MAZE_APP_LOST)
     {
-        p->mistakes++;mode->losses++;p->archive.revision++;
+        p->mistakes++;level->losses++;p->archive.revision++;
         return;
     }
-    p->rank=insert(mode,(maze_score_t){maze_progress_time_cs(p,a),p->mistakes});
+    p->rank=maze_score_insert(level,(maze_score_t){maze_progress_time_cs(p,a),p->mistakes,p->mode});
     bool changed=p->rank!=0;
     if(!p->random)
     {

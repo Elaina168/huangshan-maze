@@ -1,0 +1,1 @@
+PASS: cross-page/state RGB writes obey50ms, identical black not repeated; explicit off immediately clears once

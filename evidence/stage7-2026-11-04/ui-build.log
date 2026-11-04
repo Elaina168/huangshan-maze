@@ -1,0 +1,24 @@
+[ 95%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-stage7
+[ 95%] Building C object CMakeFiles/ui-stage7.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 95%] Building C object CMakeFiles/ui-stage7.dir/mnt/d/codex/黄山派/src/maze_feedback.c.o
+[ 96%] Linking C executable ui-stage7
+[100%] Built target ui-stage7
+[ 96%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-refresh
+[ 96%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 96%] Building C object CMakeFiles/ui-refresh.dir/mnt/d/codex/黄山派/src/maze_feedback.c.o
+[ 96%] Linking C executable ui-refresh
+[100%] Built target ui-refresh
+[ 95%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-async
+[ 96%] Building C object CMakeFiles/ui-async.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 97%] Building C object CMakeFiles/ui-async.dir/mnt/d/codex/黄山派/src/maze_feedback.c.o
+[ 97%] Linking C executable ui-async
+[100%] Built target ui-async
+[ 95%] Built target lvgl_host
+Consolidate compiler generated dependencies of target ui-scroll
+[ 96%] Building C object CMakeFiles/ui-scroll.dir/mnt/d/codex/黄山派/src/maze_ui.c.o
+[ 97%] Building C object CMakeFiles/ui-scroll.dir/mnt/d/codex/黄山派/src/maze_feedback.c.o
+[ 97%] Linking C executable ui-scroll
+[100%] Built target ui-scroll

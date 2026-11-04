@@ -6,7 +6,7 @@
  *   example/rt_device/rgb_led             —— RGB 灯驱动用法（SK6812MINI-HS，PA32，PWMT2 通道1）
  * 板型：sf32lb52-lchspi-ulp（立创·黄山派）。
  *
- * 原RGB个人修改及实测证据保留在Git与evidence；当前运行体感迷宫，启动后关灯。
+ * 原RGB个人修改及实测证据保留在Git与evidence；当前运行体感迷宫，启动清帧后按场景显示低亮灯效。
  *
  * 新增 .c 文件直接放进 src/ 即可，src/SConscript 会自动收集。
  */
@@ -21,14 +21,16 @@
 #include "maze_scroll_trial.h"
 #else
 #include "maze_store.h"
+#include "maze_watchdog.h"
+#include <string.h>
 #endif
 #include "finsh.h"
 
 #define APP_NAME        "huangshan_maze"
 #ifdef MAZE_SCROLL_TRIAL
-#define APP_VERSION     "0.14.0-scroll-trial"
+#define APP_VERSION     "0.15.0-scroll-trial"
 #else
-#define APP_VERSION     "0.14.0-three-and-casual"
+#define APP_VERSION     "0.16.0-watchdog"
 #endif
 
 #define RGBLED_NAME     "rgbled"
@@ -81,6 +83,28 @@ static int maze_rgb_off(void)
 MSH_CMD_EXPORT(maze_rgb_off, Send a black frame and report the RGB driver result);
 
 #ifndef MAZE_SCROLL_TRIAL
+static int rgb_feedback_color(uint32_t color)
+{
+#ifdef SF32LB52X
+    pin_function function;PIN_ModeTypeDef mode;
+    int result=HAL_PIN_Get(PAD_PA32,&function,&mode,1);
+    if(result<0)return result;
+    if(function!=GPTIM2_CH1)HAL_PIN_Set(PAD_PA32,GPTIM2_CH1,PIN_NOPULL,1);
+#endif
+    struct rt_rgbled_configuration config={0};config.color_rgb=color;
+    return rt_device_control(rgbled_device,PWM_CMD_SET_COLOR,&config);
+}
+
+static volatile bool watchdog_test_requested;
+/* 串口只请求注入，由主线程检查页面后消费，避免阻塞tshell代替main。 */
+static int maze_watchdog_test(int argc,char **argv)
+{
+    if(argc!=2 || strcmp(argv[1],"confirm"))return -RT_ERROR;
+    watchdog_test_requested=true;
+    return RT_EOK;
+}
+MSH_CMD_EXPORT(maze_watchdog_test, Stall main once on selection page for watchdog reset test);
+
 static uint32_t physics_max_gap,physics_max_cost,flush_services;
 static uint32_t random_clock(void){return rt_tick_get();}
 /* 显示提交间推进纯逻辑，不访问LVGL、触摸或持久化接口。 */
@@ -108,6 +132,11 @@ static void service_during_flush(void *context)
 int main(void)
 {
     rt_kprintf("\n[%s] v%s boot ok\n", APP_NAME, APP_VERSION);
+#ifndef MAZE_SCROLL_TRIAL
+    int watchdog_error=maze_watchdog_boot();
+    rt_kprintf("[maze_wdt] boot result=%d window_s=%u\n",watchdog_error,MAZE_WATCHDOG_BOOT_SECONDS);
+    if(watchdog_error)return watchdog_error;
+#endif
     rgb_led_init();
     int error=maze_rgb_off();
     if(error==RT_EOK) error=maze_ui_init();
@@ -139,8 +168,22 @@ int main(void)
     uint32_t last_generation=0,last_page_version=0;
     rt_tick_t last_log=rt_tick_get(),last_ui=last_log,previous_loop=last_log,last_render_cost=0;
     maze_ui_render(&nav);
+    watchdog_error=maze_watchdog_running();
+    rt_kprintf("[maze_wdt] running result=%d window_s=%u feed_ms=%u\n",
+               watchdog_error,MAZE_WATCHDOG_RUN_SECONDS,MAZE_WATCHDOG_FEED_MS);
+    if(watchdog_error)return watchdog_error;
     while(1)
     {
+        if(watchdog_test_requested)
+        {
+            watchdog_test_requested=false;
+            if(nav.page==MAZE_NAV_SELECT)
+            {
+                rt_kprintf("[maze_wdt] test stall main_ms=15000\n");
+                rt_thread_mdelay(15000);
+            }
+            else rt_kprintf("[maze_wdt] test rejected page=%d\n",nav.page);
+        }
         rt_tick_t service_start=rt_tick_get();
         maze_ui_process();
         rt_tick_t now=rt_tick_get(),service_cost=now-service_start;
@@ -167,13 +210,13 @@ int main(void)
             else if(command.kind==MAZE_UI_SAVE) force_save=true;
             else if(command.kind==MAZE_UI_SCORES)
             {
-                nav.page=MAZE_NAV_SCORES;nav.score_index=0;nav.score_mode=nav.reversed?1:0;nav.page_version++;
+                nav.page=MAZE_NAV_SCORES;nav.score_index=0;nav.page_version++;
             }
             else if(command.kind==MAZE_UI_RANDOM) maze_navigation_random_open(&nav,now^0xa511e9b3u);
             else if(command.kind==MAZE_UI_RANDOM_REPLACE) maze_navigation_random_replace(&nav);
             else if(command.kind==MAZE_UI_RANDOM_CANCEL){maze_ui_clear();maze_navigation_random_cancel(&nav);}
             else if(command.kind==MAZE_UI_SCORE_LEVEL) { nav.score_index=(nav.score_index+1)%maze_catalog_count;nav.page_version++; }
-            else if(command.kind==MAZE_UI_SCORE_MODE) { nav.score_mode=1-nav.score_mode;nav.page_version++; }
+            else if(command.kind==MAZE_UI_DARK) maze_navigation_toggle_dark(&nav);
             else
             {
                 /* 装载之前关闭生产请求并删除持有旧地图的场景。 */
@@ -306,6 +349,19 @@ int main(void)
             maze_ui_render(&nav);
             last_render_cost=rt_tick_get()-render_start;
             last_ui=now;
+        }
+        uint32_t rgb_color;
+        if(maze_ui_rgb(rt_tick_get(),nav.tick_hz,nav.lighting,&rgb_color))
+        {
+            int rgb_error=rgb_feedback_color(rgb_color);
+            if(rgb_error){rt_kprintf("[maze_feedback] rgb_error=%d\n",rgb_error);nav.lighting=false;nav.lighting_error=rgb_error;nav.page_version++;}
+        }
+        /* 只有整轮（含显示完成和RGB设备调用）返回，才构成健康凭证。 */
+        watchdog_error=maze_watchdog_checkpoint(rt_tick_get());
+        if(watchdog_error)
+        {
+            rt_kprintf("[maze_wdt] checkpoint failed=%d; feeding stopped\n",watchdog_error);
+            return watchdog_error;
         }
     }
     return 0;

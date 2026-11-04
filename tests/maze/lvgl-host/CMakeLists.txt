@@ -16,7 +16,7 @@ add_executable(ui-refresh "${REPO}/tests/maze/ui_refresh_harness.c"
     "${REPO}/src/maze_map.c"
     "${REPO}/src/maze_camera.c" "${REPO}/src/maze_map_ice_loops.c"
     "${REPO}/src/maze_map_mechanism_trial.c" "${REPO}/src/maze_map_dynamic_trial.c" "${REPO}/src/maze_catalog.c" "${REPO}/src/maze_navigation.c" "${REPO}/src/maze_random.c" "${REPO}/src/maze_random_templates.c"
-    "${REPO}/src/maze_archive.c" "${REPO}/src/maze_progress.c")
+    "${REPO}/src/maze_archive.c" "${REPO}/src/maze_progress.c" "${REPO}/src/maze_feedback.c")
 target_include_directories(ui-refresh PRIVATE "${REPO}/tests/maze" "${REPO}/src"
     "${LVGL_DIR}/../../middleware/lvgl")
 target_compile_options(ui-refresh PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
@@ -36,3 +36,8 @@ add_executable(ui-async "${REPO}/tests/maze/ui_async_harness.c" ${UI_SOURCES})
 target_include_directories(ui-async PRIVATE "${REPO}/tests/maze" "${REPO}/src" "${LVGL_DIR}/../../middleware/lvgl")
 target_compile_options(ui-async PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
 target_link_libraries(ui-async PRIVATE lvgl_host m)
+
+add_executable(ui-stage7 "${REPO}/tests/maze/stage7_ui_harness.c" ${UI_SOURCES})
+target_include_directories(ui-stage7 PRIVATE "${REPO}/tests/maze" "${REPO}/src" "${LVGL_DIR}/../../middleware/lvgl")
+target_compile_options(ui-stage7 PRIVATE -std=c99 -Wall -Wextra -Werror -Wno-missing-field-initializers)
+target_link_libraries(ui-stage7 PRIVATE lvgl_host m)

@@ -1,0 +1,1 @@
+PASS: bounded win/loss/menu/action, same-page save does not replay, page/generation cancel, tick wrap, RGB50ms throttle and immediate off

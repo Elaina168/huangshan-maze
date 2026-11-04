@@ -6,6 +6,7 @@ void maze_navigation_init(maze_navigation_t *n, uint32_t tick_hz)
 {
     memset(n,0,sizeof(*n));
     n->page=MAZE_NAV_SELECT;
+    n->lighting=true;
     n->active_map=&n->maps[1];
     n->page_version=1;
     n->tick_hz=tick_hz;
@@ -37,7 +38,7 @@ static int load(maze_navigation_t *n, unsigned index)
         maze_app_init(&n->app,&n->active_map->level,n->tick_hz);
         n->app_initialized=true;
     }
-    maze_app_bind_level(&n->app,&n->active_map->level,n->reversed);
+    maze_app_bind_level(&n->app,&n->active_map->level,n->reversed);n->app.dark=n->dark;
     n->page=MAZE_NAV_GAME;
     return 0;
 }
@@ -70,6 +71,12 @@ void maze_navigation_toggle_direction(maze_navigation_t *n)
     if (n->page!=MAZE_NAV_SELECT) return;
     n->reversed=!n->reversed;
     n->page_version++;
+}
+
+void maze_navigation_toggle_dark(maze_navigation_t *n)
+{
+    if(n->page!=MAZE_NAV_SELECT)return;
+    n->dark=!n->dark;n->page_version++;
 }
 
 int maze_navigation_next(maze_navigation_t *n)
@@ -177,6 +184,6 @@ int maze_navigation_random_accept(maze_navigation_t*n,uint32_t job_id)
  if(!n->random_exact)maze_progress_random_accept(&n->progress,MAZE_GENERATOR_VERSION,n->generated[n->random_target].seed);
  n->active_map=&n->maps[n->random_target];n->random=true;
  if(!n->app_initialized){maze_app_init(&n->app,&n->active_map->level,n->tick_hz);n->app_initialized=true;}
- maze_app_bind_level(&n->app,&n->active_map->level,n->reversed);
+ maze_app_bind_level(&n->app,&n->active_map->level,n->reversed);n->app.dark=n->dark;
  n->page=MAZE_NAV_GAME;n->page_version++;n->publish_ready=false;n->error=0;return 0;
 }

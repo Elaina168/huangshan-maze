@@ -1,0 +1,97 @@
+12076824 <main>:
+12076824:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12076828:	ed2d 8b04 	vpush	{d8-d9}
+1207682c:	4a67      	ldr	r2, [pc, #412]	@ (120769cc <main+0x1a8>)
+1207682e:	f5ad 7d0f 	sub.w	sp, sp, #572	@ 0x23c
+12076832:	4967      	ldr	r1, [pc, #412]	@ (120769d0 <main+0x1ac>)
+12076834:	4867      	ldr	r0, [pc, #412]	@ (120769d4 <main+0x1b0>)
+12076836:	f00a ff01 	bl	1208163c <rt_kprintf>
+1207683a:	2301      	movs	r3, #1
+1207683c:	2200      	movs	r2, #0
+1207683e:	f240 11dd 	movw	r1, #477	@ 0x1dd
+12076842:	202e      	movs	r0, #46	@ 0x2e
+12076844:	f045 ff64 	bl	120bc710 <__HAL_PIN_Set_veneer>
+
+12077a48 <maze_archive_decode>:
+12077a48:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12077a4c:	2905      	cmp	r1, #5
+12077a4e:	f5ad 7d1f 	sub.w	sp, sp, #636	@ 0x27c
+12077a52:	4680      	mov	r8, r0
+12077a54:	460c      	mov	r4, r1
+12077a56:	9205      	str	r2, [sp, #20]
+12077a58:	d806      	bhi.n	12077a68 <maze_archive_decode+0x20>
+12077a5a:	f8df 8310 	ldr.w	r8, [pc, #784]	@ 12077d6c <maze_archive_decode+0x324>
+12077a5e:	4640      	mov	r0, r8
+12077a60:	f50d 7d1f 	add.w	sp, sp, #636	@ 0x27c
+12077a64:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+12077a68:	2204      	movs	r2, #4
+
+12078128 <maze_feedback_rgb>:
+12078128:	e92d 41ff 	stmdb	sp!, {r0, r1, r2, r3, r4, r5, r6, r7, r8, lr}
+1207812c:	460e      	mov	r6, r1
+1207812e:	7841      	ldrb	r1, [r0, #1]
+12078130:	4605      	mov	r5, r0
+12078132:	4690      	mov	r8, r2
+12078134:	9f0a      	ldr	r7, [sp, #40]	@ 0x28
+12078136:	2900      	cmp	r1, #0
+12078138:	d156      	bne.n	120781e8 <maze_feedback_rgb+0xc0>
+1207813a:	2201      	movs	r2, #1
+1207813c:	e9c0 6107 	strd	r6, r1, [r0, #28]
+12078140:	7042      	strb	r2, [r0, #1]
+12078142:	b393      	cbz	r3, 120781aa <maze_feedback_rgb+0x82>
+
+12078900 <maze_map_step>:
+12078900:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+12078904:	ed2d 8b06 	vpush	{d8-d10}
+12078908:	4d8a      	ldr	r5, [pc, #552]	@ (12078b34 <maze_map_step+0x234>)
+1207890a:	461e      	mov	r6, r3
+1207890c:	6deb      	ldr	r3, [r5, #92]	@ 0x5c
+1207890e:	b08d      	sub	sp, #52	@ 0x34
+12078910:	2b01      	cmp	r3, #1
+12078912:	468a      	mov	sl, r1
+12078914:	4693      	mov	fp, r2
+12078916:	9003      	str	r0, [sp, #12]
+12078918:	9302      	str	r3, [sp, #8]
+1207891a:	d119      	bne.n	12078950 <maze_map_step+0x50>
+
+1207d188 <read_archive>:
+1207d188:	b570      	push	{r4, r5, r6, lr}
+1207d18a:	4615      	mov	r5, r2
+1207d18c:	461e      	mov	r6, r3
+1207d18e:	f240 7334 	movw	r3, #1844	@ 0x734
+1207d192:	b086      	sub	sp, #24
+1207d194:	fb03 0401 	mla	r4, r3, r1, r0
+1207d198:	f240 32d6 	movw	r2, #982	@ 0x3d6
+1207d19c:	4629      	mov	r1, r5
+1207d19e:	a801      	add	r0, sp, #4
+1207d1a0:	f7bb f990 	bl	120384c4 <fdb_blob_make>
+1207d1a4:	492b      	ldr	r1, [pc, #172]	@ (1207d254 <read_archive+0xcc>)
+1207d1a6:	4602      	mov	r2, r0
+
+1207d264 <maze_store_save>:
+1207d264:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+1207d268:	460f      	mov	r7, r1
+1207d26a:	4605      	mov	r5, r0
+1207d26c:	2600      	movs	r6, #0
+1207d26e:	f2ad 7d0c 	subw	sp, sp, #1804	@ 0x70c
+1207d272:	4638      	mov	r0, r7
+1207d274:	a909      	add	r1, sp, #36	@ 0x24
+1207d276:	f88d 600f 	strb.w	r6, [sp, #15]
+1207d27a:	f7fa fb43 	bl	12077904 <maze_archive_encode>
+1207d27e:	f8d5 4e7c 	ldr.w	r4, [r5, #3708]	@ 0xe7c
+1207d282:	f10d 080f 	add.w	r8, sp, #15
+1207d286:	42b4      	cmp	r4, r6
+
+1207d448 <maze_store_open>:
+1207d448:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+1207d44c:	f44f 627f 	mov.w	r2, #4080	@ 0xff0
+1207d450:	b085      	sub	sp, #20
+1207d452:	460d      	mov	r5, r1
+1207d454:	2100      	movs	r1, #0
+1207d456:	4604      	mov	r4, r0
+1207d458:	f03f f996 	bl	120bc788 <__memset_veneer>
+1207d45c:	f04f 30ff 	mov.w	r0, #4294967295
+1207d460:	f8c4 0e7c 	str.w	r0, [r4, #3708]	@ 0xe7c
+1207d464:	f03f fa1c 	bl	120bc8a0 <__maze_store_flash_allow_veneer>
+1207d468:	f7b8 fed0 	bl	1203620c <fal_init>
+1207d46c:	2800      	cmp	r0, #0

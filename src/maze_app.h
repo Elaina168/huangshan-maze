@@ -32,7 +32,7 @@ typedef struct
     uint32_t tick_hz, generation, started_tick, last_read_tick, last_sequence;
     uint32_t last_gap_count;
     bool has_sequence, has_read, has_reference;
-    bool reversed;
+    bool reversed,dark;
     maze_app_state_t state;
     maze_calibration_origin_t calibration_origin;
     maze_model_t model;
@@ -49,6 +49,7 @@ typedef struct
 void maze_app_init(maze_app_t *app, const maze_level_t *level, uint32_t tick_hz);
 /* 旧会话已取消后绑定新图；代次继续递增，不重新初始化整个app。 */
 void maze_app_bind_level(maze_app_t *app, const maze_level_t *level, bool reversed);
+unsigned maze_app_mode(const maze_app_t *app);
 void maze_app_begin(maze_app_t *app, uint32_t now_tick);
 void maze_app_cancel(maze_app_t *app);
 void maze_app_sample(maze_app_t *app, const maze_imu_sample_t *sample, uint32_t now_tick);

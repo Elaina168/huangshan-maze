@@ -1,0 +1,241 @@
+{
+  "variant": "normal",
+  "defines": [],
+  "board": "sf32lb52-lchspi-ulp",
+  "sdk_path": "D:\\sifli\\SiFli-SDK\\v2.5.1",
+  "stage_path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-gk1sfruh",
+  "sources": [
+    {
+      "path": "project/custom_mem_map.h",
+      "sha256": "b20084c7a0e3fba836993274ce9544c0f1691222f8b66d4fbe5a350b257f4743"
+    },
+    {
+      "path": "project/Kconfig",
+      "sha256": "c5fa11abae22e736829fdf8386b2521555e45dc09eba30618a1a7267b10ffefc"
+    },
+    {
+      "path": "project/Kconfig.proj",
+      "sha256": "698dfea0642bf255db1a4bbb87963fb74cc89e4113302206c682dfc88a09a8e7"
+    },
+    {
+      "path": "project/proj.conf",
+      "sha256": "e4795e77e8bf000dc6aa2f9feb328671095c430b713fc941948a19178cba3560"
+    },
+    {
+      "path": "project/ptab.json",
+      "sha256": "aea8850c7abfeaa9689eedd643805c196bbab0afa1ebd61ec435d78a36746d02"
+    },
+    {
+      "path": "project/rtconfig.py",
+      "sha256": "7414ea905126bb7954095ad6126a355fc08c173c87ea2e4885942b6b947b0614"
+    },
+    {
+      "path": "project/SConscript",
+      "sha256": "93fe60576f195e38a30768e9e766a000afbff3b6f6aa10a76fd47724a72b47a4"
+    },
+    {
+      "path": "project/SConstruct",
+      "sha256": "895f6a73940f18a05686c3813c08050a5f643436050dd01bc015fd09f6ebc9cf"
+    },
+    {
+      "path": "src/imu_probe.c",
+      "sha256": "4e07bc6e913cdb60ebdbf85287fe1e397f6dee02afb31c055db9bff51f963971"
+    },
+    {
+      "path": "src/main.c",
+      "sha256": "f40c038800ab19d14acfd79402f86d8c31db80ca7581fc4699e2dc3e165793f1"
+    },
+    {
+      "path": "src/maze_app.c",
+      "sha256": "5288a37ea40f4973c46621b5371eb092c65a4ca70637de34f587b8d25fb1c027"
+    },
+    {
+      "path": "src/maze_app.h",
+      "sha256": "775b49b97f5195594c0145e708104e13925c983c12983a51ce8ac76d035c21e3"
+    },
+    {
+      "path": "src/maze_archive.c",
+      "sha256": "500b4eab3b2664ddc7eab879532f407d0a7ab53e32b8957b69def175f1e0fa6f"
+    },
+    {
+      "path": "src/maze_archive.h",
+      "sha256": "043b0578defef67c47509a4f5273a9f28f008dec521885fdb6bb41bb6a90f260"
+    },
+    {
+      "path": "src/maze_camera.c",
+      "sha256": "388ecde0f3d7386863273615e4d734174ce9b104be2a4b0c18d471d0a39dd17a"
+    },
+    {
+      "path": "src/maze_camera.h",
+      "sha256": "5640238e888997462c6d79c51318a1218af2ec1bc234f3426eedad71c920f8ec"
+    },
+    {
+      "path": "src/maze_catalog.c",
+      "sha256": "168871419b34e745f5c085edbf14e2d6adbd91f5ac6aa6cd4e2eace712001204"
+    },
+    {
+      "path": "src/maze_catalog.h",
+      "sha256": "0166481cff29b58a98b5e024a43b933644ce2149fc50fe0e767d3012a3131de3"
+    },
+    {
+      "path": "src/maze_config.h",
+      "sha256": "31201e13bab637e582b196c1f8017dda00db64e526a546a73e9f78fce402b681"
+    },
+    {
+      "path": "src/maze_feedback.c",
+      "sha256": "e4b7e1095b5c299bd106d1890cae3fe19d9b1240fa133d8b621fd1171eb72e4e"
+    },
+    {
+      "path": "src/maze_feedback.h",
+      "sha256": "c2667fa1b6444a65dd993ce603c8f2544a11beb0a54e6562e0cb47c8326c9f64"
+    },
+    {
+      "path": "src/maze_font_zh_16.c",
+      "sha256": "948b21cd1bcc650f08198caee706ae57887bcd23d304b8177a156070cab78e9e"
+    },
+    {
+      "path": "src/maze_font_zh_16.h",
+      "sha256": "978cc7dc162472ca74f4e9f2162c53c3d6b45da1735b0d4417cfaca5d0324e5c"
+    },
+    {
+      "path": "src/maze_imu.c",
+      "sha256": "a8ca7f62e644f60c922f705b5765cc6e2a74996d4cb7e51b54207833fd6aa5a7"
+    },
+    {
+      "path": "src/maze_imu.h",
+      "sha256": "e0dcfa099f4a3d7ca72880637381f006ca1760ef5d1446b7001abfa0c4b73505"
+    },
+    {
+      "path": "src/maze_level.c",
+      "sha256": "cf2c2e2470ed98bd58ce0c075bdc46c155345def90e9c1ed0624b473a43af72b"
+    },
+    {
+      "path": "src/maze_level.h",
+      "sha256": "6a89441a1cbc160b41d650f21f379caf1b310ec53ae72dfbb55e51c5aeb0335c"
+    },
+    {
+      "path": "src/maze_map.c",
+      "sha256": "b3101969e82dd1183fafb867bd0e21aac3231b44c5f5fd110b245a478d324227"
+    },
+    {
+      "path": "src/maze_map.h",
+      "sha256": "3b9b667763270b0751fa47dc8df087590082d88645981ef9e51cac2feaa64113"
+    },
+    {
+      "path": "src/maze_map_dynamic_trial.c",
+      "sha256": "3386a0cc55818772b596c4c9786cacde2ea462977013c6fb5c92f97b604b8734"
+    },
+    {
+      "path": "src/maze_map_ice_loops.c",
+      "sha256": "e38e525ee9f4ce4dddb303de39002210a9021b1c786a96a54efc3514c7e7d27f"
+    },
+    {
+      "path": "src/maze_map_mechanism_trial.c",
+      "sha256": "472ed9c071d8b33c44bea0666bc1080d10ad5c2dd3451b786da42e43fcf30d7a"
+    },
+    {
+      "path": "src/maze_map_scroll_trial.c",
+      "sha256": "e585f210618d3c008dd8bc2df43d87a88ada4993c422b6bacd5a539249a7339f"
+    },
+    {
+      "path": "src/maze_model.c",
+      "sha256": "81cb324a0e90d156ba53f94af89bbc9591a0268f22d67d51c29c5813cc41b16b"
+    },
+    {
+      "path": "src/maze_model.h",
+      "sha256": "6aa8e5ea313ed001f2f5dcd5a4c456e42792b5e969cdf006f0f001e96a513e6f"
+    },
+    {
+      "path": "src/maze_navigation.c",
+      "sha256": "ce83b47c5bd1968d91d14a89c3155705dea4cc034676cebd0db74b980bc98ea2"
+    },
+    {
+      "path": "src/maze_navigation.h",
+      "sha256": "90221126dcfbe544c56a989ab6cc05815aed101823578451417420b9071628c1"
+    },
+    {
+      "path": "src/maze_progress.c",
+      "sha256": "89f7ca66703024634c1e8963e95f41ae41971f9781e6194ce388845f621ab6b9"
+    },
+    {
+      "path": "src/maze_progress.h",
+      "sha256": "045a8f67113591c9be7b4689732e7d1252886bcbe11c07f406444bdadb5b9140"
+    },
+    {
+      "path": "src/maze_random.c",
+      "sha256": "c9fbe4208c474a398f06035de62b1d04a7d8b294b5b52a081974b76632261409"
+    },
+    {
+      "path": "src/maze_random.h",
+      "sha256": "0a13e497e1584a3c17a12836da0417624cfd64f99acef1d657bc6e2816baef55"
+    },
+    {
+      "path": "src/maze_random_templates.c",
+      "sha256": "77e221d116232f6a648ba6c42530d67a023b24166d5b8aa1e7f29a74354823f2"
+    },
+    {
+      "path": "src/maze_random_templates.h",
+      "sha256": "81446a741e63ebdbfd038b1202942d034015889ccf8d4e096ddb1e37d095806d"
+    },
+    {
+      "path": "src/maze_scroll_trial.c",
+      "sha256": "3ad9fb815921a2f661fe9502cfc807beca375642c8cf5c43e27ed88b50843405"
+    },
+    {
+      "path": "src/maze_scroll_trial.h",
+      "sha256": "c507d7162c3efe3b299891cb70fbdd06d8359828e4574f1867634098a08f3285"
+    },
+    {
+      "path": "src/maze_store.c",
+      "sha256": "516367790063edac9b0d8ee83581c117432cf6ec9f609ce0dd592d8d38d92e9f"
+    },
+    {
+      "path": "src/maze_store.h",
+      "sha256": "50113e4b7f2ada9f74bd4c4f978dd9090c320c4f86a2ed880294cac8b08139b3"
+    },
+    {
+      "path": "src/maze_store_flash.c",
+      "sha256": "dba9dd3675c9f07bdc7bbd6ca5037691e6c75562911ae74ecf25aa53047ea25f"
+    },
+    {
+      "path": "src/maze_ui.c",
+      "sha256": "bbce033fa1abb5a65726f26b0426eab7cebed2d0e8ca473371aa9474637262d4"
+    },
+    {
+      "path": "src/maze_ui.h",
+      "sha256": "1fdb74f8a23ff3fe591f430aa479296962d0db698d70304b255faf726a3d932d"
+    },
+    {
+      "path": "src/maze_watchdog.c",
+      "sha256": "ae3ae2fb8b7668b27ae608895219a1cc08bc0263a548ea897964a00a8ebe03ec"
+    },
+    {
+      "path": "src/maze_watchdog.h",
+      "sha256": "6ac714122ec81e35e246e92bcb53fae6f7e902326135b6402ccb2d0f5cccca14"
+    },
+    {
+      "path": "src/SConscript",
+      "sha256": "9a3d1db805e6bd9240e3debe5d63ba135e722f7651bfe2b982e642ae1f228b31"
+    }
+  ],
+  "returncode": 0,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-gk1sfruh\\project\\build_sf32lb52-lchspi-ulp_hcpu\\main.bin",
+      "sha256": "8ef335dcdc63a7d65361328042f5c9c4db7dd028074d584c13834c891d9da478",
+      "bytes": 649876
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-gk1sfruh\\project\\build_sf32lb52-lchspi-ulp_hcpu\\bootloader\\bootloader.bin",
+      "sha256": "e59d70db44367d524fbb46a8a014ce0092462e86959d101a8e2e00ad27bb5e21",
+      "bytes": 58496
+    },
+    {
+      "path": "C:\\Users\\zytx\\AppData\\Local\\Temp\\huangshan-maze-gk1sfruh\\project\\build_sf32lb52-lchspi-ulp_hcpu\\ftab\\ftab.bin",
+      "sha256": "a129bf0fd9da306889b5b99577cd7e1c9e15327187e701f1bb3733a0a975c1b1",
+      "bytes": 11288
+    }
+  ],
+  "hardware_verified": false,
+  "source_unchanged": true
+}

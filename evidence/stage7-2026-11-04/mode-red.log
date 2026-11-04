@@ -1,0 +1,10 @@
+tests/maze/stage7_mode_harness.c: In function ‘main’:
+tests/maze/stage7_mode_harness.c:5:46: error: implicit declaration of function ‘maze_navigation_toggle_dark’; did you mean ‘maze_navigation_toggle_direction’? [-Werror=implicit-function-declaration]
+    5 | int main(void){maze_navigation_init(&n,1000);maze_navigation_toggle_dark(&n);maze_navigation_toggle_direction(&n);assert(n.dark&&n.reversed);assert(!maze_navigation_select(&n,0));assert(maze_app_mode(&n.app)==3);
+      |                                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                              maze_navigation_toggle_direction
+In file included from tests/maze/stage7_mode_harness.c:2:
+tests/maze/stage7_mode_harness.c:5:123: error: ‘maze_navigation_t’ has no member named ‘dark’
+    5 | int main(void){maze_navigation_init(&n,1000);maze_navigation_toggle_dark(&n);maze_navigation_toggle_direction(&n);assert(n.dark&&n.reversed);assert(!maze_navigation_select(&n,0));assert(maze_app_mode(&n.app)==3);
+      |                                                                                                                           ^
+cc1: all warnings being treated as errors

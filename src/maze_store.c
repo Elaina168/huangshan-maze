@@ -34,13 +34,13 @@ static int read_archive(maze_store_t *s,unsigned bank,uint8_t *bytes,maze_archiv
     struct fdb_blob blob;
     size_t read=fdb_kv_get_blob(&s->db[bank],"archive",fdb_blob_make(&blob,bytes,MAZE_ARCHIVE_MAX_BYTES));
     /* 未来格式的长度可能变化，先识别同一魔数的版本，禁止当坏副本清除。 */
-    if(read>=6 && !memcmp(bytes,"HMZ1",4) && (bytes[4]<1 || bytes[4]>6 || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
+    if(read>=6 && !memcmp(bytes,"HMZ1",4) && (bytes[4]<1 || bytes[4]>7 || bytes[5]!=0)) return MAZE_ARCHIVE_VERSION;
     if(read>=20 && !memcmp(bytes,"HMZ1",4) &&
        (bytes[16]!=1 || bytes[17] || bytes[18] || bytes[19])) return MAZE_ARCHIVE_VERSION;
-    if((read!=MAZE_ARCHIVE_V1_BYTES && read!=MAZE_ARCHIVE_V2_BYTES && read!=MAZE_ARCHIVE_V3_BYTES && read!=MAZE_ARCHIVE_V4_BYTES && read!=MAZE_ARCHIVE_V5_BYTES && read!=MAZE_ARCHIVE_BYTES) || blob.saved.len!=read)
+    if((read!=MAZE_ARCHIVE_V1_BYTES && read!=MAZE_ARCHIVE_V2_BYTES && read!=MAZE_ARCHIVE_V3_BYTES && read!=MAZE_ARCHIVE_V4_BYTES && read!=MAZE_ARCHIVE_V5_BYTES && read!=MAZE_ARCHIVE_V6_BYTES && read!=MAZE_ARCHIVE_BYTES) || blob.saved.len!=read)
         return MAZE_ARCHIVE_FORMAT;
     int error=maze_archive_decode(bytes,read,out);
-    if(!error) *legacy=bytes[4]<6;
+    if(!error) *legacy=bytes[4]<7;
     return error;
 }
 

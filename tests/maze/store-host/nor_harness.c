@@ -79,9 +79,9 @@ static void variant(unsigned revision)
         archive.random.seed=revision;
     }
     archive.levels[0].completed=1;archive.levels[1].unlocked=true;
-    archive.levels[0].modes[0].losses=revision;
-    archive.levels[0].modes[0].count=1;
-    archive.levels[0].modes[0].scores[0]=(maze_score_t){1000+revision,revision};
+    archive.levels[0].losses=revision;
+    archive.levels[0].count=1;
+    archive.levels[0].scores[0]=(maze_score_t){1000+revision,revision,revision%4};
 }
 /* 夹具经真实FlashDB写入，不绕过数据库布局。 */
 static void put_fixture(unsigned bank,const uint8_t *bytes,size_t size,const char *key)
@@ -125,9 +125,9 @@ int main(int argc,char **argv)
         fdb_kvdb_control(&store.db[target],FDB_KVDB_CTRL_SET_SEC_SIZE,&sector);
         assert(fdb_kvdb_init(&store.db[target],target?"maze_b":"maze_a",target?"maze_b":"maze_a",NULL,NULL)==0);
         uint8_t bytes[MAZE_ARCHIVE_BYTES];
-        if(!strcmp(argv[1],"conflict")) archive.levels[0].modes[0].losses++;
+        if(!strcmp(argv[1],"conflict")) archive.levels[0].losses++;
         maze_archive_encode(&archive,bytes);
-        if(!strcmp(argv[1],"version")) bytes[4]=7;
+        if(!strcmp(argv[1],"version")) bytes[4]=8;
         uint32_t crc=maze_archive_crc32(bytes,MAZE_ARCHIVE_BYTES-4);
         for(unsigned i=0;i<4;i++) bytes[MAZE_ARCHIVE_BYTES-4+i]=(uint8_t)(crc>>(8*i));
         struct fdb_blob blob;
@@ -169,7 +169,7 @@ int main(int argc,char **argv)
     armed=false;
     uint8_t disk[MAZE_ARCHIVE_MAX_BYTES];struct fdb_blob disk_blob;
     size_t disk_size=fdb_kv_get_blob(&store.db[store.active],"archive",fdb_blob_make(&disk_blob,disk,sizeof(disk)));
-    assert(disk_size==disk_blob.saved.len && (disk_size==353 || disk_size==517 || disk_size==681 || disk_size==845 || disk_size==982 || disk_size==524));
+    assert(disk_size==disk_blob.saved.len && (disk_size==353 || disk_size==517 || disk_size==681 || disk_size==845 || disk_size==982 || disk_size==524 || disk_size==356));
     printf("RAW ");for(unsigned i=0;i<disk_size;i++) printf("%02x",disk[i]);
     printf("\nCOMMITTED %" PRIu64 " UPGRADE %d\n",store.revision,store.upgrade_pending);
     uint8_t bytes[MAZE_ARCHIVE_BYTES];maze_archive_encode(&archive,bytes);

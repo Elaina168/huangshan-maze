@@ -1,0 +1,1 @@
+PASS: actual watchdog adapter removes idle feed; startup30/run5, 250ms throttle, wrap, late completion latch, device failures, timeout hook calls HAL reboot

@@ -22,3 +22,8 @@ archive-v2.bin在第4阶段修改编码器前由原v2 maze_archive_encode实际�
 ## 原v5档案夹具
 
 2026-11-03在精简前使用实际v5编解码器读取v4合成夹具，设revision61、random seed3/version1及合成777cs/2失误后生成982B archive-v5.bin。仅作旧版迁移回归，旧随机成绩按新范围丢弃，不是用户真实档案。SHA-256 `a7bfb027f8d13908a8670dfb09f42518d4590d94ca1990ea5745e0d4cbbd23b2`。
+
+
+## 原v6档案夹具
+
+2026-11-04在修改v6编码器前由实际旧编码器生成524B archive-v6.bin。合成revision77，冰环原正常/反转各5条，losses9/10，时间1000+j×2和1000+j厘秒，失误j+1，random seed3/version1。独立Python核对CRC、字段和SHA `62536b93cbc90c57614084307795854dac62ba4bd3b098786223c75c1525bc9a`。v7预期合并只留5条：1000反转、1000正常、1001反转、1002反转、1002正常；超额明确丢弃。不是用户真实档案。

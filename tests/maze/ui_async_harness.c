@@ -137,5 +137,26 @@ int main(void)
     printf("random async transfers=%u overwritten=%u min_ball=%u black=%u\n",transfers,overwrites,minimum_ball,black_pixels);
     assert(!overwrites && minimum_ball==full_ball && !black_pixels);
     screenshot("random-async-edge.ppm");maze_ui_clear();
+    for(unsigned level=0;level<3;level++)
+    {
+        late_tail=false;maze_navigation_back(&navigation);navigation.dark=true;
+        assert(!maze_navigation_select(&navigation,level));navigation.app.state=MAZE_APP_PLAYING;
+        maze_ui_render(&navigation);lv_refr_now(d);consume(d);late_tail=true;
+        for(unsigned i=0;i<80;i++){
+            navigation.app.model.dynamic_us=i*50000;
+            navigation.app.model.x=25+fminf(i*9,navigation.app.level->width-50);
+            navigation.app.model.y=25+fminf(i*8,navigation.app.level->height-50);
+            lv_tick_inc(50);maze_ui_render(&navigation);lv_refr_now(d);
+        }
+        consume(d);assert(!overwrites&&minimum_ball==full_ball&&!black_pixels);maze_ui_clear();
+    }
+    late_tail=false;maze_navigation_back(&navigation);assert(!maze_navigation_random_open(&navigation,3));
+    do{result=maze_navigation_random_step(&navigation,0,NULL);}while(result==MAZE_RANDOM_PENDING);
+    assert(result==MAZE_RANDOM_READY);assert(!maze_navigation_random_accept(&navigation,navigation.random_job_id));navigation.app.state=MAZE_APP_PLAYING;
+    maze_ui_render(&navigation);lv_refr_now(d);consume(d);late_tail=true;
+    for(unsigned i=0;i<80;i++){navigation.app.model.x=25+fminf(i*9,navigation.app.level->width-50);navigation.app.model.y=25+fminf(i*8,navigation.app.level->height-50);lv_tick_inc(50);maze_ui_render(&navigation);lv_refr_now(d);}
+    consume(d);assert(!overwrites&&minimum_ball==full_ball&&!black_pixels);
+    printf("dark fixed/random async transfers=%u overwritten=%u min_ball=%u black=%u\n",transfers,overwrites,minimum_ball,black_pixels);
+    screenshot("stage7-dark-async.ppm");maze_ui_clear();
     puts("PASS: fixed/random async delayed consumption, source stable, no black holes and complete ball");
 }

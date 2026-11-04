@@ -32,3 +32,4 @@ secrets.*
 !tests/maze/fixtures/archive-v3.bin
 !tests/maze/fixtures/archive-v4.bin
 !tests/maze/fixtures/archive-v5.bin
+!tests/maze/fixtures/archive-v6.bin

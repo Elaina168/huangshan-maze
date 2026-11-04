@@ -1,0 +1,2 @@
+stage7-contract: tests/maze/stage7_contract_harness.c:8: main: Assertion `MAZE_ARCHIVE_BYTES==356' failed.
+Aborted (core dumped)

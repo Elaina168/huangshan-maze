@@ -2,6 +2,8 @@
 #include "maze_app.h"
 #include <string.h>
 
+unsigned maze_app_mode(const maze_app_t *a){return (a->dark?MAZE_MODE_DARK:0u)|(a->reversed?MAZE_MODE_REVERSED:0u);}
+
 static bool exceeds(maze_app_t *a, uint32_t ticks, unsigned ms)
 {
     return (uint64_t)ticks * 1000 > (uint64_t)ms * a->tick_hz;

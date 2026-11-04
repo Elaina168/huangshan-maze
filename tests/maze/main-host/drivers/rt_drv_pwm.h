@@ -3,5 +3,5 @@
 #define PWM_CMD_GET 2
 #define BSP_USING_RGBLED_CH 1
 #define RGB_USING_SK6812MINI_HS_PWM_DEV_NAME "pwm"
-struct rt_rgbled_configuration { int unused; };
+struct rt_rgbled_configuration { unsigned color_rgb; };
 struct rt_pwm_configuration { unsigned channel,period,pulse; };

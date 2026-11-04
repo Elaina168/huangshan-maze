@@ -1,0 +1,8 @@
+cc1: fatal error: /mnt/d/codex/黄山派/src/maze_watchdog.c: No such file or directory
+compilation terminated.
+Traceback (most recent call last):
+  File "/mnt/d/codex/黄山派/scripts/test_maze_watchdog.py", line 8, in <module>
+    subprocess.run(['cc','-std=c99','-Wall','-Wextra','-Werror',*['-I'+str(r/x) for x in ['tests/maze/main-host','tests/maze','src']],'-I'+str(a.sdk/'rtos/rtthread/components/drivers/include'),str(r/'tests/maze/watchdog_harness.c'),str(r/'src/maze_watchdog.c'),'-o',str(exe)],check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['cc', '-std=c99', '-Wall', '-Wextra', '-Werror', '-I/mnt/d/codex/黄山派/tests/maze/main-host', '-I/mnt/d/codex/黄山派/tests/maze', '-I/mnt/d/codex/黄山派/src', '-I/mnt/d/sifli/SiFli-SDK/v2.5.1/rtos/rtthread/components/drivers/include', '/mnt/d/codex/黄山派/tests/maze/watchdog_harness.c', '/mnt/d/codex/黄山派/src/maze_watchdog.c', '-o', '/tmp/tmp61r5z6g9/watchdog']' returned non-zero exit status 1.

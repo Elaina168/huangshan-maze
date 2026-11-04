@@ -6,6 +6,11 @@ flags=['cc','-std=c99','-Wall','-Wextra','-Werror','-Wno-missing-field-initializ
 with tempfile.TemporaryDirectory() as tmp:
  for harness,src in [
   ('archive_boundaries_harness',['maze_archive.c']),
+  ('stage7_contract_harness',['maze_archive.c']),
+  ('stage7_rank_harness',['maze_archive.c','maze_progress.c','maze_app.c','maze_model.c','maze_level.c']),
+  ('stage7_feedback_harness',['maze_feedback.c']),
+  ('stage7_rgb_contract_harness',['maze_feedback.c']),
+  ('stage7_mode_harness',['maze_archive.c','maze_progress.c','maze_catalog.c','maze_navigation.c','maze_app.c','maze_model.c','maze_level.c','maze_random.c','maze_random_templates.c','maze_map.c','maze_map_ice_loops.c','maze_map_mechanism_trial.c','maze_map_dynamic_trial.c']),
   ('harness',['maze_app.c','maze_model.c','maze_level.c']),
   ('state_harness',['maze_app.c','maze_model.c','maze_level.c']),
   ('model_harness',['maze_model.c','maze_level.c','../tests/maze/legacy_levels.c']),
