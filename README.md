@@ -1,64 +1,33 @@
 # 黄山派体感迷宫
 
-单人课程项目，目标是在黄山派上通过倾斜控制小球避开墙壁和固定陷阱，到达终点。使用触摸完成校准、暂停、继续、重玩和退出。
+李天宇 · 2024211450 · 单人课程项目 · 最终功能版本`0.16.1-ui-trim`。
 
-**当前状态：三固定关四玩法＋随机娱乐。** 黑暗与反转可组合，固定每关一张可见前5排行榜；第8阶段0.16.0已获用户总体正常反馈；当前0.16.1界面精简候选版软件/构建通过，等待完整复测及最后建议后才冻结。 保留冰环迷宫、机关试炼、动力机关及板端随机挑战；随机模式不计成绩/失误、不设排行榜。原两图与随机成绩功能已删除，三关旧记录按ID迁移。当前实现与软件验证、固件构建和板端验收分别记录；新版板端短测见[当前指南](docs/guides/ui-trim-use.md)。
+用户已确认此版并进入封版归档，交付tag为`v0.16.1`。[课程最终材料入口](docs/final/README.md)含需求、设计三图、测试与限制、研制总结、构建使用、答辩提纲和交付清单。正式教师验收/平台提交与未提供的硬件量化结果不因封版自动完成。
 
-## 开发标准
+产品在黄山派上独立运行，倾斜操控钢珠，触摸完成选关/校准/暂停/重玩/复活；三固定关为冰环迷宫、机关试炼、动力机关，另有随机娱乐。支持惯性、多地面、钥匙开关/门、破墙、检查点、磁力/动态机关、滚动视角、黑暗/反转组合、RGB与WDT。固定关各保存真实前5，随机不记成绩。最终界面已按用户清单精简。
 
-- [课程要求与检查清单](docs/course-requirements.md)：用户指定的开发标准。
-- [产品需求规格](docs/product-requirements.md)：已确认范围及仍需预研的数值。
-- [验收测试计划](docs/acceptance-test-plan.md)：需求-用例关联，各版本证据及未执行项目分开记录。
-- [工程建立计划](docs/project-setup-plan.md)、[项目进度](docs/project-plan.md)、[风险记录](docs/risks.md)。
-- [开发规范](AGENTS.md)、[Git 工作流](docs/guides/git-workflow.md)、[第三方清单](THIRD_PARTY.md)。
-- 当前操作：[固件烧录与短测](docs/guides/ui-trim-use.md)。早期预研记录保留历史。
-- IMU预研已加入串口诊断命令并构建通过，尚未上板取样：[操作指导](docs/guides/imu-mapping-probe.md)、[诊断构建记录](evidence/builds/2026-10-10-imu-probe-01/README.md)。main.c仍显示v0.1.1，诊断固件以命令与哈希区分。
+## 查看与复现
 
-## 目录
-
-| 路径 | 职责 |
-|---|---|
-| project/ | SiFli SCons/Kconfig 人工维护的工程配置 |
-| src/ | 应用源码，目前仅导入的课程基线 |
-| docs/ | 课程标准、需求、设计/测试材料、开发日志与课程 PDF |
-| evidence/ | 原始日志、用户反馈与后续真实测试证据 |
-| scripts/ | 文档/提交检查、ASCII 快照构建 |
-| .githooks/、.github/workflows/ | 提交规范与远端文档检查 |
-
-## 环境与检查
-
-课程基线：SiFli SDK **v2.5.1**，板型 **sf32lb52-lchspi-ulp**，RT-Thread；后续迷宫 UI 使用 LVGL v9。另需 Git、Python 3.8+ 和 SDK 提供的工具链。SDK 不随仓库分发，按课程 PDF/官方文档安装。
+- [最终产品需求](docs/final/product-spec.md)、[方案设计](docs/final/design.md)、[研制总结](docs/final/development-summary.md)。
+- [最终测试报告](docs/final/test-report.md)：软件/真实库/离屏/构建与用户反馈分开记录。
+- [构建、烧录与操作](docs/final/build-and-use.md)：实际SDK基线、ASCII快照构建、下载地址及异常处理。
+- [课程标准](docs/course-requirements.md)、[第三方资源](THIRD_PARTY.md)、[开发日志](docs/devlog/)。
+- [最终构建证据](evidence/builds/2026-11-07-ui-trim-01/README.md)、[用户最终确认](evidence/ui/2026-11-07-final-confirm/README.md)。
 
 ```powershell
 python scripts/check_project.py
-```
-
-克隆到其他机器后，在项目根目录设置钩子与提交模板：
-
-```powershell
-git config core.hooksPath .githooks
-git config commit.template .gitmessage
-```
-
-## 编译
-
-在 PowerShell 激活本机 SDK 后，从项目根目录执行：
-
-```powershell
-# SDK 路径替换为本机实际位置；不要复制整个 SDK 到仓库。
-$env:SIFLI_SDK_TOOLS_PATH = 'D:\sifli\tools'
-. D:\sifli\SiFli-SDK\v2.5.1\export.ps1
+# 实际SDK环境激活后：
 python scripts/build_firmware.py
 ```
 
-仓库路径可能包含中文，构建脚本会将人工维护源码复制到纯英文临时目录，校验复制前后字节，随后执行 `scons --board=sf32lb52-lchspi-ulp -j8`。完整日志和构建状态存于被忽略的 `build/`，状态记录含临时工程路径、源码哈希与固件哈希。源码有修改时必须重新构建。
+## 目录
 
-本脚本只编译，不烧录。临时工程可在 CodeKit 中打开，下载时使用它生成的完整配置并确认实际串口；不要只猜单个 bin 地址。最终固件和配置按课程交付要求另行归档。
+| 目录 | 内容 |
+|---|---|
+| src/ | 传感器、输入/状态、物理/地图、渲染、成绩/存档、反馈与看门狗 |
+| project/ | SCons/Kconfig配置及分区表 |
+| docs/final/ | 当前课程终稿入口 |
+| docs/其他、evidence/ | 原始课程资料、分阶段设计、日志和真实证据 |
+| tests/、scripts/ | 纯逻辑、实际SDK库/真实LVGL测试与构建/检查脚本 |
 
-上面的 SDK 和工具根路径均是本机示例，其他机器按实际安装位置替换。`export.ps1` 还需 `uv` 位于 PATH；CodeKit 已激活的终端通常已配置。如操作系统禁止 SDK 状态写入，应使用 CodeKit 的已激活终端，不修改全局权限。此次实际环境处理和构建结果见 [首次构建记录](evidence/builds/2026-10-10-baseline/README.md)。
-
-## 已有证据与限制
-
-[已有外设示例记录](evidence/bootstrap/README.md)包含成功编译、烧录日志和用户反馈。它们属于 `peripheral_lab`，不证明本仓库的 RGB 基线或迷宫已上板。个人最低修改验收、方向映射、校准、手感和产品验收尚未完成。
-
-课程 PDF 用于本课程开发与核对，源代码许可见 [第三方清单](THIRD_PARTY.md)。不得将课程资料或未知许可素材误标为本项目原创或统一 Apache 许可。
+源码仓库忽略SDK、缓存和固件bin。课程最终ZIP另含可烧录固件及完整Git历史，不能仅用GitHub链接或git archive代替。克隆后可配置`core.hooksPath=.githooks`及`commit.template=.gitmessage`，不绕过提交检查。
