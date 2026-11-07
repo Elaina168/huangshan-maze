@@ -30,7 +30,7 @@
 #ifdef MAZE_SCROLL_TRIAL
 #define APP_VERSION     "0.15.0-scroll-trial"
 #else
-#define APP_VERSION     "0.16.0-watchdog"
+#define APP_VERSION     "0.16.1-ui-trim"
 #endif
 
 #define RGBLED_NAME     "rgbled"

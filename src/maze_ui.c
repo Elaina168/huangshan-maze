@@ -37,7 +37,6 @@ static maze_navigation_page_t event_page;
 static int shown_error;
 /* 暂停重校准的结果与持续更新的传感器错误分开保存，避免健康采样抹掉提示。 */
 static int paused_calibration_error;
-static maze_surface_t shown_surface;
 static lv_obj_t *mechanism_objects[MAZE_MAP_MAX_MECHANISMS];
 static uint32_t shown_keys,shown_switches,shown_broken;
 static unsigned shown_checkpoint;
@@ -129,7 +128,7 @@ static void make_scene(const maze_app_t *app,const maze_navigation_t *nav)
     (void)nav;
     lv_label_set_text(title,"大地图 | 试验 | 不保存成绩");
 #else
-    if(nav->random) lv_label_set_text_fmt(title,"随机 v%u %08lx | %s%s",nav->progress.archive.random.generator_version,(unsigned long)nav->progress.archive.random.seed,mode_title(maze_app_mode(app)),nav->store_error?" | 未保存":"");
+    if(nav->random) lv_label_set_text_fmt(title,"随机 %08lx | %s%s",(unsigned long)nav->progress.archive.random.seed,mode_title(maze_app_mode(app)),nav->store_error?" | 未保存":"");
     else lv_label_set_text_fmt(title,"%s | %s%s",maze_catalog[nav->index].title,mode_title(maze_app_mode(app)),
                          nav->store_error?" | 未保存":"");
 #endif
@@ -307,7 +306,7 @@ static void make_page(const maze_navigation_t *nav)
     switch (app->state)
     {
     case MAZE_APP_READY:
-        heading="准备就绪 | USB在右侧";
+        heading="准备就绪";
         lv_label_set_text(info_label,nav->random?"重玩保持同一地图\n黄灯预警，红色激光危险\n绿点存检查点\n随时换一张地图":app->level->mechanism_count?
             "金钥开金门，紫开关开紫门\n棕墙快速正撞可破坏\n绿点存检查点，落坑可复活\n褐色粗糙地面减速\n轻倾加速，反向制动":
             "轻倾加速，反向制动\n红色陷阱请绕行\n蓝色冰面更滑\n到达绿色终点获胜");
@@ -326,7 +325,7 @@ static void make_page(const maze_navigation_t *nav)
         heading="校准中";
         button(controls,"取消",MAZE_EVENT_EXIT,130,130); break;
     case MAZE_APP_PLAYING:
-        heading="游玩中 | 普通地面";
+        heading="游玩中";
         button(controls,"暂停",MAZE_EVENT_PAUSE,130,130); break;
     case MAZE_APP_PAUSED:
         heading="已暂停";
@@ -433,7 +432,6 @@ void maze_ui_clear(void)
     has_page=event_pending=navigation_known=false;
     button_count=0;
     shown_error=paused_calibration_error=0;
-    shown_surface=MAZE_SURFACE_NORMAL;
     memset(mechanism_objects,0,sizeof(mechanism_objects));
     random_controls=random_status_label=NULL;
     memset(dark_masks,0,sizeof(dark_masks));
@@ -545,8 +543,6 @@ void maze_ui_render(const maze_navigation_t *nav)
             lv_obj_t *title=label(screen,"",20,26,350);
             lv_label_set_text_fmt(title,"成绩 | %s",maze_catalog[nav->score_index].title);
             label(screen,"按用时、玩法、失误排序",20,64,350);
-            lv_obj_t *totals=label(screen,"",20,94,350);
-            lv_label_set_text_fmt(totals,"累计失误:%llu",(unsigned long long)level->losses);
             if(!level->count)label(screen,"暂无通关记录",20,150,350);
             for(unsigned i=0;i<level->count;i++)
             {
@@ -564,8 +560,7 @@ void maze_ui_render(const maze_navigation_t *nav)
         else if(nav->page==MAZE_NAV_SELECT)
         {
             lv_obj_t *screen=lv_screen_active();
-            label(screen,"体感迷宫 | 选择关卡",20,32,350);
-            label(screen,"USB在右侧 | 轻倾加速",20,66,350);
+            label(screen,"体感迷宫",20,32,350);
             for(unsigned i=0;i<maze_catalog_count;i++)
             {
                 lv_obj_t *row=box(screen,20,102+(int)i*40,350,42,0x101c27);
@@ -596,7 +591,6 @@ void maze_ui_render(const maze_navigation_t *nav)
                 controls=box(screen,20,404,350,42,0x101c27);
                 command_button(controls,"保存",(maze_ui_command_t){.kind=MAZE_UI_SAVE},130,130);
             }
-            else label(screen,"选关后点击开始并放稳校准",20,410,350);
         }
     }
     if(new_navigation&&nav->page!=MAZE_NAV_GAME)menu_bar=box(lv_screen_active(),20,nav->page==MAZE_NAV_SCORES?118:92,1,2,0x35a9c8);
@@ -630,18 +624,9 @@ void maze_ui_render(const maze_navigation_t *nav)
                               app->window_count,MAZE_CALIBRATION_COUNT,nav->progress.mistakes);
     if (app->state==MAZE_APP_PLAYING)
     {
-        maze_surface_t surface=maze_level_surface_at(app->level,app->model.x,app->model.y);
-        const char *material=surface==MAZE_SURFACE_ICE?"冰面":surface==MAZE_SURFACE_ROUGH?"粗糙地面":"普通地面";
         if(app->level->mechanism_count)
-        {
-            unsigned keys=0,switches=0;
-            for(unsigned i=0;i<8;i++) { keys+=(app->model.keys>>i)&1u;switches+=(app->model.switches>>i)&1u; }
-            lv_label_set_text_fmt(heading_label,"%s | 钥匙%u 开关%u | 检查点%s",material,keys,switches,
-                app->model.checkpoint?"已存":"无");
-        }
-        else if (changed || shown_surface!=surface)
-            lv_label_set_text_fmt(heading_label,"游玩中 | %s | 失误:%u",material,nav->progress.mistakes);
-        shown_surface=surface;
+            lv_label_set_text_fmt(heading_label,"游玩中 | 检查点%s",app->model.checkpoint?"已存":"无");
+        else lv_label_set_text_fmt(heading_label,"游玩中 | 失误:%u",nav->progress.mistakes);
     }
     int feedback_error=app->error;
     if (app->state==MAZE_APP_PAUSED && !feedback_error) feedback_error=paused_calibration_error;
@@ -745,7 +730,7 @@ void maze_ui_render_trial(const maze_app_t *app)
     if(app->state==MAZE_APP_CALIBRATING)
         lv_label_set_text_fmt(heading_label,"请放稳: %u/%u",app->window_count,MAZE_CALIBRATION_COUNT);
     else if(app->state==MAZE_APP_PLAYING)
-        lv_label_set_text(heading_label,maze_level_surface_at(app->level,app->model.x,app->model.y)==MAZE_SURFACE_ICE?"游玩中 | 冰面":"游玩中 | 普通地面");
+        lv_label_set_text(heading_label,"游玩中");
     else if(app->state==MAZE_APP_PAUSED)
     {
         int error=app->error?app->error:paused_calibration_error;
@@ -759,6 +744,6 @@ void maze_ui_render_trial(const maze_app_t *app)
             "校准未完成 (%d)\n请放稳后重试。":
             "传感器或时序异常 (%d)\n请放稳后重试。\n恢复后返回暂停。",app->error);
     }
-    else lv_label_set_text(heading_label,app->state==MAZE_APP_READY?"准备就绪 | USB在右侧":app->state==MAZE_APP_WON?"成功到达终点":"小球落入陷阱");
+    else lv_label_set_text(heading_label,app->state==MAZE_APP_READY?"准备就绪":app->state==MAZE_APP_WON?"成功到达终点":"小球落入陷阱");
 }
 #endif

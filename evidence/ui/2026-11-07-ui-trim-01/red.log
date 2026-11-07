@@ -1,0 +1,2 @@
+ui-stage7: /mnt/d/codex/黄山派/tests/maze/stage7_ui_harness.c:8: main: Assertion `caption(lv_screen_active(),"体感迷宫")' failed.
+Aborted (core dumped)

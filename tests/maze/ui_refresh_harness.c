@@ -109,7 +109,7 @@ int main(void){lv_init();lv_display_t*d=lv_display_create(390,450);lv_display_se
  navigation.page=MAZE_NAV_SCORES;navigation.page_version++;refresh(d);assert(caption(lv_screen_active(),"返回选关"));click("返回选关");assert(maze_ui_take_command(&navigation,&cmd)&&cmd.kind==MAZE_UI_BACK);maze_navigation_back(&navigation);
  assert(!maze_navigation_random_open(&navigation,3));refresh(d);assert(caption(lv_screen_active(),"取消生成"));int result;do{result=maze_navigation_random_step(&navigation,0,NULL);}while(result==MAZE_RANDOM_PENDING);assert(result==MAZE_RANDOM_READY);maze_ui_clear();assert(!maze_navigation_random_accept(&navigation,navigation.random_job_id));refresh(d);
  assert(caption(lv_screen_active(),"换一张地图")&&!caption(lv_screen_active(),"本图成绩"));
- assert(caption(lv_screen_active(),"重玩保持同一地图\n黄灯预警，红色激光危险\n绿点存检查点\n随时换一张地图"));screenshot("casual-ready.ppm");
+ assert(caption(lv_screen_active(),"重玩保持同一地图\n黄灯预警，红色激光危险\n绿点存检查点\n随时换一张地图"));char random_title[64];lv_snprintf(random_title,sizeof(random_title),"随机 %08lx | 正常",(unsigned long)navigation.progress.archive.random.seed);assert(caption(lv_screen_active(),random_title));screenshot("casual-ready.ppm");
  const maze_app_state_t states[]={MAZE_APP_CALIBRATING,MAZE_APP_PLAYING,MAZE_APP_PAUSED,MAZE_APP_LOST,MAZE_APP_WON};
  for(unsigned i=0;i<5;i++){navigation.app.state=states[i];refresh(d);assert(caption(lv_screen_active(),"娱乐模式 | 不记录成绩"));assert(!caption(lv_screen_active(),"本图成绩"));}
  screenshot("casual-won.ppm");maze_ui_clear();export_font();printf("PASS: four menu entries, three fixed scores and back, random ready/calibration/play/pause/loss/win has no score entry or timer; glyph/bounds checked pixels=%u\n",pixels);return 0;}

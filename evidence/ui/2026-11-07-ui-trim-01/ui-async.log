@@ -1,0 +1,6 @@
+async transfers=552 waits=552 services=552 overwritten_sources=0 ball=128 min_ball=128 black_pixels=0
+stage4 async transfers=848 waits=848 services=848 overwritten_sources=0 ball=128 min_ball=128 black_pixels=0
+stage5 async transfers=1269 overwritten=0 min_ball=128 black=0
+random async transfers=1770 overwritten=0 min_ball=128 black=0
+dark fixed/random async transfers=2668 overwritten=0 min_ball=128 black=0
+PASS: fixed/random async delayed consumption, source stable, no black holes and complete ball
