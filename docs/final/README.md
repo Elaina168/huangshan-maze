@@ -12,6 +12,7 @@
 | [方案设计](design.md) | 模块职责、数据流、状态机与资源方案 |
 | [测试报告](test-report.md) | 验证方法、结果、问题修复与专项测试计划 |
 | [研制总结](development-summary.md) | 研发过程、关键技术、个人工作和开发协作 |
+| [研制总结PDF](development-summary.pdf) | 课程提交与阅读版 |
 | [构建与使用](build-and-use.md) | 环境、复现、烧录、操作与异常恢复 |
 | [答辩提纲](defense-notes.md) | 实物演示、代码讲解与现场操作 |
 | [交付清单](delivery-checklist.md) | 固件、Git历史、ZIP及完整性检查 |

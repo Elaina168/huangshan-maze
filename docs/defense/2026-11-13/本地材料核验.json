@@ -1,0 +1,753 @@
+{
+  "status": "PASS",
+  "date": "2026-11-13",
+  "scope": "Local defense materials, browser behavior, links, requirements and archive integrity",
+  "checks": [
+    "157 Markdown links resolve to actual files and valid code locations",
+    "62 unique requirements retained in CSV",
+    "20 initial requirements retained on one rendered PDF page",
+    "25 embedded source snapshots and function definition lines match current files",
+    "14 slides, navigation, keyboard, notes, fullscreen and 25 source views passed real Chrome checks",
+    "Delivery ZIP SHA-256 and CRC verified",
+    "Git worktree remains clean"
+  ],
+  "browser": {
+    "slides": [
+      {
+        "title": "黄山派体感迷宫",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "从初始需求到最终实现",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "系统按职责组织",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "一次点击怎样启动游戏",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "稳定校准与倾斜输入",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "钢珠运动与三种地面",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "地图、碰撞与机关",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "滚动镜头与显示刷新",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "状态机与挑战计时",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "前5排序与Flash存档",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "随机挑战与四种玩法",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "工程问题与验证结果",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "现场修改与验证",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      },
+      {
+        "title": "实现成果与开发协作",
+        "scrollHeight": 622,
+        "clientHeight": 622,
+        "imagesOk": true
+      }
+    ],
+    "codeLocations": 25,
+    "errors": [],
+    "navigation": true,
+    "keyboard": true,
+    "notesToggle": true,
+    "fullscreen": true,
+    "sourceDeepLinks": true
+  },
+  "links": [
+    {
+      "document": "00-先看这里.md",
+      "target": "答辩演示.html"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "02-初始20项需求对照-一页展示.pdf"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "02-初始到最终需求对照.md"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "03-项目实现逐步讲解.md"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "04-现场修改与验证操作.md"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "05-关键代码定位.md"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "01-压缩包课程要求核对.md"
+    },
+    {
+      "document": "00-先看这里.md",
+      "target": "02-全部62项需求对照.csv"
+    },
+    {
+      "document": "01-压缩包课程要求核对.md",
+      "target": "答辩演示.html"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-main"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-before"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-progress"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-main"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_imu.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-worker"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_navigation.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-select"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-click"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-take"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_navigation.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-select"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-begin"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-event"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_imu.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-worker"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-sample"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-event"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-update"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-step"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_map.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-map"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-wall"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-mech"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-respawn"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_camera.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-camera"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-service"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-event"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-update"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-before"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-progress"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-respawn"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-progress"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_archive.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-rank"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_store.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-store"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_random.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-gen"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_navigation.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-select"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-sample"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-service"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_watchdog.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-wdt"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-step"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-main"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-step"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "03-项目实现逐步讲解.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../src/maze_config.h"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "答辩演示.html#code-step"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../tests/maze/inertia_harness.c"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../scripts/build_firmware.py"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../tests/maze/stage7_ui_harness.c"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../tests/maze/lvgl-host/CMakeLists.txt"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "../../../src/maze_map_mechanism_trial.c"
+    },
+    {
+      "document": "04-现场修改与验证操作.md",
+      "target": "答辩演示.html#code-mech"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-main"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-service"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-click"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-take"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_navigation.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-select"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_map.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-map"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-bind"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-event"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-begin"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-sample"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_app.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-update"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_imu.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-worker"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-step"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-wall"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-mech"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_model.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-respawn"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_camera.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-camera"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_ui.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-render"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_feedback.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-rgb"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-progress"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_progress.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-before"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_archive.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-rank"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_store.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-store"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_random.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-gen"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/maze_watchdog.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-wdt"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "../../../src/main.c"
+    },
+    {
+      "document": "05-关键代码定位.md",
+      "target": "答辩演示.html#code-main"
+    }
+  ],
+  "delivery_sha256": "b9736193dcae5f83192ebc1460328126c4dfec254fb96f85e2331286aee88da6",
+  "output_files": [
+    "00-先看这里.md",
+    "01-压缩包课程要求核对.md",
+    "02-全部62项需求对照.csv",
+    "02-初始20项需求对照-一页展示.pdf",
+    "02-初始到最终需求对照.md",
+    "03-项目实现逐步讲解.md",
+    "04-现场修改与验证操作.md",
+    "05-关键代码定位.md",
+    "requirements-data.json",
+    "本地材料核验.json",
+    "答辩演示.html"
+  ]
+}
